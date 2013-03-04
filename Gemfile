@@ -4,8 +4,15 @@ gem 'rails', '3.2.12'
 gem 'execjs'
 gem 'therubyracer'
 
+gem 'childprocess', '0.3.6'
+
 group :development, :test do
   gem 'pg', '0.12.2'
+  gem 'rspec-rails', '2.11.0'
+  gem 'guard-rspec', '1.2.1'
+
+  gem 'guard-spork', '1.2.0'
+  gem 'spork', '0.9.2'
 end
 
 # Gems used only for assets and not required
@@ -20,6 +27,12 @@ gem 'jquery-rails', '2.0.2'
 
 group :test do
   gem 'capybara', '1.1.2'
+  # for Linux
+  gem 'rb-inotify', '0.8.8'
+  gem 'libnotify', '0.5.9'
+  # for Mac
+  gem 'rb-fsevent', '0.9.1', :require => false
+  gem 'growl', '1.0.3'
 end
 
 group :production do
