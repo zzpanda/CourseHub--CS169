@@ -5,8 +5,7 @@ gem 'execjs'
 gem 'therubyracer'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.5'
-  gem 'rspec-rails', '2.11.0'
+  gem 'pg', '0.12.2'
 end
 
 # Gems used only for assets and not required
