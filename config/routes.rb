@@ -1,4 +1,10 @@
 Coursehub::Application.routes.draw do
+  post "users/edit_profile"
+  get "users/test_user_id"
+  #match 'profile/view' => 'profile#view'
+  #match 'profile/edit' => 'profile#edit'
+  resources :profile
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

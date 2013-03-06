@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <title> View Profile </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/client.js"></script>
+
+</head>
+
+<body>
+<div id="profile_page" class="container">
+  <h1 id="message"></h1>
+
+  <form>
+    Email: <b id="email-contents"><%= @email %></b>
+    <input id="email-edit" type="text" name="email"><br>
+
+    Username: <b id="username-contents"><%= @username %></b>
+    <input id="username-edit" type="text" name="email"><br>
+    <!--karma is not editable-->
+    Karma: <b id="karma-contents"><%= @karma %></b>
+    <br>
+    <input id="done-button" type="submit" value="done">
+  </form>
+  <!--<div id="username_div">Username: <b><%= @username %></b></div>-->
+  <!--<div id="karma_div">Karma: <b><%= @karma %></b></div>-->
+  <button id="edit-button">Click to edit</button>
+</div>
+
+
+<!-- Need to put script here, after forms, so that it doesn't run too early -->
+<script type="text/javascript">
+    <!--
+    /* Put the page into a blank state until everything finishes loading
+     This is not the ideal thing to do, but better than nothing. */
+    $('#email-edit').hide()
+    $('#username-edit').hide()
+    $('#done-button').hide()
+    $('#message').html("User profile")
+
+    /* setup the page so that only one of the forms is shown */
+    $(document).ready(function () {
+//        show_login_page();
+    });
+
+    $('#edit-button').click(function () {
+        show_edit_page();
+        return false;
+    });
+    $('#done-button').click(function () {
+        val_arr = show_view_page();
+        email = val_arr[0];
+        username = val_arr[1];
+        json_request("edit_profile", { user_id: <%= @user_id %>, email:email, username:username }, function(data) { alert(data.status) }, function(err) { alert('error occurred on request'); });
+
+        return false;
+    })
+
+    function show_edit_page() {
+        $('#edit-button').hide();
+        $('#done-button').show();
+        email = $('#email-contents').text();
+        $('#email-contents').hide();
+        $('#email-edit').val(email);
+        $('#email-edit').show();
+
+        username = $('#username-contents').text();
+        $('#username-contents').hide();
+        $('#username-edit').val(username);
+        $('#username-edit').show();
+    }
+    function show_view_page() {
+        $('#edit-button').show();
+        $('#done-button').hide();
+        email = $('#email-edit').val();
+        $('#email-contents').show();
+        $('#email-contents').text(email);
+        $('#email-edit').hide();
+
+        username = $('#username-edit').val();
+        $('#username-contents').show();
+        $('#username-contents').text(username);
+        $('#username-edit').hide();
+        return [email, username]
+    }
+
+
+
+
+
+    -->
+</script>
+
+</body>
+
+</html>
+
+
