@@ -1,0 +1,21 @@
+
+<div id="profile_page" class="container">
+  <h1 id="message"></h1>
+  <%= @id %>
+  <form>
+    Email: <b id="email-contents"><%= @email %></b>
+    <input id="email-edit" type="text" name="email"><br>
+
+    Username: <b id="username-contents"><%= @username %></b>
+    <input id="username-edit" type="text" name="email"><br>
+    <!--karma is not editable-->
+    Karma: <b id="karma-contents"><%= @karma %></b>
+    <br>
+    <input id="done-button" type="submit" value="done">
+  </form>
+  <!--<div id="username_div">Username: <b><%= @username %></b></div>-->
+  <!--<div id="karma_div">Karma: <b><%= @karma %></b></div>-->
+  <button id="edit-button">Click to edit</button>
+
+</div>
+

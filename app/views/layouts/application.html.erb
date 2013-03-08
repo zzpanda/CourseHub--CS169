@@ -1,18 +1,20 @@
-<!--
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Coursehub</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title> View Profile </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application", controller_name %>
 </head>
 <body>
-  -->
+
 <%= yield %>
 
-<!--</body>-->
-<!--</html>-->
+</body>
+</html>
 
 
-<!--doing this temporarily until I can figure out how to set the css and javascript to proper values-->
