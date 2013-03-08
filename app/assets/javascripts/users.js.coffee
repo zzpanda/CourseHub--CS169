@@ -40,14 +40,16 @@ Page_Changer =
       val_arr = Page_Changer.show_view_page()
       email = val_arr[0]
       username = val_arr[1]
+      json_sending =
+        email: email
+        username: username
       json_request "edit_profile",
-                   {email: email, username: username}
-                   (data)->
-                    alert data.status
-                   (err)->
-                    alert 'error occurred on request'
+                   json_sending
+      (data)->
+        alert data.status
+      (err)->
+        alert 'error occurred on request'
       false
-
   register_edit_button_listener: ->
     $('#edit-button').click ->
       Page_Changer.show_edit_page()
