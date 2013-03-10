@@ -5,7 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password
       t.int :karma
-      t.int :id
+      #t.int :id
+      #id is created automatically
 
       t.timestamps
     end

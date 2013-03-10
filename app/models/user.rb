@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
   validates :password, presence: true
   validates :username, presence: true
 
-  has_and_belongs_to_many :classes  #classes has_and_belongs_to_many :users
-  has_many :comments   #comments belongs_to :user, comments belongs_to :resources
-  has_many :resources   #resources belongs_to :user,
+  has_and_belongs_to_many :course_semesters
+  has_many :resources
+  #has_many :comments
+
 
 
   def subscribeToClass(class)
