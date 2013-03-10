@@ -14,3 +14,7 @@
 /log/*.log
 /tmp
 *~
+
+# Ignore RubyMine files
+.idea/
+.idea/workspace.xml
