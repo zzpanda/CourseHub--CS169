@@ -6,6 +6,7 @@ class UsersController < ApplicationController
       format.all { render :json => {:status => 'email:' + @email+' username: ' + @username}, :content_type => 'application/json' }
     end
   end
+
   def show
     @id = params[:id]
     if @id.nil? || @id == 0
