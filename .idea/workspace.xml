@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="db8b4bab-156b-4817-b56c-455302d8e849" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/course_semester.rb" afterPath="$PROJECT_DIR$/app/models/course_semester.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
     </list>
+=======
+    <list default="true" id="db8b4bab-156b-4817-b56c-455302d8e849" name="Default" comment="" />
+>>>>>>> 2d9d34145ece127e82398c78c65707a14ba908ae
     <ignored path="coursehub.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,11 +40,28 @@
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="9" column="44" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="course_semester.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/course_semester.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="40" selection-start="111" selection-end="111" vertical-scroll-proportion="0.17175573">
+=======
+>>>>>>> 2d9d34145ece127e82398c78c65707a14ba908ae
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="20130310031818_create_resources.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130310031818_create_resources.rb">
+          <provider selected="true" editor-type-id="text-editor">
+=======
       <file leaf-file-name="course_semester.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/course_semester.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,6 +74,7 @@
       <file leaf-file-name="20130310031818_create_resources.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20130310031818_create_resources.rb">
           <provider selected="true" editor-type-id="text-editor">
+>>>>>>> 2d9d34145ece127e82398c78c65707a14ba908ae
             <state line="5" column="97" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
               <folding />
             </state>

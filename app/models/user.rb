@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_many :resources
   #has_many :comments
 
-
   def subscribeToClass(semester_class)
   end
 

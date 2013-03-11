@@ -1,0 +1,21 @@
+<h2>Course List</h2>
+
+<table>
+    <tr class='row_header'>
+        <td class='col_subscribe'></td>
+        <td class='col_department'>Dept</td>
+        <td class='col_course_number'>#</td>
+        <td class='col_name'>Course</td>
+    </tr>
+
+<% @courses.each do |course| %>
+    <tr>
+
+        <td class='col_subscribe'><%= course.id %> </td>
+        <td class='col_department'><%= course.department %></td>
+        <td class='col_course_number'><%= course.course_number %></td>
+        <td class='col_name'><%= course.name %> </td>
+
+    </tr>
+<% end %>
+</table>
