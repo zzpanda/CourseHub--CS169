@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
   #has_many :comments
 
 
-
-  def subscribeToClass(class)
+  def subscribeToClass(semester_class)
   end
 
   #need optional parameters?
