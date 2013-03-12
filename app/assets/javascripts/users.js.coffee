@@ -44,11 +44,10 @@ Page_Changer =
         email: email
         username: username
       json_request "edit_profile",
-                   json_sending
-      (data)->
-        alert data.status
-      (err)->
-        alert 'error occurred on request'
+        json_sending
+        (data)->
+          alert data.status
+
       false
   register_edit_button_listener: ->
     $('#edit-button').click ->
