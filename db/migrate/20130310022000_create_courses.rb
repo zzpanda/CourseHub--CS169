@@ -4,7 +4,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :name
       t.text :course_info
       t.string :department
-      t.int :course_number
+      t.integer :course_number
 
       #id is created automatically
       t.timestamps
