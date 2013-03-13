@@ -1,8 +1,8 @@
 class Resource < ActiveRecord::Base
-  attr_accessible :name, :type, :link
+  attr_accessible :name, :resource_type, :link, :user_id
 
   validates :name, presence: true
-  validates :type, presence: true
+  validates :resource_type, presence: true
   validates :link, presence: true
 
   belongs_to :course_semester

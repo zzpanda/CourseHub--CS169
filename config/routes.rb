@@ -1,8 +1,8 @@
 Coursehub::Application.routes.draw do
-
   resources :users
   match 'profile' => 'users#show'
   match 'edit_profile' => 'users#edit'
+  root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
