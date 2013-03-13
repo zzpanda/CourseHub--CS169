@@ -7,8 +7,40 @@ class Course < ActiveRecord::Base
   validates :course_number, presence: true
   #self.primary_keys = :department, :course_number
 
+<<<<<<< HEAD
   has_many :coursesemesters
   has_many :semesters, :through => :coursesemesters
+=======
+  has_many :semester_courses
+  has_many :semesters, :through => :course_semesters
+
+    # Grabs information to be used for displaying "Browse Courses Page"
+    def self.getCourseInformation(dept)
+        courses = nil
+        if dept == nil
+            courses = Course.all
+        else
+            courses = Course.where("department = ?", dept)
+        end
+
+        courses.each do |course|
+            course[:course_semester] = getSemesterClasses(course.id)
+        end
+
+        return courses
+    end
+
+    # Returns a list of all semester classes associated with the given course
+    def self.getSemesterClasses(course_id)
+        semesters = []
+        courses = CourseSemester.where("course_id = ?", course_id)
+        courses.each do |i|
+            semesters << i.getSemester
+        end
+        return semesters
+        return CourseSemester.where("course_id = ?", course_id)
+    end
+>>>>>>> 070cccca94dc7f466e9fe92ec3917c4fd6d9e440
 
   #ERROR CODES
   SUCCESS = 1

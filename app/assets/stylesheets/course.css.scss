@@ -1,3 +1,78 @@
 // Place all the styles related to the Course controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$lavender: #AD00AD;
+$lavender_dark: #790079;
+$lavender_light: #FF00EB;
+$blue_light: rgb(235,240,255);
+$navy_blue: rgb(40,100,255);
+$dark_blue: rgb(20,70,255);
+$gold: rgb(240,220,80);
+$margin: 30px;
+
+$width: 750px;
+$width_subscribe: 50px;
+$width_department: 120px;
+$width_course_number: 80px;
+$width_name: 250px;
+$width_classes: 240px;
+
+#title_container {
+	width: $width;
+	border: 2px solid $dark_blue;
+	border-radius: 0.5em;
+	margin-bottom: $margin;
+	h2 {
+		margin: 5px;
+		color: $gold;
+	}
+	background-color: $navy_blue;
+}
+
+#search_container {
+	width: $width;
+	border: 2px solid $navy_blue;
+	border-radius: 0.2em;
+	margin-bottom: $margin/2;
+}
+
+#browse_container {
+	width: $width;
+	border: 2px solid $dark_blue;
+	border-radius: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	background-color: $blue_light;
+	table {
+		border-collapse: collapse;
+	}
+	tr {
+		height: 30px;
+	}
+	.row_header {
+		font-weight: bold;
+		text-align: center;
+		background-color: $navy_blue;
+		height: 30px;
+		color: white;
+	}
+	.col_subscribe {
+		width: $width_subscribe;
+	}
+	.col_department {
+		width: $width_department;
+	}
+	.col_course_number {
+		width: $width_course_number;
+	}
+	.col_name {
+		width: $width_name;
+	}
+	.col_classes {
+		width: $width_classes;
+	}
+}
+
+

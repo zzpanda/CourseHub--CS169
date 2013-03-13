@@ -75,4 +75,15 @@ describe Course do
 	end
 
 
+<<<<<<< HEAD
+=======
+describe Course do
+    it "can be instantiated" do
+        Course.new.should be_an_instance_of(Course)
+    end
+
+    it "can be saved successfully" do
+        Course.create.should be_persisted
+    end
+>>>>>>> 070cccca94dc7f466e9fe92ec3917c4fd6d9e440
 end

@@ -1,21 +1,46 @@
-<h2>Course List</h2>
 
-<table>
-    <tr class='row_header'>
-        <td class='col_subscribe'></td>
-        <td class='col_department'>Dept</td>
-        <td class='col_course_number'>#</td>
-        <td class='col_name'>Course</td>
-    </tr>
+<div id="title_container">
+	<h2>Browse Courses</h2>
+</div>
 
-<% @courses.each do |course| %>
-    <tr>
+<div id="search_container">
+View All
+</div>
 
-        <td class='col_subscribe'><%= course.id %> </td>
-        <td class='col_department'><%= course.department %></td>
-        <td class='col_course_number'><%= course.course_number %></td>
-        <td class='col_name'><%= course.name %> </td>
+<div id="browse_container">
+	<table>
+		<tr class='row_header'>
+			<td class='col_subscribe'></td>
+			<td class='col_department'>Dept</td>
+			<td class='col_course_number'>#</td>
+			<td class='col_name'>Course</td>
+			<td class='col_classes'></td>
+		</tr>
 
-    </tr>
-<% end %>
-</table>
+	<% @courses.each do |course| %>
+		<tr>
+
+			<td class='col_subscribe'><%= course.id %> </td>
+			<td class='col_department'>  
+				
+				<a href='?dept=<%= course.department %>'>
+					<%= course.department %> 
+				</a>
+			
+			</td>
+			<td class='col_course_number'><%= course.course_number %></td>
+			<td class='col_name'><%= course.name %> </td>
+			<td class='col_classes'> 
+					<select>
+						<option value="NULL">--Select Semester--</option>
+						<% course.course_semester.each do |course_semester| %>
+							<option value='<%= course_semester %>'>
+								<%= course_semester %>
+								</option>
+						<% end %>
+					</select>
+			</td>
+		</tr>
+	<% end %>
+	</table>
+</div>

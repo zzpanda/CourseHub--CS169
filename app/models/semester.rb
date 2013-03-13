@@ -5,6 +5,7 @@ class Semester < ActiveRecord::Base
   validates :year, presence: true
   #self.primary_keys :term, :year
 
+<<<<<<< HEAD
   has_many :coursesemesters
   has_many :courses, :through => :coursesemesters
 
@@ -51,5 +52,11 @@ class Semester < ActiveRecord::Base
   
 
   
+=======
+  has_many :semester_courses
+  has_many :courses, :through => :course_semesters
+
+
+>>>>>>> 070cccca94dc7f466e9fe92ec3917c4fd6d9e440
 
 end
