@@ -8,7 +8,7 @@ gem 'rb-inotify', '0.9'
 gem 'childprocess', '0.3.6'
 gem 'devise'
 group :development, :test do
-  gem 'pg', '0.12.2'
+  gem 'sqlite3'
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '1.2.1'
 

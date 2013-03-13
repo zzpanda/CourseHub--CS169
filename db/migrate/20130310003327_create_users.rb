@@ -1,10 +1,10 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.string :username, :null => false
-      t.string :email, :null => false
-      t.string :password, :null => false
-      t.integer :karma, :default => 0
+      t.string :username
+      t.string :email
+      t.string :password
+      t.int :karma
       #t.int :id
       #id is created automatically
 

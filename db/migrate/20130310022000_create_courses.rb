@@ -1,10 +1,10 @@
 class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
-      t.string :name, :null => false
+      t.string :name
       t.text :course_info
       t.string :department
-      t.string :course_number
+      t.int :course_number
 
       #id is created automatically
       t.timestamps
