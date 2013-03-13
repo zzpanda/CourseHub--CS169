@@ -11,15 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310031818) do
+ActiveRecord::Schema.define(:version => 20130313075436) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "resource_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "courses", :force => true do |t|
-    t.string   "name"
+    t.string   "name",          :null => false
     t.text     "course_info"
     t.string   "department"
-    t.integer  "course_number"
-  
-    create_table "course_semesters", :force => true do |t|
+    t.string   "course_number"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "coursesemesters", :force => true do |t|
     t.string   "professor"
     t.integer  "course_id",   :null => false
     t.integer  "semester_id", :null => false
@@ -27,21 +38,19 @@ ActiveRecord::Schema.define(:version => 20130310031818) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "courses", :force => true do |t|
-    t.string   "name",          :null => false
-    t.text     "course_info",   :null => false
-    t.string   "department",    :null => false
-    t.string   "course_number", :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "coursesemesters_users", :id => false, :force => true do |t|
+    t.integer "coursesemester_id"
+    t.integer "user_id"
   end
 
   create_table "resources", :force => true do |t|
-    t.string   "resource_type", :null => false
-    t.string   "name",          :null => false
-    t.string   "link",          :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "resource_type"
+    t.string   "name"
+    t.string   "link"
+    t.integer  "user_id"
+    t.integer  "coursesemester_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "semesters", :force => true do |t|
@@ -55,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20130310031818) do
     t.string   "username",                  :null => false
     t.string   "email",                     :null => false
     t.string   "password",                  :null => false
-    t.integer  "karma",      :default => 0, :null => false
+    t.integer  "karma",      :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
