@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'execjs'
 gem 'therubyracer'
+gem 'rb-inotify', '0.9'
 
 gem 'childprocess', '0.3.6'
 gem 'devise'
@@ -28,7 +29,7 @@ gem 'jquery-rails', '2.0.2'
 group :test do
   gem 'capybara', '1.1.2'
   # for Linux
-  gem 'rb-inotify', '0.8.8'
+  #gem 'rb-inotify', '0.8.8'
   gem 'libnotify', '0.5.9'
   # for Mac
   gem 'rb-fsevent', '0.9.1', :require => false

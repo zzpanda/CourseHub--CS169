@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   def addResource(resourceName, type, resourceLink)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
-    resources.create!(:name => resourceName, :type => type, :link => resourceLink)
+    resources.create!(:name => resourceName, :resource_type => type, :link => resourceLink)
   end
 
   #controller should take care of checking that the resource belongs to the user?

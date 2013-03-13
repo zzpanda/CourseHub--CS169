@@ -21,3 +21,6 @@
 
 # Ignore gedit temp files
 *~
+
+#ignore database.yml in the case of SQLITE3 vs. PG development
+/config/database.yml

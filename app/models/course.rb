@@ -7,6 +7,6 @@ class Course < ActiveRecord::Base
   validates :course_number, presence: true
 
   has_many :semester_courses
-  has_many :semesters, :through => :semester_courses
+  has_many :semesters, :through => :course_semesters
 
 end
