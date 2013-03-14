@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_presence_of :password
 
-  has_and_belongs_to_many :course_semesters
+  has_and_belongs_to_many :coursems
   has_many :resources
   has_many :comments
 
@@ -17,20 +17,20 @@ class User < ActiveRecord::Base
   #COURSESEMESTER METHODS DO NOT WORK YET (due to course_semester underscore naming convention?)
 
   def subscribe(cs_id)
-    cs = course_semesters.find_by_id(cs_id)   #using find_by_id instead of find means won't throw exception                            #cs.users.push(self.id)
-    self.course_semesters << cs_id
+    cs = coursems.find_by_id(cs_id)   #using find_by_id instead of find means won't throw exception                            #cs.users.push(self.id)
+    self.coursems << cs_id
     #course_semesters_users.create!(:user_id => self.id, :course_semesters_id => cs_id)
   end
 
   def unsubscribe(cs_id)
-    cs = course_semesters.find_by_id(cs_id)
+    cs = coursems.find_by_id(cs_id)
     cs.users.delete(self.id)
-    self.course_semesters.delete(cs_id)
+    self.coursemss.delete(cs_id)
   end
 
   #can be used in controller to give option to subscribe/unsubscribe
   def subscribed?(cs_id)
-    self.course_semesters.include?(cs_id)
+    self.coursems.include?(cs_id)
   end
 
   def subscribed

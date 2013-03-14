@@ -4,7 +4,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :resourceType
       t.string :name
       t.string :link
-      t.integer :course_semester_id
+      t.integer :coursem_id
       t.integer :user_id
 
       t.timestamps

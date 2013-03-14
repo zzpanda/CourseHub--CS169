@@ -5,7 +5,7 @@ class Resource < ActiveRecord::Base
   validates :resourceType, presence: true
   validates :link, presence: true
 
-  belongs_to :course_semester
+  belongs_to :coursem
   belongs_to :user
   has_many :comments
 
