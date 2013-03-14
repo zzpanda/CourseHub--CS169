@@ -6,6 +6,7 @@ Coursehub::Application.routes.draw do
   root :to => "home#index"
 
   resources :course
+  resources :course_semester
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

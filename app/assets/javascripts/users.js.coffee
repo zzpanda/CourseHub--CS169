@@ -43,7 +43,7 @@ Page_Changer =
       json_sending =
         email: email
         username: username
-      json_request "edit_profile",
+      json_request "/edit_profile",
         json_sending
         (data)->
           alert data.status

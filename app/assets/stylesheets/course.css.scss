@@ -11,11 +11,13 @@ $dark_blue: rgb(20,70,255);
 $gold: rgb(240,220,80);
 $margin: 30px;
 
+
+
 $width: 750px;
-$width_subscribe: 50px;
+$width_subscribe: 10px;
 $width_department: 120px;
 $width_course_number: 80px;
-$width_name: 250px;
+$width_name: 300px;
 $width_classes: 240px;
 
 #title_container {
@@ -35,6 +37,17 @@ $width_classes: 240px;
 	border: 2px solid $navy_blue;
 	border-radius: 0.2em;
 	margin-bottom: $margin/2;
+	table {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	td {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.search_bar {
+		width: 200px;
+	}
 }
 
 #browse_container {
@@ -43,13 +56,15 @@ $width_classes: 240px;
 	border-radius: 0.5em;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 10px;
 	background-color: $blue_light;
 	table {
 		border-collapse: collapse;
 	}
 	tr {
-		height: 30px;
+		height: 35px;
+	}
+	.row_content:hover {
+		background-color: white;
 	}
 	.row_header {
 		font-weight: bold;
