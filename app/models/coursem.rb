@@ -14,4 +14,18 @@ class Coursem < ActiveRecord::Base
     Coursem.create!(:professor => professor, :course_id => course_id, :semester_id => semester_id)
   end
 
+    # Grab all the relevant information for a Coursems that will be passed
+    # into the "View Course Semester Page" as a JSON object
+    def self.getCoursems(id)
+        # to be implemented 
+
+        course = Coursem.find_by_id(id)
+        if not course.nil?
+            course[:semester] = course.semester
+            course[:course] = course.course
+            course[:users] = course.users
+        end
+        return course
+    end
+
 end

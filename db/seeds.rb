@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Dummy User
-User.create(:username=>"Joe",:password=>"password",:email=>"Joe@berkeley.edu")
+@al = User.create(:username=>"Al",:password=>"password",:email=>"Joe@berkeley.edu")
+@bob = User.create(:username=>"Bob",:password=>"password",:email=>"bob@berkeley.edu")
 
 # Some Courses
 @CS169 = Course.create(:name=>"Software Engineering",:course_info=>"Make web apps",:department=>"CS",:course_number=>"169")
@@ -33,3 +34,7 @@ Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Fall.id,:professor=>"Fox")
 Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Spring.id,:professor=>"Necula")
 Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"Fox")
 
+# Create Some Resources
+Resource.create(:name=>"Homework 1",:resourceType=>"Homework",:link=>"",:user_id=>@al.id)
+Resource.create(:name=>"Homework 2",:resourceType=>"Homework",:link=>"",:user_id=>@al.id)
+Resource.create(:name=>"Spring 2009 Exam",:resourceType=>"Exam",:link=>"",:user_id=>@bob.id)
