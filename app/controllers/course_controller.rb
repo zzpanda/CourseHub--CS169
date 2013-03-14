@@ -6,6 +6,7 @@ class CourseController < ApplicationController
         # Check for filters
         @courses = Course.getCourseInformation(params[:dept])
         @page_heading = "Browse Courses"
+        @page_title = "Browse Courses"
         respond_to do |format|
             format.html
             format.json {render json: @courses }
@@ -18,6 +19,8 @@ class CourseController < ApplicationController
     def show
         @course = Course.find(params[:id])
         @page_heading = @course.name
+        #dirty addition of snazzy functionality. If anyone wants to clean up, welcome to.
+        @page_title = "Browsing listing for " + @course.name + ": " + @course.course_info
         respond_to do |format|
             format.html
             format.json {render json: @course }
