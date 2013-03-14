@@ -4,7 +4,13 @@
 </div>
 
 <div id="search_container">
-View All
+	Search
+	<table id="search">
+		<tr>
+			<td><input type="text" id="search_department" class="search_bar" value="Department" /></td>
+			<td><input type="text" id="search_course" class="search_bar" value="Course" /></td>
+		</tr>
+	</table>
 </div>
 
 <div id="browse_container">
@@ -18,9 +24,9 @@ View All
 		</tr>
 
 	<% @courses.each do |course| %>
-		<tr>
+		<tr class="row_content">
 
-			<td class='col_subscribe'><%= course.id %> </td>
+			<td class='col_subscribe'></td>
 			<td class='col_department'>  
 				
 				<a href='?dept=<%= course.department %>'>
@@ -29,13 +35,13 @@ View All
 			
 			</td>
 			<td class='col_course_number'><%= course.course_number %></td>
-			<td class='col_name'><%= course.name %> </td>
+                        <td class='col_name'><a href='course/<%= course.id %>'><%= course.name %></a></td>
 			<td class='col_classes'> 
 					<select>
 						<option value="NULL">--Select Semester--</option>
 						<% course.course_semester.each do |course_semester| %>
-							<option value='<%= course_semester %>'>
-								<%= course_semester %>
+							<option value='<%= course_semester.id %>'>
+								<%= course_semester.term + " " + course_semester.year.to_s %>
 								</option>
 						<% end %>
 					</select>
