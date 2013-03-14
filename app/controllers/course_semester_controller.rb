@@ -15,7 +15,6 @@ class CourseSemesterController < ApplicationController
     # GET /course/id
     # GET /course/id.json
     def show
-
         respond_to do |format|
             format.html
             format.json {render json: @course }

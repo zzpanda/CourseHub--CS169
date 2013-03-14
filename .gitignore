@@ -19,6 +19,9 @@
 .idea/
 .idea/workspace.xml
 
+# Gemfile
+Gemfile
+
 # Ignore gedit temp files
 *~
 
