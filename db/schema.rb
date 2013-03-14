@@ -22,35 +22,30 @@ ActiveRecord::Schema.define(:version => 20130313075436) do
   end
 
   create_table "courses", :force => true do |t|
-    t.string   "name",          :null => false
+    t.string   "name"
     t.text     "course_info"
     t.string   "department"
-    t.string   "course_number"
+    t.integer  "course_number"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "coursesemesters", :force => true do |t|
-    t.string   "professor"
-    t.integer  "course_id",   :null => false
-    t.integer  "semester_id", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "coursesemesters_users", :id => false, :force => true do |t|
-    t.integer "coursesemester_id"
-    t.integer "user_id"
-  end
-
   create_table "resources", :force => true do |t|
-    t.string   "resource_type"
+    t.string   "resourceType"
     t.string   "name"
     t.string   "link"
+    t.integer  "course_semester_id"
     t.integer  "user_id"
-    t.integer  "coursesemester_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "semester_courses", :force => true do |t|
+    t.string   "professor"
+    t.integer  "user_id"
+    t.integer  "course_semester_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "semesters", :force => true do |t|
@@ -61,12 +56,12 @@ ActiveRecord::Schema.define(:version => 20130313075436) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",                  :null => false
-    t.string   "email",                     :null => false
-    t.string   "password",                  :null => false
-    t.integer  "karma",      :default => 0
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "username"
+    t.string   "email"
+    t.string   "password"
+    t.integer  "karma"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
