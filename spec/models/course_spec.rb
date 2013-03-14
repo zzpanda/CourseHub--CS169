@@ -2,7 +2,81 @@ require 'spec_helper'
 require 'course'
 
 
-describe Course do 
+describe Course do
+
+  before do
+    @course = Course.new
+    @course.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
+    @course.createAll("computer science","blabla","CS","169","Fall", 2012, "A")
+    @course.createAll("computer science","blabla","CS","170","Fall", 2012, "B")
+    @course1 = Course.find(1)
+    @course2 = Course.find(2)
+    @semester1 = Semester.find(1)
+    @semester2 = Semester.find(2)
+    @coursem1 = Coursem.find(1)
+    @coursem2 = Coursem.find(2)
+    @coursem3 = Coursem.find(3)
+  end
+
+  it "should create the correct course" do
+    @course1.name.should eq("computer science")
+    @course1.course_info.should eq("blabla")
+    @course1.department.should eq("CS")
+    @course1.course_number.should eq("169")
+  end
+
+  it "should create the correct semester" do
+    @semester2.term.should eq("Fall")
+    @semester2.year.should eq(2012)
+  end
+
+  it "should create the correct course_semester" do
+    @coursem3.professor.should eq("B")
+  end
+
+  it "should have only two semesters" do
+    Semester.all.length.should eq(2)
+  end
+
+  it "should have only two courses" do
+    Course.all.length.should eq(2)
+  end
+
+  it "Semester have a list to store the courses having the same semester" do
+    @semster1.courses.length.should eq(1)
+    @semster2.courses.length.should eq(2)
+  end
+
+  it "Course have a list to store the semesters having the same semester" do
+    @course1.courses.length.should eq(2)
+    @course2.courses.length.should eq(1)
+  end
+
+  it "Semester have a list to store the coursems having the same semester" do
+    @semster1.coursems.length.should eq(1)
+    @semster2.coursems.length.should eq(2)
+  end
+
+  it "Course have a list to store the coursems having the same semester" do
+    @course1.coursems.length.should eq(2)
+    @course2.coursems.length.should eq(1)
+  end
+
+  it "should filter the courses using department" do
+    @courses = Course.getCourseInformation("CS")
+    @courses.length.should eq(3)
+    @courses = Course.getCourseInformation("SC")
+    @courses.length.should eq(0)
+  end
+
+  it "can be instantiated" do
+    Course.new.should be_an_instance_of(Course)
+  end
+
+  it "can be saved successfully" do
+    Course.create.should be_persisted
+  end
+
 	it "Does not allow a course name with an empty string" do
 		puts "Test 1: Course with course name that is an empty string doesn't get added"
 		course = Course.new
@@ -34,7 +108,7 @@ describe Course do
 		course.addCourse("name", "course_info", "", 123).should eq(-3)
 	end
 
-	
+
 	it "Does not allow a department that is not a string" do
 		puts "\nTest 6: Course with department that is not a string doesn't get added"
 		course = Course.new
@@ -47,7 +121,7 @@ describe Course do
 		course.addCourse("name", "course_info", "department", "007" ).should eq(-4)
 	end
 
-	
+
 	it "Does allow a course with the right parameters get added" do
 		puts "\nTest 8: Course with right parameters get added"
 		course = Course.new
@@ -75,15 +149,5 @@ describe Course do
 	end
 
 
-<<<<<<< HEAD
-=======
-describe Course do
-    it "can be instantiated" do
-        Course.new.should be_an_instance_of(Course)
-    end
 
-    it "can be saved successfully" do
-        Course.create.should be_persisted
-    end
->>>>>>> 070cccca94dc7f466e9fe92ec3917c4fd6d9e440
 end

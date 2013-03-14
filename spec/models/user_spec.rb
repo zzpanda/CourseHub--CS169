@@ -25,7 +25,7 @@ describe User do
   it { should respond_to(:karma) }
   it { should respond_to(:resources) }
   it { should respond_to(:comments) }
-  it { should respond_to(:course_semesters) }
+  it { should respond_to(:coursems) }
   it { should respond_to(:subscribe) }
   it { should respond_to(:unsubscribe) }
   it { should respond_to(:subscribed?) }
