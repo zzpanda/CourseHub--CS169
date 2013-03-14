@@ -12,29 +12,32 @@ class User < ActiveRecord::Base
   has_many :comments
 
 
- #################################3
-
-  #COURSESEMESTER METHODS DO NOT WORK YET (due to course_semester underscore naming convention?)
-
-  def subscribe(cs_id)
-    cs = coursems.find_by_id(cs_id)   #using find_by_id instead of find means won't throw exception                            #cs.users.push(self.id)
-    self.coursems << cs_id
-    #course_semesters_users.create!(:user_id => self.id, :course_semesters_id => cs_id)
+  def subscribe(coursemid)
+    cs = Coursem.find_by_id(coursemid)   #using find_by_id instead of find means won't throw exception
+    if cs != nil
+      cs.users << self
+      self.coursems << cs      #the above line
+    end
   end
 
-  def unsubscribe(cs_id)
-    cs = coursems.find_by_id(cs_id)
-    cs.users.delete(self.id)
-    self.coursemss.delete(cs_id)
+  def unsubscribe(coursemid)
+    cs = Coursem.find_by_id(coursemid)
+    if cs != nil
+      self.coursems.delete(cs)
+      cs.users.delete(self)	#user not being deleted from coursem?
+    end
   end
 
   #can be used in controller to give option to subscribe/unsubscribe
-  def subscribed?(cs_id)
-    self.coursems.include?(cs_id)
+  def subscribed?(coursemid)
+    cs = Coursem.find_by_id(coursemid)
+    if cs != nil
+      self.coursems.include?(cs)
+    end
   end
 
   def subscribed
-
+    self.coursems
   end
 
   ##################################

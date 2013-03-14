@@ -26,7 +26,10 @@ Course.create(:name=> "Databases",:course_info=> "MySQL,Postgresql",:department=
 # Some Semester-Classes
 Coursem.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"Necula")
 Coursem.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:professor=>"Fox")
+
 Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Spring.id,:professor=>"Necula")
 Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Fall.id,:professor=>"Fox")
+
 Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Spring.id,:professor=>"Necula")
 Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"Fox")
+

@@ -6,10 +6,11 @@ class Coursem < ActiveRecord::Base
   validates :semester_id, :presence => true
 
   has_and_belongs_to_many :users
-  belongs_to :semester
   belongs_to :course
+  belongs_to :semester
 
-  def self.createCourseSemesters(professor, course_id, semester_id)
+
+  def self.createCoursems(professor, course_id, semester_id)
     Coursem.create!(:professor => professor, :course_id => course_id, :semester_id => semester_id)
   end
 

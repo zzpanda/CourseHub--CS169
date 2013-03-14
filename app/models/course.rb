@@ -1,10 +1,7 @@
 class Course < ActiveRecord::Base
   attr_accessible :name, :course_info, :department, :course_number
 
-  validates :name, presence: true
-  validates :course_info, presence: true
-  validates :department, presence: true
-  validates :course_number, presence: true
+  validates_presence_of :name
 
   has_many :coursems
   has_many :semesters, :through => :coursems
@@ -12,7 +9,11 @@ class Course < ActiveRecord::Base
   # For scraping
   def createAll(name, course_info, department, course_number, term, year, professor)
     #should be only called once at the beginning of each semesters to generate official courses , can't be called by users
-    @course = Course.create!(:name => name, :course_info => course_info, :department => department, :course_number => course_number)
+    @course = Course.where(:name => name, :course_info => course_info, :department => department, :course_number => course_number).first
+    if @course.nil?
+      @course = Course.create!(:name => name, :course_info => course_info, :department => department, :course_number => course_number)
+    end
+
     @semester = Semester.where(:term => term, :year => year).first
     if @semester.nil?
       @semester = Semester.create!(:term => term, :year => year)
