@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :encrypted_password
 
-  attr_accessible :email, :password, :username
+  attr_accessible :username
   #other fields include id, karma
 
   validates_presence_of :email
@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :coursems
   has_many :resources
   has_many :comments
+
 
 
   def subscribe(coursemid)
@@ -123,5 +124,7 @@ class User < ActiveRecord::Base
       c
     end
   end
+
+
 
 end
