@@ -24,12 +24,12 @@ Course.create(:name=> "Databases",:course_info=> "MySQL,Postgresql",:department=
 @Fall = Semester.create(:term=> "Fall", :year=>2012)
 
 # Some Semester-Classes
-CourseSemester.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"Necula")
-CourseSemester.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:professor=>"Fox")
+Coursem.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"Necula")
+Coursem.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:professor=>"Fox")
 
-CourseSemester.create(:course_id=>@Math1A.id,:semester_id=>@Spring.id,:professor=>"Necula")
-CourseSemester.create(:course_id=>@Math1A.id,:semester_id=>@Fall.id,:professor=>"Fox")
+Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Spring.id,:professor=>"Necula")
+Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Fall.id,:professor=>"Fox")
 
-CourseSemester.create(:course_id=>@Math1B.id,:semester_id=>@Spring.id,:professor=>"Necula")
-CourseSemester.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"Fox")
+Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Spring.id,:professor=>"Necula")
+Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"Fox")
 
