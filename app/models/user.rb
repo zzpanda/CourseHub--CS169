@@ -104,6 +104,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  #later iteration (have to update migration file and resource.rb)
+  #def flagResource(resourceId)
+  #  r = resources.find_by_id(resourceId)
+  #  if r
+  #    r.flag = r.flag + 1
+  #  end
+  #end
+
   def addComment(resourceId, content)
     comments.create!(:user_id => self.id, :resource_id =>resourceId, :content => content)
   end
