@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :username
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :encrypted_password
+
+  attr_accessible :username
   #other fields include id, karma
 
   validates_presence_of :email
@@ -10,6 +18,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :coursems
   has_many :resources
   has_many :comments
+
 
 
   def subscribe(coursemid)
@@ -96,6 +105,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  #later iteration (have to update migration file and resource.rb)
+  #def flagResource(resourceId)
+  #  r = resources.find_by_id(resourceId)
+  #  if r
+  #    r.flag = r.flag + 1
+  #  end
+  #end
+
   def addComment(resourceId, content)
     comments.create!(:user_id => self.id, :resource_id =>resourceId, :content => content)
   end
@@ -107,5 +124,7 @@ class User < ActiveRecord::Base
       c
     end
   end
+
+
 
 end

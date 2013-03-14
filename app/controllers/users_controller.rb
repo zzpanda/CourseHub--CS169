@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       #Replace this with actual id derived from authentication scheme we're using
       @id = 1
     end
-
+    @page_heading = "User Profile"
     @email = 'email@test.com'
     @karma = 1000
     @username = 'test user'

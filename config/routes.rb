@@ -1,4 +1,6 @@
 Coursehub::Application.routes.draw do
+  devise_for :users
+
   resources :users
   
  match 'profile' => 'users#show'
