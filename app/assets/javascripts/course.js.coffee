@@ -22,7 +22,7 @@ Page_Changer =
         $("option").click ->
             if ($(this).attr("value") != "NULL")
                 cid = $(this).attr("value")
-                window.location = ("course_semester/" + cid)
+                window.location = ("coursem/" + cid)
 
     # Event listeners for those events related to search
     search_listener: ->

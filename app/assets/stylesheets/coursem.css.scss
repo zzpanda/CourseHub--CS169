@@ -1,0 +1,51 @@
+// Place all the styles related to the Coursem controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$lavender: #AD00AD;
+$lavender_dark: #790079;
+$lavender_light: #FF00EB;
+$blue_light: rgb(235,240,255);
+$navy_blue: rgb(40,100,255);
+$dark_blue: rgb(0,40,185);
+$gold: rgb(240,220,80);
+$margin: 30px;
+
+$width: 750px;
+$width_subscribe: 10px;
+$width_department: 120px;
+$width_course_number: 80px;
+$width_name: 300px;
+$width_classes: 240px;
+
+#title_container {
+	h2, h3 {
+		margin-bottom: 5px;
+		margin-top: 5px;
+	}
+	h3 {
+		color: white;
+	}
+}
+
+#browse_container {
+	#coursem_description {
+		margin-left: 20px;
+		margin-right: 20px;
+		tr {
+			height: 30px;
+		}
+	}
+	.col_attr {
+		width: 200px;
+		text-align: left;
+		border-right: 2px solid $dark_blue;
+		font-weight: bold;
+		color: $dark_blue;
+	}
+	.col_desc {
+		padding-left: 20px;
+		width: 400px;
+		text-align: left;
+	}
+}

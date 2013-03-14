@@ -1,7 +1,3 @@
-// Place all the styles related to the Course controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 $lavender: #AD00AD;
 $lavender_dark: #790079;
 $lavender_light: #FF00EB;
@@ -11,8 +7,6 @@ $dark_blue: rgb(20,70,255);
 $gold: rgb(240,220,80);
 $margin: 30px;
 
-
-
 $width: 750px;
 $width_subscribe: 10px;
 $width_department: 120px;
@@ -20,43 +14,7 @@ $width_course_number: 80px;
 $width_name: 300px;
 $width_classes: 240px;
 
-#title_container {
-	width: $width;
-	border: 2px solid $dark_blue;
-	border-radius: 0.5em;
-	margin-bottom: $margin;
-	h2 {
-		margin: 5px;
-		color: $gold;
-	}
-	background-color: $navy_blue;
-}
-
-#search_container {
-	width: $width;
-	border: 2px solid $navy_blue;
-	border-radius: 0.2em;
-	margin-bottom: $margin/2;
-	table {
-		margin-left: auto;
-		margin-right: auto;
-	}
-	td {
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-	.search_bar {
-		width: 200px;
-	}
-}
-
 #browse_container {
-	width: $width;
-	border: 2px solid $dark_blue;
-	border-radius: 0.5em;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: $blue_light;
 	table {
 		border-collapse: collapse;
 	}
@@ -89,5 +47,3 @@ $width_classes: 240px;
 		width: $width_classes;
 	}
 }
-
-
