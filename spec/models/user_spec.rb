@@ -4,15 +4,13 @@ describe User do
 
 
 
-  before do
-    @user1 = User.create!(username: "Example User", email: "user@example.com",
-                      password: "aaaaaaaa")
+  before(:each) do
+    @user1 = User.create!(username: "Example User", email: "user@example.com", password: "aaaaaaaa")
     @user1.addResource("Example Resource", "Homework", "http://ExampleResource.com")
     @resource1id = Resource.find_by_name_and_link("Example Resource", "http://ExampleResource.com").id
     @user1.addResource("a", "Discussion", "http://c.com")
 
-    @otheruser = User.create!(username: "Other UserR", email: "user@other.com",
-                      password: "bbbbbbbb")
+    @otheruser = User.create!(username: "Other UserR", email: "user@other.com", password: "bbbbbbbb")
     @otheruser.addResource("Other Resource", "Lecture", "http://OtherResource.com")
     @resource2id = Resource.find_by_name_and_link("Other Resource", "http://OtherResource.com").id
   end
@@ -67,21 +65,20 @@ describe User do
     end
   end
 
-  #Removing this test makes deleteResource work
-  #describe "#addComment" do
-  #  it "should add a comment to a resource" do
-  #    @user1.addComment(@resource1id, "This is my first comment!")
-  #    Resource.find_by_id(@resource1id).comments.size.should == 1
-  #  end
-  #end
+  describe "#addComment" do
+    it "should add a comment to a resource" do
+      @user1.addComment(@resource1id, "This is my first comment!")
+      Resource.find_by_id(@resource1id).comments.size.should == 1
+    end
+  end
 
-  #describe "#comments" do
-  #  it "should return an array of comments by the user" do
-  #    @user1.addComment(@resource1id, "This is a comment")
-  #    @user1.addComment(@resource1id, "This is another comment")
-  #    @user1.comments.size.should == 2
-  #  end
-  #end
+  describe "#comments" do
+    it "should return an array of comments by the user" do
+      @user1.addComment(@resource1id, "This is a comment")
+      @user1.addComment(@resource1id, "This is another comment")
+      @user1.comments.size.should == 2
+    end
+  end
 
   describe "#deleteResource" do
     it "should return nil when trying to delete a non-existent Resource" do
