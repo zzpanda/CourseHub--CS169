@@ -1,0 +1,39 @@
+
+<div id="title_container">
+	<h2> <%= @coursem.course.department + " " + @coursem.course.course_number %></h2>
+	<h3> <%= @coursem.course.name %></h3>
+</div>
+
+<div id="browse_container">
+	<table id="coursem_description">
+		<tr>
+			<td class='col_attr'>Semester</td>
+			<td class='col_desc'><%= @coursem.semester.term + " " + @coursem.semester.year.to_s %></td>
+		</tr>
+
+		<tr>
+			<td class='col_attr'>Professor</td>
+			<td class='col_desc'><%= @coursem.professor %></td>
+		</tr>
+
+		<tr>
+			<td class='col_attr'>Description</td>
+			<td class='col_desc'><%= @coursem.course.course_info %></td>
+		</tr>
+
+		<tr>
+			<td class='col_attr'></td>
+			<td class='col_desc'></td>
+		</tr>
+
+		<tr>
+			<td class='col_attr'></td>
+			<td class='col_desc'></td>
+		</tr>
+
+	</table>
+	
+
+
+
+</div>

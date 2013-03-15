@@ -7,16 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Dummy User
-User.create(:username=>"Joe",:password=>"password",:email=>"Joe@berkeley.edu")
+@al = User.create(:username=>"Al",:password=>"password",:email=>"Joe@berkeley.edu")
+@bob = User.create(:username=>"Bob",:password=>"password",:email=>"bob@berkeley.edu")
 
 # Some Courses
 @CS169 = Course.create(:name=>"Software Engineering",:course_info=>"Make web apps",:department=>"CS",:course_number=>"169")
 Course.create(:name=> "Algorithms",:course_info=> "Learn important algorithms of CS",:department=> "CS",:course_number=> "170")
 Course.create(:name=> "Databases",:course_info=> "MySQL,Postgresql",:department=> "CS",:course_number=> "186")
 
-Course.create(:name=> "Calculus",:course_info=> "This sequence is intended for majors in engineering and the physical sciences. An introduction to differential and integral calculus of functions of one variable, with applications and an introduction to transcendental functions.",:department=> "Math",:course_number=> "1A")
+@Math1A = Course.create(:name=> "Calculus",:course_info=> "This sequence is intended for majors in engineering and the physical sciences. An introduction to differential and integral calculus of functions of one variable, with applications and an introduction to transcendental functions.",:department=> "Math",:course_number=> "1A")
 
-Course.create(:name=> "Calculus",:course_info=> " Continuation of 1A. Techniques of integration; applications of integration. Infinite sequences and series. First-order ordinary differential equations. Second-order ordinary differential equations; oscillation and damping; series solutions of ordinary differential equations.", :department=> "Math",:course_number=> "1B")
+@Math1B = Course.create(:name=> "Calculus",:course_info=> " Continuation of 1A. Techniques of integration; applications of integration. Infinite sequences and series. First-order ordinary differential equations. Second-order ordinary differential equations; oscillation and damping; series solutions of ordinary differential equations.", :department=> "Math",:course_number=> "1B")
 
 
 # Some Semesters
@@ -24,6 +25,16 @@ Course.create(:name=> "Calculus",:course_info=> " Continuation of 1A. Techniques
 @Fall = Semester.create(:term=> "Fall", :year=>2012)
 
 # Some Semester-Classes
-CourseSemester.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"Necula")
-CourseSemester.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:professor=>"Fox")
+Coursem.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"Necula")
+Coursem.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:professor=>"Fox")
 
+Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Spring.id,:professor=>"Necula")
+Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Fall.id,:professor=>"Fox")
+
+Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Spring.id,:professor=>"Necula")
+Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"Fox")
+
+# Create Some Resources
+Resource.create(:name=>"Homework 1",:resourceType=>"Homework",:link=>"",:user_id=>@al.id)
+Resource.create(:name=>"Homework 2",:resourceType=>"Homework",:link=>"",:user_id=>@al.id)
+Resource.create(:name=>"Spring 2009 Exam",:resourceType=>"Exam",:link=>"",:user_id=>@bob.id)

@@ -1,18 +1,13 @@
-
-<!DOCTYPE html>
 <html>
 <head>
-  <title> View Profile </title>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title><%= @page_title or 'Page Title' %></title>
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application", controller_name %>
+  <style type="text/css"><%= yield :stylesheets %></style>
 </head>
 <body>
-
-<%= yield %>
-
+    <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %><h2></div>
+    <div id="content"><%= yield %></div>
 </body>
 </html>
-
-

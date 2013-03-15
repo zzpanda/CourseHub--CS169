@@ -1,4 +1,6 @@
 Coursehub::Application.routes.draw do
+  devise_for :users
+
   resources :users
   
  match 'profile' => 'users#show'
@@ -6,6 +8,7 @@ Coursehub::Application.routes.draw do
   root :to => "home#index"
 
   resources :course
+  resources :coursem
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

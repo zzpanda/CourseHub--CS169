@@ -1,7 +1,3 @@
-require 'net/http'
-require 'json'
-require 'httparty'
-
 class Course < ActiveRecord::Base
   attr_accessible :name, :course_info, :department, :course_number
 
