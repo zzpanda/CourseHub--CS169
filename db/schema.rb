@@ -11,16 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130310031818) do
-
-  create_table "courses", :force => true do |t|
-    t.string   "name"
-    t.text     "course_info"
-    t.string   "department"
-    t.integer  "course_number"
-=======
-ActiveRecord::Schema.define(:version => 20130313075436) do
+ActiveRecord::Schema.define(:version => 20130315074406) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -30,82 +21,55 @@ ActiveRecord::Schema.define(:version => 20130313075436) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "courses", :force => true do |t|
-    t.string   "name",          :null => false
-    t.text     "course_info"
-    t.string   "department"
-    t.string   "course_number"
->>>>>>> 070cccca94dc7f466e9fe92ec3917c4fd6d9e440
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-<<<<<<< HEAD
-  create_table "resources", :force => true do |t|
-    t.string   "type"
-    t.string   "name"
-    t.string   "link"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "semester_courses", :force => true do |t|
+  create_table "coursems", :force => true do |t|
     t.string   "professor"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "semesters", :force => true do |t|
-    t.string   "term"
-    t.integer  "year"
-=======
-  create_table "coursesemesters", :force => true do |t|
-    t.string   "professor"
-    t.integer  "course_id",   :null => false
-    t.integer  "semester_id", :null => false
+    t.integer  "course_id"
+    t.integer  "semester_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "coursesemesters_users", :id => false, :force => true do |t|
-    t.integer "coursesemester_id"
-    t.integer "user_id"
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.text     "course_info"
+    t.string   "department"
+    t.integer  "course_number"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "resources", :force => true do |t|
     t.string   "resource_type"
     t.string   "name"
     t.string   "link"
+    t.integer  "course_semester_id"
     t.integer  "user_id"
-    t.integer  "coursesemester_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "semester_courses", :force => true do |t|
+    t.string   "professor"
+    t.integer  "user_id"
+    t.integer  "course_semester_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "semesters", :force => true do |t|
     t.string   "term",       :null => false
     t.integer  "year",       :null => false
->>>>>>> 070cccca94dc7f466e9fe92ec3917c4fd6d9e440
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
-<<<<<<< HEAD
     t.string   "username"
     t.string   "email"
     t.string   "password"
     t.integer  "karma"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-=======
-    t.string   "username",                  :null => false
-    t.string   "email",                     :null => false
-    t.string   "password",                  :null => false
-    t.integer  "karma",      :default => 0
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
->>>>>>> 070cccca94dc7f466e9fe92ec3917c4fd6d9e440
   end
 
 end
