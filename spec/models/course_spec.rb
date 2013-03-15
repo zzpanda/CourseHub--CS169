@@ -1,10 +1,9 @@
 require 'spec_helper'
 require 'course'
 
-
 describe Course do
 
-  before do
+  before(:each) do
     @course = Course.new
     @course.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
     @course.createAll("computer science","blabla","CS","169","Fall", 2012, "A")
@@ -43,18 +42,18 @@ describe Course do
   end
 
   it "Semester have a list to store the courses having the same semester" do
-    @semster1.courses.length.should eq(1)
-    @semster2.courses.length.should eq(2)
+    @semester1.courses.length.should eq(1)
+    @semester2.courses.length.should eq(2)
   end
 
   it "Course have a list to store the semesters having the same semester" do
-    @course1.courses.length.should eq(2)
-    @course2.courses.length.should eq(1)
+    @course1.semesters.length.should eq(2)
+    @course2.semesters.length.should eq(1)
   end
 
   it "Semester have a list to store the coursems having the same semester" do
-    @semster1.coursems.length.should eq(1)
-    @semster2.coursems.length.should eq(2)
+    @semester1.coursems.length.should eq(1)
+    @semester2.coursems.length.should eq(2)
   end
 
   it "Course have a list to store the coursems having the same semester" do
@@ -64,7 +63,7 @@ describe Course do
 
   it "should filter the courses using department" do
     @courses = Course.getCourseInformation("CS")
-    @courses.length.should eq(3)
+    @courses.length.should eq(2)
     @courses = Course.getCourseInformation("SC")
     @courses.length.should eq(0)
   end
