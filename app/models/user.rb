@@ -6,14 +6,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :encrypted_password
-
-  attr_accessible :username
+  attr_accessible :email, :username, :password, :password_confirmation, :remember_me, :encrypted_password
   #other fields include id, karma
 
   validates_presence_of :email
   validates_presence_of :username
-  validates_presence_of :password
+  #validates_presence_of :password
 
   has_and_belongs_to_many :coursems
   has_many :resources
@@ -49,8 +47,6 @@ class User < ActiveRecord::Base
     self.coursems
   end
 
-  ##################################
-
   def editProfile(email, username)
     self.email = email
     self.username = username
@@ -69,25 +65,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  #controller should take care of checking that the resource belongs to the user?
-  #def deleteResource(resourceName, resourceLink)
-  #  r = resources.find_by_name_and_link(resourceName, resourceLink)
-  #  if r
-  #    r.destroy
-  #  end
-  #  #should return true/false or something signifying success/failure?
-  #end
-
-  #controller can check if user posted resource (users can only delete resources they posted)
-  #def postedResource?(resourceName, resourceLink)
-  #  r = resources.find_by_name_and_link(resourceName, resourceLink)
-  #  if r
-  #    self.id == r.user_id
-  #  else
-  #    false
-  #  end
-  #end
-
   def postedResource?(resourceId)
     r = resources.find_by_id(resourceId)
     if r
@@ -97,7 +74,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  #returns all the resources the user has posted
   def postedResources
     r = resources.where(:user_id => self.id).all
     if r

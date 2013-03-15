@@ -6,13 +6,13 @@ describe User do
 
   before do
     @user1 = User.create!(username: "Example User", email: "user@example.com",
-                      password: "aaa")
+                      password: "aaaaaaaa")
     @user1.addResource("Example Resource", "Homework", "http://ExampleResource.com")
     @resource1id = Resource.find_by_name_and_link("Example Resource", "http://ExampleResource.com").id
     @user1.addResource("a", "Discussion", "http://c.com")
 
     @otheruser = User.create!(username: "Other UserR", email: "user@other.com",
-                      password: "bbb")
+                      password: "bbbbbbbb")
     @otheruser.addResource("Other Resource", "Lecture", "http://OtherResource.com")
     @resource2id = Resource.find_by_name_and_link("Other Resource", "http://OtherResource.com").id
   end
