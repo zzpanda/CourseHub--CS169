@@ -18,11 +18,14 @@ Page_Changer =
     
     # When the user clicks on a semester from the dropdown, it will take them
     # to that particular course semester page
+
+
     course_semester_listener: ->
-        $("option").click ->
-            if ($(this).attr("value") != "NULL")
-                cid = $(this).attr("value")
-                window.location = ("coursem/" + cid)
+        $(".col_classes").each ->
+          $(this).change ->
+            selectedValue = $(this).find(":selected").val()
+            console.log("the value you selected: " + selectedValue)
+            window.location = ("coursem/" + selectedValue)
 
     # Event listeners for those events related to search
     search_listener: ->
