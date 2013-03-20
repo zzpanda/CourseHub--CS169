@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130315074406) do
-=======
-ActiveRecord::Schema.define(:version => 20130314091716) do
->>>>>>> 8478a1bb679945990d8dfc572814dd5df09da81b
+ActiveRecord::Schema.define(:version => 20130316003632) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -33,8 +29,6 @@ ActiveRecord::Schema.define(:version => 20130314091716) do
     t.datetime "updated_at",  :null => false
   end
 
-<<<<<<< HEAD
-=======
   create_table "coursems_users", :id => false, :force => true do |t|
     t.integer "coursem_id", :null => false
     t.integer "user_id",    :null => false
@@ -42,34 +36,27 @@ ActiveRecord::Schema.define(:version => 20130314091716) do
 
   add_index "coursems_users", ["coursem_id", "user_id"], :name => "index_coursems_users_on_coursem_id_and_user_id"
 
->>>>>>> 8478a1bb679945990d8dfc572814dd5df09da81b
   create_table "courses", :force => true do |t|
-    t.string   "name"
+    t.string   "name",          :null => false
     t.text     "course_info"
     t.string   "department"
-    t.integer  "course_number"
+    t.string   "course_number"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "resources", :force => true do |t|
-<<<<<<< HEAD
-    t.string   "resource_type"
+  create_table "profiles", :force => true do |t|
     t.string   "name"
-    t.string   "link"
-    t.integer  "course_semester_id"
+    t.integer  "karma"
+    t.text     "bio"
+    t.string   "class_year"
+    t.string   "major"
     t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "semester_courses", :force => true do |t|
-    t.string   "professor"
-    t.integer  "user_id"
-    t.integer  "course_semester_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-=======
+  create_table "resources", :force => true do |t|
     t.string   "resourceType"
     t.string   "name"
     t.string   "link"
@@ -77,7 +64,6 @@ ActiveRecord::Schema.define(:version => 20130314091716) do
     t.integer  "user_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
->>>>>>> 8478a1bb679945990d8dfc572814dd5df09da81b
   end
 
   create_table "semesters", :force => true do |t|
@@ -92,10 +78,6 @@ ActiveRecord::Schema.define(:version => 20130314091716) do
     t.string   "email"
     t.string   "password"
     t.integer  "karma"
-<<<<<<< HEAD
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-=======
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -107,7 +89,6 @@ ActiveRecord::Schema.define(:version => 20130314091716) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
->>>>>>> 8478a1bb679945990d8dfc572814dd5df09da81b
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
