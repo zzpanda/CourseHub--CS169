@@ -3,9 +3,12 @@ Coursehub::Application.routes.draw do
 
   resources :users
   
- match 'profile' => 'users#show'
+  match 'profile' => 'users#show'
   match 'edit_profile' => 'users#edit'
-  root :to => "home#index"
+  authenticated :user do
+    root :to => "users#show"
+  end
+  root :to => redirect("/users/sign_in")
 
   resources :course
   resources :coursem
