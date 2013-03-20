@@ -4,7 +4,9 @@ Coursehub::Application.routes.draw do
   resources :users
   
   match 'profile' => 'users#show'
+
   match 'edit_profile' => 'users#edit'
+  match '/users/subscribe' => 'users#subscribe'
   authenticated :user do
     root :to => "users#show"
   end

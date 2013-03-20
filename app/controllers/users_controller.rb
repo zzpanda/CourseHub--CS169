@@ -19,4 +19,17 @@ class UsersController < ApplicationController
     @username = 'test user'
 
   end
+
+  def subscribe
+    if user_signed_in?
+
+      @id = current_user.id
+      @user = User.find(@id)
+      @user.subscribe(params[:coursem_id])
+      render :json => {:status => 'success'}
+    else
+
+      render :json => {:status => 'user not signed in'}
+    end
+  end
 end

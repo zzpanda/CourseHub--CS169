@@ -19,7 +19,7 @@
 		</tr>
 
 	<% @courses.each do |course| %>
-		<tr class="row_content">
+		<tr class="row_content" id='<%= course.id %>'>
 
 			<td class='col_subscribe'></td>
 			<td class='col_department'>  
@@ -27,20 +27,27 @@
 				<a href='?dept=<%= course.department %>'>
 					<%= course.department %> 
 				</a>
-			
 			</td>
 			<td class='col_course_number'><%= course.course_number %></td>
-                        <td class='col_name'><a href='course/<%= course.id %>'><%= course.name %></a></td>
+            <td class='col_name'><a href='course/<%= course.id %>'><%= course.name %></a></td>
 			<td class='col_classes'> 
 					<select>
 						<option value="NULL">--Select Semester--</option>
 						<% course.coursems.each do |course_semester| %>
 							<option value='<%= course_semester.id %>'>
 								<%= course_semester.semester.term + " " + course_semester.semester.year.to_s %>
-								</option>
+							</option>
 						<% end %>
 					</select>
 			</td>
+            <td class='col_subscribe'>
+              <% if user_signed_in? %>
+                  <button>Subscribe</button>
+              <% else %>
+                  <%= link_to "sign in", new_user_session_path %> to subscribe
+              <% end %>
+            </td>
+
 		</tr>
 	<% end %>
 	</table>
