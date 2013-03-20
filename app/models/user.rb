@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   #other fields include id, karma
 
   validates_presence_of :email
-  validates_presence_of :username
+  #validates_presence_of :username
   #validates_presence_of :password
 
   has_and_belongs_to_many :coursems
