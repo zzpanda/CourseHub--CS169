@@ -15,4 +15,42 @@
   <button id="edit-button">Click to edit</button>
 
 </div>
+<h1>Your current courses:</h1>
+<div id="browse_container">
+  <table>
+    <tr class='row_header'>
+      <td class='col_subscribe'></td>
+      <td class='col_department'>Dept</td>
+      <td class='col_course_number'>#</td>
+      <td class='col_name'>Course</td>
+      <td class='col_classes'></td>
+      <td class='col_subscribe'></td>
+    </tr>
 
+    <% @coursems.each do |coursem| %>
+        <tr class="row_content" id='<%= coursem.id %>'>
+
+          <td class='col_subscribe'></td>
+          <td class='col_department'>
+
+            <a href='?dept=<%= coursem.course.department %>'>
+              <%= coursem.course.department %>
+            </a>
+          </td>
+          <td class='col_course_number'><%= coursem.course.course_number %></td>
+          <td class='col_name'><a href='course/<%= coursem.course.id %>'><%= coursem.course.name %></a></td>
+          <td class='col_classes'>
+            <%= coursem.semester.term + " " + coursem.semester.year.to_s %>
+          </td>
+          <td class='col_unsubscribe'>
+            <% if user_signed_in? %>
+                <button>Unscribe</button>
+            <% else %>
+                <%= link_to "sign in", new_user_session_path %> to unsubscribe
+            <% end %>
+          </td>
+
+        </tr>
+    <% end %>
+  </table>
+</div>

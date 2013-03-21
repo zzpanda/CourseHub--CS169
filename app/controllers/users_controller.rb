@@ -10,14 +10,13 @@ class UsersController < ApplicationController
   def show
     @id = params[:id]
     if @id.nil? || @id == 0
-      #Replace this with actual id derived from authentication scheme we're using
-      @id = 1
+      @id = current_user.id
     end
     @page_heading = "User Profile"
-    @email = 'email@test.com'
+    @email = current_user.email
     @karma = 1000
     @username = 'test user'
-
+    @coursems = User.find(@id).subscribed
   end
 
   def subscribe
@@ -29,6 +28,16 @@ class UsersController < ApplicationController
       render :json => {:status => 'success'}
     else
 
+      render :json => {:status => 'user not signed in'}
+    end
+  end
+  def unsubscribe
+    if user_signed_in?
+      @id = current_user.id
+      @user = User.find(@id)
+      @user.unsubscribe(params[:coursem_id])
+      render :json => {:status => 'success'}
+    else
       render :json => {:status => 'user not signed in'}
     end
   end

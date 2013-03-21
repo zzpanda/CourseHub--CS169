@@ -7,6 +7,7 @@ Coursehub::Application.routes.draw do
 
   match 'edit_profile' => 'users#edit'
   match '/users/subscribe' => 'users#subscribe'
+  match '/users/unsubscribe' => 'users#unsubscribe'
   authenticated :user do
     root :to => "users#show"
   end

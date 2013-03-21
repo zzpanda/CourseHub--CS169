@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   #validates_presence_of :username
   #validates_presence_of :password
 
-  has_and_belongs_to_many :coursems
+  has_and_belongs_to_many :coursems, :uniq => true
   has_many :resources
   has_many :comments
 

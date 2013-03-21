@@ -47,13 +47,30 @@ Page_Changer =
         json_sending
         (data)->
           alert data.status
-
       false
+
   register_edit_button_listener: ->
     $('#edit-button').click ->
       Page_Changer.show_edit_page()
+
+  unsubscribe_button_listeners: ->
+    $(".row_content").each ->
+      row = $(this)
+      id = row.attr("id")
+      button=$(this).find('td.col_unsubscribe').find('button')
+      button.click ->
+        json_sending =
+          coursem_id: id
+        json_request "/users/unsubscribe",
+          json_sending
+          (data)->
+            alert data.status
+            row.remove()
+          (data)->
+            alert data.status
 
 $(document).ready ->
   Page_Changer.initialize_page()
   Page_Changer.register_done_button_listener()
   Page_Changer.register_edit_button_listener()
+  Page_Changer.unsubscribe_button_listeners()

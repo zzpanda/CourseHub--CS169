@@ -6,11 +6,11 @@ class Coursem < ActiveRecord::Base
   validates :course_id, :presence => true
   validates :semester_id, :presence => true
 
- 
+
   has_many :resources
   belongs_to :semester
   belongs_to :course
-
+  has_and_belongs_to_many :users, :uniq => true
   #different situations correspond to different errcodes
   ERR_BAD_COURSEM = -1
 
