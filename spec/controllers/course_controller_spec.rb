@@ -23,7 +23,7 @@ describe CourseController do
   describe "GET show" do
 
     before (:each) do
-      @course = Course.create(:name => "a", :course_info => "b", :department => "c", :course_number => "d")
+      @course = Course.create(:name => "a", :department => "c", :course_number => "d")
       Course.stub(:find_by_id).and_return(@course)
     end
 

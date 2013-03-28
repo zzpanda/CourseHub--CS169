@@ -67,5 +67,8 @@ module Coursehub
 
     #added this because we're deploying on heroku
     config.assets.initialize_on_precompile = false
+
+    # Load Subfolder Models
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
   end
 end

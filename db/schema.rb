@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(:version => 20130314091716) do
 
   create_table "coursems", :force => true do |t|
     t.string   "professor"
-    t.integer  "course_id"
-    t.integer  "semester_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "course_id",    :null => false
+    t.integer  "semester_id",  :null => false
+    t.text     "coursem_info"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "coursems_users", :id => false, :force => true do |t|
@@ -38,21 +39,20 @@ ActiveRecord::Schema.define(:version => 20130314091716) do
 
   create_table "courses", :force => true do |t|
     t.string   "name",          :null => false
-    t.text     "course_info"
-    t.string   "department"
+    t.string   "department",    :null => false
     t.string   "course_number"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
   create_table "resources", :force => true do |t|
-    t.string   "resourceType"
+    t.string   "type"
     t.string   "name"
     t.string   "link"
     t.integer  "coursem_id"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "semesters", :force => true do |t|

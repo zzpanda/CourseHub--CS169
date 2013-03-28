@@ -1,9 +1,5 @@
 class CourseController < ApplicationController
 
-  #different situations correspond to different errcodes
-  #SUCCESS = 1
-  #ERR_BAD_COURSE = -1
-
   # Browse all courses
   # GET /course
   # GET /course.json
@@ -18,7 +14,7 @@ class CourseController < ApplicationController
       end
   end
 
-  # A particular course (not a particular semester class)
+  # A particular course (not a particular coursem)
   # GET /course/id
   # GET /course/id.json
   def show
@@ -32,7 +28,8 @@ class CourseController < ApplicationController
       else
         @page_heading = @course.name
         #dirty addition of snazzy functionality. If anyone wants to clean up, welcome to.
-        @page_title = "Browsing listing for " + @course.name + ": " + @course.course_info
+
+        @page_title = "Browsing listing for " + @course.name
         respond_to do |format|
           format.html
           format.json {render json: @course }

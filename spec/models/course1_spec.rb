@@ -34,7 +34,7 @@ describe Course do
 		course.createCourses("name", "course_info", "", 123).should eq(-3)
 	end
 
-	
+
 	it "Does not allow a department that is not a string" do
 		puts "\nTest 6: Course with department that is not a string doesn't get added"
 		course = Course.new
@@ -47,7 +47,7 @@ describe Course do
 		course.createCourses("name", "course_info", "department", 007 ).should eq(-4)
 	end
 
-	
+
 	it "Does allow a course with the right parameters get added" do
 		puts "\nTest 8: Course with right parameters get added"
 		course = Course.new

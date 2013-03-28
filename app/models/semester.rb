@@ -7,18 +7,18 @@ class Semester < ActiveRecord::Base
   has_many :coursems
   has_many :courses, :through => :coursems
 
-  #ERROR CODES (written by Albert, make small changes, used in the later iterations when the users can create courses)
+  #ERROR CODES (written by Albert, make changes because a user can't create new semesters)
   SUCCESS = 1
-  BAD_TERM = -1
-  BAD_YEAR = -2
-  SEMESTER_EXISTS = -3
-  DELETE_FAILED = -4
+  BAD_TERM = -5
+  BAD_YEAR = -6
+  NO_SEMESTER_EXISTS = -7
+  DELETE_FAILED = -21
 
 
-  def createSemesters(term = nil, year = nil, debug = true)
+  def self.checkSemester(term, year, debug = true)
     terms = ["FALL", "SPRING", "SUMMER", "WINTER"]
     year_min = 1990
-    year_max = Time.new.year + 1 #Able to add future semesters up to next year
+    year_max = Time.new.year
 
     if term.nil? or not term.is_a?(String) or not terms.include?(term.upcase)
       return BAD_TERM
@@ -27,19 +27,11 @@ class Semester < ActiveRecord::Base
     end
 
     term = term.upcase
-    semester = Semester.where(:term => term, :year => year)
-    if semester.any?
-      return SEMESTER_EXISTS
+    semester = Semester.where(:term => term, :year => year).first
+    if semester.nil?
+      return NO_SEMESTER_EXISTS
     else
-      semester = Semester.create(:term => term, :year => year)
-      semester.save
-      #debug=true is when the function is called by a test function, otherwise it is false
-      if debug
-      	return SUCCESS
-      else
-	return semester
-      end
-
+      return semester
     end
 
   end

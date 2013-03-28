@@ -20,7 +20,6 @@ describe Course do
 
   it "should create the correct course" do
     @course1.name.should eq("computer science")
-    @course1.course_info.should eq("blabla")
     @course1.department.should eq("CS")
     @course1.course_number.should eq("169")
   end
@@ -32,6 +31,7 @@ describe Course do
 
   it "should create the correct course_semester" do
     @coursem3.professor.should eq("B")
+    @coursem1.coursem_info.should eq("blabla")
   end
 
   it "should have only two semesters" do

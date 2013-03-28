@@ -45,7 +45,7 @@ def generate_all(debug = false)
 				#room = course["sections"][0]["sectionMeetings"]["room"].to_s
 				professor = course["sections"][0]["sectionMeetings"]["instructorNames"]
 
-				course_info = {"units" => units}.to_s
+				coursem_info = {"units" => units}.to_s
 				if debug
 					puts("name: " + name)
 					puts("department: " + department)
@@ -54,9 +54,9 @@ def generate_all(debug = false)
 					#puts("building: " + building)
 					#puts("room: " + room)
 					puts("professor: " + professor)
-					puts("course_info: " + course_info)
+					puts("coursem_info: " + coursem_info)
 				end
-				Course.new.createAll(name,course_info,department,course_number,term,termYear,professor)
+				Course.new.createAll(name,coursem_info,department,course_number,term,termYear,professor)
 				succeeded += 1
 			rescue
 				failed += 1

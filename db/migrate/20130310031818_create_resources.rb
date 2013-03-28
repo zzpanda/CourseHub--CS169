@@ -1,7 +1,8 @@
 class CreateResources < ActiveRecord::Migration
   def change
     create_table :resources do |t|
-      t.string :resourceType
+      #t.string :resourceType
+      t.string :type
       t.string :name
       t.string :link
       t.integer :coursem_id

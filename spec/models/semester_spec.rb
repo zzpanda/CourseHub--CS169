@@ -14,7 +14,7 @@ describe Semester do
 		semester = Semester.new
 		semester.createSemesters(007,2013).should eq(-1)
 	end
-	
+
 	it "Does not allow a semester term with the wrong string input(check semester.rb for right values)" do
 		puts "\nTest 3: Semester with invalid string term name doesn't get added"
 		semester = Semester.new
@@ -25,13 +25,13 @@ describe Semester do
 		puts "\nTest 4: Semester with year not an integer doesn't get added"
 		semester = Semester.new
 		semester.createSemesters("fall","007").should eq(-2)
-	end	
+	end
 
 	it "Does not allow a semester with year less than the min get added(check semester.rb for year_min" do
 		puts "\nTest 5: Semester with year less than minimum doesn't get added"
 		semester = Semester.new
 		semester.createSemesters("fall",1989).should eq(-2)
-	end	
+	end
 
 	it "Does not allow a semester with year more than the max get added(check semester.rb for year_max" do
 		puts "\nTest 6: Semester with year more than the max doesn't get added"
