@@ -1,0 +1,2 @@
+class TestSolution < Resource
+end
