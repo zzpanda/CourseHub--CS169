@@ -7,7 +7,7 @@ class Coursem < ActiveRecord::Base
   validates :semester_id, :presence => true
 
 
-  has_many :resources
+  has_many :resources, :inverse_of => :coursem
   belongs_to :semester
   belongs_to :course
   has_and_belongs_to_many :users, :uniq => true
@@ -17,10 +17,13 @@ class Coursem < ActiveRecord::Base
   ERR_BAD_COURSEM = -1
   BAD_COURSEM_INFO = -8
   BAD_PROFESSOR = -9
+  COURSEM_EXISTS = -10
+  COURSEM_DELETE_FAILED = -22
 
   # Helper function to create new coursems at the start of each semester
   def self.createCourseSemesters(professor, course_id, semester_id, coursem_info)
-    Coursem.create!(:professor => professor, :course_id => course_id, :semester_id => semester_id, :coursem_info => coursem_info)
+    @coursem = Coursem.create!(:professor => professor, :course_id => course_id, :semester_id => semester_id, :coursem_info => coursem_info)
+    return @coursem
   end
 
   # Given coursem, give a list of users subscribes to this coursem, the course and semester information and resources
@@ -37,11 +40,11 @@ class Coursem < ActiveRecord::Base
     end
   end
 
-  # Users can create their own coursems that is not contains in the Coursem database like decals.
+  # Users can create their own coursems that is not contains in the Coursem database like decals, should write n/a if no such field
   def self.createCoursemByUser(name=nil, coursem_info=nil, department=nil, course_number=nil, term=nil, year=nil, professor=nil)
-    @semester = Semester.checkSemester(term, year, false)
+    @semester = Semester.checkSemester(term, year)
     if @semester.class != Fixnum
-      @course = Course.new.createCourse(name, department, course_number, false)
+      @course = Course.new.createCourse(name, department, course_number)
       
       if @course.class != Fixnum
         
@@ -51,9 +54,15 @@ class Coursem < ActiveRecord::Base
           return BAD_PROFESSOR
         end
 
+        coursem_info.downcase
         coursem_info.capitalize
         professor.upcase
-        Coursem.createCourseSemesters(professor, @course.id, @semester.id, coursem_info)
+        @coursem = Coursem.where(:course_id => @course.id, :semester_id => @semester.id).first
+        if @coursem.nil?
+          return Coursem.createCourseSemesters(professor, @course.id, @semester.id, coursem_info)
+        else
+          return COURSEM_EXISTS
+        end
 
       else
         return @course
@@ -61,6 +70,17 @@ class Coursem < ActiveRecord::Base
     
     else
       return @semester
+    end
+  end
+
+  # User can delete a coursem
+  def destroyCoursem(coursem_id)
+    @coursem = Coursem.find_by_id(coursem_id)
+    if @coursem.nil?
+      return COURSEM_DELETE_FAILED
+    else
+      @coursem.destroy
+      return SUCCESS
     end
   end
 

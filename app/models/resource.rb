@@ -5,7 +5,7 @@ class Resource < ActiveRecord::Base
   #validates :type, presence: true
   validates :link, presence: true
 
-  belongs_to :coursem
+  belongs_to :coursem, :inverse_of => :resources
   belongs_to :user
   has_many :comments
 
