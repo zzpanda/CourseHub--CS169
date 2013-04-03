@@ -74,7 +74,6 @@ class Coursem < ActiveRecord::Base
     end
   end
 
-<<<<<<< HEAD
   #Return id of coursem giving semester name and course name if it exists in DB.
   #Otherwise return nil
 
@@ -93,8 +92,6 @@ class Coursem < ActiveRecord::Base
 
   end
 
-
-=======
   # User can delete a coursem
   def destroyCoursem(coursem_id)
     @coursem = Coursem.find_by_id(coursem_id)
@@ -105,7 +102,5 @@ class Coursem < ActiveRecord::Base
       return SUCCESS
     end
   end
-
->>>>>>> f7d80c7646de768b47488950f5854c553831bda0
 
 end
