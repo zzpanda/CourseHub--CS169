@@ -3,5 +3,5 @@ class Event < ActiveRecord::Base
 
   attr_accessible :name, :start_at, :end_at
 
-  belongs_to :coursem, :inverse_of => :coursems
+  belongs_to :coursem, :inverse_of => :events
 end
