@@ -2,24 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-number = 42
-
-# Functions
-square = (x) -> x * x
-
-# Objects
-math =
-  root: Math.sqrt
-  square: square
-  cube: (x) -> x * square(x)
-
 Page_Changer =
     initialize_page: ->
     
     # When the user clicks on a semester from the dropdown, it will take them
     # to that particular course semester page
-
-
     course_semester_listener: ->
         $(".col_classes").each ->
           $(this).change ->

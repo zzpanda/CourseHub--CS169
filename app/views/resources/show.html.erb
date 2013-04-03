@@ -1,0 +1,32 @@
+<div id="title_container">
+</div>
+
+<div id="browse_container">
+  <table id="coursem_description">
+    <tr>
+      <td class='col_attr'>Name</td>
+      <td class='col_desc'><%= @resource.name %></td>
+    </tr>
+
+    <tr>
+      <td class='col_attr'>Type</td>
+      <td class='col_desc'><%= @resource.type %></td>
+    </tr>
+
+    <tr>
+      <td class='col_attr'>Link</td>
+      <td class='col_desc'><a href='<%= @resource.link %>'><%= @resource.link %></a></td>
+    </tr>
+
+    <tr>
+      <td class='col_attr'>User</td>
+      <td class='col_desc'><a href='/users/<%=@resource.user_id %>'><%=@resource.user.username %></a>
+      </td>
+    </tr>
+
+
+  </table>
+
+
+</div>
+
