@@ -1,5 +1,6 @@
 <div id="title_container">
   <h2> <%= @coursem.course.department + " " + @coursem.course.course_number %></h2>
+
   <h3> <%= @coursem.course.name %></h3>
 </div>
 
@@ -22,7 +23,9 @@
 
     <tr>
       <td class='col_attr'></td>
-      <td class='col_desc'></td>
+      <td class='col_desc'>
+        <button class='sub_unsub'></button>
+      </td>
     </tr>
 
     <tr>
@@ -33,6 +36,39 @@
   </table>
 
 
+</div>
 
 
+<div id="browse_container">
+  <table>
+    <tr class='row_header'>
+      <td class='col_name'>Name</td>
+      <td class='col_type'>Type</td>
+      <td class='col_link'>Link</td>
+      <td class='col_user_id'>User</td>
+    </tr>
+
+    <% @coursem.resources do |resource| %>
+        <tr class="row_content" id='<%= resource.id %>'>
+
+          <td class='col_name'><a href='resources/<%= resource.id %>'> <%= resource.name %></a></td>
+          <td class='col_type'><%= resource.type %></td>
+          <td class='col_link'><%= resource.link %></td>
+
+          <td class='col_user_id'><a href='users/<%= resource.user_id %>'>User <%= resource.user_id %></a></td>
+
+
+        </tr>
+    <% end %>
+    <tr class="row_content" id='2'>
+
+      <td class='col_name'><a href='/resources/1'> Test</a></td>
+      <td class='col_type'>test</td>
+      <td class='col_link'>test</td>
+
+      <td class='col_user_id'><a href='users/1'>User 1</a></td>
+
+
+    </tr>
+  </table>
 </div>

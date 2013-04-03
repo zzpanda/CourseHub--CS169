@@ -23,14 +23,14 @@ Course.create(:name=> "Databases",:department=> "CS",:course_number=> "186")
 @Fall = Semester.create(:term=> "Fall", :year=>2012)
 
 # Some Semester-Classes
-Coursem.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"Necula", :coursem_info=>"Make web applications using Rails, Django or NodeJS")
-Coursem.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:coursem_info=>"Making web applications using Rails or Django",:professor=>"Fox")
+@CS169Fa2013 = Coursem.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"Necula", :coursem_info=>"Make web applications using Rails, Django or NodeJS")
+@CS169Sp2013 = Coursem.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:coursem_info=>"Making web applications using Rails or Django",:professor=>"Fox")
 
 Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Spring.id,:professor=>"Steel", :coursem_info=> "This sequence is intended for majors in engineering and the physical sciences. An introduction to differential and integral calculus of functions of one variable, with applications and an introduction to transcendental functions.")
 Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"Vojta", :coursem_info=>"Continuation of 1A. Techniques of integration; applications of integration. Infinite sequences and series. First-order ordinary differential equations. Second-order ordinary differential equations; oscillation and damping; series solutions of ordinary differential equations.")
 
 
 # Create Some Resources
-Resource.create(:name=>"Homework 1",:type=>"Homework",:link=>"",:user_id=>@al.id)
-Resource.create(:name=>"Homework 2",:type=>"Homework",:link=>"",:user_id=>@al.id)
-Resource.create(:name=>"Spring 2009 Exam",:type=>"Exam",:link=>"",:user_id=>@bob.id)
+Resource.create(:name=>"Homework 1",:type=>"Homework",:link=>"",:user_id=>@al.id, :coursem_id=>@CS169Fa2013.id)
+Resource.create(:name=>"Homework 2",:type=>"Homework",:link=>"",:user_id=>@al.id, :coursem_id=>@CS169Sp2013.id)
+Resource.create(:name=>"Spring 2009 Exam",:type=>"Exam",:link=>"",:user_id=>@bob.id, :coursem_id=>@CS169Sp2013.id)
