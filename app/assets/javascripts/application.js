@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-
-
+//= require jquery.ui.autocomplete
 
 function json_request(page, dict, success, failure) {
     $.ajax({
