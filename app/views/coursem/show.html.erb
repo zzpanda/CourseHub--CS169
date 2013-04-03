@@ -42,6 +42,9 @@
               <% @coursem.resources.each do |resource| %>
                     <% if resource.type == "Anouncement" %>
                           <tr>
+                            <td class="col_upvote"></td>
+                            <td class="col_downvote"></td>
+                            <td class="col_name"></td>
                             <td>
                               <%=  resource.name %>
                             </td>

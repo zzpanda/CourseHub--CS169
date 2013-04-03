@@ -33,7 +33,7 @@ function showStatistics() {
 }
 
 function resourceHandler() {
-    /*
+    /* Initially hide all resources */
     $(".resource_type table").hide();
 
     /* Create event handlers for expanding resources upon click */
@@ -43,11 +43,12 @@ function resourceHandler() {
         var expand = resource_type.find(".expand");
         var table = resource_type.find("table");
         expand.on("click", function() {
-            table.toggle();
             if (expand.html() == "+") {
                 expand.html("-");
+                table.fadeIn("slow");
             } else {
                 expand.html("+");
+                table.fadeOut("slow");
             }
         });
 
