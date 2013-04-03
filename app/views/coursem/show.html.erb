@@ -1,39 +1,98 @@
 
-<div id="title_container">
-	<h2> <%= @coursem.course.department + " " + @coursem.course.course_number %></h2>
-	<h3> <%= @coursem.course.name %></h3>
-</div>
-
 <div id="browse_container">
-	<table id="coursem_description">
-		<tr>
-			<td class='col_attr'>Semester</td>
-			<td class='col_desc'><%= @coursem.semester.term + " " + @coursem.semester.year.to_s %></td>
-		</tr>
+    <div id="title_panel">
+    	<div id="header_title">
+    	    <h2> <%= @coursem.course.department + " " + @coursem.course.course_number %></h2>
+    	</div>
 
-		<tr>
-			<td class='col_attr'>Professor</td>
-			<td class='col_desc'><%= @coursem.professor %></td>
-		</tr>
+        <div id="header_name">
+    	    <h3> <%= @coursem.course.name %></h3>
+    	</div>
+    </div>
 
-		<tr>
-			<td class='col_attr'>Description</td>
-			<td class='col_desc'><%= @coursem.coursem_info %></td>
-		</tr>
+    <div id="tabs">
+          <ul>
+               <li id="button_overview" class="header_button">Overview</li>
+               <li id="button_resources" class="header_button">Resources</li>
+               <li id="button_statistics" class="header_button">Statistics</li>
+          </ul>
+    </div>
 
-		<tr>
-			<td class='col_attr'></td>
-			<td class='col_desc'></td>
-		</tr>
+    <div id="panel_description" class="panels">
+        <b>Semester</b><br />
+        <p>
+        <%= @coursem.semester.term + " " + @coursem.semester.year.to_s %>
+        </p>
 
-		<tr>
-			<td class='col_attr'></td>
-			<td class='col_desc'></td>
-		</tr>
+        <b>Professor</b><br />
+        <p><%= @coursem.professor %></td></p>
 
-	</table>
-	
+        <b>Description</b><br />
+        <p><%= @coursem.coursem_info %></p>
+   </div>
 
 
+   <div id = "panel_resources" class="panels">
+        <div class="resource_type">
+            <div id="header_announcements" class = "resource_header">
+              <span class="expand">+</span>
+              <h2>Announcements</h2>
+            </div>
+              <table id="Announcement" class="resources">
+              <% @coursem.resources.each do |resource| %>
+                    <% if resource.type == "Anouncement" %>
+                          <tr>
+                            <td>
+                              <%=  resource.name %>
+                            </td>
+                          </tr>
+                    <% end %>
+              <% end %>
+             </table>
+        </div>
+
+
+        <div class="resource_type">
+            <div id="header_homework" class="resource_header">
+              <span class="expand">+</span>
+              <h2>Homework</h2>
+            </div>
+            <table id="Homework" class="resources">
+              <% @coursem.resources.each do |resource| %>
+                  <% if resource.type == "Homework" %>
+                      <tr>
+                        <td>
+                          <%=  resource.name %>
+                        </td>
+                      </tr>
+                  <% end %>
+              <% end %>
+
+            </table>
+        </div>
+
+        <div class="resource_type">
+            <div id-"header_exam" class="resource_header">
+                <span class="expand">+</span>
+                <h2>Exams</h2>
+            </div>
+            <table id="DiscussionSolution" class="resources">
+              <% @coursem.resources.each do |resource| %>
+                  <% if resource.type == "Test" %>
+                      <tr>
+                        <td>
+                          <%=  resource.name %>
+                        </td>
+                      </tr>
+                  <% end %>
+              <% end %>
+            </table>
+        </div>
+
+	</div>
+
+	<div id="panel_statistics" class="panels">
+	    <p> Some random statistics </p>
+	</div>
 
 </div>
