@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   has_many :comments
 
 
+  def addFavorite(coursemid)
+
+  end
 
   def subscribe(coursemid)
     cs = Coursem.find_by_id(coursemid)   #using find_by_id instead of find means won't throw exception
@@ -55,7 +58,7 @@ class User < ActiveRecord::Base
   def addResource(resourceName, type, resourceLink)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
-    resources.create!(:name => resourceName, :resourceType => type, :link => resourceLink)
+    resources.create!(:name => resourceName, :type => type, :link => resourceLink)
   end
 
   def deleteResource(resourceId)

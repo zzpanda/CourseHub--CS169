@@ -1,4 +1,3 @@
-
 <div id="browse_container">
     <div id="title_panel">
     	<div id="header_title">
@@ -75,13 +74,13 @@
         </div>
 
         <div class="resource_type">
-            <div id-"header_exam" class="resource_header">
+            <div id="header_exam" class="resource_header">
                 <span class="expand">+</span>
                 <h2>Exams</h2>
             </div>
-            <table id="DiscussionSolution" class="resources">
+            <table id="Exams" class="resources">
               <% @coursem.resources.each do |resource| %>
-                  <% if resource.type == "Test" %>
+                  <% if resource.type == "Exam" %>
                       <tr>
                         <td>
                           <%=  resource.name %>
@@ -92,10 +91,10 @@
             </table>
         </div>
 
-	</div>
 
 	<div id="panel_statistics" class="panels">
 	    <p> Some random statistics </p>
 	</div>
 
+</div>
 </div>
