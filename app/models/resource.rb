@@ -1,5 +1,5 @@
 class Resource < ActiveRecord::Base
-  attr_accessible :name, :type, :link, :user_id
+  attr_accessible :name, :type, :link, :user_id, :coursem_id, :flags, :users_who_flagged
 
   validates :name, presence: true
   #validates :type, presence: true
@@ -8,6 +8,10 @@ class Resource < ActiveRecord::Base
   belongs_to :coursem
   belongs_to :user
   has_many :comments
+
+  #RETURN CODES
+  SUCCESS = 1
+  FAILED = 0
 
 
   # think about parameters to make more robust/secure against duplication
@@ -20,8 +24,12 @@ class Resource < ActiveRecord::Base
   def comments
     c = Comment.where(:resource_id => self.id).all
     if c
-      c
+      return c
     end
   end
+
+ 
+
+
 
 end
