@@ -1,13 +1,16 @@
 class Resource < ActiveRecord::Base
   attr_accessible :name, :type, :link, :user_id, :coursem_id, :flags, :users_who_flagged
 
+
+
   validates :name, presence: true
   #validates :type, presence: true
   validates :link, presence: true
 
-  belongs_to :coursem
-  belongs_to :user
-  has_many :comments
+  belongs_to :coursem, :inverse_of => :resources
+  belongs_to :user, :inverse_of => :resources
+  has_many :comments, :inverse_of => :resource, :dependent => :destroy
+  has_and_belongs_to_many :favorites
 
   #RETURN CODES
   SUCCESS = 1

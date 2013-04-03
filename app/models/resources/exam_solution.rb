@@ -1,0 +1,2 @@
+class ExamSolution < Resource
+end

@@ -1,13 +1,19 @@
 Coursehub::Application.routes.draw do
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
   devise_for :users
 
   resources :users
-  
+  resources :resources
+
   match 'profile' => 'users#show'
 
   match 'edit_profile' => 'users#edit'
   match '/users/subscribe' => 'users#subscribe'
   match '/users/unsubscribe' => 'users#unsubscribe'
+
+  match '/course/department' => 'course#getDepartment'
+
   authenticated :user do
     root :to => "users#show"
   end

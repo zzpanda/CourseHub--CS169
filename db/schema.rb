@@ -12,7 +12,6 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20130403164341) do
-
   create_table "comments", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -46,6 +45,28 @@ ActiveRecord::Schema.define(:version => 20130403164341) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.integer  "coursem_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "favorites_resources", :id => false, :force => true do |t|
+    t.integer "favorite_id", :null => false
+    t.integer "resource_id", :null => false
+  end
+
+  add_index "favorites_resources", ["favorite_id", "resource_id"], :name => "index_favorites_resources_on_favorite_id_and_resource_id"
 
   create_table "resources", :force => true do |t|
     t.string   "type"

@@ -4,8 +4,9 @@ class Comment < ActiveRecord::Base
 
   validates :content, presence: true
   validates :user_id, presence: true
-  belongs_to :user
-  belongs_to :resource, dependent: :destroy
+ 
+  belongs_to :user, :inverse_of => :comments
+  belongs_to :resource, :inverse_of => :comments
 
   #RETURN CODES
   SUCCESS = 1
@@ -55,4 +56,6 @@ class Comment < ActiveRecord::Base
     return FAILED
   end
 
+
+  
 end

@@ -14,6 +14,22 @@ class CourseController < ApplicationController
       end
   end
 
+  # Get all the possible department in the database
+  def getDepartment
+    dept = []
+    @course = Course.all
+    @course.each do |course|
+      if not dept.include?(course.department)
+         dept << course.department
+      end
+    end
+    dept << "OTHERS"
+    dic = {:department => dept}
+    respond_to do |format|
+      format.json {render json: dic}
+    end
+  end
+
   # A particular course (not a particular coursem)
   # GET /course/id
   # GET /course/id.json

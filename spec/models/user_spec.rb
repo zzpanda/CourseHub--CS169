@@ -6,12 +6,14 @@ describe User do
 
   before(:each) do
     @user1 = User.create!(username: "Example User", email: "user@example.com", password: "aaaaaaaa")
-    @user1.addResource("Example Resource", "Homework", "http://ExampleResource.com")
+    Course.new.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
+    @coursem1 = Coursem.first
+    @user1.addResource("Example Resource", "Homework", "http://ExampleResource.com", @user1.id, @coursem1.id)
     @resource1id = Resource.find_by_name_and_link("Example Resource", "http://ExampleResource.com").id
-    @user1.addResource("a", "Discussion", "http://c.com")
+    @user1.addResource("a", "Discussion", "http://c.com", @user1.id, @coursem1.id)
 
     @otheruser = User.create!(username: "Other UserR", email: "user@other.com", password: "bbbbbbbb")
-    @otheruser.addResource("Other Resource", "LectureNotes", "http://OtherResource.com")
+    @otheruser.addResource("Other Resource", "Homework", "http://OtherResource.com", @otheruser.id, @coursem1.id)
     @resource2id = Resource.find_by_name_and_link("Other Resource", "http://OtherResource.com").id
   end
 

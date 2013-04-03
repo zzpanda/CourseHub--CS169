@@ -14,10 +14,30 @@ class User < ActiveRecord::Base
   #validates_presence_of :password
 
   has_and_belongs_to_many :coursems, :uniq => true
-  has_many :resources
-  has_many :comments
+  has_many :resources, :inverse_of => :user
+  has_many :comments, :inverse_of => :user
+  has_one :favorite
 
+  #ERROR CODES
+  SUCCESS = 1
+  RESOURCE_EXIST = -1
 
+  def addToFavorite(resource_id)
+    if self.favorite.nil?
+      @favorite = self.create_favorite!()
+    else
+      @favorite = self.favorite
+    end
+    @favorite.resources << Resource.find_by_id(resource_id)
+  end
+
+  def deleteFavorite(resource_id)
+    @resource = self.favorite.resources.find_by_id(resource_id)
+    if not @resource.nil?
+      self.favorite.resources.delete(@resource)
+      @resource.favorites.delete(self.favorite)
+    end
+  end
 
   def subscribe(coursemid)
     cs = Coursem.find_by_id(coursemid)   #using find_by_id instead of find means won't throw exception
@@ -52,10 +72,16 @@ class User < ActiveRecord::Base
     self.username = username
   end
 
-  def addResource(resourceName, type, resourceLink)
+  def addResource(resourceName, type, resourceLink, user_id, coursem_id)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
-    resources.create!(:name => resourceName, :type => type, :link => resourceLink, :flags => 0, :users_who_flagged => "")
+    #resources.create!(:name => resourceName, :type => type, :link => resourceLink, :flags => 0, :users_who_flagged => "")
+    @resource = Resource.where(:type => type, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id).first
+    if @resource.nil?
+      return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id, :flags => 0, :users_who_flagged => "")
+    else
+      return RESOURCE_EXIST
+    end
   end
 
   def deleteResource(resourceId)

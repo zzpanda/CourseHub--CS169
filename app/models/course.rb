@@ -4,8 +4,8 @@ class Course < ActiveRecord::Base
   validates :name, presence: true
   validates :department, presence: true
 
-  has_many :coursems
-  has_many :semesters, :through => :coursems
+  has_many :semesters, :through => :coursems, :uniq => true
+  has_many :coursems, :dependent => :destroy
 
   # For scraping (Toby)
   # should be only called once at the beginning of each semesters to generate official courses , can't be called by users
@@ -20,7 +20,7 @@ class Course < ActiveRecord::Base
     end
     @coursem = Coursem.where(:course_id => @course.id, :semester_id => @semester.id).first
     if @coursem.nil?
-      Coursem.createCourseSemesters(professor, @course.id, @semester.id, coursem_info)
+      Coursem.create!(:professor => professor, :course_id => @course.id, :semester_id => @semester.id, :coursem_info => coursem_info)
     end
   end
 
@@ -40,13 +40,12 @@ class Course < ActiveRecord::Base
   BAD_NAME = -1
   BAD_DEPARTMENT = -2
   BAD_COURSE_NUMBER = -3
-  COURSE_EXISTS = -4
-  DELETE_FAILED = -20
+  COURSE_DELETE_FAILED = -20
 
-  '''Function adds a new course row to the course database. Return values are ccording to the error codes
+  '''Function adds a new course row to the course database. Return values are according to the error codes
      given above.
   '''
-  def createCourse(name, department, course_number, debug = true)
+  def createCourse(name, department, course_number)
     if name.nil? or not name.is_a?(String) or name.length == 0
       return BAD_NAME
     elsif department.nil? or not department.is_a?(String) or department.length == 0
@@ -55,38 +54,33 @@ class Course < ActiveRecord::Base
       return BAD_COURSE_NUMBER
     end
 
+    name.downcase
     name.capitalize
     department.upcase
     course = Course.where(:department => department, :name => name).first
     if not course.nil?
-      return COURSE_EXISTS
+      return course
     else
       course = Course.create!(:name => name, :department => department, :course_number => course_number)
-      #debug=true is when the function is called by a test function, otherwise it is false
-      if debug
-      	return SUCCESS
-      else
-	      return course
-      end
+      return course
     end
 
   end
 
   '''Function deletes course row from database. Return values are according to the error
-     values given above. Parameters are department and course_number which form the primary
-     key of the record.
+     values given above. Parameters are department and name which form the primary
+     key of the record. The coursems according to the course should be deleted automatically.
   '''
 
-  def deleteCourse(department, course_number)
-    course = Course.where(:department => department, :course_number => course_number)
-    if not course.any?
-      return DELETE_FAILED
+  def destroyCourse(course_id)
+    @course = Course.find_by_id(course_id)
+    if @course.nil?
+      return COURSE_DELETE_FAILED
     else
-      course[0].destroy
+      @course.destroy
       return SUCCESS
     end
   end
-
   
 end
 
