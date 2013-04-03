@@ -36,4 +36,4 @@ Homework.create(:name=>"Homework 2",:type=>"Homework",:link=>"http://google.com"
 Exam.create(:name=>"Spring 2009 Exam",:type=>"Exam",:link=>"http://google.com",:user_id=>@bob.id, :coursem_id=>@cs169_spring.id)
 
 #Create Some Events
-Event.create(:name=>"Party",:start_at=>DateTime.now,:end_at=>DateTime.now.midnight)
+Event.create(:name=>"Party",:start_at=>DateTime.now,:end_at=>DateTime.now.midnight, :coursem_id => 1)

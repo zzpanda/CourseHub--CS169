@@ -9,6 +9,9 @@ function panelHandler() {
     $("#button_statistics").on("click", function() {
         showStatistics();
     });
+    $("#button_calendar").on("click", function() {
+        showCalendar();
+    });
 }
 
 function showOverview() {
@@ -31,6 +34,14 @@ function showStatistics() {
     $(".header_button").removeClass("selected");
     $("#button_statistics").addClass("selected");
 }
+
+function showCalendar() {
+    $(".panels").hide();
+    $("#panel_calendar").show();
+    $(".header_button").removeClass("selected");
+    $("#button_calendar").addClass("selected");
+}
+
 
 function resourceHandler() {
     /* Initially hide all resources */

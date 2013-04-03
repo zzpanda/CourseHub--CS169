@@ -1,6 +1,6 @@
 class Coursem < ActiveRecord::Base
 
-  attr_accessible :course_id, :professor, :semester_id, :coursem_info
+  attr_accessible :course_id, :professor, :semester_id, :coursem_info, :coursem_id
 
   #validates :professor, presence: true
   validates :course_id, :presence => true
