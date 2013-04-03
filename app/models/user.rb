@@ -75,9 +75,10 @@ class User < ActiveRecord::Base
   def addResource(resourceName, type, resourceLink, user_id, coursem_id)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
-    @resource = Resource.where(:user_id => user_id, :coursem_id => coursem_id).first
+    #resources.create!(:name => resourceName, :type => type, :link => resourceLink, :flags => 0, :users_who_flagged => "")
+    @resource = Resource.where(:type => type, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id).first
     if @resource.nil?
-      return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id)
+      return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id, :flags => 0, :users_who_flagged => "")
     else
       return RESOURCE_EXIST
     end
@@ -106,13 +107,26 @@ class User < ActiveRecord::Base
     end
   end
 
-  #later iteration (have to update migration file and resource.rb)
-  #def flagResource(resourceId)
-  #  r = resources.find_by_id(resourceId)
-  #  if r
-  #    r.flag = r.flag + 1
-  #  end
-  #end
+   #User is able to flag a resource if it is not accurate. +
+  #If the treshold is reached, the resource is removed. Threshold = 3 for now.
+  def flagResource(user_id, resource_id)
+    threshold = 3
+    resource = Resource.find(resource_id)
+    users = resource.users_who_flagged
+    #Prevent a user from flagging a non-resource or a valid resource twice
+    if resource and (users.nil? or not users.split(",").include?(user_id.to_s))
+      resource.flags += 1
+      if resource.flags < threshold
+	users += "," + user_id.to_s
+	resource.users_who_flagged = users
+	resource.save
+      else
+        resource.destroy
+      end
+    end
+  end
+
+ 
 
   def addComment(resourceId, content)
     comments.create!(:user_id => self.id, :resource_id =>resourceId, :content => content)

@@ -1,6 +1,6 @@
 class Coursem < ActiveRecord::Base
 
-  attr_accessible :course_id, :professor, :semester_id, :coursem_info
+  attr_accessible :course_id, :professor, :semester_id, :coursem_info, :coursem_id
 
   #validates :professor, presence: true
   validates :course_id, :presence => true
@@ -74,6 +74,24 @@ class Coursem < ActiveRecord::Base
     end
   end
 
+  #Return id of coursem giving semester name and course name if it exists in DB.
+  #Otherwise return nil
+
+  def get_id(course_name, term, year)
+    course = Course.find_by_name(course_name)
+    semester = Semester.where(:term => term, :year => year).first
+    if course and semester
+      course_id = course.id
+      semester_id = semester.id
+      coursem = Coursem.where(:course_id => course.id, :semester_id => semester.id).first
+      if coursem
+        return coursem.id
+      end
+    end
+    return nil
+
+  end
+
   # User can delete a coursem
   def destroyCoursem(coursem_id)
     @coursem = Coursem.find_by_id(coursem_id)
@@ -84,6 +102,5 @@ class Coursem < ActiveRecord::Base
       return SUCCESS
     end
   end
-
 
 end

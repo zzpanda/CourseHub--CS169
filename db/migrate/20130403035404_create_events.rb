@@ -2,6 +2,7 @@ class CreateEvents < ActiveRecord::Migration
   def self.up
     create_table :events do |t|
       t.string :name
+      t.integer :coursem_id
       t.datetime :start_at
       t.datetime :end_at
       
