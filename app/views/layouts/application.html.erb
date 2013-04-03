@@ -24,7 +24,9 @@
         </ul>
     </div>
 
-    <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %></h2></div>
+    <% if not @page_heading.nil? %>
+        <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %></h2></div>
+    <% end %>
 
     <div id="content"><%= yield %></div>
 </body>
