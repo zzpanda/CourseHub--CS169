@@ -16,10 +16,27 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :coursems, :uniq => true
   has_many :resources
   has_many :comments
+  has_one :favorite
 
+  #ERROR CODES
+  SUCCESS = 1
+  RESOURCE_EXIST = -1
 
-  def addFavorite(coursemid)
+  def addToFavorite(resource_id)
+    if self.favorite.nil?
+      @favorite = self.create_favorite!()
+    else
+      @favorite = self.favorite
+    end
+    @favorite.resources << Resource.find_by_id(resource_id)
+  end
 
+  def deleteFavorite(resource_id)
+    @resource = self.favorite.resources.find_by_id(resource_id)
+    if not @resource.nil?
+      self.favorite.resources.delete(@resource)
+      @resource.favorites.delete(self.favorite)
+    end
   end
 
   def subscribe(coursemid)
@@ -55,10 +72,15 @@ class User < ActiveRecord::Base
     self.username = username
   end
 
-  def addResource(resourceName, type, resourceLink)
+  def addResource(resourceName, type, resourceLink, user_id, coursem_id)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
-    resources.create!(:name => resourceName, :type => type, :link => resourceLink)
+    @resource = Resource.where(:user_id => user_id, :coursem_id => coursem_id).first
+    if @resource.nil?
+      return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id)
+    else
+      return RESOURCE_EXIST
+    end
   end
 
   def deleteResource(resourceId)

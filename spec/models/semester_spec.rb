@@ -5,52 +5,44 @@ require 'semester'
 describe Semester do 
 	it "Does not allow a semester term with an empty string" do
 		puts "Test 1: Semester with term name as empty string is not valid"
-		semester = Semester.new
-		semester.checkSemester("",2013).should eq(-5)
+		Semester.checkSemester("",2013).should eq(-5)
 	end
 
 	it "Does not allow a semester term that is not a string" do
 		puts "\nTest 2: Semester with term name that is not a string is not valid"
-		semester = Semester.new
-		semester.checkSemester(007,2013).should eq(-5)
+		Semester.checkSemester(007,2013).should eq(-5)
 	end
 
 	it "Does not allow a semester term with the wrong string input(check semester.rb for right values)" do
 		puts "\nTest 3: Semester with invalid string term name is not valid"
-		semester = Semester.new
-		semester.checkSemester("falls",2013).should eq(-5)
+		Semester.checkSemester("falls",2013).should eq(-5)
 	end
 
 	it "Does not allow a semester with invalid year that's not an integer get added" do
 		puts "\nTest 4: Semester with year not an integer is not valid"
-		semester = Semester.new
-		semester.checkSemester("fall","007").should eq(-6)
+		Semester.checkSemester("fall","007").should eq(-6)
 	end
 
 	it "Does not allow a semester with year less than the min get added(check semester.rb for year_min" do
 		puts "\nTest 5: Semester with year less than minimum is not valid"
-		semester = Semester.new
-		semester.checkSemester("fall",1989).should eq(-6)
+		Semester.checkSemester("fall",1989).should eq(-6)
 	end
 
 	it "Does not allow a semester with year more than the max get added(check semester.rb for year_max" do
 		puts "\nTest 6: Semester with year more than the max is not valid"
-		semester = Semester.new
-		semester.checkSemester("fall",Time.new.year + 2).should eq(-6)
+		Semester.checkSemester("fall",Time.new.year + 2).should eq(-6)
 	end
 
 	it "Does allow a semester with right values get added" do
 		puts "\nTest 7: Semester with right values is not valid"
     @course = Course.new
     @course.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
-		semester = Semester.new
-		semester.checkSemester("spring",2013).class.should eq(Semester)
+		Semester.checkSemester("spring",2013).class.should eq(Semester)
 	end
 
 	it "Does not allow a semester already in the DB to get added" do
 		puts "\nTest8: Semester already in DB is not valid"
-		semester = Semester.new
-		semester.checkSemester("fall",Time.new.year).should eq(-7)
+		Semester.checkSemester("fall",Time.new.year).should eq(-7)
 	end
 
 	it "Does allow a semester in the DB get destroyed" do

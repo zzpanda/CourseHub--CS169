@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314091716) do
+ActiveRecord::Schema.define(:version => 20130402194948) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(:version => 20130314091716) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "favorites_resources", :id => false, :force => true do |t|
+    t.integer "favorite_id", :null => false
+    t.integer "resource_id", :null => false
+  end
+
+  add_index "favorites_resources", ["favorite_id", "resource_id"], :name => "index_favorites_resources_on_favorite_id_and_resource_id"
 
   create_table "resources", :force => true do |t|
     t.string   "type"

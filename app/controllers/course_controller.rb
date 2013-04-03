@@ -14,8 +14,6 @@ class CourseController < ApplicationController
       end
   end
 
-
-
   # Get all the possible department in the database
   def getDepartment
     dept = []
