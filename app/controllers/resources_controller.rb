@@ -1,4 +1,4 @@
-class ResourceController < ApplicationController
+class ResourcesController < ApplicationController
 
   # Get all the possible department in the database
   def getResourcesType
@@ -9,5 +9,8 @@ class ResourceController < ApplicationController
     end
   end
 
-end
+  def show
+      @resource = Resource.find(params[:id])
+    end
 
+end
