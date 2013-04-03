@@ -1,3 +1,9 @@
+<div id="title_container">
+  <h2> <%= @coursem.course.department + " " + @coursem.course.course_number %></h2>
+
+  <h3> <%= @coursem.course.name %></h3>
+</div>
+
 <div id="browse_container">
     <div id="title_panel">
     	<div id="header_title">
@@ -54,47 +60,4 @@
         </div>
 
 
-        <div class="resource_type">
-            <div id="header_homework" class="resource_header">
-              <span class="expand">+</span>
-              <h2>Homework</h2>
-            </div>
-            <table id="Homework" class="resources">
-              <% @coursem.resources.each do |resource| %>
-                  <% if resource.type == "Homework" %>
-                      <tr>
-                        <td>
-                          <%=  resource.name %>
-                        </td>
-                      </tr>
-                  <% end %>
-              <% end %>
-
-            </table>
-        </div>
-
-        <div class="resource_type">
-            <div id="header_exam" class="resource_header">
-                <span class="expand">+</span>
-                <h2>Exams</h2>
-            </div>
-            <table id="Exams" class="resources">
-              <% @coursem.resources.each do |resource| %>
-                  <% if resource.type == "Exam" %>
-                      <tr>
-                        <td>
-                          <%=  resource.name %>
-                        </td>
-                      </tr>
-                  <% end %>
-              <% end %>
-            </table>
-        </div>
-
-
-	<div id="panel_statistics" class="panels">
-	    <p> Some random statistics </p>
-	</div>
-
-</div>
 </div>
