@@ -2,7 +2,8 @@ Coursehub::Application.routes.draw do
   devise_for :users
 
   resources :users
-  
+  resources :resources
+
   match 'profile' => 'users#show'
 
   match 'edit_profile' => 'users#edit'
