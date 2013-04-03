@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   def addResource(resourceName, type, resourceLink, user_id, coursem_id)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
-    @resource = Resource.where(:user_id => user_id, :coursem_id => coursem_id).first
+    @resource = Resource.where(:type => type, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id).first
     if @resource.nil?
       return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id)
     else
