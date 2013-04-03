@@ -7,6 +7,7 @@ class Coursem < ActiveRecord::Base
   validates :semester_id, :presence => true
 
 
+  has_many :events, :inverse_of => :coursem
   has_many :resources, :inverse_of => :coursem
   belongs_to :semester
   belongs_to :course
