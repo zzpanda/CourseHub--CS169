@@ -9,7 +9,7 @@ class Resource < ActiveRecord::Base
 
   belongs_to :coursem, :inverse_of => :resources
   belongs_to :user, :inverse_of => :resources
-  has_many :comments, :inverse_of => :resource, :dependent => :destroy
+  has_many :comments, :inverse_of => :resource#, :dependent => :destroy
   has_and_belongs_to_many :favorites
 
   #RETURN CODES
