@@ -67,10 +67,19 @@ function resourceHandler() {
     return false;
 }
 
+function calendarChangeMonth() {
+    $("a .ec-month-nav").click(function() {
+        //$("#panel_calendar").show();
+    });
+
+    showCalendar();
+}
+
 $(document).ready(function() {
     panelHandler();
     //showOverview();
     showResources();
     resourceHandler();
+    calendarChangeMonth();
 });
 
