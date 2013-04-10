@@ -11,10 +11,10 @@ class CoursemController < ApplicationController
       @coursem = Coursem.getCoursemInformation(params[:id])
       c = @coursem.course;
       @page_title = c.department + " " + c.course_number + " : " + c.name;
-      #@month = (params[:month] || (Time.zone || Time).now.month).to_i
-      #@year = (params[:year] || (Time.zone || Time).now.year).to_i
-      #@shown_month = Date.civil(@year, @month)
-      #@event_strips = @coursem.events.event_strips_for_month(@shown_month)
+      @month = (params[:month] || (Time.zone || Time).now.month).to_i
+      @year = (params[:year] || (Time.zone || Time).now.year).to_i
+      @shown_month = Date.civil(@year, @month)
+      @event_strips = @coursem.events.event_strips_for_month(@shown_month)
 
       if @coursem == ERR_BAD_COURSEM
         respond_to do |format|
