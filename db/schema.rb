@@ -11,16 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403164341) do
+ActiveRecord::Schema.define(:version => 20130403035404) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
     t.integer  "resource_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "numlikes"
-    t.string   "users_who_liked"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "coursems", :force => true do |t|
@@ -56,12 +54,6 @@ ActiveRecord::Schema.define(:version => 20130403164341) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "favorites", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "favorites_resources", :id => false, :force => true do |t|
     t.integer "favorite_id", :null => false
     t.integer "resource_id", :null => false
@@ -75,10 +67,8 @@ ActiveRecord::Schema.define(:version => 20130403164341) do
     t.string   "link"
     t.integer  "coursem_id"
     t.integer  "user_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.integer  "flags"
-    t.string   "users_who_flagged"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "semesters", :force => true do |t|
