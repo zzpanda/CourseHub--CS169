@@ -8,7 +8,9 @@
     	    <h3> <%= @coursem.course.name %></h3>
     	</div>
     </div>
-
+    <div id="sub">
+      <button id="sub_button" value=<%=@subscribed%> coursem_id=<%=@coursem.id%>><%= @subscribe_text%></button>
+    </div>
     <div id="tabs">
           <ul>
                <li id="button_overview" class="header_button">Overview</li>
@@ -59,7 +61,7 @@
 </div>
 
 
-  <div id="panel_calendar" class="panels">
-    Calendar goes here
-    <%= raw(event_calendar) %>
-  </div>
+<div id="panel_calendar" class="panels">
+Calendar goes here
+<%= raw(event_calendar) %>
+</div>

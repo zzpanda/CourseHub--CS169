@@ -23,6 +23,13 @@ class CoursemController < ApplicationController
         @year = (params[:year] || (Time.zone || Time).now.year).to_i
         @shown_month = Date.civil(@year, @month)
         @event_strips = @coursem.events.event_strips_for_month(@shown_month)
+        if current_user.subscribed?(@coursem)
+          @subscribe_text = "Unsubscribe"
+          @subscribed = 1
+        else
+          @subscribe_text = "Subscribe"
+          @subscribed = 0
+        end
         respond_to do |format|
           format.html
           format.json { render json: @coursem }

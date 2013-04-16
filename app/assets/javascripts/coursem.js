@@ -1,3 +1,34 @@
+function subscribeHandler() {
+    var button = $("#sub_button")
+    button.on("click",function(){
+
+        var path
+        var newpath
+        var newvalue
+        id = button.attr("coursem_id")
+        if (button.attr("value") == 1){
+            path = "/users/unsubscribe";
+            newpath = "Subscribe";
+            newvalue = 0;
+        } else{
+            path = "/users/subscribe";
+            newpath = "Unsubscribe";
+            newvalue = 1;
+        }
+        var json_sending ={coursem_id: id};
+        json_request(path,json_sending,
+            function succ(data){
+                button.text(newpath);
+                button.prop("value",newvalue)
+                console.log("Submitted to " + path + " and got response " + data.status);
+            },
+            function fail(data){
+                alert ("error");
+                alert (data.status);
+            });
+    });
+}
+
 
 function panelHandler() {
     $("#button_overview").on("click",function() {
@@ -81,5 +112,6 @@ $(document).ready(function() {
     showResources();
     resourceHandler();
     calendarChangeMonth();
+    subscribeHandler();
 });
 
