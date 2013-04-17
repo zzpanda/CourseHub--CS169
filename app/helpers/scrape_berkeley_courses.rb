@@ -34,7 +34,7 @@ def generate_all(debug = false)
 	
 		parsed = JSON.parse(response.body)
 		courses = parsed["ClassOffering"]
-		#puts(courses.to_s)
+		#puts(course.to_s)
 		courses.each do |course|
 			begin
 				name = course["courseTitle"]

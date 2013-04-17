@@ -3,7 +3,6 @@ require 'course'
 
 describe Course do
 
-
   before(:each) do
     @course = Course.new
     @course.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
@@ -38,11 +37,11 @@ describe Course do
     Semester.all.length.should eq(2)
   end
 
-  it "should have only two courses" do
+  it "should have only two course" do
     Course.all.length.should eq(2)
   end
 
-  it "Semester have a list to store the courses having the same semester" do
+  it "Semester have a list to store the course having the same semester" do
     @semester1.courses.length.should eq(1)
     @semester2.courses.length.should eq(2)
   end
@@ -62,7 +61,7 @@ describe Course do
     @course2.coursems.length.should eq(1)
   end
 
-  it "should filter the courses using department" do
+  it "should filter the course using department" do
     @courses = Course.getCourseInformation("CS")
     @courses.length.should eq(2)
     @courses = Course.getCourseInformation("SC")

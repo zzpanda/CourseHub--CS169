@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :coursems, :uniq => true
   has_many :resources, :inverse_of => :user
   has_many :comments, :inverse_of => :user
-  has_one :favorite
+  has_one :favorite, :dependent => :destroy
 
   #ERROR CODES
   SUCCESS = 1
@@ -84,13 +84,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def deleteResource(resourceId)
-    r = resources.find_by_id(resourceId)
-    if r
-      r.destroy
-    end
-  end
-
   def postedResource?(resourceId)
     r = resources.find_by_id(resourceId)
     if r
@@ -107,7 +100,7 @@ class User < ActiveRecord::Base
     end
   end
 
-   #User is able to flag a resource if it is not accurate. +
+  #User is able to flag a resource if it is not accurate. +
   #If the treshold is reached, the resource is removed. Threshold = 3 for now.
   def flagResource(user_id, resource_id)
     threshold = 3
@@ -117,16 +110,14 @@ class User < ActiveRecord::Base
     if resource and (users.nil? or not users.split(",").include?(user_id.to_s))
       resource.flags += 1
       if resource.flags < threshold
-	users += "," + user_id.to_s
-	resource.users_who_flagged = users
-	resource.save
+        users += "," + user_id.to_s
+        resource.users_who_flagged = users
+        resource.save
       else
         resource.destroy
       end
     end
   end
-
- 
 
   def addComment(resourceId, content)
     comments.create!(:user_id => self.id, :resource_id =>resourceId, :content => content)
