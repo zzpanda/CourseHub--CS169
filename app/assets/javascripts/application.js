@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-
-
+//= require jquery-ui
+//= require jquery.ui.autocomplete
+//= require jquery.timepicker.js
 
 function json_request(page, dict, success, failure) {
     $.ajax({

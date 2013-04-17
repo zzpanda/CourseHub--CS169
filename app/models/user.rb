@@ -75,9 +75,10 @@ class User < ActiveRecord::Base
   def addResource(resourceName, type, resourceLink, user_id, coursem_id)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
+    #resources.create!(:name => resourceName, :type => type, :link => resourceLink, :flags => 0, :users_who_flagged => "")
     @resource = Resource.where(:type => type, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id).first
     if @resource.nil?
-      return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id)
+      return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id, :flags => 0, :users_who_flagged => "")
     else
       return RESOURCE_EXIST
     end
@@ -113,18 +114,10 @@ class User < ActiveRecord::Base
         resource.users_who_flagged = users
         resource.save
       else
-        resource.deleteResource(resource.id)
+        resource.destroy
       end
     end
   end
-
-  #later iteration (have to update migration file and resource.rb)
-  #def flagResource(resourceId)
-  #  r = resources.find_by_id(resourceId)
-  #  if r
-  #    r.flag = r.flag + 1
-  #  end
-  #end
 
   def addComment(resourceId, content)
     comments.create!(:user_id => self.id, :resource_id =>resourceId, :content => content)

@@ -5,16 +5,21 @@ Coursehub::Application.routes.draw do
 
   resources :users
   resources :resources
+  resources :events
 
   match 'profile' => 'users#show'
 
   match 'edit_profile' => 'users#edit'
   match '/users/subscribe' => 'users#subscribe'
   match '/users/unsubscribe' => 'users#unsubscribe'
+
+  match '/course/department' => 'course#getDepartment'
+
   authenticated :user do
     root :to => "users#show"
   end
   root :to => redirect("/users/sign_in")
+
 
   resources :course
   resources :coursem

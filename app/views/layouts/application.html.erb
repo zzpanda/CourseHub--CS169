@@ -16,7 +16,18 @@
           <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
       <% end %>
     </div>
-    <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %><h2></div>
+
+    <div id="navigation_panel">
+        <ul>
+          <li><a href="/">View Profile</a></li>
+          <li><a href="/course">Browse Courses</a></li>
+        </ul>
+    </div>
+
+    <% if not @page_heading.nil? %>
+        <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %></h2></div>
+    <% end %>
+
     <div id="content"><%= yield %></div>
 </body>
 </html>

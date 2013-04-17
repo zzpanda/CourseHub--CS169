@@ -1,3 +1,34 @@
+function subscribeHandler() {
+    var button = $("#sub_button")
+    button.on("click",function(){
+
+        var path
+        var newpath
+        var newvalue
+        id = button.attr("coursem_id")
+        if (button.attr("value") == 1){
+            path = "/users/unsubscribe";
+            newpath = "Subscribe";
+            newvalue = 0;
+        } else{
+            path = "/users/subscribe";
+            newpath = "Unsubscribe";
+            newvalue = 1;
+        }
+        var json_sending ={coursem_id: id};
+        json_request(path,json_sending,
+            function succ(data){
+                button.text(newpath);
+                button.prop("value",newvalue)
+                console.log("Submitted to " + path + " and got response " + data.status);
+            },
+            function fail(data){
+                alert ("error");
+                alert (data.status);
+            });
+    });
+}
+
 
 function panelHandler() {
     $("#button_overview").on("click",function() {
@@ -8,6 +39,9 @@ function panelHandler() {
     });
     $("#button_statistics").on("click", function() {
         showStatistics();
+    });
+    $("#button_calendar").on("click", function() {
+        showCalendar();
     });
 }
 
@@ -31,6 +65,14 @@ function showStatistics() {
     $(".header_button").removeClass("selected");
     $("#button_statistics").addClass("selected");
 }
+
+function showCalendar() {
+    $(".panels").hide();
+    $("#panel_calendar").show();
+    $(".header_button").removeClass("selected");
+    $("#button_calendar").addClass("selected");
+}
+
 
 function resourceHandler() {
     /* Initially hide all resources */
@@ -56,10 +98,33 @@ function resourceHandler() {
     return false;
 }
 
+function calendarChangeMonth() {
+    $("a .ec-month-nav").click(function() {
+        //$("#panel_calendar").show();
+    });
+
+    showCalendar();
+}
+
 $(document).ready(function() {
     panelHandler();
     //showOverview();
     showResources();
     resourceHandler();
+    calendarChangeMonth();
+    subscribeHandler();
+
+    $("#event_form").hide();
+
+    $(".ec-day-header").click(function() {
+        $("#event_form").show();
+    });
+
+    $("#event_start_date").datepicker();
+    $("#event_start_time").timepicker();
+    $("#event_end_date").datepicker();
+    $("#event_end_time").timepicker();
+
+
 });
 

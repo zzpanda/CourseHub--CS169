@@ -10,10 +10,10 @@ describe User do
     @coursem1 = Coursem.first
     @user1.addResource("Example Resource", "Homework", "http://ExampleResource.com", @user1.id, @coursem1.id)
     @resource1id = Resource.find_by_name_and_link("Example Resource", "http://ExampleResource.com").id
-    @user1.addResource("a", "Discussion", "http://c.com")
+    @user1.addResource("a", "Discussion", "http://c.com", @user1.id, @coursem1.id)
 
     @otheruser = User.create!(username: "Other UserR", email: "user@other.com", password: "bbbbbbbb")
-    @otheruser.addResource("Other Resource", "Lecture", "http://OtherResource.com")
+    @otheruser.addResource("Other Resource", "Homework", "http://OtherResource.com", @otheruser.id, @coursem1.id)
     @resource2id = Resource.find_by_name_and_link("Other Resource", "http://OtherResource.com").id
   end
 
@@ -84,17 +84,54 @@ describe User do
   describe "#addToFavorite" do
     it "should add the resource to the user's favorite" do
       @user1.addToFavorite(@resource1id)
-      @user1.favorite.resouces.size.should eq(1)
+      @user1.favorite.resources.size.should eq(1)
     end
   end
 
   describe "#deleteFavorite" do
     it "should delete the resource to the user's favorite" do
       @user1.deleteFavorite(@resource1id)
-      @user1.favorite.resouces.size.should eq(0)
+      @user1.favorite.resources.size.should eq(0)
     end
   end
 
+  describe "#flagResource" do
+     it "Should be able to flag a valid Resource in the DB" do
+	@user1.flagResource(@user1.id, @resource1id)
+	Resource.find(@resource1id).flags.should eq(1)
+     end
+    
+     it "Should not allow a Resource be flagged twice by same user" do
+	@user1.flagResource(@user1.id, @resource1id)
+	@user1.flagResource(@user1.id, @resource1id)
+	Resource.find(@resource1id).flags.should eq(1)
+     end
+
+     it "Should delete a Resource that is flagged after threshold amount of times (3)" do
+	@thirduser = User.create!(username: "third UserR", email: "user@third.com", password: "ccccccccc")
+	@user1.flagResource(@user1.id, @resource1id)
+	@otheruser.flagResource(@otheruser.id, @resource1id)
+	@thirduser.flagResource(@thirduser.id, @resource1id)
+	Resource.where(:id => @resource1id).first.should eq(nil) 
+     end
+     
+
+  end
+  
+  describe "#addToFavorite" do
+    it "should add the resource to the user's favorite" do
+      @user1.addToFavorite(@resource1id)
+      @user1.favorite.resources.size.should eq(1)
+    end
+  end
+
+  describe "#deleteFavorite" do
+    it "should delete the resource to the user's favorite" do
+      @user1.addToFavorite(@resource1id)
+      @user1.deleteFavorite(@resource1id)
+      @user1.favorite.resources.size.should eq(0)
+    end
+  end
 
 
 end

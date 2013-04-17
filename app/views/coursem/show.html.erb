@@ -1,9 +1,3 @@
-<div id="title_container">
-  <h2> <%= @coursem.course.department + " " + @coursem.course.course_number %></h2>
-
-  <h3> <%= @coursem.course.name %></h3>
-</div>
-
 <div id="browse_container">
     <div id="title_panel">
     	<div id="header_title">
@@ -14,12 +8,15 @@
     	    <h3> <%= @coursem.course.name %></h3>
     	</div>
     </div>
-
+    <div id="sub">
+      <button id="sub_button" value=<%=@subscribed%> coursem_id=<%=@coursem.id%>><%= @subscribe_text%></button>
+    </div>
     <div id="tabs">
           <ul>
                <li id="button_overview" class="header_button">Overview</li>
                <li id="button_resources" class="header_button">Resources</li>
                <li id="button_statistics" class="header_button">Statistics</li>
+               <li id="button_calendar" class="header_button">Calendar</li>
           </ul>
     </div>
 
@@ -59,5 +56,20 @@
              </table>
         </div>
 
+
+
+</div>
+
+
+    <div id="panel_calendar" class="panels">
+        Calendar goes here
+        <%= raw(event_calendar) %>
+
+      <div id="event_form">
+        <%= render :partial => 'event_form' %>
+      </div>
+
+
+    </div>
 
 </div>

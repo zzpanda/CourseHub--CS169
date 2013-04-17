@@ -3,26 +3,26 @@ require 'spec_helper'
 describe Resource do
 
   before(:each) do
-    @resource = Resource.new(name: "Example Resource", resourceType: "Homework", link: "http://exampleresource.com")
+    @resource = Homework.new(name: "Example Resource", link: "http://exampleresource.com")
     @resourceId = @resource.id
   end
 
   subject {@resource}
 
   it {should respond_to(:name)}
-  it {should respond_to(:resourceType)}
   it {should respond_to(:link)}
   it {should respond_to(:coursem)}
   it {should respond_to(:user)}
   it {should respond_to(:comments)}
   it { should respond_to(:deleteResource) }
-  #                                                                                                             .
-  describe ".id" do
-    it "should return the resource id" do
-      actualId = @resource.id
-      Resource.id("Example Resource", "http://exampleresource.com").should equal(actualId)
-    end
-  end
+
+  # Unncessary method                                                                                                             .
+  #describe ".id" do
+  #  it "should return the resource id" do
+  #    actualId = @resource.id
+  #    Resource.id("Example Resource", "http://exampleresource.com").should equal(actualId)
+  #  end
+  #end
 
   describe "#comments" do
     it "should return an array of comment objects" do
@@ -36,7 +36,7 @@ describe Resource do
   describe "#deleteResource" do
     it "should return nil when trying to delete a non-existent Resource" do
       @user1 = User.create!(username: "Example User", email: "user@example.com", password: "aaaaaaaa")
-      @user1.deleteResource(0).should == nil
+      Resource.new.deleteResource(0).should == nil
     end
 
     it "should delete a resource that user posted and the corresponding comments to that resource" do
@@ -45,10 +45,9 @@ describe Resource do
       @coursem1 = Coursem.first
       @user1.addResource("Example Resource", "Homework", "http://ExampleResource.com", @user1.id, @coursem1.id)
       @resource1id = Resource.find_by_name_and_link("Example Resource", "http://ExampleResource.com").id
-      @user1.deleteResource(@resource1id)
+      Resource.new.deleteResource(@resource1id)
       Resource.find_by_id(@resource1id).should == nil
       Comment.all.size.should eq(0)
     end
   end
-
 end
