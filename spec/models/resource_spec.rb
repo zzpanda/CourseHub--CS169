@@ -14,6 +14,7 @@ describe Resource do
   it {should respond_to(:coursem)}
   it {should respond_to(:user)}
   it {should respond_to(:comments)}
+  it { should respond_to(:deleteResource) }
 
   # Unncessary method                                                                                                             .
   #describe ".id" do
@@ -32,8 +33,21 @@ describe Resource do
     end
   end
 
- 
+  describe "#deleteResource" do
+    it "should return nil when trying to delete a non-existent Resource" do
+      @user1 = User.create!(username: "Example User", email: "user@example.com", password: "aaaaaaaa")
+      Resource.new.deleteResource(0).should == nil
+    end
 
-  
- 
+    it "should delete a resource that user posted and the corresponding comments to that resource" do
+      @user1 = User.create!(username: "Example User", email: "user@example.com", password: "aaaaaaaa")
+      Course.new.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
+      @coursem1 = Coursem.first
+      @user1.addResource("Example Resource", "Homework", "http://ExampleResource.com", @user1.id, @coursem1.id)
+      @resource1id = Resource.find_by_name_and_link("Example Resource", "http://ExampleResource.com").id
+      Resource.new.deleteResource(@resource1id)
+      Resource.find_by_id(@resource1id).should == nil
+      Comment.all.size.should eq(0)
+    end
+  end
 end
