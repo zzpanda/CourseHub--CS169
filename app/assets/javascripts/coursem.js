@@ -1,11 +1,13 @@
+
+
 function subscribeHandler() {
-    var button = $("#sub_button")
+    var button = $("#sub_button");
     button.on("click",function(){
 
         var path
         var newpath
         var newvalue
-        id = button.attr("coursem_id")
+        id = button.attr("coursem_id");
         if (button.attr("value") == 1){
             path = "/users/unsubscribe";
             newpath = "Subscribe";
@@ -72,7 +74,6 @@ function showCalendar() {
     $(".header_button").removeClass("selected");
     $("#button_calendar").addClass("selected");
 }
-
 
 function resourceHandler() {
     /* Initially hide all resources */

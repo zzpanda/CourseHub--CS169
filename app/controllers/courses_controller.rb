@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   # GET /course.json
   def index
       # Check for filters
-      @courses = Course.getCourseInformation(params[:dept])
+      @courses = Course.getCourseInformation(params[:dept],params[:course])
       @page_heading = "Browse Courses"
       @page_title = "Browse Courses"
       respond_to do |format|
@@ -27,6 +27,23 @@ class CoursesController < ApplicationController
     dic = {:department => dept}
     respond_to do |format|
       format.json {render json: dic}
+    end
+  end
+
+  # Gets a JSON object of all the courses of the form
+  # { "CS" : [ {'id': 23, number': "169" }, {'id": 17, "'number': "169" } ] }
+  def getCourses
+    courses = {}
+    @course = Course.all
+    @course.each do |course|
+      if not courses.include?(course.department)
+        courses[course.department] = [];
+      end
+      courses[course.department] << course;
+    end
+
+    respond_to do |format|
+      format.json {render json: courses}
     end
   end
 

@@ -43,8 +43,9 @@ body {
 }
 
 #header {
-  margin-left: auto;
-  margin-right: auto;
+  img {
+    display: block;
+  }
 }
 
 nav {
