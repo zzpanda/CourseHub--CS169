@@ -17,13 +17,14 @@ $light_grey: rgb(230,230,230);
 $grey: rgb(200,200,200);
 $dark_grey: rgb(150,150,150);
 
-$width: 750px;
+$width: 850px;
 $width_subscribe: 10px;
 $width_department: 120px;
 $width_course_number: 80px;
 $width_name: 300px;
 $width_classes: 240px;
 
+$width_panel: 750px;
 $width_resource: 300px;
 
 #browse_container {
@@ -65,7 +66,7 @@ $width_resource: 300px;
 
     }
   #tabs {
-    width: 700px;
+    width: $width_panel;
     ul {
       display: table;
       background-color: $light-grey;
@@ -84,6 +85,7 @@ $width_resource: 300px;
       border-top: 1px solid $grey;
       border-right: 1px solid $grey;
       margin-right: 5px;
+      text-align:  center;
     }
     li:hover {
       background-color: $medium_blue;
@@ -102,7 +104,7 @@ $width_resource: 300px;
      margin-top: 0px;
      margin-bottom: 0px;
      border: 1px solid $grey;
-     width: 650px;
+     width: $width_panel;
      margin-bottom: 10px;
      border-radius: 0.5em;
    }

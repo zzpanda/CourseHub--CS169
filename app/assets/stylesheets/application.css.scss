@@ -32,10 +32,19 @@ $width_classes: 240px;
 
 $container_width: 800px;
 
+body {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
 #container {
   width: $container_width;
   margin-left: auto;
-    margin-right: auto;
+  margin-right: auto;
+}
+
+#header {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 nav {
@@ -43,9 +52,7 @@ nav {
   border:  2px solid $navy_blue;
   padding:  0px;
   border-radius:  0.3em;
-  #header {
-    background-color: rgb(230,240,255);
-  }
+
   #buttons {
     background-color: $gold;
   }
@@ -83,7 +90,7 @@ nav {
 #title_container {
   background-color: $navy_blue;
   color:  white;
-  width:  400px;
+  width:  350px;
   border-radius:  0.3em;
   padding-left: 15px;
   padding-top: 6px;
@@ -97,7 +104,6 @@ nav {
   margin-bottom: 10px;
   border:  2px solid $dark_blue;
 }
-
 
 #content {
   border:  2px solid $navy_blue;
