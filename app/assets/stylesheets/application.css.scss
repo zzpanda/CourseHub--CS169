@@ -9,7 +9,6 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *
 *= require_self
-*= require_tree
 *= require jquery.ui.autocomplete
 */
 
@@ -17,9 +16,10 @@ $lavender: #AD00AD;
 $lavender_dark: #790079;
 $lavender_light: #FF00EB;
 $blue_light: rgb(235,240,255);
-$navy_blue: rgb(40,100,255);
-$dark_blue: rgb(20,70,255);
+$navy_blue: rgb(20,50,255);
+$dark_blue: rgb(20,50,200);
 $gold: rgb(240,220,80);
+$deep_gold: rgb(230,210,70);
 $margin: 30px;
 
 $width: 750px;
@@ -29,48 +29,70 @@ $width_course_number: 80px;
 $width_name: 300px;
 $width_classes: 240px;
 
+$container_width: 800px;
+
+#container {
+  width: $container_width;
+  margin-left: auto;
+    margin-right: auto;
+}
+
+nav {
+  background-color: $gold;
+  border:  2px solid $navy_blue;
+  padding:  0px;
+  border-radius:  0.3em;
+  ul {
+    margin:  0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+  }
+  li {
+    display: table-cell;
+    width:  160px;
+    color:  $navy_blue;
+    height:  30px;
+    vertical-align: middle;
+    padding:  0px;
+    a {
+      display: table-cell;
+      height:  30px;
+      width:  160px;
+      color: $navy_blue;
+      text-align: center;
+      text-decoration:  none;
+      vertical-align: middle;
+      margin: 0px;
+    }
+    a:hover {
+      background-color: $navy_blue;
+      color: white;
+    }
+  }
+  margin-bottom: 20px;
+}
+
 #title_container {
-	width: $width;
-	border: 2px solid $dark_blue;
-	border-radius: 0.5em;
-	margin-bottom: $margin;
-	h2 {
-		margin: 5px;
-		color: $gold;
-	}
-	background-color: $navy_blue;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#search_container {
-	width: $width;
-	border: 2px solid $navy_blue;
-	border-radius: 0.2em;
-	margin-bottom: $margin/2;
-	table {
-		margin-left: auto;
-		margin-right: auto;
-	}
-	td {
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-	.search_bar {
-		width: 200px;
-	}
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#browse_container {
-	width: $width;
-	border: 2px solid $dark_blue;
-	border-radius: 0.5em;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: $blue_light;
+  background-color: $navy_blue;
+  color:  white;
+  width:  400px;
+  border-radius:  0.3em;
+  padding-left: 15px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  h2 {
+    padding:  0px;
+    display: block;
+    margin:  0px;
+    text-align:  center;
+  }
+  margin-bottom: 10px;
+  border:  2px solid $dark_blue;
 }
 
 
-
+#content {
+  border:  2px solid $navy_blue;
+  padding:  5px;
+}
