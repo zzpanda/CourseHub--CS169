@@ -1,6 +1,6 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
 
-  # Browse all courses
+  # Browse all course
   # GET /course
   # GET /course.json
   def index

@@ -54,7 +54,7 @@
     function search_autocomplete() {
         /* Autocomplete department search with a list of all departments */
         $.ajax({
-           url: "/course/department.json",
+           url: "/courses/department.json",
            type: "GET",
            dataType: "json",
            success: function(json) {

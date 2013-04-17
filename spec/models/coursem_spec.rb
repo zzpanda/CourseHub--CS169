@@ -22,7 +22,7 @@ describe Coursem do
     @course.createAll("computer science","blabla","CS","170","Fall", 2012, "B")
     @coursem = Coursem.getCoursemInformation(1)
     @coursem[:users].should eq([])
-    @coursem[:course].should eq(Course.find(1))
+    @coursem[:courses].should eq(Course.find(1))
     @coursem[:semester].should eq(Semester.find(1))
     @coursem[:resources].should eq([])
     @coursem = Coursem.getCoursemInformation(4)

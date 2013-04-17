@@ -8,7 +8,7 @@ class Course < ActiveRecord::Base
   has_many :coursems, :dependent => :destroy
 
   # For scraping (Toby)
-  # should be only called once at the beginning of each semesters to generate official courses , can't be called by users
+  # should be only called once at the beginning of each semesters to generate official course , can't be called by users
   def createAll(name, coursem_info, department, course_number, term, year, professor)
     @course = Course.where(:department => department, :course_number => course_number).first
     if @course.nil?
