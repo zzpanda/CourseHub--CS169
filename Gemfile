@@ -35,7 +35,8 @@ gem 'jquery-rails', '2.0.2'
 gem 'jquery-ui-rails'
 
 group :test do
-  gem 'capybara', '1.1.2'
+  gem 'capybara'
+  gem 'rspec-rails'
   # for Linux
   gem 'rb-inotify', '0.9'
   # for Mac
