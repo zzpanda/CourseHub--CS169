@@ -36,8 +36,8 @@ describe Semester do
 	it "Does allow a semester with right values get added" do
 		puts "\nTest 7: Semester with right values is not valid"
     @course = Course.new
-    @course.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
-		Semester.checkSemester("spring",2013).class.should eq(Semester)
+    @course.createAll("Computer Science","Blabla","CS","169","SPRING", 2013, "GEORGE")
+		Semester.checkSemester("SPRING",2013).class.should eq(Semester)
 	end
 
 	it "Does not allow a semester already in the DB to get added" do
@@ -48,7 +48,7 @@ describe Semester do
 	it "Does allow a semester in the DB get destroyed" do
 		puts "\nTest9: Semester in the DB can be destroyed"
 		@course = Course.new
-    @course.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
+    @course.createAll("Computer Science","Blabla","CS","169","SPRING", 2013, "GEORGE")
     @semester = Semester.first
 		@semester.destroySemester(@semester.id).should eq(1)
   end

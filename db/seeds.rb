@@ -34,3 +34,6 @@ Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"Vojta"
 Homework.create(:name=>"Homework 1",:type=>"Homework",:link=>"http://google.com",:user_id=>@al.id, :coursem_id=>@cs169_spring.id)
 Homework.create(:name=>"Homework 2",:type=>"Homework",:link=>"http://google.com",:user_id=>@al.id, :coursem_id=>@cs169_spring.id)
 Exam.create(:name=>"Spring 2009 Exam",:type=>"Exam",:link=>"http://google.com",:user_id=>@bob.id, :coursem_id=>@cs169_spring.id)
+
+#Create Some Events
+Event.create(:name=>"Party",:start_at=>DateTime.now,:end_at=>DateTime.now.midnight)

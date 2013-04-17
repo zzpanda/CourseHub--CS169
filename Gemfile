@@ -10,8 +10,8 @@ gem 'httparty', '0.10.2'
 gem 'event-calendar', :require => 'event_calendar'
 
 group :development, :test do
-  gem 'pg', '0.12.2'
-  #gem 'sqlite3'
+  #gem 'pg', '0.12.2'
+  gem 'sqlite3'
   #gem 'rspec-rails', '2.11.0'
   gem 'rspec-rails'
   gem 'guard-rspec', '1.2.1'
@@ -33,7 +33,7 @@ gem 'jquery-rails', '2.0.2'
 group :test do
   gem 'capybara', '1.1.2'
   # for Linux
-  gem 'rb-inotify', '0.9'
+  #gem 'rb-inotify', '0.9'
   # for Mac
   gem 'rb-fsevent', '0.9.1', :require => false
   gem 'growl', '1.0.3'

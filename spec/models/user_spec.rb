@@ -32,7 +32,6 @@ describe User do
   it { should respond_to(:subscribed) }
   it { should respond_to(:editProfile) }
   it { should respond_to(:addResource) }
-  it { should respond_to(:deleteResource) }
   it { should respond_to(:postedResource?) }
   it { should respond_to(:postedResources) }
   it { should respond_to(:addComment) }
@@ -82,15 +81,20 @@ describe User do
     end
   end
 
-  describe "#deleteResource" do
-    it "should return nil when trying to delete a non-existent Resource" do
-      @user1.deleteResource(0).should == nil
-    end
-    it "should delete a resource that user posted" do
-      @user1.deleteResource(@resource1id)
-      Resource.find_by_id(@resource1id).should == nil
+  describe "#addToFavorite" do
+    it "should add the resource to the user's favorite" do
+      @user1.addToFavorite(@resource1id)
+      @user1.favorite.resouces.size.should eq(1)
     end
   end
+
+  describe "#deleteFavorite" do
+    it "should delete the resource to the user's favorite" do
+      @user1.deleteFavorite(@resource1id)
+      @user1.favorite.resouces.size.should eq(0)
+    end
+  end
+
 
 
 end

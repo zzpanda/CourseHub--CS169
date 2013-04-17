@@ -3,7 +3,6 @@ require 'course'
 
 describe Course do
 
-
   before(:each) do
     @course = Course.new
     @course.createAll("computer science","blabla","CS","169","Spring", 2013, "George")

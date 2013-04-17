@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
   #validates_presence_of :password
 
   has_and_belongs_to_many :coursems, :uniq => true
-  has_many :resources
-  has_many :comments
-  has_one :favorite
+  has_many :resources, :inverse_of => :user
+  has_many :comments, :inverse_of => :user
+  has_one :favorite, :dependent => :destroy
 
   #ERROR CODES
   SUCCESS = 1
@@ -75,18 +75,11 @@ class User < ActiveRecord::Base
   def addResource(resourceName, type, resourceLink, user_id, coursem_id)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
-    @resource = Resource.where(:user_id => user_id, :coursem_id => coursem_id).first
+    @resource = Resource.where(:type => type, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id).first
     if @resource.nil?
       return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id)
     else
       return RESOURCE_EXIST
-    end
-  end
-
-  def deleteResource(resourceId)
-    r = resources.find_by_id(resourceId)
-    if r
-      r.destroy
     end
   end
 
@@ -103,6 +96,25 @@ class User < ActiveRecord::Base
     r = resources.where(:user_id => self.id).all
     if r
       r
+    end
+  end
+
+  #User is able to flag a resource if it is not accurate. +
+  #If the treshold is reached, the resource is removed. Threshold = 3 for now.
+  def flagResource(user_id, resource_id)
+    threshold = 3
+    resource = Resource.find(resource_id)
+    users = resource.users_who_flagged
+    #Prevent a user from flagging a non-resource or a valid resource twice
+    if resource and (users.nil? or not users.split(",").include?(user_id.to_s))
+      resource.flags += 1
+      if resource.flags < threshold
+        users += "," + user_id.to_s
+        resource.users_who_flagged = users
+        resource.save
+      else
+        resource.deleteResource(resource.id)
+      end
     end
   end
 
