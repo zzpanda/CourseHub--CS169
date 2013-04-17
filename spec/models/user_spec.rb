@@ -81,20 +81,6 @@ describe User do
     end
   end
 
-  describe "#addToFavorite" do
-    it "should add the resource to the user's favorite" do
-      @user1.addToFavorite(@resource1id)
-      @user1.favorite.resources.size.should eq(1)
-    end
-  end
-
-  describe "#deleteFavorite" do
-    it "should delete the resource to the user's favorite" do
-      @user1.deleteFavorite(@resource1id)
-      @user1.favorite.resources.size.should eq(0)
-    end
-  end
-
   describe "#flagResource" do
      it "Should be able to flag a valid Resource in the DB" do
 	@user1.flagResource(@user1.id, @resource1id)
