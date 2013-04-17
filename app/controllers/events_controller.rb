@@ -10,8 +10,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    sdt = Event.datetime(params[:event][:start_date], params[:event][:start_time])
+    edt = Event.datetime(params[:event][:end_date], params[:event][:end_time])
+    @event.start_at = sdt
+    @event.end_at = edt
     if @event.save
-      flash[:notice] = "Successfully created event"
+      #flash[:notice] = "Successfully created event"
       @events = Event.all
     end
   end

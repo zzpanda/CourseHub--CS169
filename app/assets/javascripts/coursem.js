@@ -115,14 +115,20 @@ $(document).ready(function() {
     subscribeHandler();
 
     $("#event_form").hide();
-
-    $(".ec-day-header").click(function() {
+    $("#event_form_paragraph").click(function() {
         $("#event_form").show();
     });
-
-    $("#event_start_date").datepicker();
+    $("#event_submit").click(function(){
+        //$("#event_form").hide();
+        location.reload();
+    });
+    $("#event_start_date").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
     $("#event_start_time").timepicker();
-    $("#event_end_date").datepicker();
+    $("#event_end_date").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
     $("#event_end_time").timepicker();
 
 
