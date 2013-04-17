@@ -43,6 +43,12 @@ nav {
   border:  2px solid $navy_blue;
   padding:  0px;
   border-radius:  0.3em;
+  #header {
+    background-color: rgb(230,240,255);
+  }
+  #buttons {
+    background-color: $gold;
+  }
   ul {
     margin:  0px;
     margin-left: auto;
@@ -51,7 +57,7 @@ nav {
   }
   li {
     display: table-cell;
-    width:  160px;
+    width:  140px;
     color:  $navy_blue;
     height:  30px;
     vertical-align: middle;
@@ -96,4 +102,5 @@ nav {
 #content {
   border:  2px solid $navy_blue;
   padding:  5px;
+  border-radius:  0.3em;
 }

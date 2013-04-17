@@ -16,7 +16,6 @@ describe "Courses" do
       visit courses_path
       page.should have_content("Sign up")
 
-
     end
   end
 end
