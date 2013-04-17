@@ -29,6 +29,11 @@ $width_resource: 300px;
 #browse_container {
     width: $width;
 	#title_panel {
+      margin-left: auto;
+      margin-right: auto;
+      width:  300px;
+      text-align:  center;
+
       h2, h3 {
         margin-bottom: 5px;
         margin-top: 5px;
@@ -42,8 +47,6 @@ $width_resource: 300px;
         width: 300px;
         border-top-left-radius: 0.4em;
         border-top-right-radius: 0.4em;
-        margin-left: auto;
-        marin-right: auto;
         text-align: center;
         font-size: 24px;
         color: white;

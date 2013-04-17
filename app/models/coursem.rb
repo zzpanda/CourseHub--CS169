@@ -33,7 +33,7 @@ class Coursem < ActiveRecord::Base
       return ERR_BAD_COURSEM
     else
       @coursem[:users] = @coursem.users
-      @coursem[:course] = @coursem.course
+      @coursem[:courses] = @coursem.course
       @coursem[:semester] = @coursem.semester
       @coursem[:resources] = @coursem.resources
       return @coursem

@@ -1,33 +1,50 @@
-<html>
+<!DOCTYPE HTML>
+<html lang="en" xml:lang="en">
 <head>
   <title><%= @page_title or 'Page Title' %></title>
   <%= javascript_include_tag "application" %>
+  <!-- <%= stylesheet_link_tag "application" %>  -->
+
   <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag params[:controller] %>
+
   <%= javascript_include_tag "application", controller_name %>
   <%= csrf_meta_tag %>
   <style type="text/css"><%= yield :stylesheets %></style>
 </head>
 <body>
-    <div id="user_nav">
-      <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>. Not you?
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-      <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-      <% end %>
-    </div>
+     <div id="container">
 
-    <div id="navigation_panel">
+     <nav>
+       <img src = "CourseHub.png" />
         <ul>
-          <li><a href="/">View Profile</a></li>
-          <li><a href="/course">Browse Courses</a></li>
+          <li><a href="">Home</a></li>
+          <li><a href="/">Profile</a></li>
+          <li><a href="/courses">Browse Courses</a></li>
+          <li><a href="">My Courses</a></li>
+          <li>
+            <% if user_signed_in? %>
+                <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+            <% else %>
+                <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+            <% end %>
+
+          </li>
         </ul>
-    </div>
+    </nav>
 
     <% if not @page_heading.nil? %>
         <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %></h2></div>
     <% end %>
 
-    <div id="content"><%= yield %></div>
+    <div id="content">
+      <%= yield %>
+    </div>
+
+    <footer>
+
+    </footer>
+
+    </div>
 </body>
 </html>

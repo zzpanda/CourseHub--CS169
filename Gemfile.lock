@@ -190,7 +190,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara (= 1.1.2)
+  capybara
   childprocess (= 0.3.6)
   coffee-rails (= 3.2.2)
   devise
