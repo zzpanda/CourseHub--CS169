@@ -36,4 +36,10 @@ Homework.create(:name=>"Homework 2",:type=>"Homework",:link=>"http://google.com"
 Exam.create(:name=>"Spring 2009 Exam",:type=>"Exam",:link=>"http://google.com",:user_id=>@bob.id, :coursem_id=>@cs169_spring.id)
 
 #Create Some Events
-Event.create(:name=>"Party",:start_at=>DateTime.now,:end_at=>DateTime.now.midnight, :coursem_id => 1)
+d = Date.current
+t1 = Time.now
+t2 = Time.now.midnight
+dt1 = Event.datetime(d,t1)
+dt2 = Event.datetime(d,t2)
+
+Event.create(:name=>"Party",:start_date=>d,:end_date=>d, :start_time=>t1.strftime("%I:%M:%S %z"), :end_time=>t2.strftime("%I:%M:%S %z"), :start_at=>dt1, :end_at=>dt2, :coursem_id => 1)

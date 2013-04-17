@@ -113,5 +113,18 @@ $(document).ready(function() {
     resourceHandler();
     calendarChangeMonth();
     subscribeHandler();
+
+    $("#event_form").hide();
+
+    $(".ec-day-header").click(function() {
+        $("#event_form").show();
+    });
+
+    $("#event_start_date").datepicker();
+    $("#event_start_time").timepicker();
+    $("#event_end_date").datepicker();
+    $("#event_end_time").timepicker();
+
+
 });
 
