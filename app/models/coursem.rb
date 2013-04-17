@@ -6,7 +6,6 @@ class Coursem < ActiveRecord::Base
   validates :course_id, :presence => true
   validates :semester_id, :presence => true
 
-
   has_many :events, :inverse_of => :coursem
   has_many :resources, :inverse_of => :coursem
   belongs_to :semester
@@ -34,7 +33,7 @@ class Coursem < ActiveRecord::Base
       return ERR_BAD_COURSEM
     else
       @coursem[:users] = @coursem.users
-      @coursem[:course] = @coursem.course
+      @coursem[:courses] = @coursem.course
       @coursem[:semester] = @coursem.semester
       @coursem[:resources] = @coursem.resources
       return @coursem

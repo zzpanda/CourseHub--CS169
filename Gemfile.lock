@@ -82,9 +82,12 @@ GEM
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
+    jquery-timepicker-rails (1.1.0.0)
+      railties (>= 3.1.0)
     jquery-ui-rails (4.0.2)
       jquery-rails
       railties (>= 3.1.0)
+    jquery_datepicker (0.4)
     json (1.7.7)
     libv8 (3.11.8.13)
     listen (0.7.3)
@@ -129,8 +132,6 @@ GEM
       thor (>= 0.14.6, < 2.0)
     rake (10.0.4)
     rb-fsevent (0.9.1)
-    rb-inotify (0.9.0)
-      ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.2)
@@ -188,7 +189,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara (= 1.1.2)
+  capybara
   childprocess (= 0.3.6)
   coffee-rails (= 3.2.2)
   devise
@@ -199,11 +200,12 @@ DEPENDENCIES
   guard-spork (= 1.2.0)
   httparty (= 0.10.2)
   jquery-rails (= 2.0.2)
+  jquery-timepicker-rails
   jquery-ui-rails
+  jquery_datepicker
   pg (= 0.12.2)
   rails (= 3.2.12)
   rb-fsevent (= 0.9.1)
-  rb-inotify (= 0.9)
   rspec-rails
   sass-rails (= 3.2.5)
   spork (= 0.9.2)

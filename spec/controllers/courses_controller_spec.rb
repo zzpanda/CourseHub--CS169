@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CourseController do
+describe CoursesController do
 
   describe "GET index" do
 
@@ -9,7 +9,7 @@ describe CourseController do
       Course.stub(:getCourseInformation).and_return([@course])
     end
 
-    it "assigns @courses" do
+    it "assigns @course" do
       get :index, :dept => @course.department
       assigns(:courses).should eq([@course])
     end
@@ -30,7 +30,7 @@ describe CourseController do
     it "assigns @course" do
       @course1 = mock_model(Course)
       get :show, :id => @course1.id
-      assigns(:course).should eq(@course)
+      assigns(:courses).should eq(@course)
     end
 
     it "renders the show template" do
