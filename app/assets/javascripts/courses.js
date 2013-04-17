@@ -80,13 +80,23 @@
             }
        });
 
+        $("#button_search").on("click", function(event) {
+            var dept = $("#search_department").val();
+            var course = $("#search_course").val();
+            redirect(dept, course);
+        });
+
         $("#search_course").on("keypress", function(event) {
             if (event.which == 13) {
                 var dept = $("#search_department").val();
                 var course = $("#search_course").val();
-                window.location = "courses?dept=" + dept + "&course=" + course;
+                redirect(dept,course);
             }
         });
+    }
+
+    function redirect(department, course) {
+        window.location = "courses?dept=" + department + "&course=" + course;
     }
 
     function getCourses(department) {
