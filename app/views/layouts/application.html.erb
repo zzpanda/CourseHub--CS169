@@ -9,14 +9,23 @@
   <%= stylesheet_link_tag params[:controller] %>
 
   <%= javascript_include_tag "application", controller_name %>
+
+  <%= yield :externals %>
+
   <%= csrf_meta_tag %>
+
   <style type="text/css"><%= yield :stylesheets %></style>
 </head>
 <body>
-     <div id="container">
 
-     <nav>
-       <img src = "CourseHub.png" />
+<div id="container">
+
+  <div id="header">
+    <%=  image_tag "CourseHub.png" %>
+  </div>
+
+  <% if user_signed_in? %>
+   <nav>
         <ul>
           <li><a href="">Home</a></li>
           <li><a href="/">Profile</a></li>
@@ -32,6 +41,8 @@
           </li>
         </ul>
     </nav>
+   <% end %>
+
 
     <% if not @page_heading.nil? %>
         <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %></h2></div>

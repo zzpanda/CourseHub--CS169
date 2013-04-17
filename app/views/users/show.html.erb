@@ -15,11 +15,13 @@
   <button id="edit-button">Click to edit</button>
 
 </div>
+
+<div id="course_container">
+
 <h1>Your current courses:</h1>
-<div id="browse_container">
-  <table>
+  <table id="table_courses">
     <tr class='row_header'>
-      <td class='col_subscribe'></td>
+      <td class='col_goto'></td>
       <td class='col_department'>Dept</td>
       <td class='col_course_number'>#</td>
       <td class='col_name'>Course</td>
@@ -29,22 +31,20 @@
 
     <% @coursems.each do |coursem| %>
         <tr class="row_content" id='<%= coursem.id %>'>
-
-          <td class='col_subscribe'></td>
+          <td class='col_gooto'><a href="coursem/<%= coursem.id %>">Goto</a></td>
           <td class='col_department'>
-
-            <a href='?dept=<%= coursem.course.department %>'>
+            <a href='courses/?dept=<%= coursem.course.department %>'>
               <%= coursem.course.department %>
             </a>
           </td>
           <td class='col_course_number'><%= coursem.course.course_number %></td>
-          <td class='col_name'><a href='course/<%= coursem.course.id %>'><%= coursem.course.name %></a></td>
+          <td class='col_name'><%= coursem.course.name %></td>
           <td class='col_classes'>
             <%= coursem.semester.term + " " + coursem.semester.year.to_s %>
           </td>
           <td class='col_unsubscribe'>
             <% if user_signed_in? %>
-                <button>Unscribe</button>
+                <button>Unsubscribe</button>
             <% else %>
                 <%= link_to "sign in", new_user_session_path %> to unsubscribe
             <% end %>
@@ -53,4 +53,6 @@
         </tr>
     <% end %>
   </table>
+ </div>
+
 </div>
