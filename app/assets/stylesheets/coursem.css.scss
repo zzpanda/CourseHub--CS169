@@ -27,6 +27,24 @@ $width_classes: 240px;
 $width_panel: 750px;
 $width_resource: 300px;
 
+.event-info{
+  font: #000;
+}
+
+#event-overlay {
+  position: absolute;
+  top: 250px;
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  background-color: gold;
+  //filter:alpha(opacity=20);
+  //-moz-opacity:0.2;
+  //-khtml-opacity: 0.2;
+  //opacity: 0.2;
+  z-index: 10000;
+}
+
 #browse_container {
     width: $width;
 	#title_panel {

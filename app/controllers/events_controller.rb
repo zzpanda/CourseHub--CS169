@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
 
-  def load
-    @events = Event.all
-    @events = Event.new
+  def index
   end
 
-  def index
+  def show
+    @event = Event.find(params[:id])
+    render :partial => "event", :locals => {:event => @event}
   end
 
   def create

@@ -107,6 +107,7 @@ function calendarChangeMonth() {
     showCalendar();
 }
 
+
 $(document).ready(function() {
     panelHandler();
     //showOverview();
@@ -115,14 +116,17 @@ $(document).ready(function() {
     calendarChangeMonth();
     subscribeHandler();
 
+
     $("#event_form").hide();
     $("#event_form_paragraph").click(function() {
-        $("#event_form").show();
+        $("#event_form").toggle();
     });
     $("#event_submit").click(function(){
         //$("#event_form").hide();
         location.reload();
     });
+
+    //Datepicker and Timepicker
     $("#event_start_date").datepicker({
         dateFormat: "yy-mm-dd"
     });
@@ -132,6 +136,39 @@ $(document).ready(function() {
     });
     $("#event_end_time").timepicker();
 
+
+    //////////////////
+
+    //Used to fade out event info box
+    var mouse_is_inside_event_info = false;
+    $("#event-overlay").hover(function(){
+        mouse_is_inside_event_info=true;
+    }, function(){
+        mouse_is_inside_event_info=false;
+    });
+
+    //Fade out event info box if mouse is outside box
+    $("body").click(function(){
+        if(!mouse_is_inside_event_info) {
+            $("#event-overlay").fadeOut("slow").remove();
+        }
+    });
+
+    //Show event information on click
+    $("a.event-link").click(function(){
+        if ("#event-overlay") {;
+            $("#event-overlay").fadeOut("slow").remove();
+        }
+        url = $(this).attr('href');
+        $.get(url, function(data){
+            //$("body").append(data);
+            var overlay = '<div id="event-overlay"></div>';
+            $('body').append(overlay);
+            $('#event-overlay').append(data);
+
+        });
+        return false;
+    });
 
 });
 
