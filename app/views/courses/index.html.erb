@@ -52,4 +52,8 @@
 		</tr>
 	<% end %>
 	</table>
+
+	<% if @courses.length == 0 %>
+		<%= render "coursem/new" %>
+	<% end %>
 </div>
