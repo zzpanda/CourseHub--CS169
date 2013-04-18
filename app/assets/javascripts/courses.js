@@ -8,7 +8,12 @@
     var Page_Changer;
 
     Page_Changer = {
-        initialize_page: function() {},
+        page_number: 0,
+        total_pages: -1,
+
+        initialize_page: function() {
+            this.populate_courses();
+        },
 
         // Event handler for changing semester
         course_semester_listener: function() {
@@ -52,8 +57,52 @@
             return $('#subscribe_button').click(function() {
                 return alert("hi");
             });
+        },
+
+        /* Shows the first 10 courses, and properly
+            shows the next and previous button, */
+        populate_courses: function() {
+            $(".table_course").hide();
+            $("#table_0").show();
+            $("#button_prev").hide();
+            Page_Changer.total_pages = 4;
+
+            $("#button_next").on("click", function(event) {
+                if (this.page_number == this.total_pages - 1) {
+                    alert("already on last page");
+                } else {
+                    // alert(Page_Changer.page_number);
+                    show_pages(Page_Changer.page_number,Page_Changer.page_number+1);
+                    Page_Changer.page_number += 1;
+                }
+            });
+
+            $("#button_prev").on("click", function(event) {
+                if (this.page_number == 0) {
+                    alert("already on first page");
+                } else {
+                    show_pages(Page_Changer.page_number,Page_Changer.page_number-1);
+                    Page_Changer.page_number -= 1;
+                }
+            });
         }
+
     };
+
+    function show_pages(i, j) {
+        $("#table_" + i).hide();
+        $("#table_" + j).show();
+        if (j == this.total_pages - 1) {
+            $("#button_next").hide();
+        }  else {
+            $("#button_next").show();
+        }
+        if (j == 0) {
+            $("#button_prev").hide();
+        }  else {
+            $("#button_prev").show();
+        }
+    }
 
     function search_autocomplete() {
         /* Autocomplete department search with a list of all departments */
@@ -90,6 +139,7 @@
             if (event.which == 13) {
                 var dept = $("#search_department").val();
                 var course = $("#search_course").val();
+
                 redirect(dept,course);
             }
         });
