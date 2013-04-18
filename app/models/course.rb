@@ -57,7 +57,10 @@ class Course < ActiveRecord::Base
     name.downcase
     name.capitalize
     department.upcase
-    course = Course.where(:department => department, :name => name).first
+    course = Course.where(:department => department, :course_number => course_number).first
+    if course.nil?
+      course = Course.where(:department => department, :name => name).first
+    end
     if not course.nil?
       return course
     else

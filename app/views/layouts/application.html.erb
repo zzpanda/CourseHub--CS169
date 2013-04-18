@@ -10,13 +10,17 @@
 
   <%= javascript_include_tag "application", controller_name %>
   <%= csrf_meta_tag %>
+
   <style type="text/css"><%= yield :stylesheets %></style>
 </head>
 <body>
      <div id="container">
 
      <nav>
-       <img src = "CourseHub.png" />
+       <div id="header">
+         <%=  image_tag "CourseHub.png" %>
+       </div>
+       <div id="buttons">
         <ul>
           <li><a href="">Home</a></li>
           <li><a href="/">Profile</a></li>
@@ -31,6 +35,7 @@
 
           </li>
         </ul>
+       </div>
     </nav>
 
     <% if not @page_heading.nil? %>

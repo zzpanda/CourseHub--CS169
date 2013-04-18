@@ -1,8 +1,17 @@
 class CoursemController < ApplicationController
 
-    #different situations correspond to different errcodes
+    # Different situations correspond to different errcodes
+    SUCCESS = 1
     ERR_BAD_COURSEM = -1
-    #SUCCESS = 1
+
+    def create
+       @new = Coursem.createCoursemByUser(params[:name], params[:coursem_info], params[:department], params[:course_number], params[:term], params[:year], params[:professor])
+       respond_to do |format|
+         format.html
+         format.json { render json: @new }
+       end
+    end
+
 
     # A particular semester class
     # GET /coursem/id
