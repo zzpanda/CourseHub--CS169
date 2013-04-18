@@ -6,7 +6,7 @@ module CalendarHelper
   # custom options for this calendar
   def event_calendar_opts
     {
-      :width => 1000,
+      :width => 750,
       :year => @year,
       :month => @month,
       :event_strips => @event_strips,
@@ -19,7 +19,7 @@ module CalendarHelper
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|
       event = args[:event]
-      %(<a href="/events/#{event.id}" title="#{h(event.name)}">#{h(event.name)}</a>)
+      %(<a href="/events/#{event.id}" title="#{h(event.name)}" class="event-link">#{h(event.name)}</a>)
     end
   end
 end

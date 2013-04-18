@@ -1,34 +1,63 @@
 class EventsController < ApplicationController
 
-  def load
-    @events = Event.all
-    @events = Event.new
+  def index
   end
 
-  def index
+  def show
+    @event = Event.find(params[:id])
+    render :partial => "event", :locals => {:event => @event}
+  end
+
+  def new
+    @event = Event.new
+    @coursem = Coursem.find(params[:coursem])
+    render :partial => 'form', :locals => {:event => @event}
   end
 
   def create
     @event = Event.new(params[:event])
-    sdt = Event.datetime(params[:event][:start_date], params[:event][:start_time])
-    edt = Event.datetime(params[:event][:end_date], params[:event][:end_time])
+    sdt = Event.datetimefromstrings(params[:event][:start_date], params[:event][:start_time])
+    edt = Event.datetimefromstrings(params[:event][:end_date], params[:event][:end_time])
     @event.start_at = sdt
     @event.end_at = edt
-    if @event.save
-      #flash[:notice] = "Successfully created event"
-      @events = Event.all
+    #if sdt == nil
+    #  @event.start_at = edt - 1.minute
+    #end
+    respond_to do |format|
+      if @event.save
+        #flash[:notice] = "Successfully created event"
+        format.js {}
+      else
+        format.js {render :partial => 'error' }
+      end
     end
   end
 
   def edit
     @event = Event.find(params[:id])
+    @coursem = Coursem.find(@event.coursem_id)
+    render :partial => 'form', :locals => {:event => @event}
   end
 
   def update
     @event = Event.find(params[:id])
-    if @event.update_attributes(params[:event])
-      flash[:notice] = "Succesfully updated event"
-      @events = Event.all
+    sdt = Event.datetimefromstrings(params[:event][:start_date], params[:event][:start_time])
+    edt = Event.datetimefromstrings(params[:event][:end_date], params[:event][:end_time])
+    @event.start_at = sdt
+    @event.end_at = edt
+    @event.name = params[:event][:name]
+    @event.start_date =  params[:event][:start_date]
+    @event.start_time =  params[:event][:start_time]
+    @event.end_date =  params[:event][:end_date]
+    @event.end_time =  params[:event][:end_time]
+    @event.description =  params[:event][:description]
+
+    respond_to do |format|
+      if @event.save
+        format.js
+      else
+        format.js { render :partial => 'error' }
+      end
     end
   end
 

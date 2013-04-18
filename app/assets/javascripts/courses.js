@@ -9,16 +9,20 @@
 
     Page_Changer = {
         initialize_page: function() {},
+
+        // Event handler for changing semester
         course_semester_listener: function() {
-            return $(".col_classes").each(function() {
-                return $(this).change(function() {
+            $(".col_classes").each(function() {
+                $(this).change(function() {
                     var selectedValue;
                     selectedValue = $(this).find(":selected").val();
                     console.log("the value you selected: " + selectedValue);
-                    return window.location = "coursem/" + selectedValue;
+                    window.location = "coursem/" + selectedValue;
                 });
             });
         },
+
+        // Event handler for subscribing to a particular semester
         subscribe_button_listeners: function() {
             $(".row_content").each(function() {
                 var button, row;
@@ -70,17 +74,51 @@
         });
 
         /* Autocomplete the department when tab is pressed */
-        $("#department_course").on("keypress", function(event) {
-            if (event.which == 9) {
-
+        $("#search_department").on("keydown", function(event) {
+            if (event.which == 13 || event.which == 9) {
+                getCourses($(this).val());
             }
-        });
+       });
 
+        $("#button_search").on("click", function(event) {
+            var dept = $("#search_department").val();
+            var course = $("#search_course").val();
+            redirect(dept, course);
+        });
 
         $("#search_course").on("keypress", function(event) {
             if (event.which == 13) {
+                var dept = $("#search_department").val();
+                var course = $("#search_course").val();
+                redirect(dept,course);
             }
         });
+    }
+
+    function redirect(department, course) {
+        window.location = "courses?dept=" + department + "&course=" + course;
+    }
+
+    function getCourses(department) {
+        $.ajax({
+            url: "/courses.json?dept="+department,
+            type: "GET",
+            dataType: "json",
+            success: function(json) {
+                var numbers = [];
+                for (var i = 0; i < json.length; i++) {
+                    numbers.push(json[i]["course_number"]);
+                }
+                $("#search_course").autocomplete({
+                    source: numbers
+                });
+            },
+            error: function( xhr, status) {
+                alert("there was a problem");
+            },
+            async: true
+        });
+        return;
     }
 
     $(document).ready(function() {

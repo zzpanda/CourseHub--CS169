@@ -25,14 +25,15 @@ class Course < ActiveRecord::Base
   end
 
   # Grabs information to be used for displaying "Browse Courses Page"
-  def self.getCourseInformation(department)
-    if department == nil
-      courses = Course.all
-    else
-      courses = Course.where(:department => department)
+  def self.getCourseInformation(department, course=nil)
+    if department == nil and course == nil
+      return Course.all
+    elsif department != nil and course == nil
+      return Course.where(:department => department)
+    elsif department != nil and course != nil
+      return Course.where(:department => department, :course_number => course)
     end
-
-    return courses
+    return nil
   end
  
   #ERROR CODES (written by Albert, make small change)

@@ -1,3 +1,7 @@
+<% content_for :externals do %>
+    <%= stylesheet_link_tag "event_calendar" %>
+<% end %>
+
 <div id="browse_container">
     <div id="title_panel">
     	<div id="header_title">
@@ -56,22 +60,37 @@
              </table>
         </div>
 
-
+     <div class="resource_type">
+       <div id="homework_announcements" class = "resource_header">
+         <span class="expand">+</span>
+         <h2>Homework</h2>
+       </div>
+       <table id="Homework" class="resources">
+         <% @coursem.resources.each do |resource| %>
+             <% if resource.type == "Homework" %>
+                 <tr>
+                   <td class="col_flag"></td>
+                   <td class="col_downvote"></td>
+                   <td class="col_name"></td>
+                   <td>
+                     <%=  resource.name %>
+                   </td>
+                 </tr>
+             <% end %>
+         <% end %>
+       </table>
+     </div>
 
 </div>
 
 
     <div id="panel_calendar" class="panels">
-        Calendar goes here
-        <%= raw(event_calendar) %>
+      <%= raw(event_calendar) %>
 
-      <p id="event_form_paragraph">
-        Click this text to create an event (This is temporary)
-      </p>
-      <div id="event_form">
-        <%= render :partial => 'event_form' %>
-      </div>
 
+      <%= link_to "Add Event", {:controller => "events", :action => "new", :coursem => @coursem.id }, :id => "new_event" %>
+      <div id="new_event_div"></div>
+      <div id="edit_event_div"></div>
 
     </div>
 
