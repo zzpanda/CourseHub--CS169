@@ -72,7 +72,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @updated_at = @event.updated_at
     @recent = false;
-    if @updated_at - 1.minutes.ago > 0
+    if @updated_at - 1..ago > 0
       puts "HELLLOOOOOOOOO"
       @recent = true;
     end

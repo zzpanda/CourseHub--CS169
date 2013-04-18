@@ -99,6 +99,29 @@ function resourceHandler() {
     return false;
 }
 
+/*********RESOURCE RELATED FUNCTIONS *******************/
+
+function shownewresourceform() {
+    $("a#new_resource").click(function() {
+        if (!($("#new_resource_div").is(":empty"))) {
+            $("#new_resource_div").toggle();
+        } else {
+            url = $(this).attr('href');
+            $.get(url, function(data){
+                $("#new_resource_div").append(data);
+                //reloadonsubmit();
+                $("#resource_submit").click(function() {
+                    window.location.reload(true);
+                });
+            });
+        }
+        return false;
+    });
+};
+
+
+/***********CALENDAR RELATED FUNCTIONS ****************/
+
 function calendarChangeMonth() {
     $("a .ec-month-nav").click(function() {
         //$("#panel_calendar").show();
@@ -196,26 +219,6 @@ function reloadonsubmit() {
     });
 };
 
-/*
-function colorrecentevents() {
-    $("a.event-link").each(function() {
-        eventlink = $(this).attr('href');
-        eventlink = eventlink.split('/');
-        eventid = eventlink[eventlink.length-1];
-        requesturl = "/events/recentevent/" + eventid;
-        var recent = false;
-        $.get(requesturl, function(data){
-            recent = eval(data);
-            alert(recent);
-        });
-        alert(recent);
-        if (recent) {
-            $(this).css("background-color", "red");
-        };
-    });
-};
-*/
-
 function colorrecentevents() {
     $("a.event-link").each(function() {
         eventlink = $(this).attr('href');
@@ -245,6 +248,8 @@ $(document).ready(function() {
     resourceHandler();
     calendarChangeMonth();
     subscribeHandler();
+
+    shownewresourceform();
 
     eventinfo();
     closeeventbox();

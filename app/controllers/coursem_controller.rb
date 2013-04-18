@@ -18,6 +18,7 @@ class CoursemController < ApplicationController
     # GET /coursem/id.json
     def show
       @coursem = Coursem.getCoursemInformation(params[:id])
+      @user = current_user
 
       if @coursem == ERR_BAD_COURSEM
         respond_to do |format|
