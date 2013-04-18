@@ -31,6 +31,21 @@ $width_resource: 300px;
   font: #000;
 }
 
+#edit_event_box {
+  padding: 10px;
+  position: absolute;
+  top: 500px;
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  background-color: gold;
+  filter:alpha(opacity=80);
+  -moz-opacity:0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+  z-index: 10000;
+}
+
 #event-overlay {
   padding: 10px;
   position: absolute;
