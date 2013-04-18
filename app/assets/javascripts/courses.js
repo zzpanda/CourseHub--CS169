@@ -22,7 +22,7 @@
                     var selectedValue;
                     selectedValue = $(this).find(":selected").val();
                     console.log("the value you selected: " + selectedValue);
-                    window.location = "coursem/" + selectedValue;
+                    //window.location = "coursem/" + selectedValue;
                 });
             });
         },

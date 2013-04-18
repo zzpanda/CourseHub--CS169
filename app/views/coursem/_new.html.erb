@@ -1,8 +1,7 @@
 <div>
-  
-  	<h3> No such Course Existed! Create a New One! </h3>
-  	
-  	<form action="." method="post">
+      	<h3> No such Course Existed! Create a New One! </h3>
+
+  	<form action="coursem/create" method="post">
 	  	<div id="create_course">
 			<table id="create">
 				<tr>
@@ -19,7 +18,10 @@
 	    				</b>
 	    				<select id="department" name="department">
 	    					<option value="None selected">Please select below</option>
-	    				</select>
+                          <% @departments.each do |department| %>
+                              <option value='<%= department %>'><%= department %></option>
+                          <% end %>
+                        </select>
 	  				</td>
 	  			</tr>
 				<tr>	

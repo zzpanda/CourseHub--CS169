@@ -14,7 +14,7 @@ Coursehub::Application.routes.draw do
   match '/users/unsubscribe' => 'users#unsubscribe'
 
   match '/courses/department' => 'courses#getDepartment'
-  #match '/coursem/create' => 'coursem#create'
+  match '/coursem/create' => 'coursem#create'
 
   authenticated :user do
     root :to => "users#show"
