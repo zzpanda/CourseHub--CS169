@@ -194,7 +194,49 @@ function reloadonsubmit() {
     $(".event_submit").click(function() {
         window.location.reload(true);
     });
-}
+};
+
+/*
+function colorrecentevents() {
+    $("a.event-link").each(function() {
+        eventlink = $(this).attr('href');
+        eventlink = eventlink.split('/');
+        eventid = eventlink[eventlink.length-1];
+        requesturl = "/events/recentevent/" + eventid;
+        var recent = false;
+        $.get(requesturl, function(data){
+            recent = eval(data);
+            alert(recent);
+        });
+        alert(recent);
+        if (recent) {
+            $(this).css("background-color", "red");
+        };
+    });
+};
+*/
+
+function colorrecentevents() {
+    $("a.event-link").each(function() {
+        eventlink = $(this).attr('href');
+        eventlink = eventlink.split('/');
+        eventid = eventlink[eventlink.length-1];
+        requesturl = "/events/recentevent/" + eventid;
+        var recent = false;
+        $.ajax({
+            type: "GET",
+            url: requesturl,
+            success: function(data) {
+                recent = eval(data);
+                },
+            async: false
+        });
+        if (recent) {
+            $(this).css("background-color", "red");
+        };
+    });
+};
+
 
 $(document).ready(function() {
     panelHandler();
@@ -207,5 +249,6 @@ $(document).ready(function() {
     eventinfo();
     closeeventbox();
     showneweventform();
-});
+    colorrecentevents();
+})
 
