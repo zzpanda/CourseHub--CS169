@@ -138,15 +138,12 @@ $(document).ready(function() {
             $.get(url, function(data){
                 $("#panel_calendar").append(data);
                 datetimepickers();
+                $("#event_submit").click(function() {
+                    window.location.reload(true);
+                });
             });
         }
         return false;
-    });
-
-    //Refresh page after submitting form
-    $("#event_submit").click(function() {
-        alert('hi');
-        //window.location.reload(true);
     });
 
     //Used to fade out event info box
