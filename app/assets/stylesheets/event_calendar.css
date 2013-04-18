@@ -152,6 +152,7 @@ a.ec-day-link {
     display: block;
     width: 100%;
     height: 100%;
+    /* background-color: black; */
 }
 
 .ec-no-event-cell {
@@ -171,7 +172,7 @@ a.ec-day-link {
 
 .ec-event :hover {
     /* doesn't look as good as js highlighting */
-    /* background-color: #2eac6a; */
+    background-color: #2eac6a;
 }
 
 .ec-event-bg a {

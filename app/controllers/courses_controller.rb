@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
   def index
       # Check for filters
       @courses = Course.getCourseInformation(params[:dept],params[:course])
+      @departments = Course.getDepartments
       @page_heading = "Browse Courses"
       @page_title = "Browse Courses"
       respond_to do |format|
@@ -15,6 +16,8 @@ class CoursesController < ApplicationController
   end
 
   # Get all the possible department in the database
+  # Return as a JSON object in the form
+  # { 'department' => [ 'EE', 'CS', 'Math' ] }
   def getDepartment
     dept = []
     @course = Course.all

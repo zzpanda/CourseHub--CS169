@@ -99,6 +99,29 @@ function resourceHandler() {
     return false;
 }
 
+/*********RESOURCE RELATED FUNCTIONS *******************/
+
+function shownewresourceform() {
+    $("a#new_resource").click(function() {
+        if (!($("#new_resource_div").is(":empty"))) {
+            $("#new_resource_div").toggle();
+        } else {
+            url = $(this).attr('href');
+            $.get(url, function(data){
+                $("#new_resource_div").append(data);
+                //reloadonsubmit();
+                $("#resource_submit").click(function() {
+                    window.location.reload(true);
+                });
+            });
+        }
+        return false;
+    });
+};
+
+
+/***********CALENDAR RELATED FUNCTIONS ****************/
+
 function calendarChangeMonth() {
     $("a .ec-month-nav").click(function() {
         //$("#panel_calendar").show();
@@ -106,6 +129,117 @@ function calendarChangeMonth() {
 
     showCalendar();
 }
+
+//Datepicker and Timepicker
+function datetimepickers() {
+    $("#event_start_date").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+    $("#event_start_time").timepicker();
+    $("#event_end_date").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+    $("#event_end_time").timepicker();
+};
+
+function showneweventform() {
+    //Show new event form
+    $("a#new_event").click(function() {
+        if (!($("#new_event_div").is(":empty"))) {
+            $("#new_event_div").toggle();
+        } else {
+            url = $(this).attr('href');
+            $.get(url, function(data){
+                $("#new_event_div").append(data);
+                datetimepickers();
+                reloadonsubmit();
+            });
+        }
+        return false;
+    });
+};
+
+function showediteventform() {
+    $("a#edit_event").click(function(){
+        if (!($("#edit_event_div").is(":empty"))) {
+            $("#edit_event_div").toggle();
+        } else {
+            url = $(this).attr('href');
+            $.get(url, function(data){
+                $("#edit_event_div").append(data);
+                datetimepickers();
+                reloadonsubmit();
+            });
+        }
+        return false;
+    });
+};
+
+//Show event information on click
+function eventinfo() {
+    $("a.event-link").click(function(){
+        if ("#event-overlay") {
+            $("#event-overlay").fadeOut("slow").remove();
+        };
+        url = $(this).attr('href');
+        $.get(url, function(data){
+            //$("body").append(data);
+            var overlay = '<div id="event-overlay"></div>';
+            $('body').append(overlay);
+            $('#event-overlay').append(data);
+            showediteventform();
+        });
+        return false;
+    });
+};
+
+//close event box if you click outside of the box
+//also removes event form for that event if it was open
+function closeeventbox() {
+    //Used to fade out event info box
+    var mouse_is_inside_event_info = false;
+    $("#event-overlay").hover(function(){
+        mouse_is_inside_event_info=true;
+    }, function(){
+        mouse_is_inside_event_info=false;
+    });
+
+    //Fade out event info box if mouse is outside box
+    $("body").click(function(){
+        if(!mouse_is_inside_event_info) {
+            $("#event-overlay").fadeOut("slow").remove();
+            //$("#edit_event_div").empty();
+        }
+    });
+};
+
+function reloadonsubmit() {
+    $(".event_submit").click(function() {
+        window.location.reload(true);
+    });
+};
+
+function colorrecentevents() {
+    $("a.event-link").each(function() {
+        eventlink = $(this).attr('href');
+        eventlink = eventlink.split('/');
+        eventid = eventlink[eventlink.length-1];
+        requesturl = "/events/recentevent/" + eventid;
+        var recent = false;
+        $.ajax({
+            type: "GET",
+            url: requesturl,
+            success: function(data) {
+                recent = eval(data);
+                },
+            async: false
+        });
+        if (recent) {
+            $(this).css("background-color", "red");
+        };
+    });
+};
+
 
 $(document).ready(function() {
     panelHandler();
@@ -115,23 +249,11 @@ $(document).ready(function() {
     calendarChangeMonth();
     subscribeHandler();
 
-    $("#event_form").hide();
-    $("#event_form_paragraph").click(function() {
-        $("#event_form").show();
-    });
-    $("#event_submit").click(function(){
-        //$("#event_form").hide();
-        location.reload();
-    });
-    $("#event_start_date").datepicker({
-        dateFormat: "yy-mm-dd"
-    });
-    $("#event_start_time").timepicker();
-    $("#event_end_date").datepicker({
-        dateFormat: "yy-mm-dd"
-    });
-    $("#event_end_time").timepicker();
+    shownewresourceform();
 
-
-});
+    eventinfo();
+    closeeventbox();
+    showneweventform();
+    colorrecentevents();
+})
 

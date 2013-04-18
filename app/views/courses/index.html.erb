@@ -1,28 +1,36 @@
 <div id="search_container">
-	Search
 	<table id="search">
 		<tr>
 			<td><input type="text" id="search_department" class="search_bar" placeholder="Department" /></td>
 			<td><input type="text" id="search_course" class="search_bar" placeholder="Course" /></td>
-		</tr>
+		    <td><input type="button" id="button_search" value="Search" /></td>
+            <td><a href="courses">View All</a></td>
+        </tr>
 	</table>
 </div>
 
 <div id="browse_container">
 	<table>
 		<tr class='row_header'>
-			<td class='col_subscribe'></td>
+			<td class='col_goto'></td>
 			<td class='col_department'>Dept</td>
 			<td class='col_course_number'>#</td>
 			<td class='col_name'>Course</td>
 			<td class='col_classes'></td>
-                <td class='col_subscribe'></td>
+            <td class='col_subscribe'></td>
 		</tr>
+    </table>
 
-	<% @courses.each do |course| %>
+    <div id="courses">
+	<% @courses.each_with_index do |course, index| %>
+
+        <% if index % 10 == 0 %>
+            <table class='table_course' id="table_<%= index / 10%>">
+        <% end %>
+
 		<tr class="row_content" id='<%= course.id %>'>
 
-			<td class='col_subscribe'></td>
+			<td class='col_goto'><%= index %></td>
 			<td class='col_department'>  
 				
 				<a href='?dept=<%= course.department %>'>
@@ -33,8 +41,7 @@
             <td class='col_name'><a href='courses/<%= course.id %>'><%= course.name %></a></td>
 			<td class='col_classes'> 
 					<select>
-						<option value="NULL">--Select Semester--</option>
-						<% course.coursems.each do |course_semester| %>
+						    <% course.coursems.each do |course_semester| %>
 							<option value='<%= course_semester.id %>'>
 								<%= course_semester.semester.term + " " + course_semester.semester.year.to_s %>
 							</option>
@@ -50,6 +57,31 @@
             </td>
 
 		</tr>
+
+          <% if index % 10 == 9 %>
+              </table>
+          <% end %>
 	<% end %>
-	</table>
+
+      <% if @courses.length % 10 != 0 %>
+            </table>
+      <% end %>
+
+    </div>
+      <div id="courses_navigation">
+            <div id="button_prev" class="button_course">
+              Prev
+            </div>
+            <div id="button_next" class="button_course">
+              Next
+            </div>
+      </div>
+
+      <div id="new_course">
+
+          <% if @courses.length == 0 %>
+		<%= render "coursem/new" %>
+          <% end %>
+    </div>
+
 </div>

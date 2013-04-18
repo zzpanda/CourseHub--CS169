@@ -24,6 +24,18 @@ class Course < ActiveRecord::Base
     end
   end
 
+  def self.getDepartments()
+    dept = []
+    @course = Course.all
+    @course.each do |course|
+      if not dept.include?(course.department)
+        dept << course.department
+      end
+    end
+    dept << "OTHERS"
+    return dept
+  end
+
   # Grabs information to be used for displaying "Browse Courses Page"
   def self.getCourseInformation(department, course=nil)
     if department == nil and course == nil
@@ -58,7 +70,10 @@ class Course < ActiveRecord::Base
     name.downcase
     name.capitalize
     department.upcase
-    course = Course.where(:department => department, :name => name).first
+    course = Course.where(:department => department, :course_number => course_number).first
+    if course.nil?
+      course = Course.where(:department => department, :name => name).first
+    end
     if not course.nil?
       return course
     else

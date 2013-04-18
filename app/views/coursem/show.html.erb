@@ -39,26 +39,30 @@
 
 
    <div id = "panel_resources" class="panels">
-        <div class="resource_type">
-            <div id="header_announcements" class = "resource_header">
-              <span class="expand">+</span>
-              <h2>Announcements</h2>
-            </div>
-              <table id="Announcement" class="resources">
-              <% @coursem.resources.each do |resource| %>
-                    <% if resource.type == "Anouncement" %>
-                          <tr>
-                            <td class="col_upvote"></td>
-                            <td class="col_downvote"></td>
-                            <td class="col_name"></td>
-                            <td>
-                              <%=  resource.name %>
-                            </td>
-                          </tr>
-                    <% end %>
-              <% end %>
-             </table>
+
+     <%= link_to "Add Resource", {:controller => "resources", :action => "new", :user => @user.id, :coursem => @coursem.id }, :id => "new_resource" %>
+     <div id="new_resource_div"></div>
+
+     <div class="resource_type">
+        <div id="header_announcements" class = "resource_header">
+          <span class="expand">+</span>
+          <h2>Announcements</h2>
         </div>
+          <table id="Announcement" class="resources">
+          <% @coursem.resources.each do |resource| %>
+                <% if resource.type == "Announcement" %>
+                      <tr>
+                        <td class="col_upvote"></td>
+                        <td class="col_downvote"></td>
+                        <td class="col_name"></td>
+                        <td>
+                          <%=  resource.name %>
+                        </td>
+                      </tr>
+                <% end %>
+          <% end %>
+         </table>
+     </div>
 
      <div class="resource_type">
        <div id="homework_announcements" class = "resource_header">
@@ -83,18 +87,13 @@
 
 </div>
 
-
     <div id="panel_calendar" class="panels">
-        <%= raw(event_calendar) %>
+      <div id="edit_event_div"></div>
 
-      <p id="event_form_paragraph">
-        Click this text to create an event (This is temporary)
-      </p>
-      <div id="event_form">
-        <%= render :partial => 'event_form' %>
-      </div>
+      <%= raw(event_calendar) %>
 
-
+      <%= link_to "Add Event", {:controller => "events", :action => "new", :coursem => @coursem.id }, :id => "new_event" %>
+      <div id="new_event_div"></div>
     </div>
 
 </div>

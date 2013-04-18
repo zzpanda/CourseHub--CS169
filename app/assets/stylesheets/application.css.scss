@@ -23,7 +23,6 @@ $gold: rgb(240,220,80);
 $deep_gold: rgb(230,210,70);
 $margin: 30px;
 
-$width: 750px;
 $width_subscribe: 10px;
 $width_department: 120px;
 $width_course_number: 80px;
@@ -110,4 +109,7 @@ nav {
   border:  2px solid $navy_blue;
   padding:  5px;
   border-radius:  0.3em;
+  width:  $container_width;
+  margin-left: auto;
+  margin-right: auto;
 }
