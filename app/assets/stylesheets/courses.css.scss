@@ -15,13 +15,15 @@ $width_department: 100px;
 $width_course_number: 70px;
 $width_name: 350px;
 $width_classes: 200px;
-$width_subscribe: 10px;
+$width_subscribe: 100px;
 
 $width_select: 120px;
 
 #browse_container {
   .table_course {
-
+       tr:hover {
+          background-color: $blue_lightish;
+       }
   }
   text-align:  center;
 	table {
