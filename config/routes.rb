@@ -7,6 +7,8 @@ Coursehub::Application.routes.draw do
   resources :resources
   resources :events
 
+  match '/events/recentevent/:id' => 'events#recentevent'
+
   match 'profile' => 'users#show'
 
   match 'edit_profile' => 'users#edit'

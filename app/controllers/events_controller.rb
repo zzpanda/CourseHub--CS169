@@ -68,4 +68,19 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def recentevent
+    @event = Event.find(params[:id])
+    @updated_at = @event.updated_at
+    @recent = false;
+    if @updated_at - 1..ago > 0
+      puts "HELLLOOOOOOOOO"
+      @recent = true;
+    end
+
+    respond_to do |format|
+      format.json { render :json => @recent }
+    end
+
+  end
+
 end

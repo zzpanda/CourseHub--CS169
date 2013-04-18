@@ -10,7 +10,25 @@ class ResourcesController < ApplicationController
   end
 
   def show
-      @resource = Resource.find(params[:id])
+    @resource = Resource.find(params[:id])
+  end
+
+  def new
+    @resource = Resource.new
+    @coursem = Coursem.find(params[:coursem])
+    @user = User.find(params[:user])
+    render :partial => 'form', :locals => {:resource => @resource }
+  end
+
+  def create
+    @resource = Resource.new(params[:resource])
+    respond_to do |format|
+      if @resource.save
+        format.js {}
+      else
+        format.js {render :partial => 'error' }
+      end
     end
+  end
 
 end
