@@ -1,74 +1,83 @@
 <div>
+  
+  	<h3> No such Course Existed! Create a New One! </h3>
+  	
+  	<form action="." method="post">
+	  	<div id="create_course">
+			<table id="create">
+				<tr>
+					<td>
+						<b>
+						Name:
+						</b>
+						<input type="text" name="name" id="name" size="35" value="">
+				</tr>
+				<tr>
+					<td>
+						<b>
+	      					Department:
+	    				</b>
+	    				<select id="department" name="department">
+	    					<option value="None selected">Please select below</option>
+	    				</select>
+	  				</td>
+	  			</tr>
+				<tr>	
+					<td>
+						<b>
+	      					Course Number:
+	    				</b>
+	  					<input type="text" id="course_number" name="course_number" size="35" value="">
+	  				</td>
+				</tr>
+				<tr>
+					<td>
+						<b>
+	      					Semester:
+	    				</b>
+	    				<select id="semester" name="semester">
+	    					<option value="None selected">Please select below</option>
+	    					<option value="spring">Spring</option>
+	    					<option value="summer">Summer</option>
+	    					<option value="fall">Fall</option>
+	    					<option value="winter">Winter</option>
+	    				</select>
+	  				</td>
+				</tr>
+				<tr>	
+					<td>
+						<b>
+	      					Year:
+	    				</b>
+	  					<input type="number" id="year" name="year" size="35" value="">
+				</tr>
+				<tr>	
+					<td>
+						<b>
+	      					Professor:
+	    				</b>
+	  					<input type="text" id="professor" name="professor" size="35" value=""></td>
+				</tr>
+				<tr>	
+					<td>
+						<b>
+	      					Unit:
+	    				</b>
+	  					<input type="text" id="unit" name="unit" size="35" value=""></td>
+				</tr>
+				<tr>	
+					<td>
+						<b>
+	      					Course Information:
+	    				</b>
+	  					<input type="text" id="coursem_info" name="coursem_info" size="35" value=""></td>
+				</tr>
 
-  <h1> Create a New Course: </h1>
+			</table>
 
-  <form method="post" target="_blank" onsubmit="return window.confirm(&quot;You are submitting information to an external page.\nAre you sure?&quot;);">
-    <div>
-      <table>
-        <tr>
-          <td>Name:</td>
-          <td><input type="text" size="35" value=""></td>
-        </tr>
-
-        <tr>
-          <td>Department:</td>
-          <td>
-            <select>
-              <option value="None selected">Please select below</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Course Number:</td>
-          <td><input type="number" size="35" value=""></td>
-        </tr>
-
-        <tr>
-          <td>Semester:</td>
-          <td><input type="text" size="35" value=""></td>
-        </tr>
-
-        <tr>
-          <td>Year:</td>
-          <td>
-            <select>
-              <option value="None selected">Please select below</option>
-              <option value="Spring">Spring</option>
-              <option value="Summer">Summer</option>
-              <option value="None selected">Fall</option>
-              <option value="None selected">Winter</option>
-            </select>
-          </td>
-        <tr>
-          <td>
-            <b>
-              Professor:
-            </b>
-            <input type="text" size="35" value=""></td>
-        </tr>
-        <tr>
-          <td>
-            <b>
-              Unit:
-            </b>
-            <input type="text" size="35" value=""></td>
-        </tr>
-        <tr>
-          <td>
-            <b>
-              Course Information:
-            </b>
-            <input type="text" size="35" value=""></td>
-        </tr>
-
-      </table>
-
-      <input type="submit" value="Create">
-      <input type="reset" value="Reset">
-    </div>
-  </form>
-
+			<input type="submit" value="Create"></input>
+			<input type="reset" value="Reset" ></input>
+		</div>
+	</form>
 
 </div>
-</body></html>

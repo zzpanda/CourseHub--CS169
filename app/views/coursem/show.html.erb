@@ -85,15 +85,12 @@
 
 
     <div id="panel_calendar" class="panels">
-        <%= raw(event_calendar) %>
+      <%= raw(event_calendar) %>
 
-      <p id="event_form_paragraph">
-        Click this text to create an event (This is temporary)
-      </p>
-      <div id="event_form">
-        <%= render :partial => 'event_form' %>
-      </div>
 
+      <%= link_to "Add Event", {:controller => "events", :action => "new", :coursem => @coursem.id }, :id => "new_event" %>
+      <div id="new_event_div"></div>
+      <div id="edit_event_div"></div>
 
     </div>
 
