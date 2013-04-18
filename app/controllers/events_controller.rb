@@ -8,15 +8,27 @@ class EventsController < ApplicationController
     render :partial => "event", :locals => {:event => @event}
   end
 
+  def new
+    @event = Event.new
+    @coursem = Coursem.find(params[:coursem])
+    render :partial => 'form', :locals => {:event => @event}
+  end
+
   def create
     @event = Event.new(params[:event])
-    sdt = Event.datetime(params[:event][:start_date], params[:event][:start_time])
-    edt = Event.datetime(params[:event][:end_date], params[:event][:end_time])
+    sdt = Event.datetimefromstrings(params[:event][:start_date], params[:event][:start_time])
+    edt = Event.datetimefromstrings(params[:event][:end_date], params[:event][:end_time])
     @event.start_at = sdt
     @event.end_at = edt
+    #if sdt == nil
+    #  @event.start_at = edt - 1.minute
+    #end
+
     if @event.save
       #flash[:notice] = "Successfully created event"
-      @events = Event.all
+      format.js {}
+    else
+      format.js {render :partial => 'error' }
     end
   end
 

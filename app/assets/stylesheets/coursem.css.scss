@@ -32,16 +32,17 @@ $width_resource: 300px;
 }
 
 #event-overlay {
+  padding: 10px;
   position: absolute;
   top: 250px;
   left: 50px;
   width: 200px;
   height: 200px;
   background-color: gold;
-  //filter:alpha(opacity=20);
-  //-moz-opacity:0.2;
-  //-khtml-opacity: 0.2;
-  //opacity: 0.2;
+  filter:alpha(opacity=80);
+  -moz-opacity:0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
   z-index: 10000;
 }
 

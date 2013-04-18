@@ -39,7 +39,7 @@ Exam.create(:name=>"Spring 2009 Exam",:type=>"Exam",:link=>"http://google.com",:
 d = Date.current
 t1 = Time.now
 t2 = Time.now.midnight
-dt1 = Event.datetime(d,t1)
-dt2 = Event.datetime(d,t2)
+dt1 = Event.datetimefromobjects(d,t1)
+dt2 = Event.datetimefromobjects(d,t2)
 
-Event.create(:name=>"Party",:start_date=>d,:end_date=>d, :start_time=>t1.strftime("%I:%M:%S %z"), :end_time=>t2.strftime("%I:%M:%S %z"), :start_at=>dt1, :end_at=>dt2, :coursem_id => 1)
+Event.create(:name=>"Surprise",:start_date=>d,:end_date=>d, :start_time=>t1.strftime("%I:%M:%S %z"), :end_time=>t2.strftime("%I:%M:%S %z"), :start_at=>dt1, :end_at=>dt2, :coursem_id => 1)

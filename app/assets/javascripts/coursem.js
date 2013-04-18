@@ -107,6 +107,17 @@ function calendarChangeMonth() {
     showCalendar();
 }
 
+//Datepicker and Timepicker
+function datetimepickers() {
+    $("#event_start_date").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+    $("#event_start_time").timepicker();
+    $("#event_end_date").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+    $("#event_end_time").timepicker();
+};
 
 $(document).ready(function() {
     panelHandler();
@@ -117,27 +128,26 @@ $(document).ready(function() {
     subscribeHandler();
 
 
-    $("#event_form").hide();
-    $("#event_form_paragraph").click(function() {
-        $("#event_form").toggle();
-    });
-    $("#event_submit").click(function(){
-        //$("#event_form").hide();
-        location.reload();
+
+    //Show new event form
+    $("a#new_event").click(function() {
+        if ($("#event_form").length){
+            $("#event_form").toggle();
+        } else {
+            url = $(this).attr('href');
+            $.get(url, function(data){
+                $("#panel_calendar").append(data);
+                datetimepickers();
+            });
+        }
+        return false;
     });
 
-    //Datepicker and Timepicker
-    $("#event_start_date").datepicker({
-        dateFormat: "yy-mm-dd"
+    //Refresh page after submitting form
+    $("#event_submit").click(function() {
+        alert('hi');
+        //window.location.reload(true);
     });
-    $("#event_start_time").timepicker();
-    $("#event_end_date").datepicker({
-        dateFormat: "yy-mm-dd"
-    });
-    $("#event_end_time").timepicker();
-
-
-    //////////////////
 
     //Used to fade out event info box
     var mouse_is_inside_event_info = false;
