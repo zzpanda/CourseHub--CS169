@@ -9,13 +9,15 @@ $very_dark_blue: rgb(10,60,215);
 $gold: rgb(240,220,80);
 $margin: 30px;
 
-$width: 750px;
+$width: 800px;
 $width_goto: 10px;
 $width_department: 100px;
 $width_course_number: 70px;
 $width_name: 350px;
 $width_classes: 200px;
 $width_subscribe: 10px;
+
+$width_select: 120px;
 
 #browse_container {
   .table_course {
@@ -28,7 +30,7 @@ $width_subscribe: 10px;
 	}
 	tr {
       font-size:  13px;
-	  height: 33px;
+	  height: 36px;
 	}
 	.row_content:hover {
 		background-color: white;
@@ -39,10 +41,11 @@ $width_subscribe: 10px;
 		background-color: $navy_blue;
 		height: 30px;
 		color: white;
+        font-size:  15px;
 	}
-	.col_subscribe {
-		width: $width_subscribe;
-	}
+	.col_goto {
+      width: $width_goto;
+    }
 	.col_department {
 		width: $width_department;
 	}
@@ -54,7 +57,13 @@ $width_subscribe: 10px;
 	}
 	.col_classes {
 		width: $width_classes;
+      select {
+        width:  $width_select;
+      }
 	}
+    .col_subscribe {
+       width: $width_subscribe;
+     }
     #courses_navigation {
       width:  290px;
       margin-left: auto;
