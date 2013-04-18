@@ -2,30 +2,25 @@ require 'spec_helper'
 #See here for help on generating this file:
 #http://railscasts.com/episodes/257-request-specs-and-capybara?autoplay=true
 describe "Courses" do
+
   describe "GET /courses" do
-    it "links to signin" do
+    it "filters" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit courses_path
-      page.should have_content("sign in")
+      page.should have_content("Math")
+      click_link "CS"
+
+      page.should_not have_content("Math")
     end
-
-    it "follows sign in" do
-      visit courses_path
-      page.click_link "sign in"
-      current_path.should == "/users/sign_in"
-
-    end
-
-    it "has sign up" do
+    it "links to course" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit courses_path
-      page.should have_content("Sign up")
+      click_link "Software Engineering"
+
+      current_path.should == "/courses/1"
+      page.should have_content("Software Engineering")
+      page.should_not have_content("Algorithms")
     end
 
-    it "follows sign up" do
-      visit courses_path
-      page.click_link "Sign up"
-      current_path.should == "/users/sign_up"
-    end
   end
 end
