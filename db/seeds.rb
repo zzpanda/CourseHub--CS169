@@ -36,10 +36,14 @@ Homework.create(:name=>"Homework 2",:type=>"Homework",:link=>"http://google.com"
 Exam.create(:name=>"Spring 2009 Exam",:type=>"Exam",:link=>"http://google.com",:user_id=>@bob.id, :coursem_id=>@cs169_spring.id)
 
 #Create Some Events
-d = Date.current
+yesterday = Date.current - 1.day
+today = Date.current
 t1 = Time.now
 t2 = Time.now.midnight
-dt1 = Event.datetimefromobjects(d,t1)
-dt2 = Event.datetimefromobjects(d,t2)
+sdt1 = Event.datetimefromobjects(today,t1)
+edt1 = Event.datetimefromobjects(today,t2)
+sdt2 = Event.datetimefromobjects(today,t1 - 24.hours)
+edt2 = Event.datetimefromobjects(today,t2 - 24.hours)
 
-Event.create(:name=>"Surprise",:start_date=>d,:end_date=>d, :start_time=>t1.strftime("%I:%M:%S %z"), :end_time=>t2.strftime("%I:%M:%S %z"), :start_at=>dt1, :end_at=>dt2, :coursem_id => 1)
+Event.create(:name=>"HW for Coursem 1",:start_date=>today,:end_date=>today, :start_time=>t1.strftime("%I:%M:%S %z"), :end_time=>t2.strftime("%I:%M:%S %z"), :start_at=>sdt1, :end_at=>edt1, :coursem_id => 1)
+Event.create(:name=>"HW for Coursem 3",:start_date=>yesterday,:end_date=>yesterday, :start_time=>t1.strftime("%I:%M:%S %z"), :end_time=>t2.strftime("%I:%M:%S %z"), :start_at=>sdt2, :end_at=>edt2, :coursem_id => 3)
