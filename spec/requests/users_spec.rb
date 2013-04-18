@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe "Users" do
-  describe "GET /users" do
+  before :each do
+    User.create(:email => "test@example.com", :username=> "testusername", :password=> "asdfasdf")
+  end
+  describe "GET /users/sign_in" do
     it "doesn't accept bad logins" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit "/users/sign_in"
@@ -26,6 +29,33 @@ describe "Users" do
       page.should have_content("User Profile")
       page.should have_content("Your current courses:")
     end
+    it "lets users sign in" do
+      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+      visit "/users/sign_in"
+      fill_in "user_email", :with => "test@example.com"
+      fill_in "user_password", :with=> "asdfasdf"
+      click_button "Sign in"
+      current_path.should == "/"
+      page.should have_content("User Profile")
+      page.should have_content("Your current courses:")
+    end
 
+  end
+  describe "GET /users" do
+    before :each do
+      User.create(:email => "test@example.com", :username=> "testusername", :password=> "asdfasdf")
+      visit "/users/sign_in"
+      fill_in "user_email", :with => "test@example.com"
+      fill_in "user_password", :with=> "asdfasdf"
+      click_button "Sign in"
+    end
+    it "is signed in" do
+      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+      visit "/"
+      current_path.should == "/"
+      page.should have_content("User Profile")
+      page.should have_content("test@example.com")
+
+    end
   end
 end
