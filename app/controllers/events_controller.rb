@@ -61,13 +61,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-    flash[:notice] = "Succesfully destroyed post."
-    @events = Event.all
-  end
-
+  #checks if an event has happened in the past n seconds
   def recentevent
     @event = Event.find(params[:id])
     @updated_at = @event.updated_at

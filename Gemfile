@@ -41,7 +41,7 @@ group :test do
   gem 'capybara'
   gem 'rspec-rails'
   # for Linux
-  #gem 'rb-inotify', '0.9'
+  gem 'rb-inotify', '0.9'
   # for Mac
   gem 'rb-fsevent', '0.9.1', :require => false
   gem 'growl', '1.0.3'
