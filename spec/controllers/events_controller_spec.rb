@@ -152,7 +152,7 @@ describe EventsController do
 
     it "should render a json" do
       get :recentevent, :id => "1"
-      response.body.should == { } # have to fix this
+      response.body.should eq(" ") # have to fix this
     end
   end
 

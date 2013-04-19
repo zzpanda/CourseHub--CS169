@@ -1,8 +1,6 @@
 require 'json'
 class ResourcesController < ApplicationController
 
-  before_filter :authenticate_user!
-  respond_to :json
   # Get all the possible department in the database
   def getResourcesType
     type = [Announcement, Discussion, DiscussionSolution, Exam, ExamSolution, Homework, HomeworkSolution, LectureNotes, OnlineResource, Other]

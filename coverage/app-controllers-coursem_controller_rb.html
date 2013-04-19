@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-coursem_controller_rb.html">app/controllers/coursem_controller.rb</a></td>
-            <td class='right_align'><tt>61</tt></td>
-            <td class='right_align'><tt>42</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>57.38%</tt></div>
+            <td class='right_align'><tt>62</tt></td>
+            <td class='right_align'><tt>43</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>58.06%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:57px"></div>
-            <div class="uncovered" style="width:43px"></div>
+            <div class="covered" style="width:58px"></div>
+            <div class="uncovered" style="width:42px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>61.90%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>62.79%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:62px"></div>
-            <div class="uncovered" style="width:38px"></div>
+            <div class="covered" style="width:63px"></div>
+            <div class="uncovered" style="width:37px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -189,217 +189,217 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a> </pre></td>
+            <td><pre><a name="line23">23</a>       @user = current_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line24">24</a>       if @coursem == ERR_BAD_COURSEM</pre></td>
+            <td><pre><a name="line25">25</a>       if @coursem == ERR_BAD_COURSEM</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>         respond_to do |format|</pre></td>
+            <td><pre><a name="line26">26</a>         respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>           format.html { render :file =&gt; &quot;#{Rails.root}/public/404.html&quot;, :status =&gt; :not_found }</pre></td>
+            <td><pre><a name="line27">27</a>           format.html { render :file =&gt; &quot;#{Rails.root}/public/404.html&quot;, :status =&gt; :not_found }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>           format.xml  { head :not_found }</pre></td>
+            <td><pre><a name="line28">28</a>           format.xml  { head :not_found }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>           format.any  { head :not_found }</pre></td>
+            <td><pre><a name="line29">29</a>           format.any  { head :not_found }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>         end</pre></td>
+            <td><pre><a name="line30">30</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line30">30</a>       else</pre></td>
+            <td><pre><a name="line31">31</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line31">31</a>         @c = @coursem.course;</pre></td>
+            <td><pre><a name="line32">32</a>         @c = @coursem.course;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>         @page_title = @c.department + &quot; &quot; + @c.course_number + &quot; : &quot; + @c.name;</pre></td>
+            <td><pre><a name="line33">33</a>         @page_title = @c.department + &quot; &quot; + @c.course_number + &quot; : &quot; + @c.name;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a> </pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line34">34</a>         @month = (params[:month] || (Time.zone || Time).now.month).to_i</pre></td>
+            <td><pre><a name="line35">35</a>         @month = (params[:month] || (Time.zone || Time).now.month).to_i</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>         @year = (params[:year] || (Time.zone || Time).now.year).to_i</pre></td>
+            <td><pre><a name="line36">36</a>         @year = (params[:year] || (Time.zone || Time).now.year).to_i</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>         @shown_month = Date.civil(@year, @month)</pre></td>
+            <td><pre><a name="line37">37</a>         @shown_month = Date.civil(@year, @month)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>         @event_strips = @coursem.events.event_strips_for_month(@shown_month)</pre></td>
+            <td><pre><a name="line38">38</a>         @event_strips = @coursem.events.event_strips_for_month(@shown_month)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a> </pre></td>
+            <td><pre><a name="line39">39</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line39">39</a>         @event = Event.new</pre></td>
+            <td><pre><a name="line40">40</a>         @event = Event.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a> </pre></td>
+            <td><pre><a name="line41">41</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line41">41</a>         if current_user.subscribed?(@coursem)</pre></td>
+            <td><pre><a name="line42">42</a>         if @user.subscribed?(@coursem)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>           @subscribe_text = &quot;Unsubscribe&quot;</pre></td>
+            <td><pre><a name="line43">43</a>           @subscribe_text = &quot;Unsubscribe&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line43">43</a>           @subscribed = 1</pre></td>
+            <td><pre><a name="line44">44</a>           @subscribed = 1</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line44">44</a>         else</pre></td>
+            <td><pre><a name="line45">45</a>         else</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line45">45</a>           @subscribe_text = &quot;Subscribe&quot;</pre></td>
+            <td><pre><a name="line46">46</a>           @subscribe_text = &quot;Subscribe&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>           @subscribed = 0</pre></td>
+            <td><pre><a name="line47">47</a>           @subscribed = 0</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>         end</pre></td>
+            <td><pre><a name="line48">48</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>         respond_to do |format|</pre></td>
+            <td><pre><a name="line49">49</a>         respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>           format.html</pre></td>
+            <td><pre><a name="line50">50</a>           format.html</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>           format.json { render json: @coursem }</pre></td>
+            <td><pre><a name="line51">51</a>           format.json { render json: @coursem }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>         end</pre></td>
+            <td><pre><a name="line52">52</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>       end</pre></td>
+            <td><pre><a name="line53">53</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a>     end</pre></td>
+            <td><pre><a name="line54">54</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a> </pre></td>
+            <td><pre><a name="line55">55</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line55">55</a>     def createEvent</pre></td>
+            <td><pre><a name="line56">56</a>     def createEvent</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a> </pre></td>
+            <td><pre><a name="line57">57</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line57">57</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line58">58</a> </pre></td>
+            <td><pre><a name="line58">58</a>     end</pre></td>
           </tr>
         
           
@@ -417,13 +417,19 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line61">61</a> end</pre></td>
+            <td><pre><a name="line61">61</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line62">62</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on 2013-04-19 14:23:27 -0700 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on 2013-04-19 16:29:48 -0700 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

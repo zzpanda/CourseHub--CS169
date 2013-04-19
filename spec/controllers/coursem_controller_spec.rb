@@ -12,6 +12,11 @@ describe CoursemController do
       Coursem.stub(:getCoursemInformation).and_return(@coursem)
     end
 
+    it "should sgin in" do
+      subject.current_user.should_not be_nil
+    end
+
+
     it "assigns @coursem to true Coursem Object" do
       Coursem.should_receive(:getCoursemInformation).once
       get :show, :id => @coursem.id

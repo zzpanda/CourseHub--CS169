@@ -1,6 +1,5 @@
 class CoursemController < ApplicationController
 
-    before_filter :authenticate_user!
     # Different situations correspond to different errcodes
     SUCCESS = 1
     ERR_BAD_COURSEM = -1
@@ -21,6 +20,7 @@ class CoursemController < ApplicationController
     # GET /coursem/id.json
     def show
       @coursem = Coursem.getCoursemInformation(params[:id])
+      @user = current_user
 
       if @coursem == ERR_BAD_COURSEM
         respond_to do |format|

@@ -20,11 +20,11 @@ describe "Courses" do
     it "filters" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit courses_path
-      page.should have_content("Math")
+      page.should have_content("MATH")
       click_link "CS"
       page.should have_content("CS")
       page.should have_content("Software Engineering")
-      page.should_not have_content("Math")
+      page.should_not have_content("MATH")
     end
     it "links to course" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
@@ -35,10 +35,10 @@ describe "Courses" do
       page.should have_content("Software Engineering")
       page.should_not have_content("Linear Algebra")
     end
-    it "links to coursem", :js => true do
-      visit courses_path
-      click_link "View Coursem"
-      current_path.should have_content("/course/")
-    end
+    #it "links to coursem", :js => true do
+      #visit courses_path
+      #click_link "View Course"
+      #current_path.should have_content("/course/")
+    #end
   end
 end
