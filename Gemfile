@@ -11,6 +11,7 @@ gem 'httparty', '0.10.2'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'jquery-timepicker-rails'
 gem 'jquery_datepicker'
+gem 'jasmine', :group => [:development, :test]
 
 group :development, :test do
   #gem 'pg', '0.12.2'
@@ -40,6 +41,8 @@ gem 'jquery-ui-rails'
 group :test do
   gem 'capybara'
   gem 'rspec-rails'
+  gem 'guard-jasmine'
+  gem 'jasminerice'
   # for Linux
   gem 'rb-inotify', '0.9'
   # for Mac
