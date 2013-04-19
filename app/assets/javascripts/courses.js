@@ -36,17 +36,28 @@
                 return button.click(function() {
                     var class_selected, json_sending;
                     class_selected = row.find('td.col_classes').find('select').val();
-                    if (class_selected !== "NULL") {
+
+                    if (class_selected !== null) {
+                        var newbuttontext
+                        var path
+                        if (button.text() == "Subscribe"){
+                            newbuttontext = "Unsubscribe";
+                            path = "/users/subscribe"
+                        }else {
+                            newbuttontext = "Subscribe"
+                            path = "/users/unsubscribe"
+
+                        }
                         json_sending = {
                             coursem_id: class_selected
                         };
-                        json_request("/users/subscribe", json_sending);
-                        (function(data) {
+                        json_request(path, json_sending,
+                        function(data) {
+                            button.text(newbuttontext)
+                        },
+                        function(data) {
                             return alert(data.status);
                         });
-                        return function(data) {
-                            return alert(data.status);
-                        };
                     }
                 });
             });

@@ -1,5 +1,6 @@
 class CoursemController < ApplicationController
 
+    before_filter :authenticate_user!
     # Different situations correspond to different errcodes
     SUCCESS = 1
     ERR_BAD_COURSEM = -1
@@ -37,7 +38,7 @@ class CoursemController < ApplicationController
 
         @event = Event.new
 
-        if current_user.subscribed?(@coursem)
+        if @user.subscribed?(@coursem)
           @subscribe_text = "Unsubscribe"
           @subscribed = 1
         else

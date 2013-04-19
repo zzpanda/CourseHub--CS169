@@ -1,0 +1,2 @@
+class Announcement < Resource
+end
