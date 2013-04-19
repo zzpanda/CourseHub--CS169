@@ -45,6 +45,7 @@ function panelHandler() {
     $("#button_calendar").on("click", function() {
         showCalendar();
     });
+    return true;
 }
 
 function showOverview() {

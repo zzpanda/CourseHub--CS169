@@ -9,20 +9,43 @@ test ('toggle new resource form', function() {
 })
 */
 
+var tabs = "<div id='tabs'><ul>" +
+    "<li id='button_overview' class='header_button'>Overview</li>" +
+    "<li id='button_resources' class='header_button'>Resources</li>" +
+    "<li id='button_statistics' class='header_button'>Statistics</li>" +
+    "<li id='button_calendar' class='header_button selected'>Calendar</li>" +
+    "</ul></div>";
+
+
+module ("panelHandler() tests", {
+    setup: function() {
+        var fixture = $("#qunit-fixture");
+        fixture.append(tabs);
+    }, teardown: function() {
+        var fixture = $("#qunit-fixture");
+        fixture.empty();
+    }
+});
+
+// 1 means one exception, start() resumes tests after asynchronous panelHandler() is done
+asyncTest ("panelHandler()", 1, function() {
+    setTimeout(function() {
+        ok( panelHandler(),  "panelHandler() returned");
+        start();
+    });
+});
+
+
 module ("panel and tabs tests", {
     setup: function() {
-        var tabs = "<div id='tabs'><ul>" +
-            "<li id='button_overview' class='header_button'>Overview</li>" +
-            "<li id='button_resources' class='header_button'>Resources</li>" +
-            "<li id='button_statistics' class='header_button'>Statistics</li>" +
-            "<li id='button_calendar' class='header_button selected'>Calendar</li>" +
-            "</ul></div>";
-        $("#qunit-fixture").append(tabs);
-        $("#qunit-fixture").append("<div id='panel_description' class='panels'>");
-        $("#qunit-fixture").append("<div id='panel_resources' class='panels'>");
-        $("#qunit-fixture").append("<div id='panel_calendar' class='panels'>");
+        var fixture = $("#qunit-fixture");
+        fixture.append(tabs);
+        fixture.append("<div id='panel_description' class='panels'>");
+        fixture.append("<div id='panel_resources' class='panels'>");
+        fixture.append("<div id='panel_calendar' class='panels'>");
     }, teardown: function() {
-        $("#qunit-fixture").empty();
+        var fixture = $("#qunit-fixture");
+        fixture.empty();
     }
 });
 
