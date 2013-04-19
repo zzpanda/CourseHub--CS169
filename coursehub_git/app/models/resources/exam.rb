@@ -1,0 +1,2 @@
+class Exam < Resource
+end

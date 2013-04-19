@@ -1,0 +1,2 @@
+class DiscussionSolution < Resource
+end

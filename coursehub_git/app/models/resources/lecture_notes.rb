@@ -1,0 +1,2 @@
+class LectureNotes < Resource
+end
