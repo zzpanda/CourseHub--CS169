@@ -1,5 +1,3 @@
-
-
 function subscribeHandler() {
     var button = $("#sub_button");
     button.on("click",function(){

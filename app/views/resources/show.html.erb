@@ -2,7 +2,7 @@
 </div>
 
 <div id="browse_container">
-  <table id="coursem_description">
+  <table id="resource_description">
     <tr>
       <td class='col_attr'>Name</td>
       <td class='col_desc'><%= @resource.name %></td>
@@ -30,3 +30,21 @@
 
 </div>
 
+<div id="comment_container">
+  <textarea rows ="4" cols ="40" id="comment_box"> </textarea>
+  <button type="button" onclick = handle_save(<%= @resource.id %>) >Save</button>
+  <div>
+    <% @resource.comments.each do |comment| %>
+        <div class ="comment_display">
+          <p id="comment_poster">
+            <a href='/users/<%=comment.user_id %>'><%=  User.find_by_id(comment.user_id).username %></a>
+          </p>
+          <p id ="comment_content">
+            <%= comment.content %>
+          </p>
+
+        </div>
+
+    <% end %>
+  </div>
+</div>
