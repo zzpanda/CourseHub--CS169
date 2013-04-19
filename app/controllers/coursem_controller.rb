@@ -18,7 +18,7 @@ class CoursemController < ApplicationController
     # GET /coursem/id.json
     def show
       @coursem = Coursem.getCoursemInformation(params[:id])
-      @user = current_user
+      #@user = current_user
 
       if @coursem == ERR_BAD_COURSEM
         respond_to do |format|
@@ -37,7 +37,7 @@ class CoursemController < ApplicationController
 
         @event = Event.new
 
-        if current_user.subscribed?(@coursem)
+        if @user.subscribed?(@coursem)
           @subscribe_text = "Unsubscribe"
           @subscribed = 1
         else
