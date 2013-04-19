@@ -1,52 +1,3 @@
-module ("show new resource form", {
-    setup: function() {
-        var fixture = $( "#qunit-fixture");
-        fixture.append("<a id='new_resource' href='/resources/createnewresource'></a>");
-        fixture.append("<div id='new_resource_div'></div>");
-        $.mockjax({
-            url: '/resources/createnewresource',
-            responseText:'<div>The response would be a partial for a html form<div>'
-        });
-    }, teardown: function() {
-        var fixture = $("#qunit-fixture");
-        fixture.empty();
-    }
-});
-
-    asyncTest ('create new resource form', 1, function() {
-        setTimeout(function() {
-            $.ajax({
-                url: '/resources/createnewresource',
-                success: function(data) {
-                    $('#new_resource_div').text(data);
-                }
-            });
-            equal($('#new_resource_div').text(), '<div>The response would be a partial for a html form<div>', "ajax data appended");
-            start();
-        });
-    });
-
-
-    asyncTest ('if form has already been created, toggle', 1 , function() {
-        $("#new_resource_div").text("Div no longer empty - this text is a pretend form");
-        $("#new_resource_div").show();
-        setTimeout(function() {
-            shownewresourceform();
-            equal( $("#new_resource_div").css('display'), "none", "shows form if it was hidden");
-            start();
-        });
-    });
-
-    asyncTest ('if form has already been created, hide it if it was showing', 1 , function() {
-         $("#new_resource_div").text("Div no longer empty - this text is a pretend form");
-         $("#new_resource_div").hide();
-        setTimeout(function() {
-            shownewresourceform();
-            equal( $("#new_resource_div").css('display'), "block", "hides form if it was showing");
-            start();
-        });
-    });
-
 var tabs = "<div id='tabs'><ul>" +
     "<li id='button_overview' class='header_button'>Overview</li>" +
     "<li id='button_resources' class='header_button'>Resources</li>" +
@@ -121,6 +72,61 @@ module ("reloadonsubmit()", {
             start();
         });
     });
+
+/* Need to refactor shownewresourceform()
+ so that it doesn't include onclick()
+
+ module ("show new resource form", {
+ setup: function() {
+ var fixture = $( "#qunit-fixture");
+ fixture.append("<a id='new_resource' href='/resources/createnewresource'></a>");
+ fixture.append("<div id='new_resource_div'></div>");
+ $.mockjax({
+ url: '/resources/createnewresource',
+ responseText:'<div>The response would be a partial for a html form<div>'
+ });
+ }, teardown: function() {
+ var fixture = $("#qunit-fixture");
+ fixture.empty();
+ }
+ });
+
+ asyncTest ('create new resource form', 1, function() {
+ setTimeout(function() {
+ $.ajax({
+ url: '/resources/createnewresource',
+ success: function(data) {
+ $('#new_resource_div').text(data);
+ }
+ });
+ equal($('#new_resource_div').text(), '<div>The response would be a partial for a html form<div>', "ajax data appended");
+ start();
+ });
+ });
+
+
+ asyncTest ('if form has already been created, toggle', 1 , function() {
+ $("#new_resource_div").text("Div no longer empty - this text is a pretend form");
+ $("#new_resource_div").show();
+ setTimeout(function() {
+ shownewresourceform();
+ equal( $("#new_resource_div").css('display'), "none", "shows form if it was hidden");
+ start();
+ });
+ });
+
+ asyncTest ('if form has already been created, hide it if it was showing', 1 , function() {
+ $("#new_resource_div").text("Div no longer empty - this text is a pretend form");
+ $("#new_resource_div").hide();
+ setTimeout(function() {
+ shownewresourceform();
+ equal( $("#new_resource_div").css('display'), "block", "hides form if it was showing");
+ start();
+ });
+ });
+
+ */
+
 
 /* Doesn't work because datepicker() and timepicker() not in scope
 module("datetimepickers", {
