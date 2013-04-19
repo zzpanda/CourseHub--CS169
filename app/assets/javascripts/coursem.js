@@ -120,6 +120,23 @@ function shownewresourceform() {
     });
 };
 
+/*
+function shownewresourceform() {
+    if (!($("#new_resource_div").is(":empty"))) {
+        $("#new_resource_div").toggle();
+    } else {
+        url = $(this).attr('href');
+        $.get(url, function(data){
+            $("#new_resource_div").append(data);
+            //reloadonsubmit();
+            $("#resource_submit").click(function() {
+                window.location.reload(true);
+            });
+        });
+    }
+    return false;
+};
+*/
 
 /***********CALENDAR RELATED FUNCTIONS ****************/
 
@@ -129,7 +146,7 @@ function calendarChangeMonth() {
     });
 
     showCalendar();
-}
+};
 
 //Datepicker and Timepicker
 function datetimepickers() {
@@ -218,6 +235,7 @@ function reloadonsubmit() {
     $(".event_submit").click(function() {
         window.location.reload(true);
     });
+    return true;
 };
 
 function colorrecentevents() {
@@ -249,6 +267,12 @@ $(document).ready(function() {
     resourceHandler();
     calendarChangeMonth();
     subscribeHandler();
+
+    /*
+    $("a#new_resource").click(function() {
+        shownewresourceform();
+    });
+    */
 
     shownewresourceform();
 
