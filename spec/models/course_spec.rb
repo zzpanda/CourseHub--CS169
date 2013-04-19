@@ -5,9 +5,9 @@ describe Course do
 
   before(:each) do
     @course = Course.new
-    @course.createAll("computer science","blabla","CS","169","Spring", 2013, "George")
-    @course.createAll("computer science","blabla","CS","169","Fall", 2012, "A")
-    @course.createAll("computer science","blabla","CS","170","Fall", 2012, "B")
+    @course.createAll("Computer Science","Blabla","CS","169","SPRING", 2013, "GEORGE")
+    @course.createAll("Computer Science","Blabla","CS","169","FALL", 2012, "A")
+    @course.createAll("Computer Science","Blabla","CS","170","FALL", 2012, "B")
     @course1 = Course.find(1)
     @course2 = Course.find(2)
     @semester1 = Semester.find(1)
@@ -17,20 +17,25 @@ describe Course do
     @coursem3 = Coursem.find(3)
   end
 
+  it "should get the right departments" do
+    @departments = Course.getDepartments()
+    @departments.should eq(["CS", "OTHERS"])
+  end
+
   it "should create the correct course" do
-    @course1.name.should eq("computer science")
+    @course1.name.should eq("Computer Science")
     @course1.department.should eq("CS")
     @course1.course_number.should eq("169")
   end
 
   it "should create the correct semester" do
-    @semester2.term.should eq("Fall")
+    @semester2.term.should eq("FALL")
     @semester2.year.should eq(2012)
   end
 
   it "should create the correct course_semester" do
     @coursem3.professor.should eq("B")
-    @coursem1.coursem_info.should eq("blabla")
+    @coursem1.coursem_info.should eq("Blabla")
   end
 
   it "should have only two semesters" do

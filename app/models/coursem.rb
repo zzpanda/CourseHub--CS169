@@ -55,7 +55,7 @@ class Coursem < ActiveRecord::Base
         end
 
         coursem_info.downcase
-        coursem_info.capitalize
+        coursem_info.split(' ').map {|w| w.capitalize }.join(' ')
         professor.upcase
         @coursem = Coursem.where(:course_id => @course.id, :semester_id => @semester.id).first
         if @coursem.nil?

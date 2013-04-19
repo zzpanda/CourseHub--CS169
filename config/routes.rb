@@ -18,6 +18,9 @@ Coursehub::Application.routes.draw do
   match '/courses/department' => 'courses#getDepartment'
   match '/coursem/create' => 'coursem#create'
 
+  match '/resources/addComment' => 'resources#addComment'
+  match '/resources/type' => 'resources#getResourcesType'
+
   authenticated :user do
     root :to => "users#show"
   end

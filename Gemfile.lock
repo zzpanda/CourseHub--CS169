@@ -58,6 +58,11 @@ GEM
     event-calendar (2.3.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     ffi (1.4.0)
     growl (1.0.3)
     guard (1.6.2)
@@ -196,6 +201,7 @@ DEPENDENCIES
   devise
   event-calendar
   execjs
+  factory_girl_rails
   growl (= 1.0.3)
   guard-rspec (= 1.2.1)
   guard-spork (= 1.2.0)

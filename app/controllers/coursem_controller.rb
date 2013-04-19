@@ -4,12 +4,14 @@ class CoursemController < ApplicationController
     SUCCESS = 1
     ERR_BAD_COURSEM = -1
 
+    # Create a new coursem
+    # PUT /coursem/create
     def create
-       @new = Coursem.createCoursemByUser(params[:name], params[:coursem_info], params[:department], params[:course_number], params[:term], params[:year], params[:professor])
-       respond_to do |format|
-         format.html
-         format.json { render json: @new }
-       end
+      @coursem_info = params[:unit] + " " + params[:coursem_info]
+      @new = Coursem.createCoursemByUser(params[:name], @coursem_info, params[:department], params[:course_number], params[:term], params[:year], params[:professor])
+      respond_to do |format|
+        format.json { render json: @new }
+      end
     end
 
 
@@ -18,7 +20,6 @@ class CoursemController < ApplicationController
     # GET /coursem/id.json
     def show
       @coursem = Coursem.getCoursemInformation(params[:id])
-      @user = current_user
 
       if @coursem == ERR_BAD_COURSEM
         respond_to do |format|
@@ -27,8 +28,8 @@ class CoursemController < ApplicationController
           format.any  { head :not_found }
         end
       else
-        c = @coursem.course;
-        @page_title = c.department + " " + c.course_number + " : " + c.name;
+        @c = @coursem.course;
+        @page_title = @c.department + " " + @c.course_number + " : " + @c.name;
 
         @month = (params[:month] || (Time.zone || Time).now.month).to_i
         @year = (params[:year] || (Time.zone || Time).now.year).to_i

@@ -240,6 +240,84 @@ function colorrecentevents() {
     });
 };
 
+$('#create').click(function() {
+   name = $('#name').val()
+   department = $('#department').val()
+   course_number = $('#coursem_number').val()
+   semester = $('#semester').val()
+   year = $('#year').val()
+   professor = $('#professor').val()
+   unit = $('#unit').val()
+   coursem_info = $('#coursem_info').val()
+   json_request("/courses/create", { name: name, department: department, course_number: course_number, semester: semester, year: year, professor: professor, unit: unit, coursem_info: coursem_info }, function(data) { return handle_create_response(data); }, function(err) { alert('error occurred on request'); });
+
+   return false;
+});
+
+function handle_create_response(data) {
+  if( data.className == Coursem ) {
+     window.location.("https://www.google.com/")
+  } else {
+     show_faliure_page( get_message_for_errcode(data) );  
+  }
+}
+
+function show_failure_page(message) {
+   $('#new_coursem').show();
+   $('#welcome_message').html(message);
+}
+
+/* Takes a dictionary to be JSON encoded, calls the success
+   function with the diction decoded from the JSON response.*/
+function json_request(page, dict, success, failure) {
+    $.ajax({
+        type: 'POST',
+        url: page,
+        data: JSON.stringify(dict),
+        contentType: "application/json",
+        dataType: "json",
+        success: success,
+        error: failure
+    });
+}
+
+SUCCESS = 1
+BAD_NAME = -1
+BAD_DEPARTMENT = -2
+BAD_COURSE_NUMBER = -3
+BAD_TERM = -5
+BAD_YEAR = -6
+NO_SEMESTER_EXISTS = -7
+BAD_COURSEM_INFO = -8
+BAD_PROFESSOR = -9
+COURSEM_EXISTS = -10
+
+
+
+function get_message_for_errcode(code) {
+    if( code == BAD_NAME) {
+        return ("The name shouldn't be empty or a number. Please try again. ");
+    } else if( code == BAD_DEPARTMENT) {
+        return ("The department shouldn't be empty or a number. Please try again.");
+    } else if( code == BAD_COURSE_NUMBER) {
+        return ("The course number shouldn't be empty. Please try again.");
+    } else if( code == BAD_TERM) {
+        return ("The term shouldn't be empty or a number. Please try again");
+    } else if( code == BAD_YEAR) {
+        return ("The semester shouldn't be empty or a test. Please try again");
+    } else if( code == NO_SEMESTER_EXISTS) {
+        return ("The semester is not exist. Please try again");
+    } else if( code == BAD_COURSEM_INFO) {
+        return ("The course information shouldn't be empty. Please try again");
+    } else if( code == BAD_PROFESSOR) {
+        return ("The professor shouldn't be empty or a number. Please try again");
+    } else if( code == COURSEM_EXISTS) {
+        return ("The course is already existed. Please try again");
+    } else {
+        return ("Unknown error occured: " + code);
+   }
+}
+
 
 $(document).ready(function() {
     panelHandler();

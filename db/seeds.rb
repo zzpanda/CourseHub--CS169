@@ -15,20 +15,20 @@
 Course.create(:name=> "Algorithms",:department=> "CS",:course_number=> "170")
 Course.create(:name=> "Databases",:department=> "CS",:course_number=> "186")
 
-@Math1A = Course.create(:name=> "Calculus",:department=> "Math",:course_number=> "1A")
-@Math1B = Course.create(:name=> "Calculus",:department=> "Math",:course_number=> "1B")
+@Math1A = Course.create(:name=> "Calculus",:department=> "MATH",:course_number=> "1A")
+@Math1B = Course.create(:name=> "Calculus",:department=> "MATH",:course_number=> "1B")
 
 # Some Semesters
-@Spring = Semester.create(:term=> "Spring", :year=>2013)
-@Fall = Semester.create(:term=> "Fall", :year=>2012)
+@Spring = Semester.create(:term=> "SPRING", :year=>2013)
+@Fall = Semester.create(:term=> "FALL", :year=>2012)
 
 # Some Semester-Classes
-@cs169_spring = Coursem.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"Necula", :coursem_info=>"Make web applications using Rails, Django or NodeJS")
+@cs169_spring = Coursem.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"NECULA", :coursem_info=>"Make Web Applications Using Rails, Django or NodeJS")
 
-Coursem.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:coursem_info=>"Making web applications using Rails or Django",:professor=>"Fox")
+Coursem.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:coursem_info=>"Making Web Applications Using Rails or Django",:professor=>"FOX")
 
-Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Spring.id,:professor=>"Steel", :coursem_info=> "This sequence is intended for majors in engineering and the physical sciences. An introduction to differential and integral calculus of functions of one variable, with applications and an introduction to transcendental functions.")
-Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"Vojta", :coursem_info=>"Continuation of 1A. Techniques of integration; applications of integration. Infinite sequences and series. First-order ordinary differential equations. Second-order ordinary differential equations; oscillation and damping; series solutions of ordinary differential equations.")
+Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Spring.id,:professor=>"STEEL", :coursem_info=> "This sequence is intended for majors in engineering and the physical sciences. An introduction to differential and integral calculus of functions of one variable, with applications and an introduction to transcendental functions.")
+Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"VOJTA", :coursem_info=>"Continuation of 1A. Techniques of integration; applications of integration. Infinite sequences and series. First-order ordinary differential equations. Second-order ordinary differential equations; oscillation and damping; series solutions of ordinary differential equations.")
 
 # Create Some Resources
 Homework.create(:name=>"Homework 1",:type=>"Homework",:link=>"http://google.com",:user_id=>@al.id, :coursem_id=>@cs169_spring.id)

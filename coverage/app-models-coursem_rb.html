@@ -267,7 +267,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>       @coursem[:course] = @coursem.course</pre></td>
+            <td><pre><a name="line36">36</a>       @coursem[:courses] = @coursem.course</pre></td>
           </tr>
         
           
@@ -399,7 +399,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>         coursem_info.capitalize</pre></td>
+            <td><pre><a name="line58">58</a>         coursem_info.split(' ').map {|w| w.capitalize }.join(' ')</pre></td>
           </tr>
         
           
@@ -687,7 +687,7 @@
       </tbody>
     </table>
 
-    <p>Generated on 2013-04-16 21:18:36 -0700 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on 2013-04-19 14:23:27 -0700 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

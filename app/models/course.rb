@@ -10,6 +10,12 @@ class Course < ActiveRecord::Base
   # For scraping (Toby)
   # should be only called once at the beginning of each semesters to generate official course , can't be called by users
   def createAll(name, coursem_info, department, course_number, term, year, professor)
+    name = name.downcase.split(' ').map {|w| w.capitalize }.join(' ')
+    coursem_info = coursem_info.downcase.split(' ').map {|w| w.capitalize }.join(' ')
+    department = department.upcase
+    course_number = course_number.upcase
+    term = term.upcase
+    professor = professor.upcase
     @course = Course.where(:department => department, :course_number => course_number).first
     if @course.nil?
       @course = Course.create!(:name => name, :department => department, :course_number => course_number)
@@ -24,6 +30,7 @@ class Course < ActiveRecord::Base
     end
   end
 
+  # Get all possible departments in the database
   def self.getDepartments()
     dept = []
     @course = Course.all
@@ -68,8 +75,9 @@ class Course < ActiveRecord::Base
     end
 
     name.downcase
-    name.capitalize
+    name.split(' ').map {|w| w.capitalize }.join(' ')
     department.upcase
+    course_number.upcase
     course = Course.where(:department => department, :course_number => course_number).first
     if course.nil?
       course = Course.where(:department => department, :name => name).first

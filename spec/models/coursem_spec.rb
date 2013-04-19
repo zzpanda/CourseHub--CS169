@@ -51,7 +51,7 @@ describe Coursem do
 
   it "Does allow a coursem with the right parameters get added" do
     Coursem.createCoursemByUser("Algorithm","Blabla","CS","170","SPRING", 2013, "GEOGRE").class.should eq(Coursem)
-    Coursem.createCoursemByUser("Probability","Blabla","CS","170","SPRING", 2013, "GEORGE").class.should eq(Coursem)
+    Coursem.createCoursemByUser("Probability","Blabla","CS","70","SPRING", 2013, "GEORGE").class.should eq(Coursem)
   end
 
   it "Does allow a deletion of a coursem in the DB" do

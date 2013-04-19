@@ -10,7 +10,8 @@ describe CoursesController do
     end
 
     it "assigns @course" do
-      get :index, :dept => @course.department
+      Course.should_receive(:getCourseInformation).once.and_return([@course])
+      get :index
       assigns(:courses).should eq([@course])
     end
 
@@ -20,17 +21,32 @@ describe CoursesController do
     end
   end
 
+  describe "#getDepartment" do
+
+    before (:each) do
+      @course = mock_model(Course)
+      Course.stub(:getDepartments).and_return([@course])
+    end
+
+    it "assigns @dic" do
+      Course.should_receive(:getDepartments).once.and_return([@course])
+      get :getDepartment
+      assigns(:dic).should eq([@course])
+    end
+
+  end
+
   describe "GET show" do
 
     before (:each) do
-      @course = Course.create(:name => "a", :department => "c", :course_number => "d")
+      @course = mock_model(Course, :id => "1", :name => "Algorithm")
       Course.stub(:find_by_id).and_return(@course)
     end
 
     it "assigns @course" do
-      @course1 = mock_model(Course)
-      get :show, :id => @course1.id
-      assigns(:courses).should eq(@course)
+      Course.should_receive(:find_by_id).once.and_return(@course)
+      get :show, :id => @course.id
+      assigns(:course).should eq(@course)
     end
 
     it "renders the show template" do

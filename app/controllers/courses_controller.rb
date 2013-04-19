@@ -19,34 +19,9 @@ class CoursesController < ApplicationController
   # Return as a JSON object in the form
   # { 'department' => [ 'EE', 'CS', 'Math' ] }
   def getDepartment
-    dept = []
-    @course = Course.all
-    @course.each do |course|
-      if not dept.include?(course.department)
-         dept << course.department
-      end
-    end
-    dept << "OTHERS"
-    dic = {:department => dept}
+    @dic = Course.getDepartments()
     respond_to do |format|
-      format.json {render json: dic}
-    end
-  end
-
-  # Gets a JSON object of all the courses of the form
-  # { "CS" : [ {'id': 23, number': "169" }, {'id": 17, "'number': "169" } ] }
-  def getCourses
-    courses = {}
-    @course = Course.all
-    @course.each do |course|
-      if not courses.include?(course.department)
-        courses[course.department] = [];
-      end
-      courses[course.department] << course;
-    end
-
-    respond_to do |format|
-      format.json {render json: courses}
+      format.json {render json: @dic}
     end
   end
 
