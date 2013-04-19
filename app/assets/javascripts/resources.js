@@ -7,8 +7,7 @@ function handle_login_response(data) {
 //$("#save_button").click(function(){
 function handle_save(resource_id) {
     var comments = document.getElementById("comment_box").value;
-    var user_id = 1;
-    json_save_comment("/resources/addComment", { comment: comments, user_id: user_id, resource_id: resource_id },
+    json_save_comment("/resources/addComment", { comment: comments, resource_id: resource_id },
         function(data) { return handle_login_response(data); }, function(err) { alert('error occurred on request')
         ; });
 }

@@ -1,6 +1,7 @@
 require 'json'
 class ResourcesController < ApplicationController
 
+  before_filter :authenticate_user!
   respond_to :json
   # Get all the possible department in the database
   def getResourcesType
@@ -36,7 +37,7 @@ class ResourcesController < ApplicationController
   #POST /resources/addComment
   def addComment
     comments = params[:comment]
-    user_id = params[:user_id]
+    user_id = current_user.id
     resource_id = params[:resource_id]
     result = Comment.new.post_comment(comments,user_id, resource_id)
     render json: {:errCode => result}
