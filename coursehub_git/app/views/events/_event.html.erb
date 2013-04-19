@@ -1,0 +1,29 @@
+<div class="event-info">
+    <table>
+      <tr>
+        <td>Event Name:</td>
+        <td><%= @event.name %></td>
+      </tr>
+      <tr>
+        <td>Start Date:</td>
+        <td><%= @event.start_date %></td>
+      </tr>
+      <tr>
+        <td>Start Time:</td>
+        <td><%= @event.start_time %></td>
+      </tr>
+      <tr>
+        <td>End Date:</td>
+        <td><%= @event.end_date%></td>
+      </tr>
+      <tr>
+        <td>End Time:</td>
+        <td><%= @event.end_time %></td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><%= @event.description %></td>
+      </tr>
+    </table>
+  <%= link_to "Edit Event", edit_event_path(@event), :id => "edit_event"  %>
+</div>

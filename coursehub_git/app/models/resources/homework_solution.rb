@@ -1,0 +1,2 @@
+class HomeworkSolution < Resource
+end

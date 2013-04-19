@@ -1,0 +1,98 @@
+$lavender: #AD00AD;
+$lavender_dark: #790079;
+$lavender_light: #FF00EB;
+$blue_light: rgb(235,240,255);
+$blue_lightish: rgb(200,220,255);
+$navy_blue: rgb(40,100,255);
+$dark_blue: rgb(20,70,255);
+$very_dark_blue: rgb(10,60,215);
+$gold: rgb(240,220,80);
+$margin: 30px;
+
+$width: 800px;
+$width_goto: 10px;
+$width_department: 100px;
+$width_course_number: 70px;
+$width_name: 350px;
+$width_classes: 200px;
+$width_subscribe: 10px;
+
+$width_select: 120px;
+
+#browse_container {
+  .table_course {
+
+  }
+  text-align:  center;
+	table {
+		border-collapse: collapse;
+        text-align:  center;
+	}
+	tr {
+      font-size:  13px;
+	  height: 36px;
+	}
+	.row_content:hover {
+		background-color: white;
+	}
+	.row_header {
+		font-weight: bold;
+		text-align: center;
+		background-color: $navy_blue;
+		height: 30px;
+		color: white;
+        font-size:  15px;
+	}
+	.col_goto {
+      width: $width_goto;
+    }
+	.col_department {
+		width: $width_department;
+	}
+	.col_course_number {
+		width: $width_course_number;
+	}
+	.col_name {
+		width: $width_name;
+	}
+	.col_classes {
+		width: $width_classes;
+      select {
+        width:  $width_select;
+      }
+	}
+    .col_subscribe {
+       width: $width_subscribe;
+     }
+    #courses_navigation {
+      width:  290px;
+      margin-left: auto;
+      margin-right: auto;
+      #button_prev {
+        float: left;
+
+      }
+      #button_next {
+        float: right;
+      }
+      .button_course {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border:  1px solid $very_dark_blue;
+        border-radius:  0.2em;
+        background-color: $blue_lightish;
+        color:  $very_dark_blue;
+        width: 80px;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 5px;
+      }
+      .button_course:hover {
+        background-color: $gold;
+        cursor: pointer;
+      }
+      margin-top: 5px;
+      margin-bottom: 40px;
+    }
+}
