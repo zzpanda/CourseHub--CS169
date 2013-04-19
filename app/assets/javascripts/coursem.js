@@ -31,7 +31,7 @@ function subscribeHandler() {
     });
 }
 
-
+/* -- Panel Display -- */
 function panelHandler() {
     $("#button_overview").on("click",function() {
         showOverview();
@@ -239,6 +239,11 @@ function colorrecentevents() {
         };
     });
 };
+
+
+/* Toby's code for creating a new coursem */
+
+
 
 
 $(document).ready(function() {
