@@ -256,9 +256,9 @@ $('#create').click(function() {
 
 function handle_create_response(data) {
   if( data.className == Coursem ) {
-     window.location.("https://www.google.com/")
+     window.location = "https://www.google.com/";
   } else {
-     show_faliure_page( get_message_for_errcode(data) );  
+     show_faliure_page( get_message_for_errcode(data) );
   }
 }
 
