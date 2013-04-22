@@ -1,2 +1,0 @@
-class DiscussionSolution < Resource
-end

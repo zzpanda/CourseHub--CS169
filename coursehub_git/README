@@ -1,7 +1,0 @@
-To run tests, run the command
->> guard
-
-If you have problems with gems, try running
->> bundle install
-
-Note that many of the tests currently do not pass

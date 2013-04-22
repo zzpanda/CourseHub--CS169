@@ -18,6 +18,7 @@ class Coursem < ActiveRecord::Base
   BAD_COURSEM_INFO = -8
   BAD_PROFESSOR = -9
   COURSEM_EXISTS = -10
+  DEPARTMENT_NOT_CHOSEN = -11
   COURSEM_DELETE_FAILED = -22
 
   # Helper function to create new coursems at the start of each semester
@@ -41,8 +42,14 @@ class Coursem < ActiveRecord::Base
   end
 
   # Users can create their own coursems that is not contains in the Coursem database like decals, should write n/a if no such field
-  def self.createCoursemByUser(name=nil, coursem_info=nil, department=nil, course_number=nil, term=nil, year=nil, professor=nil)
-    @semester = Semester.checkSemester(term, year)
+  def self.createCoursemByUser(name, coursem_info, department, course_number, term, year, professor)
+    if department == "Please select below"
+      return  DEPARTMENT_NOT_CHOSEN
+    end
+    @semester = Semester.checkSemester(term, year.to_i)
+    Rails.logger.info "My fuck#{year}"
+    Rails.logger.info "My fuck#{year.class}"
+    Rails.logger.info "My fuck#{name}"
     if @semester.class != Fixnum
       @course = Course.new.createCourse(name, department, course_number)
       
