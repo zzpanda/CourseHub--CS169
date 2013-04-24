@@ -98,6 +98,7 @@ class Coursem < ActiveRecord::Base
 
   end
 
+
   # User can delete a coursem
   def destroyCoursem(coursem_id)
     @coursem = Coursem.find_by_id(coursem_id)

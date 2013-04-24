@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Dummy User
+
 @al = User.create(:username=>"Al",:password=>"password",:email=>"Joe@berkeley.edu")
 @bob = User.create(:username=>"Bob",:password=>"password",:email=>"bob@berkeley.edu")
 
@@ -26,6 +27,7 @@ Course.create(:name=> "Databases",:department=> "CS",:course_number=> "186")
 @cs169_spring = Coursem.create(:course_id=>@CS169.id,:semester_id=>@Spring.id,:professor=>"NECULA", :coursem_info=>"Make Web Applications Using Rails, Django or NodeJS")
 
 Coursem.create(:course_id=>@CS169.id,:semester_id=>@Fall.id,:coursem_info=>"Making Web Applications Using Rails or Django",:professor=>"FOX")
+
 
 Coursem.create(:course_id=>@Math1A.id,:semester_id=>@Spring.id,:professor=>"STEEL", :coursem_info=> "This sequence is intended for majors in engineering and the physical sciences. An introduction to differential and integral calculus of functions of one variable, with applications and an introduction to transcendental functions.")
 Coursem.create(:course_id=>@Math1B.id,:semester_id=>@Fall.id,:professor=>"VOJTA", :coursem_info=>"Continuation of 1A. Techniques of integration; applications of integration. Infinite sequences and series. First-order ordinary differential equations. Second-order ordinary differential equations; oscillation and damping; series solutions of ordinary differential equations.")
