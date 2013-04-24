@@ -1,2 +1,0 @@
-class Homework < Resource
-end

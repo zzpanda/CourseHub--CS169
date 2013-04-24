@@ -1,2 +1,0 @@
-class Announcement < Resource
-end

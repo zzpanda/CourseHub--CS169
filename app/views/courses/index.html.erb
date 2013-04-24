@@ -69,19 +69,31 @@
 
     </div>
       <div id="courses_navigation">
+        <% if @courses.length != 0 %>
             <div id="button_prev" class="button_course">
               Prev
             </div>
             <div id="button_next" class="button_course">
               Next
             </div>
+        <% end %>
       </div>
 
-      <div id="new_course">
+      <div id="new_coursem">
 
           <% if @courses.length == 0 %>
-		<%= render "coursem/new" %>
+
+            <b>
+              Sorry, no such Course Existed!
+            </br>
+              Create a New One! or Search Again!
+            </b>
+            </br>
+
+            <%= link_to "Add New Course", {:controller => "coursem", :action => "new"}, :id => "new_coursem" %>
           <% end %>
+
+          <div id = new_coursem_div> </div>
     </div>
 
 </div>

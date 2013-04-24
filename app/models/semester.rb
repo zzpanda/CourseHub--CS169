@@ -20,7 +20,7 @@ class Semester < ActiveRecord::Base
     year_min = 1990
     year_max = Time.new.year
 
-    if term.nil? or not term.is_a?(String) or not terms.include?(term.upcase)
+    if term.nil? or not term.is_a?(String)
       return BAD_TERM
     elsif year.nil? or not year.is_a?(Integer) or year < year_min or year > year_max
       return BAD_YEAR
@@ -28,7 +28,7 @@ class Semester < ActiveRecord::Base
 
     term = term.upcase
     semester = Semester.where(:term => term, :year => year).first
-    if semester.nil?
+    if semester == nil or not terms.include?(term.upcase)
       return NO_SEMESTER_EXISTS
     else
       return semester

@@ -35,10 +35,10 @@ describe "Courses" do
       page.should have_content("Software Engineering")
       page.should_not have_content("Linear Algebra")
     end
-    #it "links to coursem", :js => true do
-      #visit courses_path
-      #click_link "View Course"
-      #current_path.should have_content("/course/")
-    #end
+    it "links to coursem", :js => true do
+      visit courses_path
+      click_link "View Course"
+      current_path.should have_content("/course/")
+    end
   end
 end
