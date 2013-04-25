@@ -108,15 +108,43 @@ function shownewresourceform() {
             url = $(this).attr('href');
             $.get(url, function(data){
                 $("#new_resource_div").append(data);
-                //reloadonsubmit();
-                $("#resource_submit").click(function() {
-                    window.location.reload(true);
-                });
+                $('form#new_resource_form').on('ajax:success', function(data, status, xhr) {
+                        handle_create_resources_response(status);
+                        $("#resource_submit").click(function() {
+                            window.location.reload(true);
+                        });
+                    })
+                                .on('ajax:error', function(xhr, status, error) {alert("There is a problem!");});
             });
         }
         return false;
     });
 };
+
+function handle_create_resources_response(data) {
+  if( data.errCode == 1 ) {
+     window.location.reload(true);
+  } else {
+     $('#error_message_resource').html( get_message_for_errcode(data.errCode) );  
+  }
+};
+
+function get_message_for_errcode(code) {
+    var SUCCESS = 1
+    var RESOURCE_EXIST = -1
+    var BAD_RESOURCENAME = -2
+    var BAD_LINK = -3
+    if( code == BAD_RESOURCENAME) {
+        return ("The name shouldn't be empty or a number. Please try again. ");
+    } else if( code == BAD_LINK) {
+        return ("The Link is invalid. Please try again. ");
+    } else if( code == RESOURCE_EXIST) {
+        return ("The resource is already existed. Can't be repost. ");
+    } else {
+        return ("Unknown error occured: " + code);
+   }
+}
+
 
 
 /***********CALENDAR RELATED FUNCTIONS ****************/

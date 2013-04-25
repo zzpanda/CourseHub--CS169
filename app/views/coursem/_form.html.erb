@@ -1,24 +1,24 @@
 <div id = "coursem_form">
 
      <h3> Create a New Course! </h3>
-     <h4> Please write n/a if not applicable. </h4>
-     <h5> Note: Once Created. You can't delete or edit it anymore. </h5>
+     <h4> <i>Please write n/a if not applicable.</i> </h4>
+     <h5> <b> Note: Once Created. You can't delete or edit it anymore. </b> </h5>
 
-     <div id="error_message"> <%= @errMessage %> </div>
+     <div id="error_message" style= "color: red;" ></div>
 
     <div id="create_coursem">
-      <%= form_tag({:controller => "coursem", :action => "create"}, :method => "post") do %>
+      <%= form_tag('coursem/create', :method => "post", :remote => true, :id => "check_coursem_form") do %>
           <p>
           <b> <%= label_tag(:name, "Name:") %> </b>
-          <%= text_field_tag(:name, name) %>
+          <%= text_field_tag(:name) %>
           </p>
           <p>
           <b> <%= label_tag(:department, "Department:") %> </b>
-          <%= select_tag "department", result.html_safe %>
+          <%= select_tag "department", @result.html_safe %>
           </p>
           <p>
           <b> <%= label_tag(:course_number, "Course Number:") %> </b>
-          <%= text_field_tag(:course_number, course_number) %>
+          <%= text_field_tag(:course_number) %>
           </p>
           <p>
           <b> <%= label_tag(:term, "Semester:") %> </b>
@@ -26,23 +26,22 @@
           </p>
           <p>
           <b> <%= label_tag(:year, "Year:") %> </b>
-          <%= text_field_tag(:year, year) %>
+          <%= text_field_tag(:year) %>
           </p>
           <p>
           <b> <%= label_tag(:professor, "Professor:") %> </b>
-          <%= text_field_tag(:professor, professor) %>
+          <%= text_field_tag(:professor) %>
           </p>
           <p>
           <b> <%= label_tag(:unit, "Unit:") %> </b>
-          <%= text_field_tag(:unit, unit) %>
+          <%= text_field_tag(:unit) %>
           </p>
           <p>
           <b> <%= label_tag(:coursem_info, "Course Information:") %> </b>
-          <%= text_field_tag(:coursem_info, coursem_info) %>
+          <%= text_field_tag(:coursem_info) %>
           </p>
 
           <%= submit_tag("Create") %>
-          <input type="reset" id="reset" value="Reset" >
 
       <% end %>
 

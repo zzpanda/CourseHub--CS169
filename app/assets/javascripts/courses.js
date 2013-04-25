@@ -122,9 +122,8 @@
            type: "GET",
            dataType: "json",
            success: function(json) {
-               var dept = json['department'];
                $("#search_department").autocomplete({
-                  source: dept
+                  source: json
                });
            },
            error: function( xhr, status) {
@@ -134,10 +133,8 @@
         });
 
         /* Autocomplete the department when tab is pressed */
-        $("#search_department").on("keydown", function(event) {
-            if (event.which == 13 || event.which == 9) {
-                getCourses($(this).val());
-            }
+        $("#search_course").keydown(function() {
+            getCourses($("#search_department").val());
        });
 
         $("#button_search").on("click", function(event) {
@@ -175,68 +172,77 @@
                 });
             },
             error: function( xhr, status) {
-                alert("there was a problem");
+                return;
             },
             async: true
         });
         return;
     }
 
-/*---- Add a new coursem functions ----*/
+    /*********NEW COURSEM RELATED FUNCTIONS *******************/
+    function shownewcoursemform() {
+        $("a#new_coursem_form").click(function() {
+            $('#new_coursem').hide();
+            if (!($("#new_coursem_div").is(":empty"))) {
+                $("#new_coursem_div").toggle();
+            } else {
+                url = $(this).attr('href');
+                $.get(url, function(data){
+                    $("#new_coursem_div").append(data);
+                    $('form#check_coursem_form').on('ajax:success', function(data, status, xhr) {
+                        handle_create_response(status);
+                    })
+                                .on('ajax:error', function(xhr, status, error) {alert("There is a problem!");});
+                });
+            }
+            return false;
+        });
+    };
 
-function newCoursem() {
-    $('#create').click(function(event) {
-        alert("clicked button");
-        event.preventDefault();
-        name = $('#name').val()
-        department = $('#department').val()
-        course_number = $('#coursem_number').val()
-        semester = $('#semester').val()
-        year = $('#year').val()
-        professor = $('#professor').val()
-        unit = $('#unit').val()
-        coursem_info = $('#coursem_info').val()
-        json_request("/coursem/create", { name: name, department: department, course_number: course_number, semester: semester, year: year, professor: professor, unit: unit, coursem_info: coursem_info }, function(data) { return handle_create_response(data); }, function(err) { alert('error occurred on request'); });
+    function handle_create_response(data) {
+      if( data.errCode == 1 ) {
+         window.location.href = '/coursem/' + data.coursem.id;
+      } else {
+         $('#error_message').html( get_message_for_errcode(data.errCode) );  
+      }
+    };
 
-    });
-}
-
-SUCCESS = 1
-BAD_NAME = -1
-BAD_DEPARTMENT = -2
-BAD_COURSE_NUMBER = -3
-BAD_TERM = -5
-BAD_YEAR = -6
-NO_SEMESTER_EXISTS = -7
-BAD_COURSEM_INFO = -8
-BAD_PROFESSOR = -9
-COURSEM_EXISTS = -10
-
-
-
-function get_message_for_errcode(code) {
-    if( code == BAD_NAME) {
-        return ("The name shouldn't be empty or a number. Please try again. ");
-    } else if( code == BAD_DEPARTMENT) {
-        return ("The department shouldn't be empty or a number. Please try again.");
-    } else if( code == BAD_COURSE_NUMBER) {
-        return ("The course number shouldn't be empty. Please try again.");
-    } else if( code == BAD_TERM) {
-        return ("The password should be at most 128 characters long. Please try again");
-    } else if( code == BAD_YEAR) {
-        return ("The password should be at most 128 characters long. Please try again");
-    } else if( code == NO_SEMESTER_EXISTS) {
-        return ("The password should be at most 128 characters long. Please try again");
-    } else if( code == BAD_COURSEM_INFO) {
-        return ("The password should be at most 128 characters long. Please try again");
-    } else if( code == BAD_PROFESSOR) {
-        return ("The password should be at most 128 characters long. Please try again");
-    } else if( code == COURSEM_EXISTS) {
-        return ("The password should be at most 128 characters long. Please try again");
-    } else {
-        return ("Unknown error occured: " + code);
+    function get_message_for_errcode(code) {
+        var SUCCESS = 1
+        var BAD_NAME = -1
+        var BAD_DEPARTMENT = -2
+        var BAD_COURSE_NUMBER = -3
+        var BAD_TERM = -5
+        var BAD_YEAR = -6
+        var NO_SEMESTER_EXISTS = -7
+        var BAD_COURSEM_INFO = -8
+        var BAD_PROFESSOR = -9
+        var COURSEM_EXISTS = -10
+        var DEPARTMENT_NOT_CHOSEN = -11
+        if( code == BAD_NAME) {
+            return ("The name shouldn't be empty or a number. Please try again. ");
+        } else if( code == BAD_DEPARTMENT) {
+            return ("The department shouldn't be empty or a number. Please try again.");
+        } else if( code == BAD_COURSE_NUMBER) {
+            return ("The course number shouldn't be empty. Please try again.");
+        } else if( code == BAD_TERM) {
+            return ("The term shouldn't be empty or a number. Please try again");
+        } else if( code == BAD_YEAR) {
+            return ("The year shouldn't be empty or a test. Please try again");
+        } else if( code == NO_SEMESTER_EXISTS) {
+            return ("The semester is not exist. Please try again");
+        } else if( code == BAD_COURSEM_INFO) {
+            return ("The course information shouldn't be empty. Please try again");
+        } else if( code == BAD_PROFESSOR) {
+            return ("The professor shouldn't be empty or a number. Please try again");
+        } else if( code == COURSEM_EXISTS) {
+            return ("The course is already existed. Please try again");
+        } else if( code ==  DEPARTMENT_NOT_CHOSEN) {
+            return ("The department is not chosen. Please try again.");
+        } else {
+            return ("Unknown error occured: " + code);
+       }
     }
-}
 
 
     $(document).ready(function() {
@@ -244,5 +250,6 @@ function get_message_for_errcode(code) {
         Page_Changer.course_semester_listener();
         Page_Changer.subscribe_button_listeners();
         window.search_autocomplete();
-        window.newCoursem();
+        getCourses();
+        shownewcoursemform();
     });

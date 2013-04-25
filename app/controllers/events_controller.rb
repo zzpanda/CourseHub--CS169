@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @coursem = Coursem.find(params[:coursem])
-    render :partial => 'form', :locals => {:event => @event}
+    render :partial => 'form'
   end
 
   def create

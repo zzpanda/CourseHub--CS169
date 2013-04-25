@@ -47,9 +47,6 @@ class Coursem < ActiveRecord::Base
       return  DEPARTMENT_NOT_CHOSEN
     end
     @semester = Semester.checkSemester(term, year.to_i)
-    Rails.logger.info "My fuck#{year}"
-    Rails.logger.info "My fuck#{year.class}"
-    Rails.logger.info "My fuck#{name}"
     if @semester.class != Fixnum
       @course = Course.new.createCourse(name, department, course_number)
       
@@ -65,6 +62,7 @@ class Coursem < ActiveRecord::Base
         coursem_info.split(' ').map {|w| w.capitalize }.join(' ')
         professor.upcase
         @coursem = Coursem.where(:course_id => @course.id, :semester_id => @semester.id).first
+        logger.debug "suck: #{@coursem}"
         if @coursem.nil?
           return Coursem.createCourseSemesters(professor, @course.id, @semester.id, coursem_info)
         else

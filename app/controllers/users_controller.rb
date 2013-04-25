@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def edit
     respond_to do |format|
       @email = params[:email]
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       render :json => {:status => 'user not signed in'}
     end
   end
-  
+
   def unsubscribe
     if user_signed_in?
       @id = current_user.id
