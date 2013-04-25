@@ -76,10 +76,12 @@
             $(".table_course").hide();
             $("#table_0").show();
             $("#button_prev").hide();
-            Page_Changer.total_pages = 4;
+            $("#num_courses").hide();
+            Page_Changer.total_pages = Math.ceil(parseInt($("#num_courses").html())/10);
+            //alert(Page_Changer.total_pages);
 
             $("#button_next").on("click", function(event) {
-                if (this.page_number == this.total_pages - 1) {
+                if (Page_Changer.page_number == Page_Changer.total_pages - 1) {
                     alert("already on last page");
                 } else {
                     // alert(Page_Changer.page_number);
@@ -89,7 +91,7 @@
             });
 
             $("#button_prev").on("click", function(event) {
-                if (this.page_number == 0) {
+                if (Page_Changer.page_number == 0) {
                     alert("already on first page");
                 } else {
                     show_pages(Page_Changer.page_number,Page_Changer.page_number-1);
@@ -103,7 +105,7 @@
     function show_pages(i, j) {
         $("#table_" + i).hide();
         $("#table_" + j).show();
-        if (j == this.total_pages - 1) {
+        if (j == Page_Changer.total_pages - 1) {
             $("#button_next").hide();
         }  else {
             $("#button_next").show();
@@ -149,6 +151,8 @@
                 var course = $("#search_course").val();
 
                 redirect(dept,course);
+            } else {
+                getCourses($("#search_department").val());
             }
         });
     }
@@ -167,6 +171,7 @@
                 for (var i = 0; i < json.length; i++) {
                     numbers.push(json[i]["course_number"]);
                 }
+                // alert(numbers);
                 $("#search_course").autocomplete({
                     source: numbers
                 });
@@ -228,7 +233,7 @@
         } else if( code == BAD_TERM) {
             return ("The term shouldn't be empty or a number. Please try again");
         } else if( code == BAD_YEAR) {
-            return ("The year shouldn't be empty or a test. Please try again");
+            return ("The year shouldn't be empty or characters. Please try again");
         } else if( code == NO_SEMESTER_EXISTS) {
             return ("The semester is not exist. Please try again");
         } else if( code == BAD_COURSEM_INFO) {
@@ -243,7 +248,6 @@
             return ("Unknown error occured: " + code);
        }
     }
-
 
     $(document).ready(function() {
         Page_Changer.initialize_page();
