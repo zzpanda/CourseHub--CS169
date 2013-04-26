@@ -11,7 +11,6 @@
 
 <div id="browse_container">
 
-  <div id="num_courses"><%= @courses.length %></div>
 	<table>
 		<tr class='row_header'>
 			<td class='col_goto'></td>
@@ -32,7 +31,7 @@
 
 		<tr class="row_content" id='<%= course.id %>'>
 
-			<td class='col_goto'><%= index %></td>
+			<td class='col_goto'></td>
 			<td class='col_department'>  
 				
 				<a href='?dept=<%= course.department %>'>
@@ -40,7 +39,7 @@
 				</a>
 			</td>
 			<td class='col_course_number'><%= course.course_number %></td>
-            <td class='col_name'><a href='courses/<%= course.id %>'><%= course.name %></a></td>
+            <td class='col_name'><%= course.name %></td>
 			<td class='col_classes'> 
 					<select>
 						    <% course.coursems.each do |course_semester| %>
@@ -97,5 +96,7 @@
 
           <div id = new_coursem_div> </div>
     </div>
+
+  <div id="num_courses"><%= @courses.length %></div>
 
 </div>

@@ -22,10 +22,11 @@ Coursehub::Application.routes.draw do
   match '/resources/type' => 'resources#getResourcesType'
 
   authenticated :user do
-    root :to => "users#show"
+    root :to => "users#home"
+    match "/profile/" => 'users#editprofile'
   end
   root :to => redirect("/users/sign_in")
-  resources :courses
+
   resources :coursem
 
 
