@@ -18,9 +18,12 @@ class User < ActiveRecord::Base
   has_many :comments, :inverse_of => :user
   has_one :favorite, :dependent => :destroy
 
+
   #ERROR CODES
   SUCCESS = 1
   RESOURCE_EXIST = -1
+  BAD_RESOURCENAME = -2
+  BAD_LINK = -3
 
   def addToFavorite(resource_id)
     if self.favorite.nil?
@@ -72,13 +75,28 @@ class User < ActiveRecord::Base
     self.username = username
   end
 
+  def valid(uri)
+    begin
+      !!URI.parse(uri)
+    rescue URI::InvalidURIError
+      return false
+    end
+  end
+
   def addResource(resourceName, type, resourceLink, user_id, coursem_id)
     #create! = .new followed by .save, and an exception is raised if it fails
     #create = .new followed by .save, no exception
     #resources.create!(:name => resourceName, :type => type, :link => resourceLink, :flags => 0, :users_who_flagged => "")
-    @resource = Resource.where(:type => type, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id).first
+    @resource = Resource.where(:type => type, :link => resourceLink).first
+    if resourceName.nil? or not resourceName.is_a?(String) or resourceName.length == 0
+      return BAD_RESOURCENAME
+    end
+    if not valid(resourceLink)
+       return BAD_LINK
+    end
     if @resource.nil?
-      return type.downcase.capitalize.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id, :flags => 0, :users_who_flagged => "")
+      resourceName = resourceName.downcase.split(' ').map {|w| w.capitalize }.join(' ')
+      return type.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id, :flags => 0, :users_who_flagged => "")
     else
       return RESOURCE_EXIST
     end

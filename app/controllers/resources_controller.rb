@@ -1,6 +1,9 @@
 require 'json'
 class ResourcesController < ApplicationController
 
+  before_filter :authenticate_user!
+  respond_to :json
+
   # Get all the possible department in the database
   def getResourcesType
     type = [Announcement, Discussion, DiscussionSolution, Exam, ExamSolution, Homework, HomeworkSolution, LectureNotes, OnlineResource, Other]
@@ -22,20 +25,21 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    @resource = Resource.new(params[:resource])
+    @resource = User.new.addResource(params[:resource][:name], params[:resource][:type], params[:resource][:link], params[:resource][:user_id], params[:resource][:coursem_id])
+    @errCode = @resource
+    if @resource.class != Fixnum
+      @errCode = 1
+    end
+    @dic = {:errCode => @errCode, :resource => @resource}
     respond_to do |format|
-      if @resource.save
-        format.js {}
-      else
-        format.js {render :partial => 'error' }
-      end
+      format.json { render json: @dic}
     end
   end
 
   #POST /resources/addComment
   def addComment
     @comments = params[:comment]
-    @user_id = params[:user_id]
+    @user_id = current_user.id
     @resource_id = params[:resource_id]
     @result = Comment.new.post_comment(@comments,@user_id, @resource_id)
     render json: {:errCode => @result}

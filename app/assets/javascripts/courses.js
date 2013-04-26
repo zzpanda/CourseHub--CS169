@@ -36,7 +36,6 @@
                 return button.click(function() {
                     var class_selected, json_sending;
                     class_selected = row.find('td.col_classes').find('select').val();
-
                     if (class_selected !== null) {
                         var newbuttontext
                         var path
@@ -135,10 +134,8 @@
         });
 
         /* Autocomplete the department when tab is pressed */
-        $("#search_department").on("keydown", function(event) {
-            if (event.which == 13 || event.which == 9) {
-                getCourses($(this).val());
-            }
+        $("#search_course").keydown(function() {
+            getCourses($("#search_department").val());
        });
 
         $("#button_search").on("click", function(event) {
@@ -179,105 +176,83 @@
                 });
             },
             error: function( xhr, status) {
-                alert("there was a problem");
+                return;
             },
             async: true
         });
         return;
     }
 
-/*---- Add a new coursem functions ----*/
-/*********NEW COURSEM RELATED FUNCTIONS *******************/
-function shownewcoursemform() {
-    $("a#new_coursem_form").click(function() {
-        if (!($("#new_coursem_div").is(":empty"))) {
-            $("#new_coursem_div").toggle();
+    /*********NEW COURSEM RELATED FUNCTIONS *******************/
+    function shownewcoursemform() {
+        $("a#new_coursem_form").click(function() {
+            $('#new_coursem').hide();
+            if (!($("#new_coursem_div").is(":empty"))) {
+                $("#new_coursem_div").toggle();
+            } else {
+                url = $(this).attr('href');
+                $.get(url, function(data){
+                    $("#new_coursem_div").append(data);
+                    $('form#check_coursem_form').on('ajax:success', function(data, status, xhr) {
+                        handle_create_response(status);
+                    })
+                                .on('ajax:error', function(xhr, status, error) {alert("There is a problem!");});
+                });
+            }
+            return false;
+        });
+    };
+
+    function handle_create_response(data) {
+      if( data.errCode == 1 ) {
+         window.location.href = '/coursem/' + data.coursem.id;
+      } else {
+         $('#error_message').html( get_message_for_errcode(data.errCode) );  
+      }
+    };
+
+    function get_message_for_errcode(code) {
+        var SUCCESS = 1
+        var BAD_NAME = -1
+        var BAD_DEPARTMENT = -2
+        var BAD_COURSE_NUMBER = -3
+        var BAD_TERM = -5
+        var BAD_YEAR = -6
+        var NO_SEMESTER_EXISTS = -7
+        var BAD_COURSEM_INFO = -8
+        var BAD_PROFESSOR = -9
+        var COURSEM_EXISTS = -10
+        var DEPARTMENT_NOT_CHOSEN = -11
+        if( code == BAD_NAME) {
+            return ("The name shouldn't be empty or a number. Please try again. ");
+        } else if( code == BAD_DEPARTMENT) {
+            return ("The department shouldn't be empty or a number. Please try again.");
+        } else if( code == BAD_COURSE_NUMBER) {
+            return ("The course number shouldn't be empty. Please try again.");
+        } else if( code == BAD_TERM) {
+            return ("The term shouldn't be empty or a number. Please try again");
+        } else if( code == BAD_YEAR) {
+            return ("The year shouldn't be empty or characters. Please try again");
+        } else if( code == NO_SEMESTER_EXISTS) {
+            return ("The semester is not exist. Please try again");
+        } else if( code == BAD_COURSEM_INFO) {
+            return ("The course information shouldn't be empty. Please try again");
+        } else if( code == BAD_PROFESSOR) {
+            return ("The professor shouldn't be empty or a number. Please try again");
+        } else if( code == COURSEM_EXISTS) {
+            return ("The course is already existed. Please try again");
+        } else if( code ==  DEPARTMENT_NOT_CHOSEN) {
+            return ("The department is not chosen. Please try again.");
         } else {
-            url = $(this).attr('href');
-            $.get(url, function(data){
-                $("#new_coursem_div").append(data);
-            });
-        }
-        return false;
-    });
-};
-
-function check_coursem() {
-    $("form#check_coursem_form").on('ajax:beforeSend', function(xhr, settings) {alert("hello");})
-        .on('ajax:success',    function(data, status, xhr) {alert("hello");})
-        .on('ajax:complete', function(xhr, status) {alert("hello");})
-        .on('ajax:error', function(xhr, status, error) {alert("hello");});
-}
-
-function create_coursem() {
-    $(".create_coursem").click(function() {
-        document.write("hello");
-        $.post("/coursem/create",
-            {
-                name: $('#name').val(),
-                department: $('#department').val(),
-                course_number: $('#coursem_number').val(),
-                semester: $('#semester').val(),
-                year: $('#year').val(),
-                professor: $('#professor').val(),
-                unit: $('#unit').val(),
-                coursem_info: $('#coursem_info').val()
-            },
-            function(data){
-                return handle_create_response(data);
-            });
-        return false;
-    });
-};
-
-function handle_create_response(data) {
-    if( data.errCode == 1 ) {
-        window.location.assign("https://www.google.com/");
-    } else {
-        $('#error_message').html( get_message_for_errcode(data.errCode) );
+            return ("Unknown error occured: " + code);
+       }
     }
-};
-
-function get_message_for_errcode(code) {
-    var SUCCESS = 1
-    var BAD_NAME = -1
-    var BAD_DEPARTMENT = -2
-    var BAD_COURSE_NUMBER = -3
-    var BAD_TERM = -5
-    var BAD_YEAR = -6
-    var NO_SEMESTER_EXISTS = -7
-    var BAD_COURSEM_INFO = -8
-    var BAD_PROFESSOR = -9
-    var COURSEM_EXISTS = -10
-    if( code == BAD_NAME) {
-        return ("The name shouldn't be empty or a number. Please try again. ");
-    } else if( code == BAD_DEPARTMENT) {
-        return ("The department shouldn't be empty or a number. Please try again.");
-    } else if( code == BAD_COURSE_NUMBER) {
-        return ("The course number shouldn't be empty. Please try again.");
-    } else if( code == BAD_TERM) {
-        return ("The term shouldn't be empty or a number. Please try again");
-    } else if( code == BAD_YEAR) {
-        return ("The year shouldn't be empty or a test. Please try again");
-    } else if( code == NO_SEMESTER_EXISTS) {
-        return ("The semester is not exist. Please try again");
-    } else if( code == BAD_COURSEM_INFO) {
-        return ("The course information shouldn't be empty. Please try again");
-    } else if( code == BAD_PROFESSOR) {
-        return ("The professor shouldn't be empty or a number. Please try again");
-    } else if( code == COURSEM_EXISTS) {
-        return ("The course is already existed. Please try again");
-    } else if( code ==  DEPARTMENT_NOT_CHOSEN) {
-        return ("The department is not chosen. Please try again.");
-    } else {
-        return ("Unknown error occured: " + code);
-    }
-}
 
     $(document).ready(function() {
         Page_Changer.initialize_page();
         Page_Changer.course_semester_listener();
         Page_Changer.subscribe_button_listeners();
         window.search_autocomplete();
-        // window.newCoursem();
+        getCourses();
+        shownewcoursemform();
     });
