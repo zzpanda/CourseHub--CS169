@@ -37,8 +37,8 @@ function panelHandler() {
     $("#button_resources").on("click",function() {
         showResources();
     });
-    $("#button_statistics").on("click", function() {
-        showStatistics();
+    $("#button_announcements").on("click", function() {
+        showAnnouncements();
     });
     $("#button_calendar").on("click", function() {
         showCalendar();
@@ -60,11 +60,11 @@ function showResources() {
     $("#button_resources").addClass("selected");
 }
 
-function showStatistics() {
+function showAnnouncements() {
     $(".panels").hide();
-    $("#panel_statistics").show();
+    $("#panel_announcements").show();
     $(".header_button").removeClass("selected");
-    $("#button_statistics").addClass("selected");
+    $("#button_announcements").addClass("selected");
 }
 
 function showCalendar() {
@@ -154,7 +154,6 @@ function calendarChangeMonth() {
         //$("#panel_calendar").show();
     });
 
-    showCalendar();
 };
 
 //Datepicker and Timepicker
@@ -271,7 +270,8 @@ function colorrecentevents() {
 $(document).ready(function() {
     panelHandler();
     //showOverview();
-    showResources();
+    //showResources();
+    showAnnouncements();
     resourceHandler();
     calendarChangeMonth();
     subscribeHandler();
