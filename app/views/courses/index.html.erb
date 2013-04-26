@@ -24,7 +24,7 @@
     </table>
 
     <div id="courses">
-	<% @courses.each_with_index do |course, index| %>
+	 <% @courses.each_with_index do |course, index| %>
 
         <% if index % 10 == 0 %>
             <table class='table_course' id="table_<%= index / 10%>">
@@ -52,7 +52,15 @@
 			</td>
             <td class='col_subscribe'>
               <% if user_signed_in? %>
-                  <button>Subscribe</button>
+                <% @subscribed.each do |coursem| %>
+                  <% if coursem.course_id == course.id %>
+                    <button>Unsubscribe</button>
+                    <% break %>
+                  <% else %>
+                    <button>Subscribe</button>
+                    <% break %>
+                  <% end %>
+                <% end %>
               <% else %>
                   <%= link_to "sign in", new_user_session_path %> to subscribe
               <% end %>
@@ -82,6 +90,7 @@
       </div>
 
       <div id="new_coursem">
+        <% if user_signed_in? %>
 
           <% if @courses.length == 0 %>
 
@@ -94,6 +103,15 @@
 
             <%= link_to "Add New Course", {:controller => "coursem", :action => "new"}, :id => "new_coursem_form" %>
           <% end %>
+        <% else %>
+            <b>
+              Sorry, no such Course Existed!
+            </br>
+              Create a New One! or Search Again!
+            </b>
+            </br>
+            <%= link_to "sign in", new_user_session_path %> to create
+        <% end %>
       </div>
 
       <div id = new_coursem_div></div>

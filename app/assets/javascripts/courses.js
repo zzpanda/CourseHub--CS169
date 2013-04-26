@@ -36,7 +36,6 @@
                 return button.click(function() {
                     var class_selected, json_sending;
                     class_selected = row.find('td.col_classes').find('select').val();
-
                     if (class_selected !== null) {
                         var newbuttontext
                         var path

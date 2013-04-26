@@ -58,11 +58,9 @@ class Coursem < ActiveRecord::Base
           return BAD_PROFESSOR
         end
 
-        coursem_info.downcase
-        coursem_info.split(' ').map {|w| w.capitalize }.join(' ')
-        professor.upcase
+        coursem_info = coursem_info.downcase.split(' ').map {|w| w.capitalize }.join(' ')
+        professor = professor.upcase
         @coursem = Coursem.where(:course_id => @course.id, :semester_id => @semester.id).first
-        logger.debug "suck: #{@coursem}"
         if @coursem.nil?
           return Coursem.createCourseSemesters(professor, @course.id, @semester.id, coursem_info)
         else

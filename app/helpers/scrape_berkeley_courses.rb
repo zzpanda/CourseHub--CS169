@@ -13,7 +13,7 @@ require 'course'
 
 #function that generates course, semester and coursem objects using the berkeley.edu API
 def generate_all(debug = false)
-	term = "SPRING"
+	term = "SPRING" #Setting semesters
 	termYear = Time.new.year #Searches for current year as default!
 	file = File.open("departments.txt","rb") 
 	lines = file.read.split("\n")

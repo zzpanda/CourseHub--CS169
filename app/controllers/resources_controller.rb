@@ -39,7 +39,7 @@ class ResourcesController < ApplicationController
   #POST /resources/addComment
   def addComment
     @comments = params[:comment]
-    @user_id = params[:user_id]
+    @user_id = current_user.id
     @resource_id = params[:resource_id]
     @result = Comment.new.post_comment(@comments,@user_id, @resource_id)
     render json: {:errCode => @result}

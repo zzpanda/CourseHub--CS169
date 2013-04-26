@@ -1,11 +1,14 @@
 class CoursesController < ApplicationController
 
+  before_filter :authenticate_user!
+
   # Browse all course
   # GET /course
   # GET /course.json
   def index
       # Check for filters
       @courses = Course.getCourseInformation(params[:dept],params[:course])
+      @subscribed =  current_user.subscribed
       @page_heading = "Browse Courses"
       @page_title = "Browse Courses"
       respond_to do |format|
