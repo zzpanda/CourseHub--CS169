@@ -28,9 +28,8 @@ Coursehub::Application.routes.draw do
   root :to => redirect("/users/sign_in")
 
   resources :coursem
+  resources :courses
 
-
-  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
