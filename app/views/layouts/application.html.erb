@@ -27,10 +27,9 @@
   <% if user_signed_in? %>
    <nav>
         <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="/">Profile</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/courses">Browse Courses</a></li>
-          <li><a href="">My Courses</a></li>
+          <li><a href="/">My Courses</a></li>
           <li>
             <% if user_signed_in? %>
                 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>

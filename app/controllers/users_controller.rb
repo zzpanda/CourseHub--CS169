@@ -15,19 +15,39 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  # Home page for logged in user
+  def home
+    @page_title = "Home Page"
+    @page_heading = "Home Page"
+
     @id = params[:id]
     if @id.nil? || @id == 0
       @id = current_user.id
     end
-    @page_heading = "User Profile"
-    @email = current_user.email
-    if current_user.karma == nil
-      current_user.karma = 0
-      current_user.save
+
+    @coursems = User.find(@id).subscribed
+
+    @month = (params[:month] || (Time.zone || Time).now.month).to_i
+    @year = (params[:year] || (Time.zone || Time).now.year).to_i
+    @shown_month = Date.civil(@year, @month)
+
+    @coursemids = []
+    @coursems.each do |coursem|
+      @coursemids << coursem.id
     end
-    @karma = current_user.karma
-    @username = current_user.username
+    @event_strips = Event.event_strips_for_month(@shown_month, :conditions => {:coursem_id => @coursemids })
+  end
+
+  # Edit profile page
+  def editprofile
+    @page_title = "My Courses"
+    @page_heading = "My Courses"
+
+    @id = params[:id]
+    if @id.nil? || @id == 0
+      @id = current_user.id
+    end
+
     @coursems = User.find(@id).subscribed
 
     @month = (params[:month] || (Time.zone || Time).now.month).to_i

@@ -13,6 +13,7 @@
 
         initialize_page: function() {
             this.populate_courses();
+            this.goto_coursem();
         },
 
         // Event handler for changing semester
@@ -24,6 +25,18 @@
                     console.log("the value you selected: " + selectedValue);
                     //window.location = "coursem/" + selectedValue;
                 });
+            });
+        },
+
+        goto_coursem: function() {
+            var i = 0;
+            $(".row_content").each(function() {
+                    $(this).find("a").on("click", function(event) {
+                        event.preventDefault();
+                        var $select = $(this).parent().parent().find("select");
+                        window.location = "coursem/" + $select.val();
+                    });
+
             });
         },
 
