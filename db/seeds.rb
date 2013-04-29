@@ -11,6 +11,7 @@
 @al = User.create(:username=>"Albert",:password=>"password",:email=>"albert@berkeley.edu")
 @bob = User.create(:username=>"Bob",:password=>"password",:email=>"bob@berkeley.edu")
 
+=begin
 # Some Courses
 @CS169 = Course.create(:name=>"Software Engineering",:department=>"CS",:course_number=>"169")
 Course.create(:name=> "Algorithms",:department=> "CS",:course_number=> "170")
@@ -49,3 +50,5 @@ edt2 = Event.datetimefromobjects(today,t2 - 24.hours)
 
 Event.create(:name=>"HW for Coursem 1",:start_date=>today,:end_date=>today, :start_time=>t1.strftime("%I:%M:%S %z"), :end_time=>t2.strftime("%I:%M:%S %z"), :start_at=>sdt1, :end_at=>edt1, :coursem_id => 1)
 Event.create(:name=>"HW for Coursem 3",:start_date=>yesterday,:end_date=>yesterday, :start_time=>t1.strftime("%I:%M:%S %z"), :end_time=>t2.strftime("%I:%M:%S %z"), :start_at=>sdt2, :end_at=>edt2, :coursem_id => 3)
+=end
+
