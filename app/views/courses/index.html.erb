@@ -52,14 +52,20 @@
 			</td>
             <td class='col_subscribe'>
               <% if user_signed_in? %>
-                <% @subscribed.each do |coursem| %>
-                  <% if coursem.course_id == course.id %>
+                <% if @subscribed.length != 0 %>
+                  <% @unsubscribed = false %>
+                  <% @subscribed.each do |coursem| %>
+                    <% if coursem.course_id == course.id %>
+                      <% @unsubscribed = true %>
+                    <% end %>
+                  <% end %>
+                  <% if @unsubscribed %>
                     <button>Unsubscribe</button>
-                    <% break %>
                   <% else %>
                     <button>Subscribe</button>
-                    <% break %>
                   <% end %>
+                <% else %>
+                  <button>Subscribe</button>
                 <% end %>
               <% else %>
                   <%= link_to "sign in", new_user_session_path %> to subscribe

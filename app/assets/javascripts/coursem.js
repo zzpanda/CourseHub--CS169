@@ -111,7 +111,7 @@ function shownewresourceform() {
                 $('form#new_resource_form').on('ajax:success', function(data, status, xhr) {
                         handle_create_resources_response(status);
                         $("#resource_submit").click(function() {
-                            window.location.reload(true);
+                            location.reload();
                         });
                     })
                                 .on('ajax:error', function(xhr, status, error) {alert("There is a problem!");});
@@ -123,7 +123,7 @@ function shownewresourceform() {
 
 function handle_create_resources_response(data) {
   if( data.errCode == 1 ) {
-     window.location.reload(true);
+     location.reload();
   } else {
      $('#error_message_resource').html( get_message_for_errcode(data.errCode) );  
   }
@@ -242,7 +242,7 @@ function closeeventbox() {
 
 function reloadonsubmit() {
     $(".event_submit").click(function() {
-        window.location.reload(true);
+        location.reload();
     });
     return true;
 };

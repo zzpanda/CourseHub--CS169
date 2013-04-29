@@ -2,9 +2,16 @@ class UsersController < ApplicationController
 
   def edit
     respond_to do |format|
-      @email = params[:email]
       @username = params[:username]
-      format.all { render :json => {:status => 'email:' + @email+' username: ' + @username}, :content_type => 'application/json' }
+      logger.debug "fuckall"
+      if User.find_by_username(@username).nil? || @username == current_user.username
+        logger.debug "suckall"
+        current_user.username = @username
+        current_user.save!
+        format.all { render :json => {:status => 'Change Successfully! Username: ' + @username}, :content_type => 'application/json' }
+      else
+        format.all { render :json => {:status => 'Username is already existed! Please try again.'}, :content_type => 'application/json' }
+      end
     end
   end
 
@@ -15,8 +22,12 @@ class UsersController < ApplicationController
     end
     @page_heading = "User Profile"
     @email = current_user.email
-    @karma = 1000
-    @username = 'test user'
+    if current_user.karma == nil
+      current_user.karma = 0
+      current_user.save
+    end
+    @karma = current_user.karma
+    @username = current_user.username
     @coursems = User.find(@id).subscribed
 
     @month = (params[:month] || (Time.zone || Time).now.month).to_i

@@ -55,7 +55,7 @@
                             button.text(newbuttontext)
                         },
                         function(data) {
-                            return alert(data.status);
+                            return alert('hello');
                         });
                     }
                 });
