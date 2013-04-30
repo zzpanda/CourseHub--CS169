@@ -39,6 +39,8 @@ class UsersController < ApplicationController
     @today = Date.current
     @ago = @today - 7.days
     @feed = Resource.where(:coursem_id => @coursemids).where("updated_at > ?", @ago).order("updated_at DESC")
+
+    @home = true
   end
 
   # Edit profile page
