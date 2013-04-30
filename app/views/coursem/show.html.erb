@@ -45,24 +45,7 @@
      <%= link_to "Add Resource", {:controller => "resources", :action => "new", :user => @user.id, :coursem => @coursem.id }, :id => "new_resource" %>
      <div id="new_resource_div"></div>
 
-     <div class="resource_type">
-
-     </div>
-
-     <div class="resource_type">
-       <div id="homework_announcements" class = "resource_header">
-         <span class="expand">+</span>
-         <h2>Homework</h2>
-       </div>
-       <table id="Homework" class="resources">
-         <% @coursem.resources.each do |resource| %>
-             <% if resource.type == "Homework" %>
-                 <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
-             <% end %>
-         <% end %>
-       </table>
-     </div>
-
+     <%= render :partial => "/coursem/resources", :locals => {:coursem => @coursem} %>
     </div>
 
   <div id="panel_announcements" class="panels">
