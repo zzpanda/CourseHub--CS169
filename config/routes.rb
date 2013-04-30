@@ -19,6 +19,7 @@ Coursehub::Application.routes.draw do
 
   match 'courses/resources' => 'courses#resources'
   match '/courses/department' => 'courses#getDepartment'
+  match '/courses' => 'courses#index'
   match '/courses/check' => 'courses#checkSubscribed'
   match '/coursem/create' => 'coursem#create'
 
@@ -33,7 +34,7 @@ Coursehub::Application.routes.draw do
   root :to => redirect("/users/sign_in")
 
   resources :coursem
-  resources :courses
+  #resources :courses
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

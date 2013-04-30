@@ -91,6 +91,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
     @coursems = @user.coursems
     @viewingProfile = true
     @resources = @user.resources
@@ -98,6 +99,7 @@ class UsersController < ApplicationController
 
   def coursems
     @user = current_user
+    @page_title = "My Courses"
     @coursems = @user.coursems
   end
 end
