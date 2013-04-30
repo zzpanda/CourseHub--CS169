@@ -1,0 +1,23 @@
+<%= link_to 'Back to Coursem', @coursemURL %>
+
+<% @course.coursems.each do |coursem| %>
+    <%
+       sem_id = coursem.semester_id
+       term = Semester.find(sem_id).term
+       year = Semester.find(sem_id).year.to_s
+       semname = term + " " + year
+    %>
+    <h1> <%= semname %></h1>
+    <div id="homework_announcements" class = "resource_header">
+      <span class="expand">+</span>
+      <h2>Homework</h2>
+    </div>
+    <% coursem.resources.each do |r| %>
+        <table>
+          <% if r.type == "Homework" %>
+              <%= render :partial => '/resources/resource', :locals => {:resource => r} %>
+          <% end %>
+        </table>
+    <% end %>
+<% end %>
+
