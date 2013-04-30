@@ -85,4 +85,8 @@ class UsersController < ApplicationController
       render :json => {:status => 'user not signed in'}
     end
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
 end
