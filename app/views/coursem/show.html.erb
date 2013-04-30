@@ -39,41 +39,21 @@
 
 
    <div id = "panel_resources" class="panels">
-
+     <%= link_to "Resources for this Course (All Semesters)",
+                 {:controller => "courses", :action => "resources", :courseid => @coursem.course_id, :coursemid => @coursem.id } %>
+     <br/>
      <%= link_to "Add Resource", {:controller => "resources", :action => "new", :user => @user.id, :coursem => @coursem.id }, :id => "new_resource" %>
      <div id="new_resource_div"></div>
 
-     <div class="resource_type">
-
-     </div>
-
-     <div class="resource_type">
-       <div id="homework_announcements" class = "resource_header">
-         <span class="expand">+</span>
-         <h2>Homework</h2>
-       </div>
-       <table id="Homework" class="resources">
-         <% @coursem.resources.each do |resource| %>
-             <% if resource.type == "Homework" %>
-                 <tr>
-                   <td class="col_flag"></td>
-                   <td class="col_downvote"></td>
-                   <td class="col_name"></td>
-                   <td>
-                     <a href='/resources/<%=resource.id %>'><%=  resource.name %></a>
-                   </td>
-                 </tr>
-             <% end %>
-         <% end %>
-       </table>
-     </div>
-
-</div>
+     <%= render :partial => "/coursem/resources", :locals => {:coursem => @coursem} %>
+    </div>
 
   <div id="panel_announcements" class="panels">
-      <p> This will be a list of the most recently updated resources.
-          </p>
-    <p>To be implemented in 4th iteration</p>
+    <table id="Feed">
+      <% @feed.each do |a| %>
+        <%= render :partial => '/resources/resource', :locals => {:resource => a} %>
+      <% end %>
+    </table>
   </div>
 
     <div id="panel_calendar" class="panels">

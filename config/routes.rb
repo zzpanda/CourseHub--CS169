@@ -3,21 +3,25 @@ Coursehub::Application.routes.draw do
 
   devise_for :users
 
+  match '/users/coursems' => 'users#coursems'
+
   resources :users
   resources :resources
   resources :events
 
   match '/events/recentevent/:id' => 'events#recentevent'
 
-  match 'profile' => 'users#show'
-
-  match 'edit_profile' => 'users#edit'
+  match '/profile' => 'users#show'
+  match '/users/coursems' => 'users#coursems'
+  match '/edit_profile' => 'users#edit'
   match '/users/subscribe' => 'users#subscribe'
   match '/users/unsubscribe' => 'users#unsubscribe'
 
+  match 'courses/resources' => 'courses#resources'
   match '/courses/department' => 'courses#getDepartment'
   match '/courses/check' => 'courses#checkSubscribed'
   match '/coursem/create' => 'coursem#create'
+
 
   match '/resources/addComment' => 'resources#addComment'
   match '/resources/type' => 'resources#getResourcesType'

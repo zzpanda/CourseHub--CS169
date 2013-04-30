@@ -1,0 +1,13 @@
+<%= link_to 'Back to Coursem', @coursemURL %>
+
+<% @course.coursems.each do |coursem| %>
+    <%
+       sem_id = coursem.semester_id
+       term = Semester.find(sem_id).term
+       year = Semester.find(sem_id).year.to_s
+       semname = term + " " + year
+    %>
+    <h1> <%= semname %></h1>
+    <%= render :partial => "/coursem/resources", :locals => {:coursem => coursem} %>
+<% end %>
+

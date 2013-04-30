@@ -25,17 +25,22 @@ class UsersController < ApplicationController
       @id = current_user.id
     end
 
-    @coursems = User.find(@id).subscribed
-
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
     @shown_month = Date.civil(@year, @month)
 
+    @coursems = User.find(@id).subscribed
     @coursemids = []
     @coursems.each do |coursem|
       @coursemids << coursem.id
     end
     @event_strips = Event.event_strips_for_month(@shown_month, :conditions => {:coursem_id => @coursemids })
+
+    @today = Date.current
+    @ago = @today - 7.days
+    @feed = Resource.where(:coursem_id => @coursemids).where("updated_at > ?", @ago).order("updated_at DESC")
+
+    @home = true
   end
 
   # Edit profile page
@@ -84,5 +89,17 @@ class UsersController < ApplicationController
     else
       render :json => {:status => 'user not signed in'}
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @coursems = @user.coursems
+    @viewingProfile = true
+    @resources = @user.resources
+  end
+
+  def coursems
+    @user = current_user
+    @coursems = @user.coursems
   end
 end

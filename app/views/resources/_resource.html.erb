@@ -1,0 +1,44 @@
+<tr>
+  <td>
+    <a href='/resources/<%= resource.id %>'><%= resource.name %></a>
+  </td>
+  <td> | </td>
+
+  <% if @home == true %>
+      <%
+         coursemid = resource.coursem_id
+         courseid = Coursem.find(coursemid).course_id
+         dept = Course.find(courseid).department
+         courseNum = Course.find(courseid).course_number
+         abbr = dept + " " + courseNum
+         coursemURL = "/coursem/" + coursemid.to_s
+      %>
+      <td>
+        <%= link_to abbr, coursemURL %>
+      </td>
+
+      <td> | </td>
+  <% end %>
+
+
+  <% if @viewingProfile != true %>
+      <%
+         userid = resource.user_id
+         username = User.find(userid).username
+         userURL = "/users/" + userid.to_s
+      %>
+      <td class="col_user">Posted by
+
+        <%= link_to username, userURL %>
+      </td>
+      <td> | </td>
+  <% end %>
+
+  <td class="col_postdate">Posted on <%= resource.created_at %></td>
+  <td> | </td>
+
+  <td class="col_flag">FlagButton</td
+
+  <td class="col_downvote"></td>
+  <td class="col_name"></td>
+</tr>
