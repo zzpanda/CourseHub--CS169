@@ -55,14 +55,7 @@
        <table id="Homework" class="resources">
          <% @coursem.resources.each do |resource| %>
              <% if resource.type == "Homework" %>
-                 <tr>
-                   <td class="col_flag"></td>
-                   <td class="col_downvote"></td>
-                   <td class="col_name"></td>
-                   <td>
-                     <a href='/resources/<%=resource.id %>'><%=  resource.name %></a>
-                   </td>
-                 </tr>
+                 <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
              <% end %>
          <% end %>
        </table>

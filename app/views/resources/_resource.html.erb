@@ -1,0 +1,13 @@
+<tr>
+  <td>
+    <a href='/resources/<%= resource.id %>'><%= resource.name %></a>
+  </td>
+  <td> | </td>
+  <td class="col_user">Posted by <%= User.find(resource.user_id).username %></td>
+  <td> | </td>
+  <td class="col_postdate">Posted on <%= resource.created_at %></td>
+  <td> | </td>
+  <td class="col_flag">FlagButton</td>
+  <td class="col_downvote"></td>
+  <td class="col_name"></td>
+</tr>
