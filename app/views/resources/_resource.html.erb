@@ -3,7 +3,14 @@
     <a href='/resources/<%= resource.id %>'><%= resource.name %></a>
   </td>
   <td> | </td>
-  <td class="col_user">Posted by <%= User.find(resource.user_id).username %></td>
+  <td class="col_user">Posted by
+    <%
+       userid = resource.user_id
+       username = User.find(userid).username
+       userURL = "/users/" + userid.to_s
+    %>
+    <%= link_to username, userURL %>
+  </td>
   <td> | </td>
   <td class="col_postdate">Posted on <%= resource.created_at %></td>
   <td> | </td>
