@@ -2,9 +2,14 @@ class UsersController < ApplicationController
 
   def edit
     respond_to do |format|
-      @email = params[:email]
       @username = params[:username]
-      format.all { render :json => {:status => 'email:' + @email+' username: ' + @username}, :content_type => 'application/json' }
+      if User.find_by_username(@username).nil? || @username == current_user.username
+        current_user.username = @username
+        current_user.save!
+        format.all { render :json => {:status => 'Change Successfully! Username: ' + @username}, :content_type => 'application/json' }
+      else
+        format.all { render :json => {:status => 'Username is already existed! Please try again.'}, :content_type => 'application/json' }
+      end
     end
   end
 
@@ -18,17 +23,22 @@ class UsersController < ApplicationController
       @id = current_user.id
     end
 
-    @coursems = User.find(@id).subscribed
-
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
     @shown_month = Date.civil(@year, @month)
 
+    @coursems = User.find(@id).subscribed
     @coursemids = []
     @coursems.each do |coursem|
       @coursemids << coursem.id
     end
     @event_strips = Event.event_strips_for_month(@shown_month, :conditions => {:coursem_id => @coursemids })
+
+    @today = Date.current
+    @ago = @today - 7.days
+    @feed = Resource.where(:coursem_id => @coursemids).where("updated_at > ?", @ago).order("updated_at DESC")
+
+    @home = true
   end
 
   # Edit profile page
@@ -77,5 +87,17 @@ class UsersController < ApplicationController
     else
       render :json => {:status => 'user not signed in'}
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @coursems = @user.coursems
+    @viewingProfile = true
+    @resources = @user.resources
+  end
+
+  def coursems
+    @user = current_user
+    @coursems = @user.coursems
   end
 end

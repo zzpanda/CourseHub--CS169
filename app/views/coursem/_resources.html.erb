@@ -1,0 +1,125 @@
+<div class="resource_type">
+  <div class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Announcements</h2>
+  </div>
+  <table class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "Announcements" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="resource_type">
+  <div class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Discussion Notes</h2>
+  </div>
+  <table class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "Discussion" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="resource_type">
+  <div class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Discussion Solutions</h2>
+  </div>
+  <table class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "DiscussionSolution" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="resource_type">
+  <div class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Exams</h2>
+  </div>
+  <table class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "Exam" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="resource_type">
+  <div class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Exam Solutions</h2>
+  </div>
+  <table class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "ExamSolution" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="resource_type">
+  <div id="homework_announcements" class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Homework</h2>
+  </div>
+  <table id="Homework" class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "Homework" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="resource_type">
+  <div class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Homework Solutions</h2>
+  </div>
+  <table class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "HomeworkSolution" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="resource_type">
+  <div class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Lecture Notes</h2>
+  </div>
+  <table class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "LectureNotes" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="resource_type">
+  <div class = "resource_header">
+    <span class="expand">+</span>
+    <h2>Other (Online Resources) </h2>
+  </div>
+  <table class="resources">
+    <% coursem.resources.each do |resource| %>
+        <% if resource.type == "OnlineResource" %>
+            <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
+        <% end %>
+    <% end %>
+  </table>
+</div>

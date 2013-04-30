@@ -66,6 +66,10 @@ class CoursemController < ApplicationController
 
         @event = Event.new
 
+        @today = Date.current
+        @ago = @today - 7.days
+        @feed = Resource.where("updated_at > ? and coursem_id = ?", @ago, @coursem.id).order("updated_at DESC")
+
         if @user.subscribed?(@coursem)
           @subscribe_text = "Unsubscribe"
           @subscribed = 1

@@ -13,30 +13,45 @@
 
         initialize_page: function() {
             this.populate_courses();
-            this.goto_coursem();
         },
 
         // Event handler for changing semester
         course_semester_listener: function() {
-            $(".col_classes").each(function() {
-                $(this).change(function() {
-                    var selectedValue;
-                    selectedValue = $(this).find(":selected").val();
-                    console.log("the value you selected: " + selectedValue);
-                    //window.location = "coursem/" + selectedValue;
-                });
-            });
-        },
-
-        goto_coursem: function() {
-            var i = 0;
             $(".row_content").each(function() {
-                    $(this).find("a").on("click", function(event) {
-                        event.preventDefault();
-                        var $select = $(this).parent().parent().find("select");
-                        window.location = "coursem/" + $select.val();
-                    });
+                var button = $(this).find('td.col_subscribe').find('button');
+                $(this).find('td.col_classes').each(function() {
+                    var selectedValue;
+                    selectedValue = $(this).find("select").val();
+                    $.post('/courses/check', 
+                        {
+                            coursem_id: selectedValue
+                        },
+                        function(data){
+                            if (data == true) {
+                                button.text("Unsubscribe");
+                            } else {
+                                button.text("Subscribe");
+                            }
+                        }
+                    );
+                });
 
+                $(this).find('td.col_classes').change(function() {
+                    var selectedValue;
+                    selectedValue = $(this).find("select").val();
+                    $.post('/courses/check', 
+                        {
+                            coursem_id: selectedValue
+                        },
+                        function(data){
+                            if (data == true) {
+                                button.text("Unsubscribe");
+                            } else {
+                                button.text("Subscribe");
+                            }
+                        }
+                    );
+                });
             });
         },
 
@@ -91,6 +106,8 @@
             $("#num_courses").hide();
             Page_Changer.total_pages = Math.ceil(parseInt($("#num_courses").html())/10);
             //alert(Page_Changer.total_pages);
+
+
 
             $("#button_next").on("click", function(event) {
                 if (Page_Changer.page_number == Page_Changer.total_pages - 1) {

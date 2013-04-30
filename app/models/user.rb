@@ -6,10 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :username, :password, :password_confirmation, :remember_me, :encrypted_password
+  attr_accessible :email, :username, :password, :password_confirmation, :remember_me, :encrypted_password, :karma
   #other fields include id, karma
 
   validates_presence_of :email
+  validates :email, :presence => true, :uniqueness => true
   #validates_presence_of :username
   #validates_presence_of :password
 
@@ -96,6 +97,14 @@ class User < ActiveRecord::Base
     end
     if @resource.nil?
       resourceName = resourceName.downcase.split(' ').map {|w| w.capitalize }.join(' ')
+      @user = User.find_by_id(user_id)
+      if @user.karma == nil
+        @user.karma = 1
+        @user.save
+      else
+        @user.karma += 1
+        @user.save
+      end
       return type.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id, :flags => 0, :users_who_flagged => "")
     else
       return RESOURCE_EXIST

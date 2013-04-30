@@ -1,0 +1,44 @@
+<%
+username = @user.username
+%>
+
+<h2> About <%= username %> </h2>
+<%= render :partial => '/users/info', :locals => { :user => @user } %>
+
+<h2> Courses <%= username %> is Subscribed to: </h2>
+<%= render :partial => '/users/coursems', :locals => {:coursems => @coursems} %>
+
+<h2> Resources <%= username %> Has Posted: </h2>
+<table>
+    <% @resources.each do |r| %>
+        <%= render :partial => '/resources/resource', :locals => {:resource => r} %>
+    <% end %>
+</table>
+
+<h2> Comments <%= username %> Has Posted: </h2>
+<div>
+  <table>
+  <% @user.comments.each do |comment| %>
+      <%
+      resource = Resource.find(comment.resource_id)
+      resourceURL = "/resources/" + comment.resource_id.to_s
+      coursem = Coursem.find(resource.coursem_id)
+      semester = Semester.find(coursem.semester_id)
+      termyear = semester.term + " " + semester.year.to_s
+      course = Course.find(coursem.course_id)
+      coursename = course.department + " " + course.course_number
+      %>
+      <div class ="comment_display">
+        <tr>
+          <td>"<%= comment.content %>"</td>
+          <td> | </td>
+          <td><%= link_to resource.name, resourceURL %></td>
+          <td> | </td>
+          <td><%= coursename %></td>
+          <td> | </td>
+          <td><%= termyear %></td>
+        </tr>
+      </div>
+  <% end %>
+  </table>
+</div>

@@ -25,36 +25,39 @@
   </div>
 
   <% if user_signed_in? %>
-   <nav>
+      <nav>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/courses">Browse Courses</a></li>
-          <li><a href="/">My Courses</a></li>
-          <li>
-            <% if user_signed_in? %>
-                <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-            <% else %>
-                <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-            <% end %>
 
-          </li>
+
+
+          <% if user_signed_in? %>
+              <li><a href="/users/coursems">My Courses</a></li>
+              <li><a href="/profile">Edit Profile</a></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+              <li><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %></li>
+          <% end %>
+
+
         </ul>
-    </nav>
-   <% end %>
+      </nav>
+  <% end %>
 
 
-    <% if not @page_heading.nil? %>
-        <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %></h2></div>
-    <% end %>
+  <% if not @page_heading.nil? %>
+      <div id = "title_container"><h2><%= @page_heading or 'Page Heading' %></h2></div>
+  <% end %>
 
-    <div id="content">
-      <%= yield %>
-    </div>
+  <div id="content">
+    <%= yield %>
+  </div>
 
-    <footer>
+  <footer>
 
-    </footer>
+  </footer>
 
-    </div>
+</div>
 </body>
 </html>
