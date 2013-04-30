@@ -8,14 +8,25 @@ class CoursesController < ApplicationController
   def index
       # Check for filters
       @courses = Course.getCourseInformation(params[:dept],params[:course])
-      @subscribed =  current_user.subscribed
-      @unsubscribed = false
       @page_heading = "Browse Courses"
       @page_title = "Browse Courses"
       respond_to do |format|
           format.html
           format.json {render json: @courses }
       end
+  end
+
+  def checkSubscribed
+    @subscribed =  current_user.subscribed
+    @subscribe = false
+    @subscribed.each do |coursem|
+      if coursem.id.to_s == params[:coursem_id]
+        @subscribe = true
+      end
+    end
+    respond_to do |format|
+      format.json {render json: @subscribe }
+    end
   end
 
   # Get all the possible department in the database

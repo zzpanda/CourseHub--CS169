@@ -16,6 +16,7 @@ Coursehub::Application.routes.draw do
   match '/users/unsubscribe' => 'users#unsubscribe'
 
   match '/courses/department' => 'courses#getDepartment'
+  match '/courses/check' => 'courses#checkSubscribed'
   match '/coursem/create' => 'coursem#create'
 
   match '/resources/addComment' => 'resources#addComment'
