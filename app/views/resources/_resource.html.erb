@@ -10,9 +10,11 @@
          courseid = Coursem.find(coursemid).course_id
          dept = Course.find(courseid).department
          courseNum = Course.find(courseid).course_number
+         abbr = dept + " " + courseNum
+         coursemURL = "/coursem/" + coursemid.to_s
       %>
       <td>
-        <%= dept %> <%= courseNum %>
+        <%= link_to abbr, coursemURL %>
       </td>
 
       <td> | </td>
