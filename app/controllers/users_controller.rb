@@ -88,5 +88,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @coursems = @user.coursems
+    @viewingProfile = true
   end
 end

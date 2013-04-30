@@ -1,0 +1,9 @@
+<%
+username = @user.username
+%>
+
+<h2> About <%= username %> </h2>
+<%= render :partial => '/users/info', :locals => { :user => @user } %>
+
+<h2> Courses <%= username %> is subscribed to </h2>
+<%= render :partial => '/users/coursems', :locals => {:coursems => @coursems} %>
