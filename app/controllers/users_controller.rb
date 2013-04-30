@@ -3,9 +3,7 @@ class UsersController < ApplicationController
   def edit
     respond_to do |format|
       @username = params[:username]
-      logger.debug "fuckall"
       if User.find_by_username(@username).nil? || @username == current_user.username
-        logger.debug "suckall"
         current_user.username = @username
         current_user.save!
         format.all { render :json => {:status => 'Change Successfully! Username: ' + @username}, :content_type => 'application/json' }
