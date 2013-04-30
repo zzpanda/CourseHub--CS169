@@ -61,12 +61,14 @@
        </table>
      </div>
 
-</div>
+    </div>
 
   <div id="panel_announcements" class="panels">
-      <p> This will be a list of the most recently updated resources.
-          </p>
-    <p>To be implemented in 4th iteration</p>
+    <table id="Feed">
+      <% @feed.each do |a| %>
+        <%= render :partial => '/resources/resource', :locals => {:resource => a} %>
+      <% end %>
+    </table>
   </div>
 
     <div id="panel_calendar" class="panels">
