@@ -2,7 +2,12 @@
     <%= stylesheet_link_tag "event_calendar" %>
 <% end %>
 
-
+<h1> Feed of Recent Resources: </h1>
+<table id="Feed">
+  <% @feed.each do |a| %>
+      <%= render :partial => '/resources/resource', :locals => {:resource => a} %>
+  <% end %>
+</table>
 
 <div id="calendar_container">
     <h1>Your calendar:</h1>
