@@ -10,9 +10,9 @@
 
   <% @coursems.each do |coursem| %>
       <tr class="row_content" id='<%= coursem.id %>'>
-        <td class='col_gooto'><a href="coursem/<%= coursem.id %>">Goto</a></td>
+        <td class='col_gooto'><a href="/coursem/<%= coursem.id %>">Goto</a></td>
         <td class='col_department'>
-          <a href='courses/?dept=<%= coursem.course.department %>'>
+          <a href='/courses/?dept=<%= coursem.course.department %>'>
             <%= coursem.course.department %>
           </a>
         </td>

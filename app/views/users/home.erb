@@ -2,15 +2,10 @@
     <%= stylesheet_link_tag "event_calendar" %>
 <% end %>
 
-<div id="course_container">
 
-<h1>Your current courses:</h1>
-  <%= render :partial => 'users/coursems', :locals => {:coursems => @coursems} %>
- </div>
 
 <div id="calendar_container">
     <h1>Your calendar:</h1>
     <%= raw(event_calendar) %>
 </div>
 
-</div>

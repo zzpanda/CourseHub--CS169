@@ -92,4 +92,9 @@ class UsersController < ApplicationController
     @viewingProfile = true
     @resources = @user.resources
   end
+
+  def coursems
+    @user = current_user
+    @coursems = @user.coursems
+  end
 end
