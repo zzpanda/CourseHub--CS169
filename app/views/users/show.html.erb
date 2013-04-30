@@ -7,3 +7,10 @@ username = @user.username
 
 <h2> Courses <%= username %> is subscribed to </h2>
 <%= render :partial => '/users/coursems', :locals => {:coursems => @coursems} %>
+
+<h2> Resources <%= username %> has posted </h2>
+<table>
+    <% @resources.each do |r| %>
+        <%= render :partial => '/resources/resource', :locals => {:resource => r} %>
+    <% end %>
+</table>

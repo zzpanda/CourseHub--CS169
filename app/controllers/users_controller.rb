@@ -90,5 +90,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @coursems = @user.coursems
     @viewingProfile = true
+    @resources = @user.resources
   end
 end
