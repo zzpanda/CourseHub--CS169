@@ -45,7 +45,7 @@ def generate_all(debug = false)
 				#room = course["sections"][0]["sectionMeetings"]["room"].to_s
 				professor = course["sections"][0]["sectionMeetings"]["instructorNames"]
 
-				coursem_info = {"units" => units}.to_s
+				coursem_info = "Units: " + units.to_s
 				if debug
 					puts("name: " + name)
 					puts("department: " + department)
