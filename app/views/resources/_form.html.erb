@@ -1,5 +1,5 @@
 <div id="error_message_resource" style= "color: red;" ></div>
-<div id="resource_form">
+<div id="resource_form" class='form-inline'>
   <%= form_for(@resource, :remote=>true, :html => { :id => "new_resource_form" }) do |f| %>
 
       <p>
@@ -20,7 +20,7 @@
       </p>
       <%= f.hidden_field :user_id, :value => @user.id %>
       <%= f.hidden_field :coursem_id, :value => @coursem.id %>
-      <p><%=  f.submit :id=>"resource_submit" %></p>
+      <p><%=  f.submit :id=>"resource_submit", :class=>'btn' %></p>
 
   <% end %>
 </div>

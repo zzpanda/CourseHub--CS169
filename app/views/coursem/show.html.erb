@@ -13,7 +13,7 @@
     	</div>
     </div>
     <div id="sub">
-      <button id="sub_button" value=<%=@subscribed%> coursem_id=<%=@coursem.id%>><%= @subscribe_text%></button>
+      <button id="sub_button" class='btn' value=<%=@subscribed%> coursem_id=<%=@coursem.id%>><%= @subscribe_text%></button>
     </div>
     <div id="tabs">
           <ul>
@@ -39,9 +39,11 @@
 
 
    <div id = "panel_resources" class="panels">
+     <h4>
      <%= link_to "Resources for this Course (All Semesters)",
                  {:controller => "courses", :action => "resources", :courseid => @coursem.course_id, :coursemid => @coursem.id } %>
-     <br/>
+       </h4>
+       <br/>
      <%= link_to "Add Resource", {:controller => "resources", :action => "new", :user => @user.id, :coursem => @coursem.id }, :id => "new_resource" %>
      <div id="new_resource_div"></div>
 
@@ -49,7 +51,7 @@
     </div>
 
   <div id="panel_announcements" class="panels">
-    <table id="Feed">
+    <table class = "table" id="Feed">
       <% @feed.each do |a| %>
         <%= render :partial => '/resources/resource', :locals => {:resource => a} %>
       <% end %>
