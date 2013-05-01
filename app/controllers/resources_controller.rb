@@ -46,4 +46,20 @@ class ResourcesController < ApplicationController
 
   end
 
+  def checkFavorite
+    @favorite =  current_user.favorite
+    @boolean = false
+    if not @favorite.nil?
+      @favoriteResource = @favorite.resources
+      @favoriteResource.each do |resource|
+        if resource.id.to_s == params[:resource_id]
+          @boolean = true
+        end
+      end
+    end
+    respond_to do |format|
+      format.json {render json: @boolean }
+    end
+  end
+
 end

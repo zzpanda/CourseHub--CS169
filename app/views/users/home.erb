@@ -9,6 +9,13 @@
   <% end %>
 </table>
 
+<h1> Favorite Resources: </h1>
+<table id="favorite">
+  <% @favorites.each do |favorite| %>
+      <%= render :partial => '/resources/favorite', :locals => {:favorite => favorite} %>
+  <% end %>
+</table>
+
 <div id="calendar_container">
     <h1>Your calendar:</h1>
     <%= raw(event_calendar) %>
