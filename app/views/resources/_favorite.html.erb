@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <a href='/resources/<%= favorite.id %>'><%= favorite.name %></a>
+    <a href='/resources/<%= favorite.id %>' target="_blank"><%= favorite.name %></a>
   </td>
   <td> | </td>
 
@@ -18,12 +18,13 @@
       <td>
         <%= link_to abbr, coursemURL %>
       </td>
+      <td> | </td>
       <td> <%= semes %> </td>
 
       <td> | </td>
   <% end %>
 
-  <td class="col_postdate">Posted on <%= favorite.created_at %></td>
+  <td class="col_postdate">Posted on <%= favorite.created_at.to_s.split[0] %></td>
   <td> | </td>
 
   <td class="col_flag">FlagButton</td
