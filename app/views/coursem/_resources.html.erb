@@ -1,7 +1,7 @@
 <div class="resource_type">
   <div class = "resource_header">
     <span class="expand">+</span>
-    <h2>Announcements</h2>
+    <h2>Announcements (<%= coursem.resources.where(:type => 'Announcement').size %>)</h2>
   </div>
   <table class="resources">
     <% coursem.resources.each do |resource| %>
@@ -15,7 +15,7 @@
 <div class="resource_type">
   <div class = "resource_header">
     <span class="expand">+</span>
-    <h2>Discussion Notes</h2>
+    <h2>Discussion Notes (<%= coursem.resources.where(:type => 'Discussion').size %>)</h2>
   </div>
   <table class="resources">
     <% coursem.resources.each do |resource| %>
@@ -29,7 +29,7 @@
 <div class="resource_type">
   <div class = "resource_header">
     <span class="expand">+</span>
-    <h2>Discussion Solutions</h2>
+    <h2>Discussion Solutions (<%= coursem.resources.where(:type => 'DiscussionSolution').size %>)</h2>
   </div>
   <table class="resources">
     <% coursem.resources.each do |resource| %>
@@ -43,7 +43,7 @@
 <div class="resource_type">
   <div class = "resource_header">
     <span class="expand">+</span>
-    <h2>Exams</h2>
+    <h2>Exams (<%= coursem.resources.where(:type => 'Exam').size %>)</h2>
   </div>
   <table class="resources">
     <% coursem.resources.each do |resource| %>
@@ -57,7 +57,7 @@
 <div class="resource_type">
   <div class = "resource_header">
     <span class="expand">+</span>
-    <h2>Exam Solutions</h2>
+    <h2>Exam Solutions (<%= coursem.resources.where(:type => 'ExamSolution').size %>)</h2>
   </div>
   <table class="resources">
     <% coursem.resources.each do |resource| %>
@@ -71,7 +71,7 @@
 <div class="resource_type">
   <div id="homework_announcements" class = "resource_header">
     <span class="expand">+</span>
-    <h2>Homework</h2>
+    <h2>Homework (<%= coursem.resources.where(:type => 'Homework').size %>)</h2>
   </div>
   <table id="Homework" class="resources">
     <% coursem.resources.each do |resource| %>
@@ -85,7 +85,7 @@
 <div class="resource_type">
   <div class = "resource_header">
     <span class="expand">+</span>
-    <h2>Homework Solutions</h2>
+    <h2>Homework Solutions (<%= coursem.resources.where(:type => 'HomeworkSolution').size %>)</h2>
   </div>
   <table class="resources">
     <% coursem.resources.each do |resource| %>
@@ -99,7 +99,7 @@
 <div class="resource_type">
   <div class = "resource_header">
     <span class="expand">+</span>
-    <h2>Lecture Notes</h2>
+    <h2>Lecture Notes (<%= coursem.resources.where(:type => 'LectureNotes').size %>)</h2>
   </div>
   <table class="resources">
     <% coursem.resources.each do |resource| %>
@@ -113,7 +113,7 @@
 <div class="resource_type">
   <div class = "resource_header">
     <span class="expand">+</span>
-    <h2>Other (Online Resources) </h2>
+    <h2>Other (Online Resources) (<%= coursem.resources.where(:type => 'OnlineResource').size %>) </h2>
   </div>
   <table class="resources">
     <% coursem.resources.each do |resource| %>

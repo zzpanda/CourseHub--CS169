@@ -70,5 +70,9 @@ module Coursehub
 
     # Load Subfolder Models
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+
+    #for bootstrap-sass
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
   end
 end

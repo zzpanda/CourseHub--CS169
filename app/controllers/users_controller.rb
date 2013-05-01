@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  def edit
+  def update
     respond_to do |format|
       @username = params[:username]
       if User.find_by_username(@username).nil? || @username == current_user.username
@@ -11,6 +11,17 @@ class UsersController < ApplicationController
         format.all { render :json => {:status => 'Username is already existed! Please try again.'}, :content_type => 'application/json' }
       end
     end
+  end
+
+  def edit
+    @id = params[:id]
+    if @id.nil? || @id == 0
+      @id = current_user.id
+    end
+
+    @email = current_user.email
+    @password = current_user.password
+    @karma = current_user.karma
   end
 
   # Home page for logged in user
@@ -131,6 +142,7 @@ class UsersController < ApplicationController
 
   def coursems
     @user = current_user
+    @page_title = "My Courses"
     @coursems = @user.coursems
   end
 end

@@ -11,7 +11,7 @@ Coursehub::Application.routes.draw do
 
   match '/events/recentevent/:id' => 'events#recentevent'
 
-  match '/profile' => 'users#show'
+  match '/profile' => 'users#edit'
   match '/users/coursems' => 'users#coursems'
   match '/edit_profile' => 'users#edit'
   match '/users/subscribe' => 'users#subscribe'
@@ -21,6 +21,7 @@ Coursehub::Application.routes.draw do
 
   match 'courses/resources' => 'courses#resources'
   match '/courses/department' => 'courses#getDepartment'
+  match '/courses' => 'courses#index'
   match '/courses/check' => 'courses#checkSubscribed'
   match '/coursem/create' => 'coursem#create'
 
@@ -31,12 +32,11 @@ Coursehub::Application.routes.draw do
 
   authenticated :user do
     root :to => "users#home"
-    match "/profile/" => 'users#editprofile'
   end
   root :to => redirect("/users/sign_in")
 
   resources :coursem
-  resources :courses
+  #resources :courses
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
