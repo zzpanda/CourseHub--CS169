@@ -2,15 +2,26 @@
     <%= stylesheet_link_tag "event_calendar" %>
 <% end %>
 
-<h1> Feed of Recent Resources: </h1>
-<table id="Feed">
+<h2> Feed of Recent Resources: </h2>
+<table class='table' id="Feed">
   <% @feed.each do |a| %>
       <%= render :partial => '/resources/resource', :locals => {:resource => a} %>
   <% end %>
 </table>
 
+<div>
+	<% if @favorites.size != 0 %>
+		<h2> Favorite Resources: </h2>
+		<table class='table' id="favorite">
+		  <% @favorites.each do |favorite| %>
+		      <%= render :partial => '/resources/favorite', :locals => {:favorite => favorite} %>
+		  <% end %>
+		</table>
+	<% end %>
+</div>
+
 <div id="calendar_container">
-    <h1>Your calendar:</h1>
+    <h2>Your calendar:</h2>
     <%= raw(event_calendar) %>
 </div>
 

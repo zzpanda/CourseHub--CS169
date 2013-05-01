@@ -50,6 +50,15 @@ class UsersController < ApplicationController
     @feed = Resource.where(:coursem_id => @coursemids).where("updated_at > ?", @ago).order("updated_at DESC")
 
     @home = true
+
+    #show favorite resources
+    @favorites = current_user.favorite
+    if @favorites.nil?
+      @favorites = []
+    else
+      @favorites = @favorites.resources
+    end
+    @favorite = true
   end
 
   # Edit profile page
@@ -94,6 +103,30 @@ class UsersController < ApplicationController
       @id = current_user.id
       @user = User.find(@id)
       @user.unsubscribe(params[:coursem_id])
+      render :json => {:status => 'success'}
+    else
+      render :json => {:status => 'user not signed in'}
+    end
+  end
+
+  def addFavorite
+    if user_signed_in?
+
+      @id = current_user.id
+      @user = User.find(@id)
+      @user.addToFavorite(params[:resource_id])
+      render :json => {:status => 'success'}
+    else
+
+      render :json => {:status => 'user not signed in'}
+    end
+  end
+
+  def deleteFavorite
+    if user_signed_in?
+      @id = current_user.id
+      @user = User.find(@id)
+      @user.deleteFavorite(params[:resource_id])
       render :json => {:status => 'success'}
     else
       render :json => {:status => 'user not signed in'}

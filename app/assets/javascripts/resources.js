@@ -24,3 +24,57 @@ function json_save_comment(page, dict, success, failure) {
         failure: failure
     });
 }
+
+function favorite_listener() {
+    $('table#favorite tr').find('td.col_addFavorite').each(function() {
+        var input = $(this).find('input');
+        var resourceid = input.attr('id');
+        $.post('/resources/check', 
+            {
+                resource_id: resourceid
+            },
+            function(data){
+                if (data == true) {
+                    input.val('Delete Favorite');
+                } else {
+                    input.val('Add To Favorite');
+                }
+            }
+        );
+
+        
+        $(input).click(function() {
+                    var json_sending;
+                    if (resourceid !== null) {
+                        var newbuttontext
+                        var path
+                        if (input.val() == "Add To Favorite"){
+                            newbuttontext = "Delete Favorite";
+                            path = "/users/addFavorite"
+                        }else {
+                            newbuttontext = "Add To Favorite"
+                            path = "/users/deleteFavorite"
+
+                        }
+                        json_sending = {
+                            resource_id: resourceid
+                        };
+                        json_request(path, json_sending,
+                        function(data) {
+                            input.val(newbuttontext);
+                        },
+                        function(data) {
+                            return alert(data.status);
+                        });
+                    }
+                });
+
+
+    });
+
+
+}
+
+$(document).ready(function() {
+    favorite_listener();
+})

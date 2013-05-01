@@ -16,6 +16,8 @@ Coursehub::Application.routes.draw do
   match '/edit_profile' => 'users#edit'
   match '/users/subscribe' => 'users#subscribe'
   match '/users/unsubscribe' => 'users#unsubscribe'
+  match '/users/addFavorite' => 'users#addFavorite'
+  match '/users/deleteFavorite' => 'users#deleteFavorite'
 
   match 'courses/resources' => 'courses#resources'
   match '/courses/department' => 'courses#getDepartment'
@@ -26,6 +28,7 @@ Coursehub::Application.routes.draw do
 
   match '/resources/addComment' => 'resources#addComment'
   match '/resources/type' => 'resources#getResourcesType'
+  match '/resources/check' => 'resources#checkFavorite'
 
   authenticated :user do
     root :to => "users#home"

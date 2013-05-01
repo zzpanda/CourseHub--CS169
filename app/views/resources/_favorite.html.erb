@@ -1,0 +1,34 @@
+<tr>
+  <td>
+    <a href='/resources/<%= favorite.id %>' target="_blank"><%= favorite.name %></a>
+  </td>
+
+
+  <% if @favorite == true %>
+      <%
+         coursemid = favorite.coursem_id
+         semester = Semester.find_by_id(Coursem.find(coursemid).semester_id)
+         courseid = Coursem.find(coursemid).course_id
+         dept = Course.find(courseid).department
+         courseNum = Course.find(courseid).course_number
+         abbr = dept + " " + courseNum
+         coursemURL = "/coursem/" + coursemid.to_s
+         semes = semester.term + " " + semester.year.to_s
+      %>
+      <td>
+        <%= link_to abbr, coursemURL %>
+      </td>
+
+      <td> <%= semes %> </td>
+
+
+  <% end %>
+
+  <td class="col_postdate">Posted on <%= favorite.created_at.to_s.split[0] %></td>
+
+
+  <td class="col_flag">FlagButton</td
+
+  <td class="col_downvote"></td>
+  <td class="col_name"></td>
+</tr>

@@ -2,7 +2,7 @@
   <td>
     <a href='/resources/<%= resource.id %>'><%= resource.name %></a>
   </td>
-  <td> | </td>
+
 
   <% if @home == true %>
       <%
@@ -17,9 +17,8 @@
         <%= link_to abbr, coursemURL %>
       </td>
 
-      <td> | </td>
-  <% end %>
 
+  <% end %>
 
   <% if @viewingProfile != true %>
       <%
@@ -31,11 +30,11 @@
 
         <%= link_to username, userURL %>
       </td>
-      <td> | </td>
+
   <% end %>
 
   <td class="col_postdate">Posted on <%= resource.created_at %></td>
-  <td> | </td>
+
 
   <td class="col_flag">FlagButton</td
 

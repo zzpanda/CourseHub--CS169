@@ -1,5 +1,6 @@
 <%= link_to 'Back to Coursem', @coursemURL %>
 
+<table class='table'>
 <% @course.coursems.each do |coursem| %>
     <%
        sem_id = coursem.semester_id
@@ -10,4 +11,4 @@
     <h1> <%= semname %></h1>
     <%= render :partial => "/coursem/resources", :locals => {:coursem => coursem} %>
 <% end %>
-
+</table>
