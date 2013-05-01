@@ -11,7 +11,7 @@ Coursehub::Application.routes.draw do
 
   match '/events/recentevent/:id' => 'events#recentevent'
 
-  match '/profile' => 'users#show'
+  match '/profile' => 'users#edit'
   match '/users/coursems' => 'users#coursems'
   match '/edit_profile' => 'users#edit'
   match '/users/subscribe' => 'users#subscribe'
@@ -29,7 +29,6 @@ Coursehub::Application.routes.draw do
 
   authenticated :user do
     root :to => "users#home"
-    match "/profile/" => 'users#editprofile'
   end
   root :to => redirect("/users/sign_in")
 
