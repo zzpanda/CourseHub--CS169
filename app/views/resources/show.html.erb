@@ -29,7 +29,7 @@
   <table id="favorite">
     <tr>
       <td></td>
-      <td class='col_addFavorite'> <input type='button' id='<%= @resource.id %>' value=''>  </td>
+      <td class='col_addFavorite'> <input type='button' class='btn' id='<%= @resource.id %>' value=''>  </td>
     </tr>
   </table>
 
@@ -37,7 +37,7 @@
 
 <div id="comment_container">
   <textarea rows ="4" cols ="40" id="comment_box"> </textarea>
-  <button type="button" onclick = handle_save(<%= @resource.id %>) >Save</button>
+  <button class='btn' type="button" onclick = handle_save(<%= @resource.id %>) >Save</button>
   <div>
     <% @resource.comments.each do |comment| %>
         <div class ="comment_display">

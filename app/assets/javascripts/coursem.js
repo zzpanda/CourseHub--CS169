@@ -107,7 +107,7 @@ function shownewresourceform() {
         } else {
             url = $(this).attr('href');
             $.get(url, function(data){
-                $("#new_resource_div").append(data);
+                $("#new_resource_div").append(data).addClass('well');
                 $('form#new_resource_form').on('ajax:success', function(data, status, xhr) {
                         handle_create_resources_response(status);
                         $("#resource_submit").click(function() {
@@ -176,7 +176,7 @@ function showneweventform() {
         } else {
             url = $(this).attr('href');
             $.get(url, function(data){
-                $("#new_event_div").append(data);
+                $("#new_event_div").append(data).addClass('well');
                 datetimepickers();
                 reloadonsubmit();
             });
