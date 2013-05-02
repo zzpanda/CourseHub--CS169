@@ -69,8 +69,8 @@ class ResourcesController < ApplicationController
 
   def flag
     if user_signed_in?
-      current_user.flagResource(params[:resource_id])
-      render :json => {:status => 'success'}
+      @flags = current_user.flagResource(params[:resource_id])
+      render :json => {:data => @flags, :status => 'success'}
     else
       render :json => {:status => 'user not signed in'}
     end
@@ -78,8 +78,8 @@ class ResourcesController < ApplicationController
 
   def unFlag
     if user_signed_in?
-      current_user.unFlagResource(params[:resource_id])
-      render :json => {:status => 'success'}
+      @flags = current_user.unFlagResource(params[:resource_id])
+      render :json => {:data => @flags, :status => 'success'}
     else
       render :json => {:status => 'user not signed in'}
     end

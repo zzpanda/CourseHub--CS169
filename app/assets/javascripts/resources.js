@@ -95,6 +95,7 @@ function flag_listener() {
                 json_request(path, json_sending,
                 function(data) {
                     button.find('img').attr("src", newbuttonsrc);
+                    $('table#resource_description tr').find('td.col_numflags').text('Number of Flags: ' + data.data);
                 },
                 function(data) {
                     return alert(data.status);

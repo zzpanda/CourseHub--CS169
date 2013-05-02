@@ -140,6 +140,7 @@ class User < ActiveRecord::Base
       self.karma -= 0.1
       self.save!
     end
+    return resource.flags
   end
 
   def unFlagResource(resource_id)
@@ -162,6 +163,7 @@ class User < ActiveRecord::Base
       self.karma = self.karma + 0.1
       self.save!
     end
+    return resource.flags
   end
 
   def addComment(resourceId, content)

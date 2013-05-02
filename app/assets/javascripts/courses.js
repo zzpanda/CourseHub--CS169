@@ -69,7 +69,7 @@
                 var $link = $(this).find('td.col_goto').find('a');
                 $link.click(function(event) {
                     event.preventDefault();
-                    window.location = "coursem/" + id.val();
+                    window.location = "/coursem/" + id.val();
                 });
 
                 return button.click(function() {

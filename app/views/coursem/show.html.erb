@@ -39,12 +39,12 @@
 
 
    <div id = "panel_resources" class="panels">
-     <h4>
      <%= link_to "Resources for this Course (All Semesters)",
                  {:controller => "courses", :action => "resources", :courseid => @coursem.course_id, :coursemid => @coursem.id } %>
-       </h4>
        <br/>
-     <%= link_to "Add Resource", {:controller => "resources", :action => "new", :user => @user.id, :coursem => @coursem.id }, :id => "new_resource" %>
+      <h3>
+     <%= link_to "Add New Resource", {:controller => "resources", :action => "new", :user => @user.id, :coursem => @coursem.id }, :id => "new_resource" %>
+   </h3>
      <div id="new_resource_div"></div>
 
      <%= render :partial => "/coursem/resources", :locals => {:coursem => @coursem} %>
