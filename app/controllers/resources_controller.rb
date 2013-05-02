@@ -15,6 +15,11 @@ class ResourcesController < ApplicationController
 
   def show
     @resource = Resource.find(params[:id])
+    if @resource.users_who_flagged.split(",").include?(current_user.id.to_s)
+      @flag = true
+    else
+      @flag = false
+    end
   end
 
   def new
@@ -59,6 +64,24 @@ class ResourcesController < ApplicationController
     end
     respond_to do |format|
       format.json {render json: @boolean }
+    end
+  end
+
+  def flag
+    if user_signed_in?
+      @flags = current_user.flagResource(params[:resource_id])
+      render :json => {:data => @flags, :status => 'success'}
+    else
+      render :json => {:status => 'user not signed in'}
+    end
+  end
+
+  def unFlag
+    if user_signed_in?
+      @flags = current_user.unFlagResource(params[:resource_id])
+      render :json => {:data => @flags, :status => 'success'}
+    else
+      render :json => {:status => 'user not signed in'}
     end
   end
 

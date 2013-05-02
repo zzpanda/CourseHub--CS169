@@ -18,14 +18,8 @@ class CoursesController < ApplicationController
 
   def checkSubscribed
     @subscribed =  current_user.subscribed
-    @subscribe = false
-    @subscribed.each do |coursem|
-      if coursem.id.to_s == params[:coursem_id]
-        @subscribe = true
-      end
-    end
     respond_to do |format|
-      format.json {render json: @subscribe }
+      format.json {render json: @subscribed }
     end
   end
 

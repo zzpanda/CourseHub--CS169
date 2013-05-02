@@ -44,37 +44,69 @@ function favorite_listener() {
 
         
         $(input).click(function() {
-                    var json_sending;
-                    if (resourceid !== null) {
-                        var newbuttontext
-                        var path
-                        if (input.val() == "Add To Favorite"){
-                            newbuttontext = "Delete Favorite";
-                            path = "/users/addFavorite"
-                        }else {
-                            newbuttontext = "Add To Favorite"
-                            path = "/users/deleteFavorite"
+            var json_sending;
+            if (resourceid !== null) {
+                var newbuttontext
+                var path
+                if (input.val() == "Add To Favorite"){
+                    newbuttontext = "Delete Favorite";
+                    path = "/users/addFavorite"
+                }else {
+                    newbuttontext = "Add To Favorite"
+                    path = "/users/deleteFavorite"
 
-                        }
-                        json_sending = {
-                            resource_id: resourceid
-                        };
-                        json_request(path, json_sending,
-                        function(data) {
-                            input.val(newbuttontext);
-                        },
-                        function(data) {
-                            return alert(data.status);
-                        });
-                    }
+                }
+                json_sending = {
+                    resource_id: resourceid
+                };
+                json_request(path, json_sending,
+                function(data) {
+                    input.val(newbuttontext);
+                },
+                function(data) {
+                    return alert(data.status);
                 });
-
-
+            }
+        });
     });
+}
 
+function flag_listener() {
+    $('table#resource_description tr').find('td.col_flag').each(function() {
+        var button = $(this).find('button');
+        var resourceId = button.attr('id');
+
+        $(button).click(function() {
+            var json_sending;
+            if (resourceId !== null) {
+                var newbuttonsrc;
+                var path;
+                if (button.find('img').attr('src') == "/assets/white.png"){
+                    newbuttonsrc= "/assets/red.png";
+                    path = "/resources/flag"
+                }else {
+                    newbuttonsrc = "/assets/white.png"
+                    path = "/resources/unflag"
+
+                }
+                json_sending = {
+                    resource_id: resourceId
+                };
+                json_request(path, json_sending,
+                function(data) {
+                    button.find('img').attr("src", newbuttonsrc);
+                    $('table#resource_description tr').find('td.col_numflags').text('Number of Flags: ' + data.data);
+                },
+                function(data) {
+                    return alert(data.status);
+                });
+            }
+        });
+    });
 
 }
 
 $(document).ready(function() {
     favorite_listener();
+    flag_listener();
 })

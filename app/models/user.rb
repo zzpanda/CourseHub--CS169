@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   BAD_RESOURCENAME = -2
   BAD_LINK = -3
 
+
   def addToFavorite(resource_id)
     if self.favorite.nil?
       @favorite = self.create_favorite!()
@@ -97,10 +98,10 @@ class User < ActiveRecord::Base
       @user = User.find_by_id(user_id)
       if @user.karma == nil
         @user.karma = 1
-        @user.save
+        @user.save!
       else
         @user.karma += 1
-        @user.save
+        @user.save!
       end
       return type.constantize.create!(:name => resourceName, :link => resourceLink, :user_id => user_id, :coursem_id => coursem_id, :flags => 0, :users_who_flagged => "")
     else
@@ -125,22 +126,44 @@ class User < ActiveRecord::Base
   end
 
   #User is able to flag a resource if it is not accurate. +
-  #If the treshold is reached, the resource is removed. Threshold = 3 for now.
-  def flagResource(user_id, resource_id)
-    threshold = 3
+  def flagResource(resource_id)
     resource = Resource.find(resource_id)
     users = resource.users_who_flagged
-    #Prevent a user from flagging a non-resource or a valid resource twice
-    if resource and (users.nil? or not users.split(",").include?(user_id.to_s))
+    if resource and (users.nil? or not users.split(",").include?(self.id.to_s))
       resource.flags += 1
-      if resource.flags < threshold
-        users += "," + user_id.to_s
-        resource.users_who_flagged = users
-        resource.save
-      else
-        resource.destroy
+      users += "," + self.id.to_s
+      resource.users_who_flagged = users
+      resource.save!
+      if self.karma.nil?
+        self.karma = 1
       end
+      self.karma -= 0.1
+      self.save!
     end
+    return resource.flags
+  end
+
+  def unFlagResource(resource_id)
+    resource = Resource.find(resource_id)
+    users = resource.users_who_flagged
+    if resource and users.split(",").include?(self.id.to_s)
+      resource.flags -= 1
+      tmp = users.split(",")
+      result = ""
+      tmp.each do |id|
+        if id != self.id.to_s and id != ""
+          result +=id + ","
+        end
+      end
+      resource.users_who_flagged = result
+      resource.save
+      if self.karma.nil?
+        self.karma = 1
+      end
+      self.karma = self.karma + 0.1
+      self.save!
+    end
+    return resource.flags
   end
 
   def addComment(resourceId, content)

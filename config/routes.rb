@@ -28,6 +28,8 @@ Coursehub::Application.routes.draw do
   match '/resources/addComment' => 'resources#addComment'
   match '/resources/type' => 'resources#getResourcesType'
   match '/resources/check' => 'resources#checkFavorite'
+  match '/resources/flag' => 'resources#flag'
+  match '/resources/unflag' => 'resources#unFlag'
 
   authenticated :user do
     root :to => "users#home"

@@ -94,6 +94,7 @@ class UsersController < ApplicationController
 
   def coursems
     @user = current_user
+    @page_heading = "My Courses"
     @page_title = "My Courses"
     @coursems = @user.coursems
   end

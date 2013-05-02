@@ -5,23 +5,37 @@
   <table id="resource_description">
     <tr>
       <td class='col_attr'>Name</td>
-      <td class='col_desc'><%= @resource.name %></td>
+      <td></td>
+      <td class='col_desc'><a href='<%= @resource.link %>' target="_blank"><%= @resource.name %></a></td>
+      <td class='col_flag'>
+        <% if @flag == false %>
+          <span class="flag_icon" title="Flag <%= @resource.name %>">
+            <button type="button" id='<%= @resource.id %>'>
+              <%=  image_tag "white.png", :size => "16x10" %>
+            </button>
+          </span>
+        <% else %>
+          <span class="flag_icon" title="Unflag <%= @resource.name %>">
+            <button type="button" id='<%= @resource.id %>'>
+              <%=  image_tag "red.png", :size => "16x10" %>
+            </button>
+          </span>
+        <% end %>
+      </td>
+      <td class='col_numflags'> Number of Flags: <%= @resource.flags %> </td>
     </tr>
 
     <tr>
       <td class='col_attr'>Type</td>
+      <td></td>
       <td class='col_desc'><%= @resource.type %></td>
     </tr>
 
-    <tr>
-      <td class='col_attr'>Link</td>
-      <td class='col_desc'><a href='<%= @resource.link %>' target="_blank"><%= @resource.link %></a></td>
-    </tr>
 
     <tr>
       <td class='col_attr'>User</td>
-      <td class='col_desc'><a href='/users/<%=@resource.user_id %>'><%=@resource.user.username %></a>
-      </td>
+      <td></td>
+      <td class='col_desc'><a href='/users/<%=@resource.user_id %>'><%=@resource.user.username %></a></td>
     </tr>
 
   </table>
@@ -36,6 +50,7 @@
 </div>
 
 <div id="comment_container">
+  <h5> Comment: </h5>
   <textarea rows ="4" cols ="40" id="comment_box"> </textarea>
   <button class='btn' type="button" onclick = handle_save(<%= @resource.id %>) >Save</button>
   <div>
