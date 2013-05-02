@@ -1,8 +1,6 @@
 class Resource < ActiveRecord::Base
   attr_accessible :name, :type, :link, :user_id, :coursem_id, :flags, :users_who_flagged
 
-
-
   validates :name, presence: true
   #validates :type, presence: true
 

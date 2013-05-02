@@ -17,42 +17,45 @@
 
         // Event handler for changing semester
         course_semester_listener: function() {
-            $(".row_content").each(function() {
-                var button = $(this).find('td.col_subscribe').find('button');
-                $(this).find('td.col_classes').each(function() {
-                    var selectedValue;
-                    selectedValue = $(this).find("select").val();
-                    $.post('/courses/check', 
-                        {
-                            coursem_id: selectedValue
-                        },
-                        function(data){
-                            if (data == true) {
-                                button.text("Unsubscribe");
-                            } else {
-                                button.text("Subscribe");
+            $.get('/courses/check', 
+                function(data){
+                    $(".row_content").each(function() {
+                        var button = $(this).find('td.col_subscribe').find('button');
+                        $(this).find('td.col_classes').each(function() {
+                            var selectedValue = $(this).find("select").val();
+                            var subscribed = false;
+                            var coursem;
+                            for (coursem in data) {
+                                if (data[coursem].id == selectedValue) {
+                                    button.text("Unsubscribe");
+                                    subscribed = true;
+                                    break;
+                                }
                             }
-                        }
-                    );
-                });
+                            if (subscribed == false) {
+                               button.text("Subscribe"); 
+                            }
+                        });
 
-                $(this).find('td.col_classes').change(function() {
-                    var selectedValue;
-                    selectedValue = $(this).find("select").val();
-                    $.post('/courses/check', 
-                        {
-                            coursem_id: selectedValue
-                        },
-                        function(data){
-                            if (data == true) {
-                                button.text("Unsubscribe");
-                            } else {
-                                button.text("Subscribe");
+                        $(this).find('td.col_classes').change(function() {
+                            var selectedValue = $(this).find("select").val();
+                            var subscribed = false;
+                            var coursem;
+                            for (coursem in data) {
+                                if (data[coursem].id == selectedValue) {
+                                    button.text("Unsubscribe");
+                                    subscribed = true;
+                                    break;
+                                }
                             }
-                        }
-                    );
-                });
-            });
+                            if (subscribed == false) {
+                               button.text("Subscribe"); 
+                            }
+                        });
+
+                    });
+                }
+            );
         },
 
         // Event handler for subscribing to a particular semester

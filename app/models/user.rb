@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
   #User is able to flag a resource if it is not accurate. +
   #If the treshold is reached, the resource is removed. Threshold = 3 for now.
   def flagResource(user_id, resource_id)
-    threshold = 3
+    threshold = 10
     resource = Resource.find(resource_id)
     users = resource.users_who_flagged
     #Prevent a user from flagging a non-resource or a valid resource twice

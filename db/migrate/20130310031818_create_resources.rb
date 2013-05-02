@@ -7,6 +7,8 @@ class CreateResources < ActiveRecord::Migration
       t.string :link
       t.integer :coursem_id
       t.integer :user_id
+      t.integer :flags
+      t.string  :users_who_flagged
 
       t.timestamps
     end
