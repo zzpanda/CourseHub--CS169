@@ -1,29 +1,5 @@
 class UsersController < ApplicationController
 
-  def update
-    respond_to do |format|
-      @username = params[:username]
-      if User.find_by_username(@username).nil? || @username == current_user.username
-        current_user.username = @username
-        current_user.save!
-        format.all { render :json => {:status => 'Change Successfully! Username: ' + @username}, :content_type => 'application/json' }
-      else
-        format.all { render :json => {:status => 'Username is already existed! Please try again.'}, :content_type => 'application/json' }
-      end
-    end
-  end
-
-  def edit
-    @id = params[:id]
-    if @id.nil? || @id == 0
-      @id = current_user.id
-    end
-
-    @email = current_user.email
-    @password = current_user.password
-    @karma = current_user.karma
-  end
-
   # Home page for logged in user
   def home
     @page_title = "Home Page"
@@ -59,30 +35,6 @@ class UsersController < ApplicationController
       @favorites = @favorites.resources
     end
     @favorite = true
-  end
-
-  # Edit profile page
-  def editprofile
-    @page_title = "My Courses"
-    @page_heading = "My Courses"
-
-    @id = params[:id]
-    if @id.nil? || @id == 0
-      @id = current_user.id
-    end
-
-    @coursems = User.find(@id).subscribed
-
-    @month = (params[:month] || (Time.zone || Time).now.month).to_i
-    @year = (params[:year] || (Time.zone || Time).now.year).to_i
-    @shown_month = Date.civil(@year, @month)
-
-    @coursemids = []
-    @coursems.each do |coursem|
-      @coursemids << coursem.id
-    end
-    @event_strips = Event.event_strips_for_month(@shown_month, :conditions => {:coursem_id => @coursemids })
-
   end
 
   def subscribe

@@ -34,7 +34,7 @@
 
           <% if user_signed_in? %>
               <li><a href="/users/coursems">My Courses</a></li>
-              <li><a href="/profile">Edit Profile</a></li>
+              <li><%= link_to "Edit Profile", edit_user_registration_path %> </li>
               <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
           <% else %>
               <li><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %></li>

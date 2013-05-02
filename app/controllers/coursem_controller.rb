@@ -30,6 +30,7 @@ class CoursemController < ApplicationController
   # POST /coursem/create
   def create
     @coursem_info = "Unit:" + params[:unit] + " Course Description:" + params[:coursem_info]
+    logger.debug "fuck #{params[:name]}"
     @coursem = Coursem.createCoursemByUser(params[:name], @coursem_info, params[:department], params[:course_number], params[:term], params[:year], params[:professor])
     @errCode = @coursem
     if @coursem.class != Fixnum
