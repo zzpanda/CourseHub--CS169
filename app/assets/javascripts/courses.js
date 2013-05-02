@@ -66,7 +66,7 @@
                 button = $(this).find('td.col_subscribe').find('button');
                 var id = $(this).find('td.col_classes').find('select');
 
-                var $link = $(this).find('.go_to').find('a');
+                var $link = $(this).find('td.col_goto').find('a');
                 $link.click(function(event) {
                     event.preventDefault();
                     window.location = "coursem/" + id.val();
