@@ -9,6 +9,11 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+
+  # The two lines load Capybara integration
+  require 'capybara/rspec'
+  require 'capybara/rails'
+
   require 'rspec/autorun'
   require 'factory_girl_rails'
 

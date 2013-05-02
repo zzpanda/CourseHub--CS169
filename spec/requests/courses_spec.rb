@@ -16,7 +16,7 @@ describe "Courses" do
     #Course.create(:name => "Software Engineering", :department=> "CS", :course_number=> "169")
     #Course.create(:name => "Linear Algebra", :department=> "Math", :course_number=> "54")
   end
-  describe "GET /courses" do
+  describe "GET /courses", :js => false do
     it "filters" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit courses_path
@@ -35,7 +35,7 @@ describe "Courses" do
       page.should have_content("Software Engineering")
       page.should_not have_content("Linear Algebra")
     end
-    it "links to coursem", :js => true do
+    it "links to coursem" do
       visit courses_path
       click_link "View Course"
       current_path.should have_content("/course/")

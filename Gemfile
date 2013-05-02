@@ -28,6 +28,7 @@ group :development, :test do
 
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
+  gem 'rb-inotify', '~> 0.9'
 
   #for test coverage
   gem 'rcov', '0.9.8'
