@@ -80,7 +80,7 @@ class Course < ActiveRecord::Base
       return BAD_COURSE_NUMBER
     end
 
-    name = name.downcase..split(' ').map {|w| w.capitalize }.join(' ')
+    name = name.downcase.split(' ').map {|w| w.capitalize }.join(' ')
     department = department.upcase
     course_number = course_number.upcase
     course = Course.where(:department => department, :course_number => course_number).first

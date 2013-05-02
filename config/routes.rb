@@ -13,7 +13,6 @@ Coursehub::Application.routes.draw do
 
   match '/profile' => 'users#edit'
   match '/users/coursems' => 'users#coursems'
-  match '/edit_profile' => 'users#edit'
   match '/users/subscribe' => 'users#subscribe'
   match '/users/unsubscribe' => 'users#unsubscribe'
   match '/users/addFavorite' => 'users#addFavorite'
