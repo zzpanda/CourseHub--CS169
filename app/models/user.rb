@@ -9,10 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :username, :password, :password_confirmation, :remember_me, :encrypted_password, :karma
   #other fields include id, karma
 
-  validates_presence_of :email
-  validates :email, :presence => true, :uniqueness => true
-  #validates_presence_of :username
-  #validates_presence_of :password
+  validates :username, :presence => true, :uniqueness => true
 
   has_and_belongs_to_many :coursems, :uniq => true
   has_many :resources, :inverse_of => :user
