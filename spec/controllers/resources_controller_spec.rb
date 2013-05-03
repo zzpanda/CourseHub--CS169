@@ -122,6 +122,7 @@ require 'spec_helper'
 	    end
 
 		it "shouldn't flag a correct resource without sign in" do
+		  @user = FactoryGirl.create(:user)
 		  @resource = mock_model(Resource)
 		  post :flag, :resource_id => @resource.id
 		  response.should_not be_success
@@ -141,6 +142,7 @@ require 'spec_helper'
 		end
 
 		it "shouldn't flag a correct resource without sign in" do
+		  @user = FactoryGirl.create(:user)
 		  @resource = mock_model(Resource)
 		  post :unFlag, :resource_id => @resource.id
 		  response.should_not be_success

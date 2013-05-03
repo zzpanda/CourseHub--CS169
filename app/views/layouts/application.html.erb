@@ -21,7 +21,7 @@
 <div id="container">
 
   <div id="header">
-    <%=  image_tag "CourseHub.png" %>
+    <a href=<%= new_user_session_path %> ><%=  image_tag "CourseHub.png" %></a>
   </div>
 
   <% if user_signed_in? %>

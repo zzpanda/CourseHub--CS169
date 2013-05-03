@@ -14,14 +14,14 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-05-03T03:14:31-07:00">2013-05-03T03:14:31-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-05-03T04:07:48-07:00">2013-05-03T04:07:48-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">91.47%</span></span>
+    (<span class="covered_percent"><span class="green">91.42%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>25</b> files in total.
-    <b>586</b> relevant lines. 
-    <span class="green"><b>536</b> lines covered</span> and
+    <b>583</b> relevant lines. 
+    <span class="green"><b>533</b> lines covered</span> and
     <span class="red"><b>50</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -83,9 +83,9 @@
       <tr>
         <td class="strong"><a href="#031adb9d0225ac36370c9d8148106cb4fc1a980a" class="src_link" title="app/controllers/courses_controller.rb">app/controllers/courses_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>65</td>
-        <td>32</td>
-        <td>32</td>
+        <td>64</td>
+        <td>31</td>
+        <td>31</td>
         <td>0</td>
         <td>1.5</td>
       </tr>
@@ -123,9 +123,9 @@
       <tr>
         <td class="strong"><a href="#51e616d3f1589a5376d83231bb9bde521646b495" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>101</td>
-        <td>62</td>
-        <td>62</td>
+        <td>99</td>
+        <td>60</td>
+        <td>60</td>
         <td>0</td>
         <td>1.4</td>
       </tr>
@@ -309,7 +309,7 @@
           <div class="file_list_container" id="Controllers">
   <h2>
     <span class="group_name">Controllers</span>
-    (<span class="covered_percent"><span class="yellow">85.03%</span></span>
+    (<span class="covered_percent"><span class="yellow">84.89%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -320,8 +320,8 @@
   <a name="Controllers"></a>
   <div>
     <b>8</b> files in total.
-    <b>334</b> relevant lines. 
-    <span class="green"><b>284</b> lines covered</span> and
+    <b>331</b> relevant lines. 
+    <span class="green"><b>281</b> lines covered</span> and
     <span class="red"><b>50</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -371,9 +371,9 @@
       <tr>
         <td class="strong"><a href="#031adb9d0225ac36370c9d8148106cb4fc1a980a" class="src_link" title="app/controllers/courses_controller.rb">app/controllers/courses_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>65</td>
-        <td>32</td>
-        <td>32</td>
+        <td>64</td>
+        <td>31</td>
+        <td>31</td>
         <td>0</td>
         <td>1.5</td>
       </tr>
@@ -411,9 +411,9 @@
       <tr>
         <td class="strong"><a href="#51e616d3f1589a5376d83231bb9bde521646b495" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>101</td>
-        <td>62</td>
-        <td>62</td>
+        <td>99</td>
+        <td>60</td>
+        <td>60</td>
         <td>0</td>
         <td>1.4</td>
       </tr>
@@ -1459,8 +1459,8 @@
     <h3>app/controllers/courses_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>32</b> relevant lines. 
-      <span class="green"><b>32</b> lines covered</span> and
+      <b>31</b> relevant lines. 
+      <span class="green"><b>31</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1531,313 +1531,313 @@
         <li class="covered" data-hits="2" data-linenumber="11">
           <span class="hits">2</span>
           
-          <code class="ruby">      @page_heading = &quot;Browse Courses&quot;</code>
+          <code class="ruby">      @page_title = &quot;Browse Courses&quot;</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="12">
           <span class="hits">2</span>
           
-          <code class="ruby">      @page_title = &quot;Browse Courses&quot;</code>
+          <code class="ruby">      respond_to do |format|</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="13">
           <span class="hits">2</span>
           
-          <code class="ruby">      respond_to do |format|</code>
+          <code class="ruby">          format.html</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="14">
           <span class="hits">2</span>
           
-          <code class="ruby">          format.html</code>
+          <code class="ruby">          format.json {render json: @courses }</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="15">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="15">
           
-          <code class="ruby">          format.json {render json: @courses }</code>
+          
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="19">
+        <li class="covered" data-hits="1" data-linenumber="18">
           <span class="hits">1</span>
           
           <code class="ruby">  def checkSubscribed</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="20">
+        <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
           <code class="ruby">    @subscribed =  current_user.subscribed</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="21">
+        <li class="covered" data-hits="1" data-linenumber="20">
           <span class="hits">1</span>
           
           <code class="ruby">    respond_to do |format|</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="22">
+        <li class="covered" data-hits="1" data-linenumber="21">
           <span class="hits">1</span>
           
           <code class="ruby">      format.json {render json: @subscribed }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  # Get all the possible department in the database</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
           
           
-          <code class="ruby">  # Get all the possible department in the database</code>
+          <code class="ruby">  # Return as a JSON object in the form</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
           
           
-          <code class="ruby">  # Return as a JSON object in the form</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="28">
-          
-          
           <code class="ruby">  # { 'department' =&gt; [ 'EE', 'CS', 'Math' ] }</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="29">
+        <li class="covered" data-hits="1" data-linenumber="28">
           <span class="hits">1</span>
           
           <code class="ruby">  def getDepartment</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="30">
+        <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
           <code class="ruby">    @dic = Course.getDepartments()</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="31">
+        <li class="covered" data-hits="1" data-linenumber="30">
           <span class="hits">1</span>
           
           <code class="ruby">    respond_to do |format|</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="32">
+        <li class="covered" data-hits="1" data-linenumber="31">
           <span class="hits">1</span>
           
           <code class="ruby">      format.json {render json: @dic}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="33">
+        <li class="never" data-hits="" data-linenumber="32">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="never" data-hits="" data-linenumber="33">
           
           
           <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  # A particular course (not a particular coursem)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
           
           
-          <code class="ruby">  # A particular course (not a particular coursem)</code>
+          <code class="ruby">  # GET /course/id</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="37">
           
           
-          <code class="ruby">  # GET /course/id</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="38">
-          
-          
           <code class="ruby">  # GET /course/id.json</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="39">
+        <li class="covered" data-hits="1" data-linenumber="38">
           <span class="hits">1</span>
           
           <code class="ruby">  def show</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="40">
+        <li class="covered" data-hits="3" data-linenumber="39">
           <span class="hits">3</span>
           
           <code class="ruby">      @course = Course.find_by_id(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="41">
+        <li class="covered" data-hits="3" data-linenumber="40">
           <span class="hits">3</span>
           
           <code class="ruby">      if @course.nil?</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
+        <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
           <code class="ruby">        respond_to do |format|</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="43">
+        <li class="covered" data-hits="2" data-linenumber="42">
           <span class="hits">2</span>
           
           <code class="ruby">          format.html { render :file =&gt; &quot;#{Rails.root}/public/404.html&quot;, :status =&gt; :not_found }</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="43">
           <span class="hits">1</span>
           
           <code class="ruby">          format.xml  { head :not_found }</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">          format.any  { head :not_found }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="46">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="48">
+        <li class="covered" data-hits="2" data-linenumber="47">
           <span class="hits">2</span>
           
           <code class="ruby">        @page_heading = @course.name</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="48">
           
           
           <code class="ruby">        #dirty addition of snazzy functionality. If anyone wants to clean up, welcome to.</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="never" data-hits="" data-linenumber="49">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="51">
+        <li class="covered" data-hits="2" data-linenumber="50">
           <span class="hits">2</span>
           
           <code class="ruby">        @page_title = &quot;Browsing listing for &quot; + @course.name</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="52">
+        <li class="covered" data-hits="2" data-linenumber="51">
           <span class="hits">2</span>
           
           <code class="ruby">        respond_to do |format|</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="53">
+        <li class="covered" data-hits="2" data-linenumber="52">
           <span class="hits">2</span>
           
           <code class="ruby">          format.html</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="54">
+        <li class="covered" data-hits="2" data-linenumber="53">
           <span class="hits">2</span>
           
           <code class="ruby">          format.json {render json: @course }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="55">
+        <li class="never" data-hits="" data-linenumber="54">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="never" data-hits="" data-linenumber="55">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
+        <li class="never" data-hits="" data-linenumber="56">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="58">
+        <li class="never" data-hits="" data-linenumber="57">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="59">
+        <li class="covered" data-hits="1" data-linenumber="58">
           <span class="hits">1</span>
           
           <code class="ruby">  def resources</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="60">
+        <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
           <code class="ruby">    @course = Course.find_by_id(params[:courseid])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="60">
           <span class="hits">1</span>
           
           <code class="ruby">    @coursemURL = &quot;/coursem/&quot; + params[:coursemid].to_s</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="62">
+        <li class="never" data-hits="" data-linenumber="61">
           
           
           <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="63">
@@ -1847,12 +1847,6 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="64">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">end</code>
@@ -4027,8 +4021,8 @@
     <h3>app/controllers/users_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>62</b> relevant lines. 
-      <span class="green"><b>62</b> lines covered</span> and
+      <b>60</b> relevant lines. 
+      <span class="green"><b>60</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -4066,577 +4060,565 @@
           <code class="ruby">    @page_title = &quot;Home Page&quot;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="6">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    @page_heading = &quot;Home Page&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
+        <li class="never" data-hits="" data-linenumber="6">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="8">
+        <li class="covered" data-hits="2" data-linenumber="7">
           <span class="hits">2</span>
           
           <code class="ruby">    @id = params[:id]</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="9">
+        <li class="covered" data-hits="2" data-linenumber="8">
           <span class="hits">2</span>
           
           <code class="ruby">    if @id.nil? || @id == 0</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
+        <li class="covered" data-hits="1" data-linenumber="9">
           <span class="hits">1</span>
           
           <code class="ruby">      @id = current_user.id</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
           
           
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="12">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="13">
+        <li class="covered" data-hits="2" data-linenumber="12">
           <span class="hits">2</span>
           
           <code class="ruby">    @month = (params[:month] || (Time.zone || Time).now.month).to_i</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="14">
+        <li class="covered" data-hits="2" data-linenumber="13">
           <span class="hits">2</span>
           
           <code class="ruby">    @year = (params[:year] || (Time.zone || Time).now.year).to_i</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="15">
+        <li class="covered" data-hits="2" data-linenumber="14">
           <span class="hits">2</span>
           
           <code class="ruby">    @shown_month = Date.civil(@year, @month)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="17">
+        <li class="covered" data-hits="2" data-linenumber="16">
           <span class="hits">2</span>
           
           <code class="ruby">    @coursems = User.find(@id).subscribed</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="18">
+        <li class="covered" data-hits="2" data-linenumber="17">
           <span class="hits">2</span>
           
           <code class="ruby">    @coursemids = []</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="19">
+        <li class="covered" data-hits="2" data-linenumber="18">
           <span class="hits">2</span>
           
           <code class="ruby">    @coursems.each do |coursem|</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="20">
+        <li class="covered" data-hits="2" data-linenumber="19">
           <span class="hits">2</span>
           
           <code class="ruby">      @coursemids &lt;&lt; coursem.id</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="21">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="22">
+        <li class="covered" data-hits="2" data-linenumber="21">
           <span class="hits">2</span>
           
           <code class="ruby">    @event_strips = Event.event_strips_for_month(@shown_month, :conditions =&gt; {:coursem_id =&gt; @coursemids })</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="24">
+        <li class="covered" data-hits="2" data-linenumber="23">
           <span class="hits">2</span>
           
           <code class="ruby">    @today = Date.current</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="25">
+        <li class="covered" data-hits="2" data-linenumber="24">
           <span class="hits">2</span>
           
           <code class="ruby">    @ago = @today - 7.days</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="26">
+        <li class="covered" data-hits="2" data-linenumber="25">
           <span class="hits">2</span>
           
           <code class="ruby">    @feed = Resource.where(:coursem_id =&gt; @coursemids).where(&quot;updated_at &gt; ?&quot;, @ago).order(&quot;updated_at DESC&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="26">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="28">
+        <li class="covered" data-hits="2" data-linenumber="27">
           <span class="hits">2</span>
           
           <code class="ruby">    @home = true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="29">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="30">
+        <li class="never" data-hits="" data-linenumber="29">
           
           
           <code class="ruby">    #show favorite resources</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="31">
+        <li class="covered" data-hits="2" data-linenumber="30">
           <span class="hits">2</span>
           
           <code class="ruby">    @favorites = current_user.favorite</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="32">
+        <li class="covered" data-hits="2" data-linenumber="31">
           <span class="hits">2</span>
           
           <code class="ruby">    if @favorites.nil?</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="33">
+        <li class="covered" data-hits="1" data-linenumber="32">
           <span class="hits">1</span>
           
           <code class="ruby">      @favorites = []</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="never" data-hits="" data-linenumber="33">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="35">
+        <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
           <code class="ruby">      @favorites = @favorites.resources</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="37">
+        <li class="covered" data-hits="2" data-linenumber="36">
           <span class="hits">2</span>
           
           <code class="ruby">    @favorite = true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="40">
+        <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
           <code class="ruby">  def subscribe</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="41">
+        <li class="covered" data-hits="2" data-linenumber="40">
           <span class="hits">2</span>
           
           <code class="ruby">    if user_signed_in?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="42">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @id = current_user.id</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="43">
           <span class="hits">1</span>
           
-          <code class="ruby">      @id = current_user.id</code>
+          <code class="ruby">      @user = User.find(@id)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
-          <code class="ruby">      @user = User.find(@id)</code>
+          <code class="ruby">      @user.subscribe(params[:coursem_id])</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="45">
           <span class="hits">1</span>
           
-          <code class="ruby">      @user.subscribe(params[:coursem_id])</code>
+          <code class="ruby">      render :json =&gt; {:status =&gt; 'success'}</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="46">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="46">
           
-          <code class="ruby">      render :json =&gt; {:status =&gt; 'success'}</code>
+          
+          <code class="ruby">    else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
           
           
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="48">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="49">
+        <li class="covered" data-hits="1" data-linenumber="48">
           <span class="hits">1</span>
           
           <code class="ruby">      render :json =&gt; {:status =&gt; 'user not signed in'}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="49">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="50">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="52">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="53">
+        <li class="covered" data-hits="1" data-linenumber="52">
           <span class="hits">1</span>
           
           <code class="ruby">  def unsubscribe</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="54">
+        <li class="covered" data-hits="2" data-linenumber="53">
           <span class="hits">2</span>
           
           <code class="ruby">    if user_signed_in?</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @id = current_user.id</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="55">
           <span class="hits">1</span>
           
-          <code class="ruby">      @id = current_user.id</code>
+          <code class="ruby">      @user = User.find(@id)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="56">
           <span class="hits">1</span>
           
-          <code class="ruby">      @user = User.find(@id)</code>
+          <code class="ruby">      @user.unsubscribe(params[:coursem_id])</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
-          <code class="ruby">      @user.unsubscribe(params[:coursem_id])</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="58">
-          <span class="hits">1</span>
-          
           <code class="ruby">      render :json =&gt; {:status =&gt; 'success'}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
+        <li class="never" data-hits="" data-linenumber="58">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="60">
+        <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
           <code class="ruby">      render :json =&gt; {:status =&gt; 'user not signed in'}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="61">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="62">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="63">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="64">
+        <li class="covered" data-hits="1" data-linenumber="63">
           <span class="hits">1</span>
           
           <code class="ruby">  def addFavorite</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="65">
+        <li class="covered" data-hits="2" data-linenumber="64">
           <span class="hits">2</span>
           
           <code class="ruby">    if user_signed_in?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="66">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      @id = current_user.id</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="67">
           <span class="hits">1</span>
           
-          <code class="ruby">      @id = current_user.id</code>
+          <code class="ruby">      @user = User.find(@id)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="68">
           <span class="hits">1</span>
           
-          <code class="ruby">      @user = User.find(@id)</code>
+          <code class="ruby">      @user.addToFavorite(params[:resource_id])</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="69">
           <span class="hits">1</span>
           
-          <code class="ruby">      @user.addToFavorite(params[:resource_id])</code>
+          <code class="ruby">      render :json =&gt; {:status =&gt; 'success'}</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="70">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="70">
           
-          <code class="ruby">      render :json =&gt; {:status =&gt; 'success'}</code>
+          
+          <code class="ruby">    else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="71">
           
           
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="72">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="73">
+        <li class="covered" data-hits="1" data-linenumber="72">
           <span class="hits">1</span>
           
           <code class="ruby">      render :json =&gt; {:status =&gt; 'user not signed in'}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="74">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="76">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="77">
+        <li class="covered" data-hits="1" data-linenumber="76">
           <span class="hits">1</span>
           
           <code class="ruby">  def deleteFavorite</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="78">
+        <li class="covered" data-hits="2" data-linenumber="77">
           <span class="hits">2</span>
           
           <code class="ruby">    if user_signed_in?</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="79">
+        <li class="covered" data-hits="1" data-linenumber="78">
           <span class="hits">1</span>
           
           <code class="ruby">      @id = current_user.id</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="80">
+        <li class="covered" data-hits="1" data-linenumber="79">
           <span class="hits">1</span>
           
           <code class="ruby">      @user = User.find(@id)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="81">
+        <li class="covered" data-hits="1" data-linenumber="80">
           <span class="hits">1</span>
           
           <code class="ruby">      @user.deleteFavorite(params[:resource_id])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="82">
+        <li class="covered" data-hits="1" data-linenumber="81">
           <span class="hits">1</span>
           
           <code class="ruby">      render :json =&gt; {:status =&gt; 'success'}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="84">
+        <li class="covered" data-hits="1" data-linenumber="83">
           <span class="hits">1</span>
           
           <code class="ruby">      render :json =&gt; {:status =&gt; 'user not signed in'}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="85">
+        <li class="never" data-hits="" data-linenumber="84">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="87">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="88">
+        <li class="covered" data-hits="1" data-linenumber="87">
           <span class="hits">1</span>
           
           <code class="ruby">  def show</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="89">
+        <li class="covered" data-hits="1" data-linenumber="88">
           <span class="hits">1</span>
           
           <code class="ruby">    @user = User.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="90">
+        <li class="covered" data-hits="1" data-linenumber="89">
           <span class="hits">1</span>
           
           <code class="ruby">    @coursems = @user.coursems</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="91">
+        <li class="covered" data-hits="1" data-linenumber="90">
           <span class="hits">1</span>
           
           <code class="ruby">    @viewingProfile = true</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="92">
+        <li class="covered" data-hits="1" data-linenumber="91">
           <span class="hits">1</span>
           
           <code class="ruby">    @resources = @user.resources</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="93">
+        <li class="never" data-hits="" data-linenumber="92">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="94">
+        <li class="never" data-hits="" data-linenumber="93">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="95">
+        <li class="covered" data-hits="1" data-linenumber="94">
           <span class="hits">1</span>
           
           <code class="ruby">  def coursems</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="96">
+        <li class="covered" data-hits="1" data-linenumber="95">
           <span class="hits">1</span>
           
           <code class="ruby">    @user = current_user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="97">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @page_heading = &quot;My Courses&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="98">
+        <li class="covered" data-hits="1" data-linenumber="96">
           <span class="hits">1</span>
           
           <code class="ruby">    @page_title = &quot;My Courses&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="99">
+        <li class="covered" data-hits="1" data-linenumber="97">
           <span class="hits">1</span>
           
           <code class="ruby">    @coursems = @user.coursems</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="100">
+        <li class="never" data-hits="" data-linenumber="98">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="101">
+        <li class="never" data-hits="" data-linenumber="99">
           
           
           <code class="ruby">end</code>
