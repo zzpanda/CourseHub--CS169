@@ -30,7 +30,8 @@ group :development, :test do
   gem 'spork', '0.9.2'
 
   #for test coverage
-  gem 'rcov', '0.9.8'
+  gem 'simplecov', :require => false
+
 end
 
 # Gems used only for assets and not required

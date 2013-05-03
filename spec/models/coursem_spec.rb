@@ -33,6 +33,10 @@ describe Coursem do
     Coursem.createCoursemByUser("Algorithm","","CS","169","SPRING", 2013, "GEORGE").should eq(-8)
   end
 
+  it "Does not allow a department without chosen" do
+    Coursem.createCoursemByUser("Algorithm","","Please select below","169","SPRING", 2013, "GEORGE").should eq(-11)
+  end
+
   it "Does not allow a coursem_info that is not a string" do
     Coursem.createCoursemByUser("Algorithm",007,"CS","169","SPRING", 2013, "GEORGE").should eq(-8)
   end
@@ -54,6 +58,14 @@ describe Coursem do
     Coursem.createCoursemByUser("Probability","Blabla","CS","70","SPRING", 2013, "GEORGE").class.should eq(Coursem)
   end
 
+  it "Does return the errCode of course" do
+    Coursem.createCoursemByUser("","Blabla","CS","169","SPRING", 2013, "GEORGE").class.should eq(Fixnum)
+  end
+
+  it "Does return the errCode of semester" do
+    Coursem.createCoursemByUser("Algorithm","Blabla","CS","169","SPRIN", 2013, "GEORGE").class.should eq(Fixnum)
+  end
+
   it "Does allow a deletion of a coursem in the DB" do
     puts "\nTest 10: Coursem in the DB can get deleted"
     @course = Course.new
@@ -66,6 +78,19 @@ describe Coursem do
     puts "\nTest 11: Coursem not in the DB doesn't get deleted"
     @coursem = Coursem.new
     @coursem.destroyCoursem(@coursem.id).should eq(-22)
+  end
+
+  it "Does return the id of the coursem existed in DB" do
+    @course = Course.new
+    @course.createAll("hello","BBBBB","EE","150","FALL", 1990, "A")
+    @course = Course.where(:name => "Hello", :department => "EE", :course_number => "150").first
+    @semester = Semester.where(:year => 1990, :term => "FALL").first
+    @coursem = Coursem.where(:course_id => @course.id, :semester_id => @semester.id).first
+    Coursem.new.get_id("Hello", "FALL", 1990).should eq(@coursem.id)
+  end
+
+  it "Does return nil if the coursem not existed in DB" do
+    Coursem.new.get_id("Computer Science", "FALL", 2012).should eq(nil)
   end
 
 end

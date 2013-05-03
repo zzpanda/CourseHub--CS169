@@ -46,30 +46,37 @@ describe EventsController do
     before do
       @datetime = mock(DateTime)
       Event.stub!(:datetimefromstrings).and_return(@datetime)
-      @event = mock_model(Event, :save => true, :start_at= => @datetime, :end_at= => @datetime)
+      @event = mock_model(Event, :start_at= => @datetime, :end_at= => @datetime)
       Event.stub!(:new).and_return(@event)
+      @event.stub!(:save).and_return(true)
     end
 
     it "should create a new Event" do
       Event.should_receive(:new).and_return(@event)
-      get :create, :event => {}
+      post :create, :event => {}
     end
 
     it "should call Event.datetime" do
       Event.should_receive(:datetimefromstrings).and_return(@datetime)
-      get :create, :event => {}
+      post :create, :event => {}
     end
 
     it "should set the event's start_at and end_at fields" do
       @event.should_receive(:start_at=).and_return(@datetime)
       @event.should_receive(:end_at=).and_return(@datetime)
-      get :create, :event => {}
+      post :create, :event => {}
     end
 
     it "should save the event" do
       @event.should_receive(:save).and_return(true)
-      get :create, :event => {}
+      post :create, :event => {}
     end
+
+    it "should not save if there is a problem" do
+      @event.stub!(:save).and_return(false)
+      post :create, :event => {}
+    end
+
   end
 
   describe "GET edit" do
@@ -133,6 +140,12 @@ describe EventsController do
       @event.should_receive(:save).and_return(true)
       put :update, :id => "1", :event => {}
     end
+
+    it "should not save if there is a problem" do
+      @event.stub!(:save).and_return(false)
+      put :update, :id => "1", :event => {}
+    end
+
   end
 
   describe "recentevent" do

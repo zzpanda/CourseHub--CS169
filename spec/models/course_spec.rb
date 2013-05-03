@@ -67,9 +67,15 @@ describe Course do
   end
 
   it "should filter the course using department" do
-    @courses = Course.getCourseInformation("CS")
+    @courses = Course.getCourseInformation("CS","169")
+    @courses.length.should eq(1)
+    @courses = Course.getCourseInformation("CS","")
     @courses.length.should eq(2)
-    @courses = Course.getCourseInformation("SC")
+    @courses = Course.getCourseInformation("","169")
+    @courses.length.should eq(1)
+    @courses = Course.getCourseInformation("","")
+    @courses.length.should eq(2)
+    @courses = Course.getCourseInformation("SC", "169")
     @courses.length.should eq(0)
   end
 

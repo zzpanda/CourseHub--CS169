@@ -15,7 +15,7 @@ describe Semester do
 
 	it "Does not allow a semester term with the wrong string input(check semester.rb for right values)" do
 		puts "\nTest 3: Semester with invalid string term name is not valid"
-		Semester.checkSemester("falls",2013).should eq(-5)
+		Semester.checkSemester("falls",2013).should eq(-7)
 	end
 
 	it "Does not allow a semester with invalid year that's not an integer get added" do

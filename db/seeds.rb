@@ -8,8 +8,8 @@
 
 # Dummy User
 
-@al = User.create(:username=>"Albert",:password=>"password",:email=>"albert@berkeley.edu")
-@bob = User.create(:username=>"Bob",:password=>"password",:email=>"bob@berkeley.edu")
+#@al = User.create(:username=>"Albert",:password=>"password",:email=>"albert@berkeley.edu")
+#@bob = User.create(:username=>"Bob",:password=>"password",:email=>"bob@berkeley.edu")
 
 =begin
 # Some Courses

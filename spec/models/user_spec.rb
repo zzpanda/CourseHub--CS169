@@ -37,14 +37,6 @@ describe User do
   it { should respond_to(:addComment) }
   it { should respond_to(:commentsBy) }
 
-  describe "accessible attributes" do
-    it "should not allow access to karma" do
-      expect do
-        User.new(karma: "1000000")
-      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
-    end
-  end
-
   describe "#addResource" do
     it "should add a resource" do
       Resource.find_by_name_and_link("Example Resource", "http://ExampleResource.com").should_not == nil
@@ -83,24 +75,15 @@ describe User do
 
   describe "#flagResource" do
      it "Should be able to flag a valid Resource in the DB" do
-	@user1.flagResource(@user1.id, @resource1id)
+	@user1.flagResource(@resource1id)
 	Resource.find(@resource1id).flags.should eq(1)
      end
     
      it "Should not allow a Resource be flagged twice by same user" do
-	@user1.flagResource(@user1.id, @resource1id)
-	@user1.flagResource(@user1.id, @resource1id)
+	@user1.flagResource(@resource1id)
+	@user1.flagResource(@resource1id)
 	Resource.find(@resource1id).flags.should eq(1)
-     end
-
-     it "Should delete a Resource that is flagged after threshold amount of times (3)" do
-	@thirduser = User.create!(username: "third UserR", email: "user@third.com", password: "ccccccccc")
-	@user1.flagResource(@user1.id, @resource1id)
-	@otheruser.flagResource(@otheruser.id, @resource1id)
-	@thirduser.flagResource(@thirduser.id, @resource1id)
-	Resource.where(:id => @resource1id).first.should eq(nil) 
-     end
-     
+     end     
 
   end
   

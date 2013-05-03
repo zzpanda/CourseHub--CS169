@@ -83,8 +83,6 @@ class Coursem < ActiveRecord::Base
     course = Course.find_by_name(course_name)
     semester = Semester.where(:term => term, :year => year).first
     if course and semester
-      course_id = course.id
-      semester_id = semester.id
       coursem = Coursem.where(:course_id => course.id, :semester_id => semester.id).first
       if coursem
         return coursem.id

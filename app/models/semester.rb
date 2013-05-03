@@ -20,7 +20,7 @@ class Semester < ActiveRecord::Base
     year_min = 1990
     year_max = Time.new.year
 
-    if term.nil? or not term.is_a?(String)
+    if term.nil? or not term.is_a?(String) or term.length == 0
       return BAD_TERM
     elsif year.nil? or not year.is_a?(Integer) or year < year_min or year > year_max
       return BAD_YEAR

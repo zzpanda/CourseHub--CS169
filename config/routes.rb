@@ -18,6 +18,7 @@ Coursehub::Application.routes.draw do
   match '/users/addFavorite' => 'users#addFavorite'
   match '/users/deleteFavorite' => 'users#deleteFavorite'
 
+  match '/courses/show' => 'courses#show'
   match 'courses/resources' => 'courses#resources'
   match '/courses/department' => 'courses#getDepartment'
   match '/courses' => 'courses#index'

@@ -45,6 +45,7 @@ describe Resource do
       @coursem1 = Coursem.first
       @user1.addResource("Example Resource", "Homework", "http://ExampleResource.com", @user1.id, @coursem1.id)
       @resource1id = Resource.find_by_name_and_link("Example Resource", "http://ExampleResource.com").id
+      @user1.addComment(@resource1id, "This is a great resource!")
       Resource.new.deleteResource(@resource1id)
       Resource.find_by_id(@resource1id).should == nil
       Comment.all.size.should eq(0)

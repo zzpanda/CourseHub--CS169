@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
 
   def post_comment(content = nil, user_id = nil, resource_id = nil)
     if content != nil and user_id != nil
-      Comment.create!(:content => content, :user_id => user_id, :resource_id => resource_id, :numlikes => 0, :users_who_liked => 0)
+      Comment.create!(:content => content, :user_id => user_id, :resource_id => resource_id, :numlikes => 0, :users_who_liked => "")
       return SUCCESS
     end
     return FAILED
@@ -43,9 +43,6 @@ class Comment < ActiveRecord::Base
 
       if not user_id.nil? and (users.nil? or not users.include?(user_id.to_s))
         comment.numlikes += 1
-        if users.nil?
-          users = ""
-        end
         users = users.join(",")
         users += "," + user_id.to_s
         comment.users_who_liked = users

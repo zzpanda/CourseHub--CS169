@@ -5,12 +5,6 @@ class Event < ActiveRecord::Base
 
   belongs_to :coursem, :inverse_of => :events
 
-  def self.createEvent(name, startdate, enddate, starttime, endtime, description, coursemid)
-    startat = datetime(startdate, starttime)
-    endat = datetime(enddate, endtime)
-    Event.create!(:name=> name, :start_date=>startdate, :end_date=>enddate,:start_time=>starttime, :end_time=>endtime, :start_at=>startat, :end_at=>endat, :description=>description, :coursem_id=>coursemid)
-  end
-
   ##############################
   def self.datetimefromobjects(d,t)
     DateTime.new(d.year, d.month, d.day, t.hour, t.min)
@@ -42,12 +36,13 @@ class Event < ActiveRecord::Base
     t = t[0..t.length-3]
     t = t.split(":")
     if pm
-        result = t[0].to_i + 12
+        result = t[0].to_i - 12
         result.to_i
     else
       t[0].to_i
     end
   end
+
   def self.getminfromstring(t)
     t = t[0..t.length-3]
     t = t.split(":")

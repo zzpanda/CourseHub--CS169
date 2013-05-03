@@ -36,12 +36,21 @@
                                button.text("Subscribe"); 
                             }
                         });
-
-                        $(this).find('td.col_classes').change(function() {
-                            var selectedValue = $(this).find("select").val();
+                    });
+                }
+            );
+            
+            $(".row_content").each(function() {
+                var button = $(this).find('td.col_subscribe').find('button');
+                $(this).find('td.col_classes').change(function() {
+                    var selectedValue = $(this).find("select").val();
+                    $.get('/courses/check',
+                        function(data) {
                             var subscribed = false;
                             var coursem;
                             for (coursem in data) {
+                                //alert(selectedValue);
+                                //alert(data[coursem].id);
                                 if (data[coursem].id == selectedValue) {
                                     button.text("Unsubscribe");
                                     subscribed = true;
@@ -51,11 +60,11 @@
                             if (subscribed == false) {
                                button.text("Subscribe"); 
                             }
-                        });
+                        }
+                    );
 
-                    });
-                }
-            );
+                });
+            });
         },
 
         // Event handler for subscribing to a particular semester

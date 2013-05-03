@@ -13,13 +13,6 @@ class Resource < ActiveRecord::Base
   SUCCESS = 1
   FAILED = 0
 
-
-  # think about parameters to make more robust/secure against duplication
-  def self.id(name, link)
-    r = Resource.find_by_name_and_link(name, link)
-    r.id
-  end
-
   #return all the comments for this resource
   def comments
     c = Comment.where(:resource_id => self.id).all

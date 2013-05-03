@@ -5,6 +5,8 @@ describe CoursesController do
   describe "GET index" do
 
     before (:each) do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
       @course = mock_model(Course)
       Course.stub(:getCourseInformation).and_return([@course])
     end
@@ -21,9 +23,28 @@ describe CoursesController do
     end
   end
 
+  describe "GET checkSubscribed" do
+
+    before (:each) do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @coursem = mock_model(Coursem)
+      @user.stub!(:subscribed).and_return([@coursem])
+      controller.stub!(:current_user).and_return(@user)
+    end
+
+    it "assigns @subscribed" do
+      @user.should_receive(:subscribed).once
+      get :checkSubscribed
+      assigns(:subscribed).should eq([@coursem])
+    end
+  end
+
   describe "#getDepartment" do
 
     before (:each) do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
       @course = mock_model(Course)
       Course.stub(:getDepartments).and_return([@course])
     end
@@ -39,12 +60,14 @@ describe CoursesController do
   describe "GET show" do
 
     before (:each) do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
       @course = mock_model(Course, :id => "1", :name => "Algorithm")
       Course.stub(:find_by_id).and_return(@course)
     end
 
     it "assigns @course" do
-      Course.should_receive(:find_by_id).once.and_return(@course)
+      Course.should_receive(:find_by_id).once
       get :show, :id => @course.id
       assigns(:course).should eq(@course)
     end
@@ -54,6 +77,28 @@ describe CoursesController do
       response.should render_template("show")
     end
 
+    it "renders pubic page if couse is nil" do
+      Course.stub(:find_by_id).and_return(nil)
+      get :show, :id => @course.id
+      response.should render_template("layouts/application")
+    end
+
+  end
+
+  describe "GET resources" do
+
+    before (:each) do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @course = mock_model(Course)
+      Course.stub(:find_by_id).and_return(@course)
+    end
+
+    it "assigns @course" do
+      Course.should_receive(:find_by_id).once
+      get :resources, :courseid => @course.id
+      assigns(:course).should eq(@course)
+    end
   end
 
 end

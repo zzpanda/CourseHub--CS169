@@ -30,7 +30,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    @resource = User.new.addResource(params[:resource][:name], params[:resource][:type], params[:resource][:link], params[:resource][:user_id], params[:resource][:coursem_id])
+    @resource = current_user.addResource(params[:resource][:name], params[:resource][:type], params[:resource][:link], params[:resource][:user_id], params[:resource][:coursem_id])
     @errCode = @resource
     if @resource.class != Fixnum
       @errCode = 1

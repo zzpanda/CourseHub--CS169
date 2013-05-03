@@ -44,15 +44,6 @@ describe Comment do
     comment.like_comment(id,1).should eq(1)
   end
 
-  #it "Should not be able to like a comment twice" do
-  #  comment = Comment.new
-  #  comment.post_comment("fifth comment", 1, 1)
-  #  id = Comment.find_by_content("fifth comment").id
-  #  comment.like_comment(id,1)
-  #  comment.like_comment(id,1)
-  #  Comment.find_by_content("fifth comment").numlikes.should eq(0)
-  #end
-
   it "Should not be able to like a comment that doesn't exist in DB" do
     comment = Comment.new
     comment.like_comment(1,1).should eq(0)
