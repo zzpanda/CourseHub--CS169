@@ -23,6 +23,8 @@ group :development, :test do
   gem 'sqlite3'
   #gem 'rspec-rails', '2.11.0'
   gem 'rspec-rails'
+  gem 'database_cleaner'
+
   gem 'guard-rspec', '1.2.1'
   gem 'factory_girl_rails'
 

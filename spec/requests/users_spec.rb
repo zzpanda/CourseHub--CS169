@@ -12,7 +12,7 @@ describe "Users" do
       current_path.should == "/users/sign_in"
       fill_in "user_email", :with => "dontauth@example.com"
       fill_in "user_password", :with=> "bad password"
-
+      click_button 'Sign in'
       page.should have_content("Sign in")
       current_path.should == "/users/sign_in"
     end
