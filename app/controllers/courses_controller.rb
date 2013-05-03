@@ -8,7 +8,6 @@ class CoursesController < ApplicationController
   def index
       # Check for filters
       @courses = Course.getCourseInformation(params[:dept],params[:course])
-      @page_heading = "Browse Courses"
       @page_title = "Browse Courses"
       respond_to do |format|
           format.html

@@ -50,6 +50,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    database_cleaner (0.9.1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -155,6 +156,12 @@ GEM
       thor (>= 0.14.6, < 2.0)
     rake (10.0.4)
     rb-fsevent (0.9.1)
+<<<<<<< HEAD
+=======
+    rb-inotify (0.9.0)
+      ffi (>= 0.5.0)
+    rcov (0.9.8)
+>>>>>>> c170b0289a64070e92bfcdc2e0c945fbaf8818fb
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.2)
@@ -224,6 +231,7 @@ DEPENDENCIES
   capybara
   childprocess (= 0.3.6)
   coffee-rails (= 3.2.2)
+  database_cleaner
   devise
   event-calendar
   execjs
@@ -242,6 +250,11 @@ DEPENDENCIES
   pg (= 0.12.2)
   rails (= 3.2.12)
   rb-fsevent (= 0.9.1)
+<<<<<<< HEAD
+=======
+  rb-inotify (~> 0.9)
+  rcov (= 0.9.8)
+>>>>>>> c170b0289a64070e92bfcdc2e0c945fbaf8818fb
   rspec-rails
   sass-rails (= 3.2.5)
   simplecov

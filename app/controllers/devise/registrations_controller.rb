@@ -31,7 +31,6 @@ class Devise::RegistrationsController < DeviseController
   # GET /resource/edit
   def edit
     @page_title = "Edit Profile"
-    @page_heading = "Edit Profile"
     render :edit
   end
 

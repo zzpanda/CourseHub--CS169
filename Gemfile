@@ -23,11 +23,14 @@ group :development, :test do
   gem 'sqlite3'
   #gem 'rspec-rails', '2.11.0'
   gem 'rspec-rails'
+  gem 'database_cleaner'
+
   gem 'guard-rspec', '1.2.1'
   gem 'factory_girl_rails'
 
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
+  gem 'rb-inotify', '~> 0.9'
 
   #for test coverage
   gem 'simplecov', :require => false
