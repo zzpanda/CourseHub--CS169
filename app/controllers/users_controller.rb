@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   # Home page for logged in user
   def home
     @page_title = "Home Page"
-    @page_heading = "Home Page"
 
     @id = params[:id]
     if @id.nil? || @id == 0
@@ -94,7 +93,6 @@ class UsersController < ApplicationController
 
   def coursems
     @user = current_user
-    @page_heading = "My Courses"
     @page_title = "My Courses"
     @coursems = @user.coursems
   end
