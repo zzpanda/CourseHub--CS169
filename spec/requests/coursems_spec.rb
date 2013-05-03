@@ -142,6 +142,7 @@ describe "Coursems" do
       add_resource("Homework 1", "Homework","http//google.com")
 
       visit '/'
+      page.driver.wait_until(page.driver.browser.switch_to.alert.accept)
       find("#Feed").should_not have_content("Homework 1")
 
       # Subscribe to the course
