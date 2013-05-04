@@ -90,7 +90,7 @@ function resourceHandler() {
                 table.fadeIn("slow");
             } else {
                 expand.html("+");
-                table.fadeOut("slow");
+                table.hide();
             }
         });
 
@@ -99,6 +99,22 @@ function resourceHandler() {
 }
 
 /*********RESOURCE RELATED FUNCTIONS *******************/
+
+function show_all_resources() {
+    $(".semesters").each(function() {
+        $(this).mouseover(function(){
+          $(this).css("color","rgb(40,100,255)");
+        });
+        $(this).mouseout(function(){
+          $(this).css("color","black");
+        });
+        $(this).click(function() {
+            var id = $(this).attr('id');
+            var select = "#resources" + id;
+            $(select).toggle();
+        });
+    });
+}
 
 function shownewresourceform() {
     $("a#new_resource").click(function() {
@@ -110,9 +126,6 @@ function shownewresourceform() {
                 $("#new_resource_div").append(data).addClass('well');
                 $('form#new_resource_form').on('ajax:success', function(data, status, xhr) {
                         handle_create_resources_response(status);
-                        $("#resource_submit").click(function() {
-                            location.reload();
-                        });
                     })
                                 .on('ajax:error', function(xhr, status, error) {alert("There is a problem!");});
             });
@@ -123,6 +136,7 @@ function shownewresourceform() {
 
 function handle_create_resources_response(data) {
   if( data.errCode == 1 ) {
+     alert("Congratulations! You just earned 1 karma!");
      location.reload();
   } else {
      $('#error_message_resource').html( get_message_for_errcode(data.errCode) );  
@@ -282,5 +296,6 @@ $(document).ready(function() {
     closeeventbox();
     showneweventform();
     colorrecentevents();
+    show_all_resources();
 })
 

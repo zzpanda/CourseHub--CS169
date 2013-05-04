@@ -49,8 +49,6 @@
                             var subscribed = false;
                             var coursem;
                             for (coursem in data) {
-                                //alert(selectedValue);
-                                //alert(data[coursem].id);
                                 if (data[coursem].id == selectedValue) {
                                     button.text("Unsubscribe");
                                     subscribed = true;
@@ -100,6 +98,7 @@
                         };
                         json_request(path, json_sending,
                         function(data) {
+                            alert(data.status);
                             button.text(newbuttontext)
                         },
                         function(data) {

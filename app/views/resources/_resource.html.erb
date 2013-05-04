@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <a href='/resources/<%= resource.id %>'><%= resource.name %></a>
+    <a href='/resources/<%= resource.id %>' target="_blank"><%= resource.name %></a>
   </td>
 
 
@@ -36,7 +36,7 @@
   <td class="col_postdate">Posted on <%= resource.created_at.to_s.split[0] %></td>
 
 
-  <td class="col_flag">Number of Flags: <%= resource.flags %></td>
+  <td class="col_flag">Flags: <%= resource.flags %></td>
 
   <td class="col_downvote"></td>
   <td class="col_name"></td>
