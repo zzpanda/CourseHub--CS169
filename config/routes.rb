@@ -19,11 +19,11 @@ Coursehub::Application.routes.draw do
   match '/users/deleteFavorite' => 'users#deleteFavorite'
 
   match '/courses/show' => 'courses#show'
-  match 'courses/resources' => 'courses#resources'
   match '/courses/department' => 'courses#getDepartment'
   match '/courses' => 'courses#index'
   match '/courses/check' => 'courses#checkSubscribed'
   match '/coursem/create' => 'coursem#create'
+  match 'coursem/resources' => 'coursem#resources'
 
 
   match '/resources/addComment' => 'resources#addComment'

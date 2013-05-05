@@ -54,11 +54,4 @@ class CoursesController < ApplicationController
         end
       end
   end
-
-  def resources
-    @course = Course.find_by_id(params[:courseid])
-    @coursemURL = "/coursem/" + params[:coursemid].to_s
-  end
-
-
 end

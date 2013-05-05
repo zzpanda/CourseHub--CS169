@@ -1,0 +1,13 @@
+<div id="browse_container">
+	<%= link_to 'Back to Coursem', @coursemURL %>
+	<% @course.coursems.reverse.each do |coursem| %>
+	    <%
+	       sem_id = coursem.semester_id
+	       term = Semester.find(sem_id).term
+	       year = Semester.find(sem_id).year.to_s
+	       semname = term + " " + year
+	    %>
+	    <h2 class="semesters" id= <%= coursem.id %> ><span title="click to hide" > <%= semname %> </span></h2>
+	    <div class="resources" id= <%= "resources" + coursem.id.to_s %> ><%= render :partial => "/coursem/resources", :locals => {:coursem => coursem} %></div>
+	<% end %>
+</div>

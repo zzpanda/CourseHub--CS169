@@ -52,8 +52,6 @@
                             var subscribed = false;
                             var coursem;
                             for (coursem in data) {
-                                //alert(selectedValue);
-                                //alert(data[coursem].id);
                                 if (data[coursem].id == selectedValue) {
                                     button.removeClass("btn-success");
                                     button.addClass("btn-warning");
@@ -110,6 +108,7 @@
                         };
                         json_request(path, json_sending,
                         function(data) {
+                            alert(data.status);
                             button.text(newbuttontext)
                         },
                         function(data) {

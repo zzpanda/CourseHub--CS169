@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 Page_Changer =
+
   unsubscribe_button_listeners: ->
     $(".row_content").each ->
       row = $(this)
@@ -20,5 +21,23 @@ Page_Changer =
           (data)->
             alert data.status
 
+  feed_listeners: ->
+    $("#feed").mouseover ->
+      $("#feed").css "color", "rgb(40,100,255)"
+    $("#feed").mouseout ->
+      $("#feed").css "color", "black"
+    $("#feed").click ->
+      $("table#Feed").toggle()
+
+  favorite_listeners: ->
+    $("#favorite").mouseover ->
+      $("#favorite").css "color", "rgb(40,100,255)"
+    $("#favorite").mouseout ->
+      $("#favorite").css "color", "black"
+    $("#favorite").click ->
+      $("table#favorite").toggle()
+
 $(document).ready ->
   Page_Changer.unsubscribe_button_listeners()
+  Page_Changer.feed_listeners()
+  Page_Changer.favorite_listeners()

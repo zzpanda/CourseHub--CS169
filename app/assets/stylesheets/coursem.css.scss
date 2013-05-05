@@ -205,6 +205,81 @@ $width_resource: 300px;
 
       }
     }
+
+    #new_resource {
+      -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      box-shadow:inset 0px 1px 0px 0px #ffffff;
+      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+      background:-moz-linear-gradient( center top, white 5%, white 100% );
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+      background-color:#ededed;
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      border-radius:6px;
+      border:1px solid #dcdcdc;
+      display:inline-block;
+      color:#777777;
+      font-family:arial;
+      font-size:15px;
+      font-weight:bold;
+      padding:6px 24px;
+      text-decoration:none;
+      text-shadow:1px 1px 0px #ffffff;
+    }
+
+    #new_resource:hover {
+      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+      background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+      background-color:#dfdfdf;
+    }
+
+    #new_resource:active {
+      position:relative;
+      top:1px;
+    }
+  }
+  .resources {
+
+    .resource_header {
+      margin-left: 5px;
+
+      .expand {
+        display: block;
+        color:  white;
+        font-weight: bold;
+        font-size: 18px;
+        background-color: $medium_blue;
+        vertical-align: middle;
+        height: 25px;
+        padding-top: 3px;
+        border-radius: 0.3em;
+        width: 20px;
+        float: left;
+      }
+
+      .expand:hover {
+        background-color: $gold;
+        cursor: pointer;
+      }
+
+      h2 {
+        font-size:  16px;
+        display: block;
+        width: $width_resource;
+        height:  30px;
+        padding-top: 3px;
+        vertical-align: middle;
+        text-align: center;
+        background-color: $medium_blue;
+        border-radius: 0.3em;
+        color: white;
+        margin-left: 30px;
+        border:  1px solid $dark_blue;
+
+      }
+    }
   }
 }
 
