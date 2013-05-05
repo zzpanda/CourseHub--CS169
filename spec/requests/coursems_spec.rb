@@ -31,7 +31,6 @@ describe "Coursems" do
   end
 
   describe "GET /coursems" do
-
     it "Subscribe works and persists", :js => true do
       sign_in("chris@gmail.com","password")
 
@@ -65,10 +64,9 @@ describe "Coursems" do
 
       page.should have_content("Homework 1")
       click_link "Homework 1"
-      within("#resource_description") do
-        page.should have_content("chris")
-        page.should have_content("Homework 1")
-      end
+      page.should have_content("chris")
+      page.should have_content("Homework 1")
+
       current_path.should == "/resources/1"
     end
 
@@ -100,7 +98,7 @@ describe "Coursems" do
 
       # No favorite resources should be present initially
       visit '/'
-      page.should_not have_content("Favorite Resources")
+      find("#favorite").should_not have_content("Homework 1")
 
       # Add resource and favorite it
       visit '/courses'
@@ -125,7 +123,7 @@ describe "Coursems" do
 
       # Check it's been deleted
       visit '/'
-      page.should_not have_content("Favorite Resources")
+      find("#favorite").should_not have_content("Homework 1")
     end
 
     it "Feed of Recent Resources", :js => true do

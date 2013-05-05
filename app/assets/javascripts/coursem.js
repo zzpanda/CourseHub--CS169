@@ -136,7 +136,7 @@ function shownewresourceform() {
 
 function handle_create_resources_response(data) {
   if( data.errCode == 1 ) {
-     alert("Congratulations! You just earned 1 karma!");
+     //alert("Congratulations! You just earned 1 karma!");
      location.reload();
   } else {
      $('#error_message_resource').html( get_message_for_errcode(data.errCode) );  
