@@ -27,19 +27,22 @@
                             var coursem;
                             for (coursem in data) {
                                 if (data[coursem].id == selectedValue) {
+                                    button.addClass("btn-warning");
                                     button.text("Unsubscribe");
                                     subscribed = true;
                                     break;
                                 }
                             }
                             if (subscribed == false) {
-                               button.text("Subscribe"); 
+                               button.text("Subscribe");
+                                button.addClass("btn-success");
                             }
                         });
                     });
                 }
             );
-            
+
+            // Changing semesters
             $(".row_content").each(function() {
                 var button = $(this).find('td.col_subscribe').find('button');
                 $(this).find('td.col_classes').change(function() {
@@ -52,13 +55,17 @@
                                 //alert(selectedValue);
                                 //alert(data[coursem].id);
                                 if (data[coursem].id == selectedValue) {
+                                    button.removeClass("btn-success");
+                                    button.addClass("btn-warning");
                                     button.text("Unsubscribe");
                                     subscribed = true;
                                     break;
                                 }
                             }
                             if (subscribed == false) {
-                               button.text("Subscribe"); 
+                                button.removeClass('btn-warning');
+                                button.addClass('btn-success');
+                                button.text("Subscribe");
                             }
                         }
                     );
@@ -88,12 +95,15 @@
                         var newbuttontext
                         var path
                         if (button.text() == "Subscribe"){
+                            button.removeClass("btn-success");
+                            button.addClass("btn-warning");
                             newbuttontext = "Unsubscribe";
                             path = "/users/subscribe"
                         }else {
+                            button.removeClass('btn-warning');
+                            button.addClass('btn-success');
                             newbuttontext = "Subscribe"
                             path = "/users/unsubscribe"
-
                         }
                         json_sending = {
                             coursem_id: class_selected

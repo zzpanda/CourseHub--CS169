@@ -1,4 +1,4 @@
-<table class="table" id="table_courses">
+<table class="table table-striped" id="table_courses">
   <tr class='row_header'>
     <td class='col_goto'></td>
     <td class='col_department'>Dept</td>
@@ -24,7 +24,7 @@
         <% if @viewingProfile != true %>
             <td class='col_unsubscribe'>
               <% if user_signed_in? %>
-                  <button>Unsubscribe</button>
+                  <button class='btn'>Unsubscribe</button>
               <% else %>
                   <%= link_to "sign in", new_user_session_path %> to unsubscribe
               <% end %>
