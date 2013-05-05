@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.cookie
 //= require bootstrap
 //= require jquery.ui.autocomplete
 //= require jquery.timepicker.js

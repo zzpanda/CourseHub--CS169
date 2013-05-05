@@ -108,8 +108,7 @@
                         };
                         json_request(path, json_sending,
                         function(data) {
-                            alert(data.status);
-                            button.text(newbuttontext)
+                            button.text(newbuttontext);
                         },
                         function(data) {
                             return alert(data.status);
