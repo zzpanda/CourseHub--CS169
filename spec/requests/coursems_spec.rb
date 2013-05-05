@@ -62,6 +62,7 @@ describe "Coursems" do
       click_link "Add New Resource"
       add_resource('Homework 1', 'Homework', 'http://google.com')
 
+      find("#button_announcements").click
       page.should have_content("Homework 1")
       click_link "Homework 1"
       page.should have_content("chris")
@@ -78,6 +79,7 @@ describe "Coursems" do
       find("#button_resources").click
       click_link "Add New Resource"
       add_resource('Homework 1', 'Homework', 'http://google.com')
+      find("#button_announcements").click
       click_link "Homework 1"
       add_comment("Thanks for the upload!")
 
@@ -106,7 +108,9 @@ describe "Coursems" do
       find("#button_resources").click
       click_link "Add New Resource"
       add_resource('Homework 1', 'Homework', 'http://google.com')
+      find("#button_announcements").click
       click_link "Homework 1"
+
       find("#favorite").click_button("Add To Favorite")
 
 
@@ -140,7 +144,6 @@ describe "Coursems" do
       add_resource("Homework 1", "Homework","http//google.com")
 
       visit '/'
-      page.driver.wait_until(page.driver.browser.switch_to.alert.accept)
       find("#Feed").should_not have_content("Homework 1")
 
       # Subscribe to the course

@@ -4,7 +4,7 @@
 
 <div>
 	<span title="Hide Recent Resources">
-	<h2 id="feed"> Feed of Recent Resources: </h2>
+	<h3 id="title_feed"> Feed of Recent Resources </h3>
 	</span>
 	<table class='table' id="Feed">
 	  <% @feed.each do |a| %>
@@ -15,7 +15,7 @@
 
 <div>
 	<span title="Hide Favorite Resources">
-	<h2 id='favorite'> Favorite Resources: </h2>
+	<h3 id='title_favorite'> Favorite Resources </h3>
 	</span>
 	<table class='table' id="favorite">
 	  <% @favorites.each do |favorite| %>
@@ -25,7 +25,7 @@
 </div>
 
 <div id="calendar_container">
-    <h2>Your calendar:</h2>
+    <h3>My calendar</h3>
     <%= raw(event_calendar) %>
 </div>
 

@@ -4,7 +4,7 @@
     <td class='col_department'>Dept</td>
     <td class='col_course_number'>#</td>
     <td class='col_name'>Course</td>
-    <td class='col_classes'></td>
+    <td class='col_classes'>Semester</td>
     <td class='col_subscribe'></td>
   </tr>
 
@@ -24,7 +24,7 @@
         <% if @viewingProfile != true %>
             <td class='col_unsubscribe'>
               <% if user_signed_in? %>
-                  <button class='btn'>Unsubscribe</button>
+                  <button class='btn btn-warning'>Unsubscribe</button>
               <% else %>
                   <%= link_to "sign in", new_user_session_path %> to unsubscribe
               <% end %>
