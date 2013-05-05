@@ -15,6 +15,7 @@ gem 'jasmine', :group => [:development, :test]
 
 gem 'jquery-rails', '2.0.2'
 gem 'jquery-ui-rails'
+gem 'jquery-cookie-rails'
 
 gem 'bootstrap-sass', '~> 2.3.1.0'
 

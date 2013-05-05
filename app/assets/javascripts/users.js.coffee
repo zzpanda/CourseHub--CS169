@@ -27,7 +27,7 @@ Page_Changer =
     $("#feed").mouseout ->
       $("#feed").css "color", "black"
     $("#feed").click ->
-      $("table#Feed").toggle()
+      $("table#Feed").fadeToggle()
 
   favorite_listeners: ->
     $("#favorite").mouseover ->
@@ -35,7 +35,7 @@ Page_Changer =
     $("#favorite").mouseout ->
       $("#favorite").css "color", "black"
     $("#favorite").click ->
-      $("table#favorite").toggle()
+      $("table#favorite").fadeToggle()
 
 $(document).ready ->
   Page_Changer.unsubscribe_button_listeners()

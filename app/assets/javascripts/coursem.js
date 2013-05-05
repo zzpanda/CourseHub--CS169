@@ -19,31 +19,54 @@ function subscribeHandler() {
         json_request(path,json_sending,
             function succ(data){
                 button.text(newpath);
-                button.prop("value",newvalue)
-                console.log("Submitted to " + path + " and got response " + data.status);
+                button.prop("value",newvalue);
             },
             function fail(data){
-                alert ("error");
                 alert (data.status);
             });
     });
 }
 
 /* -- Panel Display -- */
+function tabs_handler() {
+    $('#sub_button').each(function() {
+        var id = $(this).attr('coursem_id');
+        var active_tab = 'active_tab'+id;
+        if ($.cookie(active_tab) == "overview") {
+            showOverview();
+        } else if ($.cookie(active_tab) == "resources") {
+            showResources();
+        } else if ($.cookie(active_tab) == "calendar") {
+            showCalendar();
+        } else {
+            $.cookie(active_tab, 'announcements', { expires: 7, path: '/coursem' });
+            showAnnouncements();
+        }
+    });
+}
+
 function panelHandler() {
-    $("#button_overview").on("click",function() {
-        showOverview();
+    $('#sub_button').each(function() {
+        var id = $(this).attr('coursem_id');
+        var active_tab = 'active_tab'+id;
+        $("#button_overview").on("click",function() {
+            $.cookie(active_tab, 'overview', { expires: 7, path: '/coursem' });
+            showOverview();
+        });
+        $("#button_resources").on("click",function() {
+            $.cookie(active_tab, 'resources', { expires: 7, path: '/coursem' });
+            showResources();
+        });
+        $("#button_announcements").on("click", function() {
+            $.cookie(active_tab, 'announcements', { expires: 7, path: '/coursem' });
+            showAnnouncements();
+        });
+        $("#button_calendar").on("click", function() {
+            $.cookie(active_tab, 'calendar', { expires: 7, path: '/coursem' });
+            showCalendar();
+        });
+        return true;
     });
-    $("#button_resources").on("click",function() {
-        showResources();
-    });
-    $("#button_announcements").on("click", function() {
-        showAnnouncements();
-    });
-    $("#button_calendar").on("click", function() {
-        showCalendar();
-    });
-    return true;
 }
 
 function showOverview() {
@@ -285,7 +308,8 @@ $(document).ready(function() {
     panelHandler();
     //showOverview();
     //showResources();
-    showAnnouncements();
+    //showAnnouncements();
+    tabs_handler();
     resourceHandler();
     calendarChangeMonth();
     subscribeHandler();
