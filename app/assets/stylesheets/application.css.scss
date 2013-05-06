@@ -44,13 +44,18 @@ body {
   margin-bottom:200px;
 }
 
-#header {
-  img {
-    display: block;
-  }
+#top_banner {
+   img {
+     float: left;
+     vertical-align: middle;
+     display: block;
+     margin-top: 3px;
+     margin-left: 5px;
+   }
 }
 
-nav {
+
+navigation {
   background-color: $gold;
   border:  2px solid $navy_blue;
   padding:  0px;

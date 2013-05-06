@@ -20,29 +20,53 @@
 
 <div id="container">
 
-  <div id="header">
+  <div id="top_banner">
     <a href=<%= new_user_session_path %> ><%=  image_tag "CourseHub.png" %></a>
   </div>
 
   <% if user_signed_in? %>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
+      <div class='navbar'>
+        <div class='navbar-inner'>
+
+        <ul class='nav'>
           <li><a href="/courses">Browse Courses</a></li>
 
-
-
           <% if user_signed_in? %>
-              <li><a href="/users/coursems">My Courses</a></li>
+              <li class='dropdown'>
+                  <a class='dropdown-toggle' data-toggle='dropdown' href="#">
+                    My Courses
+                    <b class='caret'></b>
+                  </a>
+                  <ul class='dropdown-menu' role='menu' aria-labelledby="dLabel">
+                    <% current_user.coursems.each do |coursem| %>
+                        <li>
+                          <a  tabindex="-1" href="coursem/<%= coursem.id %>">
+                            <%= coursem.course.department %>
+                            <%= coursem.course.course_number %>
+                          </a>
+                        </li>
+
+                    <% end %>
+                    <li class="divider"></li>
+                    <li>
+                      <a tabindex="-1"  href="/users/coursems">All My Courses</a>
+                    </li>
+                  </ul>
+
+              </li>
               <li><%= link_to "Edit Profile", edit_user_registration_path %> </li>
+          </ul>
+              <ul class='nav pull-right'>
+
               <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+              </ul>
           <% else %>
               <li><%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %></li>
           <% end %>
 
 
-        </ul>
-      </nav>
+        </div>
+      </div>
   <% end %>
 
 
