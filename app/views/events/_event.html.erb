@@ -10,7 +10,7 @@
       </tr>
       <tr>
         <td>Start Time:</td>
-        <td><%= @event.start_time %></td>
+        <td><%= @event.start_time.to_s.split[1] %></td>
       </tr>
       <tr>
         <td>End Date:</td>
@@ -18,7 +18,7 @@
       </tr>
       <tr>
         <td>End Time:</td>
-        <td><%= @event.end_time %></td>
+        <td><%= @event.end_time.to_s.split[1] %></td>
       </tr>
       <tr>
         <td>Description:</td>

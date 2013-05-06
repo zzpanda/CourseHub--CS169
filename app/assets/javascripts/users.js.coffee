@@ -22,19 +22,19 @@ Page_Changer =
             alert data.status
 
   feed_listeners: ->
-    $("#feed").mouseover ->
-      $("#feed").css "color", "rgb(40,100,255)"
-    $("#feed").mouseout ->
-      $("#feed").css "color", "black"
-    $("#feed").click ->
+    $("#title_feed").mouseover ->
+      $("#title_feed").css "color", "rgb(40,100,255)"
+    $("#title_feed").mouseout ->
+      $("#title_feed").css "color", "black"
+    $("#title_feed").click ->
       $("table#Feed").fadeToggle()
 
   favorite_listeners: ->
-    $("#favorite").mouseover ->
-      $("#favorite").css "color", "rgb(40,100,255)"
-    $("#favorite").mouseout ->
-      $("#favorite").css "color", "black"
-    $("#favorite").click ->
+    $("#title_favorite").mouseover ->
+      $("#title_favorite").css "color", "rgb(40,100,255)"
+    $("#title_favorite").mouseout ->
+      $("#title_favorite").css "color", "black"
+    $("#title_favorite").click ->
       $("table#favorite").fadeToggle()
 
 $(document).ready ->

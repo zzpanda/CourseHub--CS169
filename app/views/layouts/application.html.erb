@@ -39,7 +39,7 @@
                     <b class='caret'></b>
                   </a>
                   <ul class='dropdown-menu' role='menu' aria-labelledby="dLabel">
-                    <% current_user.coursems[0..5].each do |coursem| %>
+                    <% current_user.coursems.reverse[0..5].each do |coursem| %>
                        <li>
                           <a  tabindex="-1" href="coursem/<%= coursem.id %>">
                             <%= coursem.course.department %>
