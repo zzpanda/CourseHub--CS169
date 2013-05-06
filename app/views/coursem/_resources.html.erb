@@ -4,8 +4,8 @@
     <h2>Announcements (<%= coursem.resources.where(:type => 'Announcement').size %>)</h2>
   </div>
   <table class="resources table">
-    <% coursem.resources.each do |resource| %>
-        <% if resource.type == "Announcements" %>
+    <% coursem.resources.reverse.each do |resource| %>
+        <% if resource.type == "Announcement" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
     <% end %>
@@ -18,7 +18,7 @@
     <h2>Discussion Notes (<%= coursem.resources.where(:type => 'Discussion').size %>)</h2>
   </div>
   <table class="resources table">
-    <% coursem.resources.each do |resource| %>
+    <% coursem.resources.reverse.each do |resource| %>
         <% if resource.type == "Discussion" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
@@ -32,7 +32,7 @@
     <h2>Discussion Solutions (<%= coursem.resources.where(:type => 'DiscussionSolution').size %>)</h2>
   </div>
   <table class="resources table">
-    <% coursem.resources.each do |resource| %>
+    <% coursem.resources.reverse.each do |resource| %>
         <% if resource.type == "DiscussionSolution" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
@@ -46,7 +46,7 @@
     <h2>Exams (<%= coursem.resources.where(:type => 'Exam').size %>)</h2>
   </div>
   <table class="resources table">
-    <% coursem.resources.each do |resource| %>
+    <% coursem.resources.reverse.each do |resource| %>
         <% if resource.type == "Exam" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
@@ -60,7 +60,7 @@
     <h2>Exam Solutions (<%= coursem.resources.where(:type => 'ExamSolution').size %>)</h2>
   </div>
   <table class="resources table">
-    <% coursem.resources.each do |resource| %>
+    <% coursem.resources.reverse.each do |resource| %>
         <% if resource.type == "ExamSolution" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
@@ -74,7 +74,7 @@
     <h2>Homework (<%= coursem.resources.where(:type => 'Homework').size %>)</h2>
   </div>
   <table id="Homework" class="resources table">
-    <% coursem.resources.each do |resource| %>
+    <% coursem.resources.reverse.each do |resource| %>
         <% if resource.type == "Homework" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
@@ -88,7 +88,7 @@
     <h2>Homework Solutions (<%= coursem.resources.where(:type => 'HomeworkSolution').size %>)</h2>
   </div>
   <table class="resources table">
-    <% coursem.resources.each do |resource| %>
+    <% coursem.resources.reverse.each do |resource| %>
         <% if resource.type == "HomeworkSolution" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
@@ -102,7 +102,7 @@
     <h2>Lecture Notes (<%= coursem.resources.where(:type => 'LectureNotes').size %>)</h2>
   </div>
   <table class="resources table">
-    <% coursem.resources.each do |resource| %>
+    <% coursem.resources.reverse.each do |resource| %>
         <% if resource.type == "LectureNotes" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
@@ -116,7 +116,7 @@
     <h2>Other (Online Resources) (<%= coursem.resources.where(:type => 'OnlineResource').size %>) </h2>
   </div>
   <table class="resources table">
-    <% coursem.resources.each do |resource| %>
+    <% coursem.resources.reverse.each do |resource| %>
         <% if resource.type == "OnlineResource" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>

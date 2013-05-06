@@ -31,6 +31,9 @@ class User < ActiveRecord::Base
       @favorite = self.favorite
     end
     @favorite.resources << Resource.find_by_id(resource_id)
+    @user = Resource.find_by_id(resource_id).user
+    @user.karma += 0.1
+    @user.save
   end
 
   def deleteFavorite(resource_id)
