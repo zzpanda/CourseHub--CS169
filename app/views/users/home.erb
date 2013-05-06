@@ -7,7 +7,7 @@
 	<h3 id="title_feed"> Feed of Recent Resources </h3>
 	</span>
 	<table class='table' id="Feed">
-	  <% @feed.each do |a| %>
+	  <% @feed.reverse.each do |a| %>
 	      <%= render :partial => '/resources/resource', :locals => {:resource => a} %>
 	  <% end %>
 	</table>
@@ -18,7 +18,7 @@
 	<h3 id='title_favorite'> Favorite Resources </h3>
 	</span>
 	<table class='table' id="favorite">
-	  <% @favorites.each do |favorite| %>
+	  <% @favorites.reverse.each do |favorite| %>
 	      <%= render :partial => '/resources/favorite', :locals => {:favorite => favorite} %>
 	  <% end %>
 	</table>

@@ -1,5 +1,13 @@
 <tr>
   <td>
+  <% if resource.type == 'Announcement' %>
+    <b><%=resource.type%></b>
+  <% else %>
+    <%=resource.type%>
+  <% end %>
+  </td>
+
+  <td>
     <a href='/resources/<%= resource.id %>' target="_blank"><%= resource.name %></a>
   </td>
 
@@ -33,7 +41,9 @@
 
   <% end %>
 
-  <td class="col_postdate">Posted on <%= resource.created_at.to_s.split[0] %></td>
+  <% if @home != true %>
+    <td class="col_postdate">Posted on <%= resource.created_at.to_s.split[0] %></td>
+  <% end %>
 
 
   <td class="col_flag">Flags: <%= resource.flags %></td>

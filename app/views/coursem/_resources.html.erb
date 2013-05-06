@@ -37,7 +37,7 @@
 <div class='tab-content'>
   <div class='tab-pane' id='announcements'>
     <table class="resources table">
-      <% coursem.resources.each do |resource| %>
+      <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "Announcement" %>
               <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
           <% end %>
@@ -46,7 +46,7 @@
   </div>
   <div class='tab-pane' id='discussion-notes'>
     <table class="resources table">
-      <% coursem.resources.each do |resource| %>
+      <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "Discussion" %>
               <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
           <% end %>
@@ -55,7 +55,7 @@
    </div>
    <div class="tab-pane" id="discussion-solutions">
      <table class="resources table">
-       <% coursem.resources.each do |resource| %>
+       <% coursem.resources.reverse.each do |resource| %>
            <% if resource.type == "DiscussionSolution" %>
                <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
            <% end %>
@@ -65,7 +65,7 @@
 
   <div class="tab-pane" id="exams">
     <table class="resources table">
-      <% coursem.resources.each do |resource| %>
+      <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "Exam" %>
               <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
           <% end %>
@@ -75,7 +75,7 @@
 
   <div class="tab-pane" id="exam-solutions">
     <table class="resources table">
-      <% coursem.resources.each do |resource| %>
+      <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "ExamSolution" %>
               <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
           <% end %>
@@ -85,7 +85,7 @@
 
   <div class="tab-pane" id="homeworks">
     <table id="Homework" class="resources table">
-      <% coursem.resources.each do |resource| %>
+      <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "Homework" %>
               <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
           <% end %>
@@ -95,7 +95,7 @@
 
   <div class="tab-pane" id="homework-solutions">
     <table class="resources table">
-      <% coursem.resources.each do |resource| %>
+      <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "HomeworkSolution" %>
               <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
           <% end %>
@@ -105,7 +105,7 @@
 
   <div class="tab-pane" id="lecture-notes">
     <table class="resources table">
-      <% coursem.resources.each do |resource| %>
+      <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "LectureNotes" %>
               <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
           <% end %>
@@ -115,7 +115,7 @@
 
   <div class="tab-pane" id="other">
     <table class="resources table">
-      <% coursem.resources.each do |resource| %>
+      <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "OnlineResource" %>
               <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
           <% end %>
@@ -127,5 +127,3 @@
 <div class='clear'>
 
 </div>
-
-
