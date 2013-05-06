@@ -65,7 +65,7 @@
 
   <div id="panel_announcements" class="panels">
     <table class = "table" id="Feed">
-      <% @feed.each do |a| %>
+      <% @feed.reverse.each do |a| %>
         <%= render :partial => '/resources/resource', :locals => {:resource => a} %>
       <% end %>
     </table>
