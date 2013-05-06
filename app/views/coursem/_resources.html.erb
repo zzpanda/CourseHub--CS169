@@ -1,41 +1,41 @@
 <div class='nav_resources'>
 <ul class='nav nav-tabs nav-stacked'>
-  <li><a href="#announcements" data-toggle='tab'>
+  <li><a href="#announcements_<%= coursem.id %>" data-toggle='tab'>
     Announcements (<%= coursem.resources.where(:type => 'Announcement').size %>)</a>
   </li>
-  <li><a href="#discussion-notes" data-toggle='tab'>
+  <li><a href="#discussion-notes_<%= coursem.id %>" data-toggle='tab'>
     Discussion Notes (<%= coursem.resources.where(:type => 'Discussion').size %>)</a>
   </li>
-  <li><a href="#discussion-solutions" data-toggle='tab'>
+  <li><a href="#discussion-solutions_<%= coursem.id %>" data-toggle='tab'>
     Discussion Solutions (<%= coursem.resources.where(:type => 'DiscussionSolution').size %>)</a>
   </li>
 
-  <li><a href="#exams" data-toggle='tab'>
+  <li><a href="#exams_<%= coursem.id %>" data-toggle='tab'>
     Exams (<%= coursem.resources.where(:type => 'Exam').size %>)
   </a>
   </li>
-  <li><a href="#exam-solutions" data-toggle='tab'>
+  <li><a href="#exam-solutions_<%= coursem.id %>" data-toggle='tab'>
     Exam Solutions (<%= coursem.resources.where(:type => 'ExamSolution').size %>)</a>
   </li>
 
-  <li><a href="#homeworks" data-toggle='tab'>
+  <li><a href="#homeworks_<%= coursem.id %>" data-toggle='tab'>
     Homework (<%= coursem.resources.where(:type => 'Homework').size %>)</a>
   </li>
-  <li><a href="#homework-solutions" data-toggle='tab'>
+  <li><a href="#homework-solutions_<%= coursem.id %>" data-toggle='tab'>
     Homework Solutions (<%= coursem.resources.where(:type => 'HomeworkSolution').size %>)</a>
   </li>
 
-  <li><a href="#lecture-notes" data-toggle='tab'>
+  <li><a href="#lecture-notes_<%= coursem.id %>" data-toggle='tab'>
     Lecture Notes (<%= coursem.resources.where(:type => 'LectureNotes').size %>)</a>
   </li>
-  <li><a href="#other" data-toggle='tab'>
+  <li><a href="#other_<%= coursem.id %>" data-toggle='tab'>
     Other (<%= coursem.resources.where(:type => 'OnlineResource').size %>) </a>
   </li>
 </ul>
 </div>
 
 <div class='tab-content'>
-  <div class='tab-pane' id='announcements'>
+  <div class='tab-pane' id="announcements_<%= coursem.id %>">
     <table class="resources table">
       <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "Announcement" %>
@@ -44,7 +44,7 @@
       <% end %>
     </table>
   </div>
-  <div class='tab-pane' id='discussion-notes'>
+  <div class='tab-pane' id='discussion-notes_<%= coursem.id %>'>
     <table class="resources table">
       <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "Discussion" %>
@@ -53,7 +53,7 @@
       <% end %>
     </table>
    </div>
-   <div class="tab-pane" id="discussion-solutions">
+   <div class="tab-pane" id="discussion-solutions_<%= coursem.id %>">
      <table class="resources table">
        <% coursem.resources.reverse.each do |resource| %>
            <% if resource.type == "DiscussionSolution" %>
@@ -63,7 +63,7 @@
      </table>
    </div>
 
-  <div class="tab-pane" id="exams">
+  <div class="tab-pane" id="exams_<%= coursem.id %>">
     <table class="resources table">
       <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "Exam" %>
@@ -73,7 +73,7 @@
     </table>
   </div>
 
-  <div class="tab-pane" id="exam-solutions">
+  <div class="tab-pane" id="exam-solutions_<%= coursem.id %>">
     <table class="resources table">
       <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "ExamSolution" %>
@@ -83,7 +83,7 @@
     </table>
   </div>
 
-  <div class="tab-pane" id="homeworks">
+  <div class="tab-pane" id="homeworks_<%= coursem.id %>">
     <table id="Homework" class="resources table">
       <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "Homework" %>
@@ -93,7 +93,7 @@
     </table>
   </div>
 
-  <div class="tab-pane" id="homework-solutions">
+  <div class="tab-pane" id="homework-solutions_<%= coursem.id %>">
     <table class="resources table">
       <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "HomeworkSolution" %>
@@ -103,7 +103,7 @@
     </table>
   </div>
 
-  <div class="tab-pane" id="lecture-notes">
+  <div class="tab-pane" id="lecture-notes_<%= coursem.id %>">
     <table class="resources table">
       <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "LectureNotes" %>
@@ -113,7 +113,7 @@
     </table>
   </div>
 
-  <div class="tab-pane" id="other">
+  <div class="tab-pane" id="other_<%= coursem.id %>">
     <table class="resources table">
       <% coursem.resources.reverse.each do |resource| %>
           <% if resource.type == "OnlineResource" %>
