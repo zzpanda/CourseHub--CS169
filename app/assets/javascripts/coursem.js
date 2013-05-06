@@ -1,5 +1,10 @@
 function subscribeHandler() {
     var button = $("#sub_button");
+    if (button.html() == "Subscribe") {
+        button.addClass("btn-success");
+    } else {
+        button.addClass("btn-warning");
+    }
     button.on("click",function(){
 
         var path
@@ -9,10 +14,14 @@ function subscribeHandler() {
         if (button.attr("value") == 1){
             path = "/users/unsubscribe";
             newpath = "Subscribe";
+            button.removeClass("btn-warning");
+            button.addClass("btn-success");
             newvalue = 0;
         } else{
             path = "/users/subscribe";
             newpath = "Unsubscribe";
+            button.removeClass("btn-success");
+            button.addClass('btn-warning');
             newvalue = 1;
         }
         var json_sending ={coursem_id: id};
