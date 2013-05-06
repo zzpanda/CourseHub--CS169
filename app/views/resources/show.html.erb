@@ -28,6 +28,12 @@
       <td class='col_desc'><%= @resource.type %></td>
     </tr>
 
+    <tr>
+      <td class='col_attr'>Course</td>
+      <td></td>
+      <td class='col_desc'><a href='/coursem/<%= @resource.coursem.id %>'><%= @resource.coursem.course.name%></a></td>
+    </tr>
+
 
     <tr>
       <td class='col_attr'>User</td>
