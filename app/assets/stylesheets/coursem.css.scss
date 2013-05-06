@@ -17,7 +17,7 @@ $light_grey: rgb(230,230,230);
 $grey: rgb(200,200,200);
 $dark_grey: rgb(150,150,150);
 
-$width: 850px;
+$width: 780px;
 $width_subscribe: 10px;
 $width_department: 120px;
 $width_course_number: 80px;
@@ -76,7 +76,8 @@ $width_course_title: 400px;
 
 #browse_container {
     width: $width;
-	#title_panel {
+
+    #title_panel {
       margin-left: auto;
       margin-right: auto;
       width:  $width_course_title;
