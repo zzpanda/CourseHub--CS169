@@ -41,7 +41,7 @@
                   <ul class='dropdown-menu' role='menu' aria-labelledby="dLabel">
                     <% current_user.coursems[0..5].each do |coursem| %>
                        <li>
-                          <a  tabindex="-1" href="coursem/<%= coursem.id %>">
+                          <a  tabindex="-1" href="/coursem/<%= coursem.id %>">
                             <%= coursem.course.department %>
                             <%= coursem.course.course_number %>
                             ( <%= coursem.semester.term %>
