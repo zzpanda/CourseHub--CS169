@@ -1,10 +1,12 @@
 <div id="search_container">
 	<table id="search">
 		<tr>
-			<td><input type="text" id="search_department" class="search_bar" placeholder="Department" /></td>
-			<td><input type="text" id="search_course" class="search_bar" placeholder="Course" /></td>
-		    <td><input type="button" class='btn' id="button_search" value="Search" /></td>
-            <td><a href="courses">View All</a></td>
+			<td class="col_dept"><input type="text" id="search_department" class="search_bar" placeholder="Department"/></td>
+			<td class='col_course'><input type="text" id="search_course" class="search_bar" placeholder="Course" /></td>
+		    <td class='col_search'><input type="button" class='btn btn-primary' id="button_search" value="Search" /></td>
+            <td class='col_viewall'>
+              <a href="courses">View All</a>
+            </td>
         </tr>
 	</table>
 </div>
@@ -17,7 +19,7 @@
 			<td class='col_department'>Dept</td>
 			<td class='col_course_number'>#</td>
 			<td class='col_name'>Course</td>
-			<td class='col_classes'></td>
+			<td class='col_classes'>Semester</td>
             <td class='col_subscribe'></td>
 		</tr>
     </table>
@@ -33,7 +35,7 @@
 
 			<td class='col_goto'>
               <a href="">
-                Goto
+                <i class='icon-arrow-right' ></i>
               </a>
 			</td>
 			<td class='col_department'>  
@@ -77,10 +79,10 @@
     </div>
       <div id="courses_navigation">
         <% if @courses.length != 0 %>
-            <div id="button_prev" class="btn button_course">
+            <div id="button_prev" class="btn">
               Prev
             </div>
-            <div id="button_next" class="btn button_course">
+            <div id="button_next" class="btn">
               Next
             </div>
         <% end %>

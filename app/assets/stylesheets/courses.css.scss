@@ -19,6 +19,26 @@ $width_subscribe: 100px;
 
 $width_select: 120px;
 
+#search_container {
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .col_dept input {
+    width:  150px;
+    margin-top: 8px;
+    margin-right: 15px;
+  }
+  .col_course input {
+    width: 100px;
+    margin-top: 8px;
+    margin-right: 15px;
+  }
+  .col_search input {
+    margin-right: 10px;
+  }
+}
+
 #browse_container {
   .table_course {
        tr:hover {
