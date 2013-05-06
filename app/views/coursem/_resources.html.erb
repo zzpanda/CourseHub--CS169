@@ -5,7 +5,7 @@
   </div>
   <table class="resources table">
     <% coursem.resources.each do |resource| %>
-        <% if resource.type == "Announcements" %>
+        <% if resource.type == "Announcement" %>
             <%= render :partial => '/resources/resource', :locals => {:resource => resource} %>
         <% end %>
     <% end %>
