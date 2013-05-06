@@ -12,7 +12,7 @@ $dark_blue: rgb(0,40,185);
 
 $gold: rgb(255,190,0);
 $margin: 30px;
-$lightest_grey: rgb(240,240,240);
+$lightest_grey: rgb(245,245,245);
 $light_grey: rgb(230,230,230);
 $grey: rgb(200,200,200);
 $dark_grey: rgb(150,150,150);
@@ -29,6 +29,15 @@ $width_resource: 300px;
 
 .event-info{
   font: #000;
+}
+
+.nav_resources {
+  width: 220px;
+  float: left;
+}
+
+.clear {
+  clear: both;
 }
 
 #edit_event_box {
@@ -134,7 +143,7 @@ $width_resource: 300px;
   }
    .panels {
      padding: 10px;;
-     background-color: $light-grey;
+     background-color: $lightest-grey;
      margin-top: 0px;
      margin-bottom: 0px;
      border: 1px solid $grey;
