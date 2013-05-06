@@ -27,6 +27,8 @@ $width_classes: 240px;
 $width_panel: 750px;
 $width_resource: 300px;
 
+$width_course_title: 400px;
+
 .event-info{
   font: #000;
 }
@@ -71,41 +73,52 @@ $width_resource: 300px;
   z-index: 10000;
 }
 
+
 #browse_container {
     width: $width;
 	#title_panel {
       margin-left: auto;
       margin-right: auto;
-      width:  350px;
+      width:  $width_course_title;
+      margin-bottom: 10px;
       text-align:  center;
+      border:  1px solid rgb(200,200,200);
+      border-bottom-left-radius:  0.4em;
+      border-bottom-right-radius:  0.4em;
+      border-top-left-radius:  0.2em;
+      border-top-right-radius:  0.2em;
 
       h2, h3 {
         margin-bottom: 5px;
-        margin-top: 5px;
+        margin-top: 0px;
       }
       h3 {
         color: white;
       }
       #header_title {
-        margin-top: 5px;
-        background-color: $medium_blue;
-        width: 350px;
-        border-top-left-radius: 0.4em;
-        border-top-right-radius: 0.4em;
+        width: $width_course_title;
         text-align: center;
         font-size: 24px;
-        color: white;
-        border: 2px solid $dark_blue;
+        color: $medium_blue;
+        background-color: $lightest_grey;
       }
       #header_name {
-        background-color: $gold;
-        width: 350px;
+        width: $width_course_title;
         margin-top: 0px;
         padding-top: 0px;
         padding-bottom: 0px;
-        border: 2px solid $dark_blue;
-        border-bottom-left-radius: 0.4em;
-        border-bottom-right-radius: 0.4em;
+        #sub {
+          float: left;
+          width:  120px;
+        }
+        #header_info {
+          float: right;
+          width: 260px;
+          margin-right: 10px;
+        }
+        #clear_div {
+          clear: both;
+        }
       }
 
     }
